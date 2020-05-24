@@ -1,74 +1,26 @@
 # spirit-island-template
 
-## Icons
+### Documentation
 
-You can use icons in your text to represent the game elements. Here is the syntax:
-```
-<icon class="class-name"></icon>
-```
-Then, you just need to replace 'class-name' by the icon name. The available choices are below.
+- [Cards](_docs/card.md)
+- [Icons](_docs/icon.md)
 
-### Invader Icons
+### Fonts
 
-- explorer
-- town
-- city
+This project uses 3 fonts:
 
-### Spirit Icons
+- JosefinSans-Regular: This font is bundled in the project and use the Open Font License.
+- Gobold Extra2: You can download this font [here](https://www.dafont.com/fr/gobold.font).
+- DK Snemand (demo): You can download this font [here](https://www.dafont.com/dk-snemand.font).
 
-- presence
-- sacred-site
-- spirit
+Note: Due to licensing, I did not include some of the fonts in the project.
 
-### Token Icons
+### License
 
-- badlands
-- beast
-- disease
-- strife
-- wild
+All the code is available under the MIT License.
 
-### Other Icons
+The fonts use their own license. Take the time to read them.
 
-- fast
-- slow
-- fear
-- dahan
-- blight
-- range
-- escalation
+The images/icons come from the [Spirit Island Wiki](https://spiritislandwiki.com/index.php?title=Main_Page) which state:
 
-### Element Icons
-
-- sun
-- moon
-- fire
-- air
-- water
-- earth
-- plant
-- animal
-
-### Single Terrain Icons
-
-- jungle
-- mountain
-- sand
-- wetland
-- ocean
-
-### Single Terrain with Presence Icons
-
-- jungle-presence
-- mountain-presence
-- sand-presence
-- wetland-presence
-
-### Double Terrain Icons
-
-- jungle-sand
-- jungle-wetland
-- mountain-jungle
-- mountain-sand
-- mountain-wetland
-- sand-wetland
+> Content is available under [Creative Commons Attribution-NonCommercial-ShareAlike](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode) unless otherwise noted.
