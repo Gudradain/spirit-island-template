@@ -78,6 +78,7 @@ name{
   font-size:34px;
   line-height:32px;
   font-family:'DK Snemand';
+  text-transform: uppercase;
   color:white;
   
   display:flex;
@@ -160,6 +161,7 @@ info-title{
 
   color:white;
   font-family: 'DK Snemand';
+  text-transform: uppercase;
   letter-spacing:1.5px;
   text-align:center;
   background-color:rgba(248, 215, 106, 0.4);
@@ -175,6 +177,7 @@ info{
   display:flex;
 
   font-family: 'DK Snemand';
+  text-transform: uppercase;
   background-color:rgb(255, 251, 188);
 }
 
