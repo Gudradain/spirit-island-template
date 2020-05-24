@@ -19,7 +19,7 @@ Note: Due to licensing, I did not include some of the fonts in the project.
 
 All the code is available under the MIT License.
 
-The fonts use their own license. Take the time to read them.
+The fonts use their own license.
 
 The images/icons come from the [Spirit Island Wiki](https://spiritislandwiki.com/index.php?title=Main_Page) which state:
 

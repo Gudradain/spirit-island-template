@@ -1,4 +1,4 @@
-## Icons
+# Icons
 
 You can use icons in your text to represent the game elements. Here is the syntax:
 ```
