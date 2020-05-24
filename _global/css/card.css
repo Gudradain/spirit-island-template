@@ -1,0 +1,308 @@
+html, body{
+  padding:0px;
+  margin:0px;
+  height:100%;
+  width:100%;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size:14px;
+}
+
+body{
+  display:flex;
+  flex-wrap:wrap;
+  align-items: center;
+  justify-content: center;
+  align-content:center;
+  height: 100%;
+  width:1000px;
+  margin:auto;
+}
+
+card{
+  position:relative;
+  overflow:hidden;
+  background:gray;
+  width:488px;
+  height:682px;
+  border-radius:22px;
+}
+
+card.round-border{
+  border-radius:22px;
+}
+
+card.fast{
+  background-image: url('../images/fast-card-transparent.PNG');
+  background-position-y: -20px;
+  background-position-x: -11px;
+}
+
+card.slow{
+  background-image: url('../images/slow-card-transparent.PNG');
+  background-position-y: -20px;
+  background-position-x: -12px;
+}
+
+card.fast info-speed
+{
+  background-image: url('../images/50px-Fasticon.png');
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size:40px 30px;
+}
+
+card.slow info-speed
+{
+  background-image: url('../images/50px-Slowicon.png');
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size:40px 30px;
+}
+
+cost{
+  font-family:'Gobold Extra2';
+  font-size:34px;
+  color:white;
+  position:absolute;
+  left:68px;
+  top:47px;
+}
+
+name{
+  position:absolute;
+  left:135px;
+  top:28px;
+  height:62px;
+  width:310px;
+
+  font-size:34px;
+  line-height:32px;
+  font-family:'DK Snemand';
+  color:white;
+  
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  text-align:center;
+  white-space: normal;
+  
+  /*border:1px solid yellow;*/
+}
+
+element{
+  position:absolute;
+  left:25px;
+  width:80px;
+  height:80px;
+  background-repeat: no-repeat;
+}
+
+element.sun{
+  top:129px;
+  background-image:url('../images/80px-Sunelement.png');
+}
+
+element.moon{
+  top:192px;
+  background-image:url('../images/80px-Moonelement.png');
+}
+
+element.fire{
+  top:260px;
+  background-image:url('../images/80px-Fireelement.png');
+}
+
+element.air{
+  top:324px;
+  background-image:url('../images/80px-Airelement.png');
+}
+
+element.water{
+  top:386px;
+  left:29px;
+  background-image:url('../images/80px-Waterelement.png');
+}
+
+element.earth{
+  top:449px;
+  background-image:url('../images/80px-Earthelement.png');
+}
+
+element.plant{
+  top:515px;
+  left:28px;
+  background-image:url('../images/80px-Plantelement.png');
+}
+
+element.animal{
+  top:578px;
+  background-image:url('../images/80px-Animalelement.png');
+}
+
+.image{
+  position:absolute;
+  left:108px;
+  top:97px;
+  width:352px;
+  height:260px;
+  border-top-left-radius: 10px;
+}
+
+info-title{
+  position:absolute;
+  left:108px;
+  top:336px;
+  height:22px;
+  width:353px;
+
+  display:flex;
+  align-items: center;
+
+  color:white;
+  font-family: 'DK Snemand';
+  letter-spacing:1.5px;
+  text-align:center;
+  background-color:rgba(248, 215, 106, 0.4);
+}
+
+info{
+  position:absolute;
+  left:108px;
+  top:358px;
+  width:353px;
+  height:38px;
+
+  display:flex;
+
+  font-family: 'DK Snemand';
+  background-color:rgb(255, 251, 188);
+}
+
+info-title-speed, info-speed{ width:107px; }
+info-title-range, info-range{ width:118px; }
+info-title-target, info-target{ flex-grow:1; }
+
+info-range{
+  font-size:26px;
+  line-height:24px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border-left:1px solid gray;
+}
+
+range{
+  width:50px;
+  height:32px;
+  text-align:center;
+  background-image:url('../images/50px-Rangeicon.png');
+  background-repeat: no-repeat;
+  background-position-y:23px;
+}
+
+no-range{
+  width:88px;
+  height:4px;
+  text-align:center;
+  background-image:url('../images/no-range.png');
+  background-repeat: no-repeat;
+  background-size:88px 4px;
+}
+
+info-target{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  text-align:center;
+  font-size:20px;
+  border-left:1px solid gray;
+}
+
+rules{
+  position:absolute;
+  left:108px;
+  top:394px;
+  width:353px;
+  height:247px;
+
+  box-sizing: border-box;
+  padding-top:6px;
+  padding-left:15px;
+  padding-right:15px;
+  
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  text-align:center;
+  font-family: 'Josefin Sans';
+  font-size: 22px;
+  line-height: 30px;
+
+  background-color:white;
+  border-bottom-right-radius:5px;
+  border-bottom-left-radius:2px;
+}
+
+artist-name{
+  position:absolute;
+  left:132px;
+  top:645px;
+  width:253px;
+  height:14px;
+
+  color:rgba(255, 255, 255, 0.8);
+  font-family: 'Josefin Sans';
+  font-size:11px;
+}
+
+icon{
+  width:25px;
+  height:25px;
+  margin-top:-7px;
+  margin-bottom:-4px;
+}
+
+icon.bigger{
+  height:30px;
+  width:30px;
+  margin-bottom:-10px;
+}
+
+info-range icon{
+  width:40px;
+  height:32px;
+}
+
+info-target icon{
+  width:70px;
+  height:32px;
+}
+
+info-target icon.spirit{
+  width:32px;
+  height:28px;
+}
+
+icon.town{
+  margin-left:6px;
+}
+
+icon.range{
+  width:50px;
+  margin-top:-10px;
+}
+
+icon.presence{
+  height:20px;
+}
+
+.or{
+  background-image: url('../images/or.PNG');
+  height:40px;
+  width:100%;
+  background-repeat: no-repeat;
+  background-position:center;
+  margin-top:5px;
+  margin-bottom:10px;
+}

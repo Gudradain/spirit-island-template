@@ -1,0 +1,50 @@
+icon{
+  display:inline-block;
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position:center;
+}
+
+icon.range{background-image: url('../images/50px-Rangeicon.png');}
+icon.spirit{background-image: url('../images/50px-Spiriticon.png'); }
+icon.disease{background-image: url('../images/25px-Diseaseicon.png'); }
+
+icon.fast{background-image: url('../images/25px-Fasticon.png');}
+icon.slow{background-image: url('../images/50px-Slowicon.png');}
+icon.blight{background-image: url('../images/25px-Blighticon.png');}
+icon.dahan{background-image: url('../images/25px-Dahanicon.png');}
+icon.fear{background-image: url('../images/25px-Fearicon.png');}
+
+icon.explorer{background-image: url('../images/15px-Explorericon.png'); margin-left:-2px; margin-right:-2px;}
+icon.town{background-image: url('../images/25px-Townicon.png');}
+icon.city{background-image: url('../images/25px-Citiyicon.png');}
+icon.escalation {background-image: url('../images/10px-Stage_II_Escalation.png'); margin-bottom:0px;}
+
+icon.presence-white {background-image: url('../images/25px-Presenceicon-inverse.png'); margin-left:3px; margin-right:3px;}
+icon.presence {background-image: url('../images/25px-Presenceicon.png');}
+icon.sacred-site {background-image: url('../images/25px-Sacredsiteicon.png') }
+icon.earth{ background-image: url('../images/35px-Earthelement.png'); }
+icon.sun{ background-image: url('../images/35px-Sunelement.png'); }
+icon.plant{ background-image: url('../images/35px-Plantelement.png'); }
+icon.water{ background-image: url('../images/35px-Waterelement.png'); }
+icon.moon{background-image: url('../images/35px-Moonelement.png'); }
+icon.fire{background-image: url('../images/35px-Fireelement.png'); }
+icon.air{background-image: url('../images/35px-Airelement.png'); }
+
+icon.jungle{background-image: url('../images/50px-jungle.png'); }
+icon.mountain{background-image: url('../images/50px-mountain.png'); }
+icon.sand{background-image: url('../images/50px-sand.png'); }
+icon.wetland{background-image: url('../images/50px-wetland.png'); }
+icon.ocean{background-image: url('../images/50px-ocean.png'); }
+
+icon.jungle-presence{background-image: url('../images/50px-jungle-presence.png'); }
+icon.mountain-presence{background-image: url('../images/50px-mountain-presence.png'); }
+icon.sand-presence{background-image: url('../images/50px-sand-presence.png'); }
+icon.wetland-presence{background-image: url('../images/50px-wetland-presence.png'); }
+
+icon.jungle-sand{background-image: url('../images/50px-jungle-sand.png'); }
+icon.jungle-wetland{background-image: url('../images/50px-jungle-wetland.png'); }
+icon.mountain-jungle{background-image: url('../images/50px-mountain-jungle.png'); }
+icon.mountain-sand{background-image: url('../images/50px-mountain-sand.png'); }
+icon.mountain-wetland{background-image: url('../images/50px-mountain-wetland.png'); }
+icon.sand-wetland{background-image: url('../images/50px-sand-wetland.png'); }
