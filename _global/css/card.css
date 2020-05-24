@@ -1,3 +1,8 @@
+@font-face{
+  font-family: JosefinSans-Regular;
+  src: url(../fonts/josefin-sans/JosefinSans-Regular.ttf);
+}
+
 html, body{
   padding:0px;
   margin:0px;
@@ -238,7 +243,7 @@ rules{
   align-items: center;
   justify-content: center;
   text-align:center;
-  font-family: 'Josefin Sans';
+  font-family: 'JosefinSans-Regular';
   font-size: 22px;
   line-height: 30px;
 
@@ -255,7 +260,7 @@ artist-name{
   height:14px;
 
   color:rgba(255, 255, 255, 0.8);
-  font-family: 'Josefin Sans';
+  font-family: 'JosefinSans-Regular';
   font-size:11px;
 }
 
