@@ -25,5 +25,10 @@ The card template use a lot of custom HTML tags, here is a quick summary:
     - range: You can put the range for the card
     - no-range: If you card doesn't require a range
   - info-target: Information about the card target.
-- rules: This section contains the text for the card.
+- rules-container: This section contains the rules and threshold
+  - rules: This section contains the text for the card.
+  - threshold: This section contains the threshold information.
+    - threshold-line: The line at the top. You don't need to modify it.
+    - threshold-title: The "IF YOU HAVE" at the top. You don't need to modify it
+    - threshold-condition: The elements needed to activate the threshold.
 - artist-name: The name of the artist that made the picture you used in the card.
