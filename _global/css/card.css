@@ -226,12 +226,24 @@ info-target{
   border-left:1px solid gray;
 }
 
-rules{
+rules-container{
   position:absolute;
   left:108px;
   top:394px;
   width:353px;
   height:247px;
+
+  display: flex;
+  flex-direction: column;
+
+  text-align:center;
+  font-family: 'JosefinSans-Regular';
+  font-size: 22px;
+  line-height: 30px;
+}
+
+rules{
+  flex-grow: 1;
 
   box-sizing: border-box;
   padding-top:6px;
@@ -242,14 +254,65 @@ rules{
   flex-direction:column;
   align-items: center;
   justify-content: center;
-  text-align:center;
-  font-family: 'JosefinSans-Regular';
-  font-size: 22px;
-  line-height: 30px;
 
   background-color:white;
   border-bottom-right-radius:5px;
   border-bottom-left-radius:2px;
+}
+
+threshold{
+  position: relative;
+  display:block;
+  width:353px;
+  background-color:rgb(252, 231, 183);
+  bottom:0px;
+  padding-bottom:10px;
+  padding-top:30px;
+  overflow: hidden;
+}
+
+threshold-line{
+  position: absolute;
+  display: block;
+  height: 1px;
+  width:353px;
+  top:11px;
+  background-color:rgb(223, 196, 143);
+  overflow: visible;
+  color:white;
+  margin-bottom:30px;
+  z-index:1;
+}
+
+threshold-title{
+  position: absolute;
+  display:block;
+  font-family: 'DK Snemand';
+  font-size:16px;
+  text-transform: uppercase;
+  color: rgb(113, 91, 44);
+  margin-bottom:10px;
+  margin-top:-5px;
+  z-index:999;
+  background-color:rgb(252, 231, 183);
+  top:0px;
+  left:136px;
+  width:81px;
+}
+
+threshold-condition{
+  display:block;
+  font-size:27px;
+  font-family:'Gobold Extra2';
+  margin-bottom:10px;
+}
+
+threshold-condition icon{
+  width:50px;
+  height:50px;
+  margin-bottom:-11px;
+  margin-left:-9px;
+  margin-right:-8px;
 }
 
 artist-name{
@@ -314,3 +377,4 @@ icon.presence{
   margin-top:5px;
   margin-bottom:10px;
 }
+

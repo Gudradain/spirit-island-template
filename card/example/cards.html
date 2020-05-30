@@ -30,15 +30,17 @@
       </info-target>
     </info>
 
-    <rules>
-      <div>
-        Gather 1 <icon class="explorer"></icon>/<icon class="town"></icon> .
-      </div>
-      <div class="or"></div>
-      <div>
-        2 <icon class="fear"></icon>.
-      </div>
-    </rules>
+    <rules-container>
+      <rules>
+        <div>
+          Gather 1 <icon class="explorer"></icon>/<icon class="town"></icon>.
+        </div>
+        <div class="or"></div>
+        <div>
+          2 <icon class="fear"></icon>.
+        </div>
+      </rules>
+    </rules-container>
 
     <artist-name>ARTIST NAME</artist-name>
   </card>
@@ -54,7 +56,7 @@
     <info-title>
       <info-title-speed>SPEED</info-title-speed>
       <info-title-range>RANGE</info-title-range>
-      <info-title-target>TARGET LAND</info-title-target>
+      <info-title-target>TARGET</info-title-target>
     </info-title>
 
     <info>
@@ -67,11 +69,13 @@
       </info-target>
     </info>
 
-    <rules>
-      <div>
-        Defend 3 in every <icon class="sand bigger"></icon><br /> with your <icon class="presence"></icon>.
-      </div>
-    </rules>
+    <rules-container>
+      <rules>
+        <div>
+          Defend 3 in every <icon class="sand bigger"></icon><br /> with your <icon class="presence"></icon>.
+        </div>
+      </rules>
+    </rules-container>
 
     <artist-name>ARTIST NAME</artist-name>
   </card>
@@ -101,17 +105,19 @@
       </info-target>
     </info>
 
-    <rules>
-      <div>
-        1 Damage.
-      </div>
-      <div>
-        Gather up to 2 of your <icon class="presence"></icon><br /> into target land.
-      </div>
-    </rules>
+    <rules-container>
+      <rules>
+        <div>
+          1 Damage.
+        </div>
+        <div>
+          Gather up to 2 of your <icon class="presence"></icon><br /> into target land.
+        </div>
+      </rules>
+    </rules-container>
 
     <artist-name>ARTIST NAME</artist-name>
-  </card> 
+  </card>
 
   
 
@@ -141,18 +147,27 @@
       </info-target>
     </info>
 
-    <rules>
-      <div>
-        Gather 2 <icon class="dahan"></icon>.
-      </div>
-      <div>
-        2 Damage.
-      </div>
-      <div>
-        Push 2 <icon class="dahan"></icon>.
-      </div>
-    </rules>
-
+    <rules-container>
+      <rules>
+        <div>
+          Gather 2 <icon class="dahan"></icon>.
+        </div>
+        <div>
+          2 Damage.
+        </div>
+      </rules>
+      <threshold>
+        <threshold-line></threshold-line>
+        <threshold-title>IF YOU HAVE</threshold-title>
+        <threshold-condition>
+          3<icon class="animal"></icon>:
+        </threshold-condition>
+        <div>
+          Push 2 <icon class="dahan"></icon>.
+        </div>
+      </threshold>
+    </rules-container>
+    
     <artist-name>ARTIST NAME</artist-name>
   </card>
 
