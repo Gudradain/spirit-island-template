@@ -29,13 +29,14 @@ icon.presence-white {background-image: url('../images/25px-Presenceicon-inverse.
 icon.presence {background-image: url('../images/25px-Presenceicon.png');}
 icon.sacred-site {background-image: url('../images/25px-Sacredsiteicon.png') }
 
-icon.earth{ background-image: url('../images/35px-Earthelement.png'); }
-icon.sun{ background-image: url('../images/35px-Sunelement.png'); }
-icon.plant{ background-image: url('../images/35px-Plantelement.png'); }
-icon.water{ background-image: url('../images/35px-Waterelement.png'); }
-icon.moon{background-image: url('../images/35px-Moonelement.png'); }
-icon.fire{background-image: url('../images/35px-Fireelement.png'); }
-icon.air{background-image: url('../images/35px-Airelement.png'); }
+icon.earth{ background-image: url('../images/80px-Earthelement.png'); }
+icon.sun{ background-image: url('../images/80px-Sunelement.png'); }
+icon.plant{ background-image: url('../images/80px-Plantelement.png'); }
+icon.water{ background-image: url('../images/80px-Waterelement.png'); }
+icon.moon{background-image: url('../images/80px-Moonelement.png'); }
+icon.fire{background-image: url('../images/80px-Fireelement.png'); }
+icon.air{background-image: url('../images/80px-Airelement.png'); }
+icon.animal{background-image: url('../images/80px-Animalelement.png'); }
 
 icon.jungle{background-image: url('../images/50px-jungle.png'); }
 icon.mountain{background-image: url('../images/50px-mountain.png'); }
