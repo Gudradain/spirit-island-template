@@ -6,10 +6,14 @@
 html, body{
   padding:0px;
   margin:0px;
-  height:100%;
-  width:100%;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size:14px;
+}
+
+html{
+  height:100%;
+  width:100%;
+  overflow-y:auto;
 }
 
 body{
@@ -18,9 +22,10 @@ body{
   align-items: center;
   justify-content: center;
   align-content:center;
-  height: 100%;
   width:1000px;
   margin:auto;
+  margin-top:30px;
+  margin-bottom:30px;
 }
 
 card{
