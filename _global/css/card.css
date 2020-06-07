@@ -375,6 +375,7 @@ icon.presence{
 
 .or{
   background-image: url('../images/or.PNG');
+  background-size: 45%;
   height:40px;
   width:100%;
   background-repeat: no-repeat;
