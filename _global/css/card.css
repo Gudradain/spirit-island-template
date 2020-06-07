@@ -261,6 +261,9 @@ rules{
   justify-content: center;
 
   background-color:white;
+}
+
+rules:last-child{
   border-bottom-right-radius:5px;
   border-bottom-left-radius:2px;
 }
@@ -274,6 +277,8 @@ threshold{
   padding-bottom:10px;
   padding-top:30px;
   overflow: hidden;
+  border-bottom-right-radius:5px;
+  border-bottom-left-radius:2px;
 }
 
 threshold-line{
