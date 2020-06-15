@@ -1,0 +1,180 @@
+@font-face{
+  font-family: JosefinSans-Regular;
+  src: url(../fonts/josefin-sans/JosefinSans-Regular.ttf);
+}
+
+html, body{
+  padding:0px;
+  margin:0px; 
+  height:100%;
+  width:100%;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size:14px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+adversary{
+  display:block;
+  background-image: url(../images/adversary-frame.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width:575px;
+  height:384px;
+  width:800px;
+  height:534px;
+
+  position:relative;
+}
+
+adversary-title{
+  display:block;
+  position:absolute;
+  left:0px;
+  top:16px;
+  height:44px;
+  width:600px;
+  
+  text-align:center;
+  line-height: 36px;
+  font-size:36px;
+  font-family: 'DK Snemand';
+  text-transform: uppercase;
+}
+
+.flag{
+  display:block;
+  position:absolute;
+  left:602px;
+  top:30px;
+  height:99px;
+  width:140px;
+}
+
+top-info{
+  display:block;
+  position:absolute;
+  left:35px;
+  top:77px;
+  height:78px;
+  width:566px;
+
+  display:flex;
+  flex-wrap: nowrap;
+  font-family: 'JosefinSans-Regular';
+  font-size:12px;
+  line-height:17px;
+
+  padding-top:6px;
+  padding-left:20px;
+  padding-right:2px;
+}
+
+section-title{
+  font-weight: bold;
+  font-style: italic;
+  font-size:14px;
+}
+
+loss-condition{
+  margin-right:5px;
+}
+
+adversary-levels{
+  display:block;
+  position:absolute;
+  left:35px;
+  top:157px;
+  height:347px;
+  width:726px;
+
+  font-family: 'JosefinSans-Regular';
+  font-size:12px;
+  
+  padding-left:20px;
+  padding-right:20px;
+  padding-top:7px;
+}
+
+adversary-levels table{
+  width:100%;
+  border-collapse: collapse;
+}
+
+adversary-levels table th{
+  font-weight: bold;
+  font-style: italic;
+  font-size:13px;
+  text-align:left;
+}
+
+adversary-levels table th:not(:last-child){
+  padding-right:20px;
+}
+
+adversary-levels table th:nth-child(2),
+adversary-levels table td:nth-child(2){
+  white-space: nowrap;
+}
+
+adversary-levels table tr:not(:first-child) td{
+  border-top:1px solid black;
+}
+
+adversary-levels table td:first-child{
+  font-size:23px;
+  font-family:'Gobold Extra2';
+  padding-left:10px;
+}
+
+adversary-levels table td:nth-child(2){
+  padding-left:7px;
+}
+
+adversary-levels table td:last-child{
+  line-height:17px;
+  padding-top:2px;
+}
+
+level-info{
+  font-style:italic;
+}
+
+.cumulative{
+  font-weight: normal;
+  color:rgb(100, 100, 100);
+}
+
+icon{
+  height:17px;
+  width:17px;
+  margin-bottom:-3px;
+  margin-top:-3px;
+}
+
+adversary-levels icon{
+  margin-top:0px;
+}
+
+icon.city{
+  height:19px;
+  width:19px;
+  margin-top:-5px;
+}
+
+adversary-levels icon.city{
+  margin-top:-2px;
+}
+
+icon.town{
+  height:15px;
+  width:15px;
+}
