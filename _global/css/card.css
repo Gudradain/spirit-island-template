@@ -389,3 +389,30 @@ icon.presence{
   margin-bottom:10px;
 }
 
+rules icon.jungle,
+rules icon.mountain,
+rules icon.sand,
+rules icon.wetland,
+rules icon.ocean,
+rules icon.jungle-presence,
+rules icon.mountain-presence,
+rules icon.sand-presence,
+rules icon.wetland-presence{
+  width:30px;
+  height:30px;
+  margin-bottom:-10px;
+}
+
+rules icon.jungle-sand,
+rules icon.jungle-wetland,
+rules icon.mountain-jungle,
+rules icon.mountain-sand,
+rules icon.mountain-wetland,
+rules icon.sand-wetland
+{
+  width:50px;
+  height:28px;
+  margin-bottom:-8px;
+  margin-left:-4px;
+  margin-right:-4px;
+}
