@@ -23,7 +23,7 @@ The card template use a lot of custom HTML tags, here is a quick summary:
   - info-speed: This section is automatic based on the card class. You don't need to modify it.
   - info-range: Information about the range. It contains 2 custom tags.
     - range: You can put the range for the card
-    - no-range: If you card doesn't require a range
+    - no-range: If your card doesn't require a range
   - info-target: Information about the card target.
 - rules-container: This section contains the rules and threshold
   - rules: This section contains the text for the card.
