@@ -426,9 +426,9 @@ div icon.earth,
 div icon.plant,
 div icon.animal,
 div icon.any-element{
-  width:36px;
-  height:36px;
-  margin-bottom:-12px;
-  margin-left:-4px;
-  margin-right:-4px;
+  width:40px;
+  height:40px;
+  margin-bottom:-13px;
+  margin-left:-5px;
+  margin-right:-5px;
 }
