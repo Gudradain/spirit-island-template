@@ -46,6 +46,7 @@ Then, you just need to replace 'class-name' by the icon name. The available choi
 - earth
 - plant
 - animal
+- any-element
 
 ### Single Terrain Icons
 
