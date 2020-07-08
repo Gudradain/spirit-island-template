@@ -37,6 +37,7 @@ icon.moon{background-image: url('../images/80px-Moonelement.png'); }
 icon.fire{background-image: url('../images/80px-Fireelement.png'); }
 icon.air{background-image: url('../images/80px-Airelement.png'); }
 icon.animal{background-image: url('../images/80px-Animalelement.png'); }
+icon.any-element{background-image: url('../images/Anyelement.png'); }
 
 icon.jungle{background-image: url('../images/50px-jungle.png'); }
 icon.mountain{background-image: url('../images/50px-mountain.png'); }

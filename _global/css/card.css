@@ -412,3 +412,19 @@ rules icon.sand-wetland
   margin-left:-4px;
   margin-right:-4px;
 }
+
+div icon.sun,
+div icon.moon,
+div icon.fire,
+div icon.air,
+div icon.water,
+div icon.earth,
+div icon.plant,
+div icon.animal,
+div icon.any-element{
+  width:40px;
+  height:40px;
+  margin-bottom:-13px;
+  margin-left:-5px;
+  margin-right:-5px;
+}
