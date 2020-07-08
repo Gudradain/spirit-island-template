@@ -318,8 +318,8 @@ threshold-condition{
 }
 
 threshold-condition icon{
-  width:50px;
-  height:50px;
+  width:50px !important;
+  height:50px !important;
   margin-bottom:-11px;
   margin-left:-9px;
   margin-right:-8px;
@@ -335,6 +335,17 @@ artist-name{
   color:rgba(255, 255, 255, 0.8);
   font-family: 'JosefinSans-Regular';
   font-size:11px;
+}
+
+.or{
+  background-image: url('../images/or.PNG');
+  background-size: 45%;
+  height:40px;
+  width:100%;
+  background-repeat: no-repeat;
+  background-position:center;
+  margin-top:5px;
+  margin-bottom:10px;
 }
 
 icon{
@@ -374,15 +385,20 @@ icon.presence{
   height:20px;
 }
 
-.or{
-  background-image: url('../images/or.PNG');
-  background-size: 45%;
+icon.sun,
+icon.moon,
+icon.fire,
+icon.air,
+icon.water,
+icon.earth,
+icon.plant,
+icon.animal,
+icon.any-element{
+  width:40px;
   height:40px;
-  width:100%;
-  background-repeat: no-repeat;
-  background-position:center;
-  margin-top:5px;
-  margin-bottom:10px;
+  margin-bottom:-13px;
+  margin-left:-5px;
+  margin-right:-5px;
 }
 
 rules icon.jungle,
@@ -413,18 +429,4 @@ rules icon.sand-wetland
   margin-right:-4px;
 }
 
-div icon.sun,
-div icon.moon,
-div icon.fire,
-div icon.air,
-div icon.water,
-div icon.earth,
-div icon.plant,
-div icon.animal,
-div icon.any-element{
-  width:40px;
-  height:40px;
-  margin-bottom:-13px;
-  margin-left:-5px;
-  margin-right:-5px;
-}
+
