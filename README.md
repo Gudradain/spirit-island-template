@@ -2,6 +2,7 @@
 
 ### Documentation
 
+- [Adversary](_docs/adversary.md)
 - [Cards](_docs/card.md)
 - [Icons](_docs/icon.md)
 
