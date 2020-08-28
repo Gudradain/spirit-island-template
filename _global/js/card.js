@@ -58,8 +58,6 @@ function setThreshold(card)
   </threshold-condition>
   ${threshold.innerHTML}
   `;
-  
-  console.log(threshold);
 }
 
 function getThresholdElements(threshold)
@@ -128,17 +126,13 @@ function replaceIcon(html)
 {
   var result = html;
 
-  var tags = {
-    '{explorer}': '<icon class="explorer"></icon>',
-    '{town}': '<icon class="town"></icon>',
-    '{fear}': '<icon class="fear"></icon>',
-    '{dahan}': '<icon class="dahan"></icon>'
-  };
-
-  for(var tagName of Object.keys(tags))
+  var regEx = new RegExp('(\\{[^\\}]*\\})', "ig");
+  var matchs = result.match(regEx);
+  for(var match of (matchs || []))
   {
-    var regEx = new RegExp(tagName, "ig");
-    result = result.replace(regEx, tags[tagName]);
+    var iconName = match.replace('{', '').replace('}', '');
+    var iconHtml = `<icon class="${iconName}"></icon>`;
+    result = result.replace(new RegExp(match, "ig"), iconHtml);
   }
 
   return result;
