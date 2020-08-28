@@ -8,11 +8,14 @@ icon{
 icon.range{background-image: url('../images/50px-Rangeicon.png');}
 icon.spirit{background-image: url('../images/50px-Spiriticon.png'); }
 
+icon.badland{background-image: url('../images/25px-Badlandsicon.png'); }
 icon.badlands{background-image: url('../images/25px-Badlandsicon.png'); }
 icon.beast{background-image: url('../images/25px-Beasticon.png'); }
+icon.beasts{background-image: url('../images/25px-Beasticon.png'); }
 icon.disease{background-image: url('../images/25px-Diseaseicon.png'); }
 icon.strife{background-image: url('../images/25px-Strifeicon.png'); }
 icon.wild{background-image: url('../images/25px-Wildicon.png'); }
+icon.wilds{background-image: url('../images/25px-Wildicon.png'); }
 
 icon.fast{background-image: url('../images/25px-Fasticon.png');}
 icon.slow{background-image: url('../images/50px-Slowicon.png');}
