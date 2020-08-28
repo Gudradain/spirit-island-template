@@ -337,7 +337,8 @@ artist-name{
   font-size:11px;
 }
 
-.or{
+.or,
+or{
   background-image: url('../images/or.PNG');
   background-size: 45%;
   height:40px;
