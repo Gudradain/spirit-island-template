@@ -5,6 +5,7 @@ for(var quickCard of quickCards)
   var data = getData(quickCard);
   var card = constructCard(data);
   insertAfter(card, quickCard);
+  quickCard.remove();
 }
 
 function constructCard(data)
@@ -27,10 +28,10 @@ function constructCard(data)
   <info>
     <info-speed></info-speed>
     <info-range>
-      <!--<range>0</range>-->
+      ${data.range}
     </info-range>
     <info-target>
-      <!--<icon class="sand"></icon>-->
+      ${data.target}
     </info-target>
   </info>
 
@@ -110,12 +111,26 @@ function getRulesHTML(html)
 
 function getRangeModel(rangeString)
 {
-  return rangeString;
+  if(rangeString === "none"){
+    return "<no-range></no-range>";
+  }else {
+    var result = '';
+    for(var item of rangeString.split(',')){
+      if(!isNaN(item)){
+        result += `<range>${item}</range>`;
+      }
+      else
+      {
+        result += `<icon class="${item}"></icon>`;
+      }
+    }
+    return result;
+  }
 }
 
 function getTargetModel(targetString)
 {
-  return targetString;
+  return replaceIcon(targetString);
 }
 
 function insertAfter(newNode, referenceNode){
