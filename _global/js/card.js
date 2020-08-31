@@ -51,14 +51,16 @@ function setThreshold(card)
 {
   var threshold = card.querySelector('threshold');
 
-  threshold.innerHTML = `
-  <threshold-line></threshold-line>
-  <threshold-title>IF YOU HAVE</threshold-title>
-  <threshold-condition>
-    ${getThresholdElements(threshold)}:
-  </threshold-condition>
-  ${threshold.innerHTML}
-  `;
+  if(threshold){
+    threshold.innerHTML = `
+    <threshold-line></threshold-line>
+    <threshold-title>IF YOU HAVE</threshold-title>
+    <threshold-condition>
+      ${getThresholdElements(threshold)}:
+    </threshold-condition>
+    ${threshold.innerHTML}
+    `;
+  }
 }
 
 function getThresholdElements(threshold)
