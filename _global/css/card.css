@@ -341,8 +341,9 @@ artist-name{
 or{
   background-image: url('../images/or.PNG');
   background-size: 45%;
+  display: block;
   height:40px;
-  width:100%;
+  width:320px;
   background-repeat: no-repeat;
   background-position:center;
   margin-top:5px;
