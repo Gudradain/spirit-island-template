@@ -25,7 +25,7 @@ Note: Due to licensing, I did not include some of the fonts in the project.
 ### Tips for Maintenance
 
 1. Cloning the project with GIT instead of downloading it as a ZIP file make it easier to receive updates later on.
-2. Don't modify the files in the folder "_docs", "_examples" and "_global". Your modifications might be lost when you get the latest version of the project. Instead, create new folder for your creations.
+2. Don't modify the files in the folder "_docs", "_examples" and "_global". Your modifications might be lost when you get the latest version of the project. Instead, create new folders for your creations.
 
 ### License
 
