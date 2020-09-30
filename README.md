@@ -16,13 +16,13 @@ This project uses 3 fonts:
 
 Note: Due to licensing, I did not include some of the fonts in the project.
 
-### Installation (non-technical)
+### Getting Started
 
 1. Download the ZIP file and extract it on your computer.
 2. Navigate to the "_examples/card" folder then open "cards.html" in your browser.
 3. Open "cards.html" in your favorite text editor and create your cards.
 
-### Tips for maintenance
+### Tips for Maintenance
 
 1. Cloning the project with GIT instead of downloading it as a ZIP file make it easier to receive updates later on.
 2. Don't modify the files in the folder "_docs", "_examples" and "_global". Your modifications might be lost when you get the latest version of the project. Instead, create new folder for your creations.
