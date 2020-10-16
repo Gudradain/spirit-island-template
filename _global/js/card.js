@@ -22,7 +22,7 @@ function constructCard(data)
   <info-title>
     <info-title-speed>SPEED</info-title-speed>
     <info-title-range>RANGE</info-title-range>
-    <info-title-target>TARGET LAND</info-title-target>
+    <info-title-target>${data.targetTitle}</info-title-target>
   </info-title>
 
   <info>
@@ -100,6 +100,7 @@ function getData(quickCard)
     elements: (quickCard.getAttribute("elements") || '').split(','),
     range: getRangeModel(quickCard.getAttribute("range")),
     target: getTargetModel(quickCard.getAttribute("target")),
+    targetTitle: quickCard.getAttribute("target-title") || 'TARGET LAND',
     artistName: quickCard.getAttribute("artist-name"),
     innerHTML: getRulesHTML(quickCard.innerHTML)
   };

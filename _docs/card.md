@@ -1,6 +1,6 @@
 # Cards
 
-The fastest way to get started is to start from the example template in the folder card/example.
+The fastest way to get started is to start from the examples in the file "_examples/card/cards.html".
 
 ### Custom HTML Tag
 
