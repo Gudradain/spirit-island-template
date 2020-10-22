@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="../../_global/css/global.css" rel="stylesheet" />
+    <link href="../../_global/css/board.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../_global/js/board.js"></script>
+</head>
+
+<body>
+
+    <board>
+        <img class="spirit-image" src="example1.png" />
+        <img class="spirit-border" src="example2.png" />
+        <spirit-name>
+            River Surges in Sunlight
+        </spirit-name>
+
+        <special-rules-container>
+            <special-rules-subtitle>Mountain Home</special-rules-subtitle>
+            <special-rule>
+                For each {fire} showing on your {presence} tracks, do 1 Damage.
+            </special-rule>
+            <special-rules-subtitle>Collapse in a blast of lava and steam</special-rules-subtitle>
+            <special-rule>
+                Push all {beast} and any number of {dahan}.
+            </special-rule>
+            <special-rules-subtitle>volcanic blah blah blah</special-rules-subtitle>
+            <special-rule>
+                Cards gain <range-plus-1></range-plus-1> if {blight} and {strife} and {disease} and {town} and {city} and {explorer} and {beast} and {wilds} and {badlands} and {fear}
+            </special-rule>
+        </special-rules-container>
+
+        <!--TODO:Things to add/test
+        Gain 2 of an Element-->
+
+        <growth title="Growth (PICK ONE)">
+            <growth-group values="reclaim-one;gain-power-card;gain-energy(3)"></growth-group>
+            <growth-group values="add-presence(2,ocean);gain-element(fire)"></growth-group>
+            <growth-group values="move-presence(2);presence-no-range;add-presence(3,mountain-jungle)"></growth-group>
+        </growth>
+
+        <!--TODO:Things to add/test
+        Push X from the land-->
+
+        <presence-tracks>
+            <energy-track values="1,2,earth,3+fire,water+earth,fire+plant"></energy-track>
+            <card-play-track values="1,fire,2+fire,3,move-presence(2),4,5+reclaim-one,fire+reclaim-one"></card-play-track>
+        </presence-tracks>
+
+        <innate-powers>
+            <quick-innate-power
+                name="explosion"
+                speed="fast"
+                range="{range-0}"
+                target="{blight}"
+                target-title="TARGET LAND">
+            <level threshold="1-plant">
+                1 Damage per 2 fire you have.
+            </level>
+            <level threshold="3-plant">
+                Instead, 1 Damage per {fire} you have.
+            </level>
+            <level threshold="4-fire,2-air">
+                You may split this Power's damage among any number of lands with {blight} where you have {presence}.
+            </level>
+            <level threshold="7-fire">
+                In {blight} where {presence} you {dahan} have {wilds} and {strife} then {badlands} and {disease}.
+            </level>
+            </quick-innate-power>
+            <quick-innate-power
+                name="explosion2"
+                speed="slow"
+                range="{sacred-site}{range-1}"
+                target="{player-spirit}"
+                target-title="TARGET">
+            <level threshold="1-plant">
+                1 Damage per 2 {fire} you have.
+            </level>
+            <level threshold="3-plant">
+                Instead, 1 Damage per {fire} you have.
+            </level>
+            <level threshold="4-fire,2-air">
+                You may split this Power's damage among any number of lands with {blight} where you have {presence}.
+            </level>
+            <level threshold="7-fire">
+                In {blight} where {presence} you {dahan} have {wilds} and {strife} then {badlands} and {disease}.
+            </level>
+            </quick-innate-power>
+        </innate-powers>
+
+    </board>
+
+</body>
+
+</html>
