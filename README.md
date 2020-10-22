@@ -3,8 +3,8 @@
 ### Documentation
 
 - [Adversary](_docs/adversary.md)
-- [Cards](_docs/card.md)
-- [Quick-Cards](_docs/quick-card.md)
+- [Board](_docs/board.md)
+- [Cards](_docs/quick-card.md)
 - [Icons](_docs/icon.md)
 
 ### Fonts
