@@ -6,6 +6,7 @@
 - [Cards](_docs/card.md)
 - [Quick-Cards](_docs/quick-card.md)
 - [Icons](_docs/icon.md)
+- [Board](_docs/board_front.md)
 
 ### Fonts
 
