@@ -256,9 +256,8 @@ growth-cell icon.reclaim-all{
 }
 
 growth-text {
-    font-family: 'Lato-SemiboldItalic';
+    font-family: 'Lato SemiBold';
     font-size: 14pt;
-    font-weight: bold;
     font-style: italic;
     width: 140px;
 }
@@ -1103,9 +1102,8 @@ energy-bottom, element-bottom {
 }
 
 energy-track subtext, energy-track-ring subtext {
-    font-family: 'Lato-SemiboldItalic';
+    font-family: 'Lato SemiBold';
     font-size: 16pt;
-    font-weight: bold;
     font-style: italic;
     display: inline-block;
     width: 130px;
@@ -1114,9 +1112,8 @@ energy-track subtext, energy-track-ring subtext {
 }
 
 card-play-track subtext {
-    font-family: 'Lato-SemiboldItalic';
+    font-family: 'Lato SemiBold';
     font-size: 16pt;
-    font-weight: bold;
     font-style: italic;
     display: inline-block;
     width: 130px;

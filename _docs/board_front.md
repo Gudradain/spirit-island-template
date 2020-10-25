@@ -1,6 +1,6 @@
 # Board
 
-The fastest way to get started is to start from the example template in the folder adversary/example.
+The fastest way to get started is to start from the example template in the folder boards/example.
 
 ## Custom HTML Tag
 
