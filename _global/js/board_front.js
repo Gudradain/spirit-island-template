@@ -145,7 +145,7 @@ function parseEnergyTrackTags(){
             if(i == 0){
                 energyHTML += "<energy-track-initial><value>"+energyOptions[i]+"</value></energy-track-initial>";
             } else {
-                energyHTML += "<energy-track><value>"+energyOptions[i]+"</value><subtext>2</subtext></energy-track>";
+                energyHTML += "<energy-track><value>"+energyOptions[i]+"</value><subtext>"+energyOptions[i].charAt(0).toUpperCase() + energyOptions[i].slice(1)+"</subtext></energy-track>";
             }
         } else {
             //It is either a single element or a mix of elements/numbers
@@ -194,7 +194,7 @@ function parseCardPlayTrackTags(){
             if(i == 0){
                 cardPlayHTML += "<card-play-track-initial><card-play><value>"+cardPlayOptions[i]+"</value></card-play></card-play-track-initial>";
             } else {
-                cardPlayHTML += "<card-play-track><card-play><value>"+cardPlayOptions[i]+"</value></card-play><subtext>2</subtext></card-play-track>";
+                cardPlayHTML += "<card-play-track><card-play><value>"+cardPlayOptions[i]+"</value></card-play><subtext>"+cardPlayOptions[i].charAt(0).toUpperCase() + cardPlayOptions[i].slice(1)+"</subtext></card-play-track>";
             }
         } else {
             //It is either a single element or a mix of elements/numbers
