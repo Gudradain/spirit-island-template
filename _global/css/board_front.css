@@ -1323,17 +1323,6 @@ threshold {
     font-size: 18pt;
 }
 
-artist-name {
-    position: absolute;
-    left: 79px;
-    top: 1164px;
-    width: 253px;
-    height: 14px;
-    color: rgba(255, 255, 255, 255);
-    font-family: 'JosefinSans-Regular';
-    font-size: 11px;
-}
-
 icon {
     width: 25px;
     height: 25px;

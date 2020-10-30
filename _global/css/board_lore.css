@@ -90,7 +90,7 @@ setup{
 
 }
 
-setup-title, play-style-title, complexity-title, complexity-value, summary-of-powers-title{
+setup-title, play-style-title, complexity-title, complexity-value, div.summary-of-powers-title{
     font-family: 'DK Snemand';
     text-transform: uppercase;
     font-size: 40px;
@@ -149,10 +149,11 @@ complexity-title{
 }
 
 summary-of-powers{
-
+    bottom: -270px;
+    position: absolute;
 }
 
-summary-of-powers-title{
+div.summary-of-powers-title{
     display: block;
     text-align: center;
     width:195px;
@@ -160,19 +161,51 @@ summary-of-powers-title{
     padding-top:30px;
 }
 
-offense, control, fear, defense, utility{
-    display:inline-block;
+.powers-summary{
+    margin-top: -125px;
+}
+
+.powers-summary tbody tr td {
+    width:120px;
     font-family: 'DK Snemand';
     text-transform: uppercase;
     font-size: 30px;
     font-weight: bold;
-    padding-top: 140px;
-    text-align: center;
+    text-align:center;
 }
 
-td offense, td control, td fear, 
-td defense, td utility{
-    width:120px;
+tr.power-bar td{
+    height:140px;
+}
+
+tr.power-bar td div{
+    height: 140px;
+}
+
+.offense, .control, .fear, 
+.defense, .utility{
+    width: 60px;
+    margin-left: 30px;
+}
+
+.offense{
+    background-color:#4b7364;
+}
+
+.control{
+    background-color:#45653c;
+}
+
+.fear{
+    background-color:#524556;
+}
+
+.defense {
+    background-color:#a8653a;
+}
+
+.utility{
+    background-color:#51473d;
 }
 
 icon.fire {

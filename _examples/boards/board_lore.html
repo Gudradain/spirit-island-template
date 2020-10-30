@@ -31,8 +31,6 @@
             <play-style>
                 <play-style-title>Play Style:</play-style-title>
                 <play-style-description>
-                    Starts with little ability to influcne the board - most of what it does in that regard will come from new Power Cards.
-                    <br><br>
                     Extremely good with Major Powers and usually wants to take them early and often. 
                     Can either try sprinting towards victory with its phenomenal Energy Growth or build up towards becoming a late-game powerhouse.
                 </play-style-description>
@@ -46,15 +44,47 @@
             </complexity>
             <!--The values on each of these properties will be used to create the colored boxes-->
             <summary-of-powers>
-                <summary-of-powers-title>Summary of Powers</summary-of-powers-title>
-                <offense value="1">
-                    <property-title>OFFENSE</property-title>
-                </offense>
-                <control value="2">CONTROL</control>
-                <fear value="2">FEAR</fear>
-                <defense value="5">DEFENSE</defense>
-                <utility value="6">UTILITY</utility>
-            </summary-of-powers>
+                <table class="powers-summary">
+                    <tr class="power-bar">
+                        <td>
+                            <div class="summary-of-powers-title">Summary of Powers</summary-of-powers-title>
+                        </td>
+                        <td valign="bottom">
+                            <div class="offense" value = "1"></div>
+                        </td>
+                        <td valign="bottom">
+                            <div class="control" value = "2"></div>
+                        </td>
+                        <td valign="bottom">
+                            <div class="fear" value = "2"></div>
+                        </td>
+                        <td valign="bottom">
+                            <div class="defense" value = "5"></div>
+                        </td>
+                        <td valign="bottom">
+                            <div class="utility" value = "10"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div>OFFENSE</div>
+                        </td>
+                        <td>
+                            <div>CONTROL</div>
+                        </td>
+                        <td>
+                            <div>FEAR</div>
+                        </td>
+                        <td>
+                            <div>DEFENSE</div>
+                        </td>
+                        <td>
+                            <div>UTILITY</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </second-section-container>
     </board>
 
