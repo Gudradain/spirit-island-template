@@ -130,6 +130,7 @@ complexity {
     padding-top: 2px;
     padding-left: 5%;
     margin-top: 25px;
+    margin-bottom: 10px;
     padding-bottom: 2px;
     border-top: solid black;
     border-bottom: solid black;
@@ -153,21 +154,45 @@ summary-of-powers{
 }
 
 summary-of-powers-title{
-    display: block;
+    font-size: 30px;
+    float: left;
     text-align: center;
+    vertical-align: bottom;
     width:195px;
     padding-left:40px;
-    padding-top:30px;
+    padding-right:10px;
+    padding-top:60px;
 }
 
 offense, control, fear, defense, utility{
     display:inline-block;
     font-family: 'DK Snemand';
     text-transform: uppercase;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
-    padding-top: 140px;
     text-align: center;
+    vertical-align: bottom;
+}
+
+offense-value, control-value, fear-value, defense-value, utility-value{
+    width: 90px;
+    display:inline-block;
+    vertical-align: bottom;
+}
+offense-value{
+    background-color: darkcyan !important;
+}
+control-value{
+    background-color: darkgreen !important;
+}
+fear-value{
+    background-color: purple !important;
+}
+defense-value{
+    background-color: chocolate !important;
+}
+utility-value{
+    background-color: darkblue !important;
 }
 
 td offense, td control, td fear, 
