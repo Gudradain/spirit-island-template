@@ -2,7 +2,7 @@ window.onload = function startMain(){
     var html = document.querySelectorAll('board')[0].innerHTML;
     document.querySelectorAll('board')[0].innerHTML = replaceIcon(html);
     adjustComplexityValue();
-    createPowerProperties
+    createPowerProperties();
 }
 
 function replaceIcon(html)
@@ -32,16 +32,30 @@ function adjustComplexityValue() {
     document.getElementsByTagName("complexity-value")[0].style.width = totalPixels;
 }
 
+function adjustPowerValue(tag, value) {
+    var basePixels = 15;
+    var addedPixels = (value*15);
+    var totalPixels = basePixels+addedPixels+"px";
+    console.log(totalPixels);
+    tag.style.height = totalPixels;
+}
+
 function createPowerProperties(){
-    var offenseTag = document.getElementsByTagName("offense")[0];
-    var controlTag = document.getElementsByTagName("control")[0];
-    var fearTag = document.getElementsByTagName("fear")[0];
-    var defenseTag = document.getElementsByTagName("defense")[0];
-    var utilityTag = document.getElementsByTagName("utility")[0];
+    var offenseTag = document.getElementsByTagName("offense-value")[0];
+    var controlTag = document.getElementsByTagName("control-value")[0];
+    var fearTag = document.getElementsByTagName("fear-value")[0];
+    var defenseTag = document.getElementsByTagName("defense-value")[0];
+    var utilityTag = document.getElementsByTagName("utility-value")[0];
 
     var offenseValue = offenseTag.getAttribute("value");
     var controlValue = controlTag.getAttribute("value");
     var fearValue = fearTag.getAttribute("value");
     var defenseValue = defenseTag.getAttribute("value");
     var utilityValue = utilityTag.getAttribute("value");
+
+    adjustPowerValue(offenseTag, offenseValue);
+    adjustPowerValue(controlTag, controlValue);
+    adjustPowerValue(fearTag, fearValue);
+    adjustPowerValue(defenseTag, defenseValue);
+    adjustPowerValue(utilityTag, utilityValue);
 }
