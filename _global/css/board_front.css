@@ -1408,6 +1408,14 @@ description-container {
     height: 325px;
 }
 
+note {
+    display: inline-block;
+    height: auto;
+    width: 487px;
+    font-family: 'JosefinSans-Regular';
+    font-size: 15pt;
+}
+
 level {
     display: inline-block;
     height: auto;
@@ -1569,8 +1577,8 @@ icon.presence {
     width: 35px;
     height: 35px;
     margin-bottom: -13px;
-    margin-left: 6px;
-    margin-right: 0px;
+    margin-left: -2px;
+    margin-right: -2px;
 }
 
 icon.explorer {
@@ -1597,6 +1605,7 @@ icon.dahan {
     margin-bottom: -8px;
     margin-left: 5px;
     margin-right: 5px;
+    margin-top: -10px;
 }
 
 icon.disease {
