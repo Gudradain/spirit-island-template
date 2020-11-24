@@ -32,7 +32,10 @@ body {
 }
 
 board {
-    background-image: url('../images/board/BlankFrontBoard.png');
+    background-image: url('../images/board/Frame.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: transparent;
     position: relative;
     width: 100%;
@@ -50,7 +53,7 @@ spirit-name {
     top: 730px;
     height: 22.67px;
     width: 666.25px;
-    font-size: 25pt;
+    font-size:50px;
     font-family: 'DK Snemand';
     text-transform: uppercase;
     color: white;
@@ -59,6 +62,7 @@ spirit-name {
     text-align: left;
     z-index: 1;
     white-space: normal;
+    margin-top:-10px;
 }
 
 .spirit-border {
@@ -80,11 +84,16 @@ spirit-name {
 }
 
 special-rules-container {
+    background-image: url('../images/board/Innate__Special_Rules_Without_Text.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
     position: absolute;
-    left: 17.5px;
-    top: 825px;
-    height: 75.6px;
-    width: 666.25px;
+    z-index: -1;
+    left: 18px;
+    top: 788px;
+    height: 375px;
+    width: 665px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -123,25 +132,44 @@ special-rule icon.any, special-rule icon.moon, special-rule icon.sun{
 }
 
 growth {
+    background-image: url('../images/board/Growth_Without_Text.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: transparent;
     position: absolute;
-    left: 700px;
-    top: 25px;
-    width: 1050px;
-    height: 200px;
+    left: 659px;
+    top: 8px;
+    width: 1090px;
+    height: 241px;
 }
 
 growth-title {
+    display:block;
     font-family: 'DK Snemand';
     font-size: 25pt;
+    margin-left:40px;
+    margin-top:15px;
+}
+
+presence-track-title {
+    display: block;
+    font-family: 'DK Snemand';
+    font-size: 25pt;
+    margin-left: 2px;
+    margin-top: -57px;
+    position: absolute;
 }
 
 growth-table {
     display: inline-flex;
-    width: 1078px;
+    width: 1081px;
     text-align: center;
-    margin-top: 15px;
-    margin-left: -28px;
+    margin-top: 30px;
+    margin-left: 0px;
     justify-content: space-around;
+    padding-right:10px;
+    box-sizing:border-box;
 }
 
 growth-border {
@@ -152,6 +180,8 @@ growth-border {
     width: 7px;
     height: 125px;
     margin-top: -30px;
+    margin-left:10px;
+    margin-right:10px;
 }
 
 icon.discard-cards {
@@ -164,8 +194,14 @@ icon.discard-cards {
     width:90px;
 }
 
+growth-cell {
+    position:relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 growth-cell icon.discard-cards{
-    margin-left: 20px;
     margin-bottom: 7px;
 }
 
@@ -176,6 +212,7 @@ growth-energy {
     background-position: center;
     display: block;
     height: 110px;
+    width:110px;
     margin-top: -20px;
 }
 
@@ -236,7 +273,6 @@ icon.make-fast {
 }
 
 growth-cell icon.make-fast{
-    margin-left: 20px;
     margin-bottom: 7px;
 }
 
@@ -251,7 +287,6 @@ icon.reclaim-all {
 }
 
 growth-cell icon.reclaim-all{
-    margin-left: 20px;
     margin-bottom: 7px;
 }
 
@@ -259,7 +294,15 @@ growth-text {
     font-family: 'Lato SemiBold';
     font-size: 14pt;
     font-style: italic;
-    width: 140px;
+    position:absolute;
+    top:95px;
+    left:0px;
+    right:0px;
+    text-align:center;
+    width:100%;
+    padding-left:5px;
+    padding-right:5px;
+    box-sizing:border-box;
 }
 
 icon.gain-power-card {
@@ -273,7 +316,6 @@ icon.gain-power-card {
 }
 
 growth-cell icon.gain-power-card{
-    margin-left: 20px;
     margin-bottom: 7px;
 }
 
@@ -288,7 +330,6 @@ icon.gain-card-play {
 }
 
 growth-cell icon.gain-card-play{
-    margin-left: 20px;
     margin-bottom: 7px;
 }
 
@@ -303,7 +344,6 @@ icon.reclaim-one {
 }
 
 growth-cell icon.reclaim-one{
-    margin-left: 20px;
     margin-bottom: 7px;
 }
 
@@ -511,6 +551,14 @@ add-presence-req {
     margin-bottom: -8px;
 }
 
+growth icon.presence{
+    margin-left:6px;
+}
+
+icon.none {
+    display:none;
+}
+
 icon.presence {
     background-image: url('../images/board/75px_presence.png');
     display: inline-block;
@@ -519,7 +567,8 @@ icon.presence {
     background-position: center;
     height: 25px;
     width: 35px;
-    margin-bottom: -7px;
+    margin-bottom:-9px;
+    margin-left:0px;
 }
 
 icon.beast{
@@ -582,7 +631,15 @@ icon.move-range-3 {
     display: block;
 }
 
-icon.move-range-1, icon.move-range-2, icon.move-range-3 {
+icon.move-range-4 {
+    background-image: url('../images/board/move_range_4.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: block;
+}
+
+icon.move-range-1, icon.move-range-2, icon.move-range-3, icon.move-range-4 {
     height: 55px;
     width: 133px;
     margin-top: 10px;
@@ -714,7 +771,6 @@ growth-cell gain icon.fire, growth-cell gain icon.any, growth-cell gain icon.wat
     display: block;
     height: 60px;
     width: 60px;
-    margin-left: 39px;
     margin-top: 21px;
 }
 
@@ -922,6 +978,17 @@ card-play-special icon.reclaim-one {
     height: 90px;
     margin-top: 18px;
     margin-bottom: -5px;
+    margin-left: 18px;
+}
+
+energy-track-ring icon.reclaim-one {
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    height: 90px;
+    margin-top: 18px;
+    margin-bottom: -7px;
+    margin-left: 18px;
 }
 
 element-bottom icon.reclaim-one{
@@ -1127,6 +1194,33 @@ card-play-track-table {
     margin-left: -10px;
 }
 
+presence-track-image {
+    background-image: url('../images/board/Presence_Without_Text.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    width: 1089px;
+    height: 428px;
+    z-index: -1;
+    top: -64px;
+    left: -24px;
+}
+
+innate-powers-image {
+    background-image: url('../images/board/Innate_Without_Text.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    background-size: contain;
+    position: absolute;
+    width: 1066px;
+    height: 500px;
+    z-index: -1;
+    top: 254px;
+    left: 76px
+}
+
 presence-tracks {
     position: absolute;
     top: 300px;
@@ -1154,7 +1248,13 @@ innate-powers {
     left: 606.75px;
 }
 
-innate-power:nth-child(2) {
+innate-power:nth-child(3) {
+    position: absolute;
+    left: 0px;
+    top: -0px
+}
+
+innate-power:nth-child(4) {
     position: absolute;
     left: 505px;
     top: -0px
@@ -1174,6 +1274,16 @@ innate-power-title {
     font-style: italic;
     font-size: 14pt;
     text-transform: uppercase;
+}
+
+innate-powers-title {
+    display: block;
+    font-family: 'DK Snemand';
+    font-size: 25pt;
+    position: absolute;
+    top: 265px;
+    left: 107px;
+    width: 190px;
 }
 
 info {
@@ -1304,7 +1414,7 @@ level {
     width: 487px;
     font-family: 'JosefinSans-Regular';
     font-size: 17pt;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
 }
 
 threshold {
@@ -1410,10 +1520,47 @@ icon.presence {
     display: inline-block;
 }
 
+icon.sands-presence {
+    background-image: url('../images/board/sands-presence.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+icon.mountain-presence {
+    background-image: url('../images/board/mountain-presence.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+icon.wetland-presence {
+    background-image: url('../images/board/wetland-presence.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+icon.jungle-presence {
+    background-image: url('../images/board/jungle-presence.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
 innate-info-range icon.sacred-site {
     width: 50px;
     height: 50px;
     margin-bottom: -10px;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+innate-info-range icon.sands-presence, innate-info-range icon.wetland-presence, 
+innate-info-range icon.jungle-presence, innate-info-range icon.mountain-presence {
+    width: 50px;
+    height: 50px;
+    margin-bottom: -2px;
     margin-left: 0px;
     margin-right: 10px;
 }

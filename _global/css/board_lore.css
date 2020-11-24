@@ -90,11 +90,19 @@ setup{
 
 }
 
-setup-title, play-style-title, complexity-title, complexity-value, div.summary-of-powers-title{
+play-style-title, complexity-title, complexity-value, div.summary-of-powers-title{
     font-family: 'DK Snemand';
     text-transform: uppercase;
     font-size: 40px;
     font-weight: bold;
+}
+
+setup-title {
+    font-size:33px;
+    text-align:left;
+    font-family: "DK Snemand";
+    padding-left:15px;
+    margin-top:80px;
 }
 
 setup-description{
