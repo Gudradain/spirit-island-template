@@ -138,6 +138,7 @@ complexity {
     padding-top: 2px;
     padding-left: 5%;
     margin-top: 25px;
+    margin-bottom: 10px;
     padding-bottom: 2px;
     border-top: solid black;
     border-bottom: solid black;
@@ -164,9 +165,11 @@ summary-of-powers{
 div.summary-of-powers-title{
     display: block;
     text-align: center;
+    vertical-align: bottom;
     width:195px;
     padding-left:40px;
-    padding-top:30px;
+    padding-right:10px;
+    padding-top:60px;
 }
 
 .powers-summary{
@@ -177,7 +180,7 @@ div.summary-of-powers-title{
     width:120px;
     font-family: 'DK Snemand';
     text-transform: uppercase;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     text-align:center;
 }

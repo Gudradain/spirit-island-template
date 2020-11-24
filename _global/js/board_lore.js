@@ -32,6 +32,14 @@ function adjustComplexityValue() {
     document.getElementsByTagName("complexity-value")[0].style.width = totalPixels;
 }
 
+function adjustPowerValue(tag, value) {
+    var basePixels = 15;
+    var addedPixels = (value*15);
+    var totalPixels = basePixels+addedPixels+"px";
+    console.log(totalPixels);
+    tag.style.height = totalPixels;
+}
+
 function createPowerProperties(){
 
     var offenseTag = document.getElementsByClassName("offense")[0];
