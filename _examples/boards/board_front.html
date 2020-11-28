@@ -33,23 +33,24 @@
     <growth title="Growth (PICK ONE)">
       <growth-group values="reclaim-one;gain-power-card;gain-energy(3)"></growth-group>
       <growth-group values="add-presence(2,ocean);gain-element(fire)"></growth-group>
-      <growth-group values="move-presence(2);presence-no-range;add-presence(3,mountain-jungle)"></growth-group>
+      <growth-group values="move-presence(4);reclaim-one;add-presence(3,mountain-jungle)"></growth-group>
     </growth>
 
     <presence-tracks>
-      <energy-track values="1,2,earth,3,water+earth,fire+plant"></energy-track>
-      <card-play-track values="1,fire,2+fire,3,move-presence(2),4,5+reclaim-one,fire+reclaim-one"></card-play-track>
+      <energy-track values="1,2,earth,3,water+earth,fire+plant,reclaim-one"></energy-track>
+      <card-play-track values="1,fire,2+fire,3,move-presence(2),reclaim-one,5+reclaim-one,fire+reclaim-one"></card-play-track>
     </presence-tracks>
 
     <innate-powers>
       <quick-innate-power
         name="explosion"
         speed="fast"
-        range="{range-0}"
-        target="{blight}"
-        target-title="TARGET LAND">
+        range="wetland-presence,1"
+        target="blight"
+        target-title="TARGET LAND"
+        note="Destroy X (1 or more) of your {presence} in target land; {destroyed-presence} checks how many you destroyed. This Power does Damage (separately and equally) to both Invaders and {Dahan}. Ranges below can't be increased.">
         <level threshold="1-plant">
-          1 Damage per 2 fire you have.
+          1 Damage per 2 {fire} you have.
         </level>
         <level threshold="3-plant">
           Instead, 1 Damage per {fire} you have.
@@ -64,9 +65,10 @@
       <quick-innate-power
         name="explosion2"
         speed="slow"
-        range="{sacred-site}{range-1}"
-        target="{player-spirit}"
-        target-title="TARGET">
+        range="jungle-presence,2"
+        target="player-spirit"
+        target-title="TARGET"
+        note="">
         <level threshold="1-plant">
           1 Damage per 2 {fire} you have.
         </level>
@@ -81,11 +83,6 @@
         </level>
       </quick-innate-power>
     </innate-powers>
-
-    <artist-name>
-        John Doe
-    </artist-name>
-
   </board>
 
 </body>

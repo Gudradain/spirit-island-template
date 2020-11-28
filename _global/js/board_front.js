@@ -11,10 +11,8 @@ window.onload = function startMain(){
 function parseGrowthTags(){
     var fullHTML = "";
     var growthHTML = document.getElementsByTagName("growth");
-    //console.log(growthHTML);
     
     var growthTitle = "<growth-title>"+growthHTML[0].title+"</growth-title>";
-    //console.log(growthTitle);
 
     var newGrowthTableTagOpen = "<growth-table>";
     var newGrowthTableTagClose = "</growth-table>";
@@ -26,16 +24,12 @@ function parseGrowthTags(){
     for (i = 0; i < growthHTML[0].children.length; i++){
         childElement = growthHTML[0].children[i];
         //childElement is the thing that should be replaced when all is said and done
-        //console.log(childElement);
         
         growthClass = childElement.getAttribute("values");
-        //console.log(growthClass);
 
         var classPieces = growthClass.split(';');
-        //console.log(classPieces);
 
         for (j = 0; j < classPieces.length; j++){
-            //console.log(classPieces[j]);
 
             //Find a parenthesis and split out the string before it
             var growthItem = classPieces[j].split("(")[0];
@@ -106,16 +100,34 @@ function parseGrowthTags(){
                 case 'gain-element':
                     var matches = regExp.exec(classPieces[j]);
 
-                    //console.log("text is: "+matches[1]);
                     var gainedElement = matches[1];
 
-                    //TODO: Add in the ability to gain more than one element
+                    var elementOptions = matches[1].split(",");
+                    
+                    //Check if they want 2 elements
+                    if(elementOptions.length > 1){
+                        if(isNaN(elementOptions[1])){
+                            //They want different elements
+                            newGrowthCellHTML += "<growth-cell><gain>";
+                            for(var i = 0; i < elementOptions.length; i++){
+                                newGrowthCellHTML += "{"+elementOptions[i]+"}";
+                                if(i < elementOptions.length-1){
+                                    newGrowthCellHTML += "/";
+                                }
+                            }
+                            newGrowthCellHTML += "</gain><growth-text>Gain "+gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1)+"</growth-text></growth-cell>";                            
+                        } else {
+                            //They just want 2 of the same element
+                            
+                        }
+                        //newGrowthCellHTML += "<growth-cell><gain>{"+elementOptions[0]+"}</gain><growth-text>Gain "+gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1)+"</growth-text></growth-cell>";
+                    } else {
+                        newGrowthCellHTML += "<growth-cell><gain>{"+gainedElement+"}</gain><growth-text>Gain "+gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1)+"</growth-text></growth-cell>";
+                    }
 
-                    newGrowthCellHTML += "<growth-cell><gain>{"+gainedElement+"}</gain><growth-text>Gain "+gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1)+"</growth-text></growth-cell>";
 
                     break;
                 default:
-                    console.log("");
             }
         }
         if(i != growthHTML[0].children.length - 1)
@@ -130,14 +142,10 @@ function parseGrowthTags(){
 function parseEnergyTrackTags(){
     var fullHTML = "";
     var energyHTML = "";
-    //console.log(growthHTML);
     
     var energyValues = document.getElementsByTagName("energy-track")[0].getAttribute("values");
 
-    console.log(energyValues);
-
     var energyOptions = energyValues.split(",");
-    console.log(energyOptions);
 
     for(i = 0; i < energyOptions.length; i++){
         if(!isNaN(energyOptions[i])){
@@ -152,14 +160,25 @@ function parseEnergyTrackTags(){
             var splitOptions = energyOptions[i].split("+");
 
             if(splitOptions.length == 1){
-                //It's just an element
-                energyHTML += "<energy-track><icon class='"+splitOptions[0]+"'></icon><subtext>"+splitOptions[0].charAt(0).toUpperCase() + splitOptions[0].slice(1)+"</subtext></energy-track>";
+                //It's just a single item
+                var energyOption = splitOptions[0].split("(")[0];
+                switch(energyOption){
+                    case 'reclaim-one':
+                        energyHTML += "<energy-track-ring>{"+splitOptions[0]+"}<subtext>Reclaim One</subtext></energy-track-ring>";
+                        break;
+                    case 'move-presence':
+                        var matches = regExp.exec(splitOptions[0]);
+                        var moveRange = matches[1];
+                        energyHTML += "<energy-track><card-play-special>{"+energyOption+"-"+moveRange+"}</card-play-special><subtext>Move a Presence "+moveRange+"</subtext></energy-track>";
+                        break;
+                    default:
+                        energyHTML += "<energy-track>{"+splitOptions[0]+"}<subtext>"+splitOptions[0].charAt(0).toUpperCase() + splitOptions[0].slice(1)+"</subtext></energy-track>";
+                        break;
+                }
             } else {
                 //It's a mix of things
-                console.log(typeof(splitOptions[0]));
                 if(!isNaN(splitOptions[0])){
                     //It's a mix of energy and element
-                    console.log("Energy and element");
                     energyHTML += "<energy-track-ring><energy-top><value>"+splitOptions[0]+"</value></energy-top><element-bottom><icon class='"+splitOptions[1]+"'></icon></element-bottom><subtext>"+splitOptions[0]+", "+splitOptions[1].charAt(0).toUpperCase() + splitOptions[1].slice(1)+"</subtext></energy-track-ring>";
                 } else {
                     //It's a mix of elements
@@ -168,7 +187,7 @@ function parseEnergyTrackTags(){
             }
         }
     }
-    fullHTML = '<energy-track-table>'+energyHTML+'</energy-track-table>';
+    fullHTML = '<presence-track-image></presence-track-image><energy-track-table>'+energyHTML+'</energy-track-table>';
     document.getElementsByTagName("energy-track")[0].removeAttribute("values");
     return fullHTML;
 }
@@ -176,14 +195,10 @@ function parseEnergyTrackTags(){
 function parseCardPlayTrackTags(){
     var fullHTML = "";
     var cardPlayHTML = "";
-    //console.log(growthHTML);
     
     var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
 
-    console.log(cardPlayValues);
-
     var cardPlayOptions = cardPlayValues.split(",");
-    console.log(cardPlayOptions);
 
     //Find values between parenthesis
     var regExp = /\(([^)]+)\)/;
@@ -205,7 +220,7 @@ function parseCardPlayTrackTags(){
                 var cardPlayOption = splitOptions[0].split("(")[0];
                 switch(cardPlayOption){
                     case 'reclaim-one':
-                        cardPlayHTML += "<card-play-track><card-play-special><"+splitOptions[0]+"></"+splitOptions[0]+"></card-play-special><subtext>Reclaim One</subtext></card-play-track>";
+                        cardPlayHTML += "<card-play-track><card-play-special>{"+splitOptions[0]+"}</card-play-special><subtext>Reclaim One</subtext></card-play-track>";
                         break;
                     case 'move-presence':
                         var matches = regExp.exec(splitOptions[0]);
@@ -220,7 +235,6 @@ function parseCardPlayTrackTags(){
                 //Multiple items
                 if(!isNaN(splitOptions[0])){
                     //It's a mix of energy and element
-                    console.log("Card and element");
                     var subText = splitOptions[1].charAt(0).toUpperCase() + splitOptions[1].slice(1);
                     if(splitOptions[1] == 'reclaim-one'){
                         subText = "Reclaim One";
@@ -238,23 +252,20 @@ function parseCardPlayTrackTags(){
         }
     }
     fullHTML = '<card-play-track-table>'+cardPlayHTML+'</card-play-track-table>';
-    console.log(fullHTML);
     document.getElementsByTagName("card-play-track")[0].removeAttribute("values");
     return fullHTML;
 }
 
 function setNewEnergyCardPlayTracks(energyHTML, cardPlayHTML){
-    document.getElementsByTagName("presence-tracks")[0].innerHTML = energyHTML + cardPlayHTML;
+    document.getElementsByTagName("presence-tracks")[0].innerHTML = "<presence-track-title>Presence</presence-track-title>"+energyHTML + cardPlayHTML;
 }
 
 function dynamicCellWidth() {
     growthCells =  document.getElementsByTagName("growth-cell");
     growthCellCount = growthCells.length;
-    //console.log(growthCellCount);
 
     growthBorders = document.getElementsByTagName("growth-border");
     growthBorderCount = growthBorders.length;
-    //console.log(growthBorderCount);
 
     /* Borders = 7px */
     /* Table width: 1050px */
@@ -264,12 +275,9 @@ function dynamicCellWidth() {
     growthTable = document.getElementsByTagName("growth-table");
     growthTableStyle = window.getComputedStyle(growthTable[0]);
     growthTableWidth = growthTableStyle.getPropertyValue('width');
-    //console.log(growthTableWidth);
 
     remainingCellWidth = (parseInt(growthTableWidth.replace(/px/,""))-borderPixels)+"px";
-    //console.log(remainingCellWidth);
     equalCellWidth = (parseFloat(remainingCellWidth.replace(/px/,""))/growthCellCount)+"px";
-    //console.log(equalCellWidth);
 
     for (i = 0; i < growthCells.length; i++){
         growthCells[i].style.maxWidth = equalCellWidth;
@@ -293,13 +301,14 @@ function dynamicCellWidth() {
     }
     var description = document.getElementsByClassName("description");
     for(i = 0; i < description.length; i++){
+        
         var textWidth = description[i].clientHeight;
+        console.log(textWidth);
+        //Get the icon width and add it to length
         if (textWidth < 50){
             description[i].id = "single-line";
         }
-        console.log(textWidth);
     }
-    console.log(description);
 }
 
 function replaceIcon(html)
@@ -322,10 +331,10 @@ function parseInnatePowers(){
     var fullHTML = "";
     
     var innateHTML = document.getElementsByTagName("quick-innate-power");
-    console.log(innateHTML);
 
     for(i = 0; i < innateHTML.length; i++){
         var innatePowerHTML = innateHTML[i];
+        
         var currentPowerHTML = "<innate-power class='"+innatePowerHTML.getAttribute("speed")+"'>";
         
         //Innater Power title
@@ -341,17 +350,69 @@ function parseInnatePowers(){
         currentPowerHTML += "<innate-info-speed></innate-info-speed>";
         
         //Innate Power Range value
-        currentPowerHTML += "<innate-info-range>"+innatePowerHTML.getAttribute("range")+"</innate-info-range>";
+        var range = innatePowerHTML.getAttribute("range");
+        var rangeArray = range.split(",");
+        if(rangeArray.length > 1){
+            //More than one element (second element is an integer)
+            switch(rangeArray[0]){
+                case "sacred-site":
+                    currentPowerHTML += "<innate-info-range>{sacred-site}{range-"+rangeArray[1]+"}</innate-info-range>";
+                    break;
+                case "wetland-presence":
+                    currentPowerHTML += "<innate-info-range>{wetland-presence}{range-"+rangeArray[1]+"}</innate-info-range>";
+                    break;
+                case "mountain-presence":
+                    currentPowerHTML += "<innate-info-range>{mountain-presence}{range-"+rangeArray[1]+"}</innate-info-range>";
+                    break;
+                case "jungle-presence":
+                    currentPowerHTML += "<innate-info-range>{jungle-presence}{range-"+rangeArray[1]+"}</innate-info-range>";
+                    break;
+                case "sands-presence":
+                    currentPowerHTML += "<innate-info-range>{sands-presence}{range-"+rangeArray[1]+"}</innate-info-range>";
+                    break;
+                default:
+                    console.log("Error in case statement");
+                    break;
+            }
+        } else {
+            //Only a single element
+            switch (range){
+                case "0":
+                    currentPowerHTML += "<innate-info-range>{range-0}</innate-info-range>";
+                    break;
+                case "1":
+                    currentPowerHTML += "<innate-info-range>{range-1}</innate-info-range>";
+                    break;
+                case "none":
+                    currentPowerHTML += "<innate-info-range>{no-range}</innate-info-range>";
+                    break;
+                default:
+                    console.log("Error in case statement");
+                    break;
+            }
+        }
         
         //Innate Power Target value
-        currentPowerHTML += "<innate-info-target>"+innatePowerHTML.getAttribute("target")+"</innate-info-target></info></info-container><description-container>";
+        currentPowerHTML += "<innate-info-target>{"+innatePowerHTML.getAttribute("target")+"}</innate-info-target></info></info-container>";
+
+        if(innateHTML.length == 1){
+            currentPowerHTML += "<description-container style='width:1000px !important'>";            
+        } else {
+            currentPowerHTML += "<description-container>";
+        }
         
+        currentPowerHTML += "<note>" + innatePowerHTML.getAttribute("note") + "</note>";
+
         //Innate Power Levels and Thresholds
         var currentLevels = innatePowerHTML.getElementsByTagName("level");
         for (j = 0; j < currentLevels.length; j++){
             var currentThreshold = currentLevels[j].getAttribute("threshold");
             var currentThresholdPieces = currentThreshold.split(",");
-            currentPowerHTML += "<level><threshold>";
+            if(innateHTML.length == 1){
+                currentPowerHTML += "<level style='display:block !important; width:1000px !important'><threshold>";
+            } else {
+                currentPowerHTML += "<level><threshold>";
+            }
             for (k = 0; k < currentThresholdPieces.length; k++){
                 currentThresholdPieces[k] = currentThresholdPieces[k].replace("-","{");
                 currentThresholdPieces[k] += "}";
@@ -359,11 +420,9 @@ function parseInnatePowers(){
             }
             currentPowerHTML += "</threshold><div class='description'>";
             var currentDescription = currentLevels[j].innerHTML;
-            console.log(currentDescription);
             currentPowerHTML += currentDescription+"</div></level>";
         }
         fullHTML += currentPowerHTML+"</description-container></innate-power>";
     }
-    //console.log(fullHTML);
-    document.getElementsByTagName("innate-powers")[0].innerHTML = fullHTML;
+    document.getElementsByTagName("innate-powers")[0].innerHTML = '<innate-powers-title>Innnate Powers</innate-powers-title><innate-powers-image></innate-powers-image>'+fullHTML;
 }
