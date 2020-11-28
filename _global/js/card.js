@@ -17,6 +17,8 @@ function constructCard(data)
   <cost>${data.cost}</cost>
   <name>${data.name}</name>
   
+  ${data.printFriendly ? '<element-background></element-background>' : ''}
+
   ${getElementHtml(data.elements)}
 
   <info-title>
@@ -102,6 +104,7 @@ function getData(quickCard)
     target: getTargetModel(quickCard.getAttribute("target")),
     targetTitle: quickCard.getAttribute("target-title") || 'TARGET LAND',
     artistName: quickCard.getAttribute("artist-name"),
+    printFriendly: quickCard.getAttribute('print-friendly') === 'yes',
     innerHTML: getRulesHTML(quickCard.innerHTML)
   };
 }

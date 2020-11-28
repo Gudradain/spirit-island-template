@@ -432,4 +432,13 @@ rules icon.sand-wetland
   margin-right:-4px;
 }
 
-
+@media print{
+  element-background{
+    background-color:rgb(220, 220, 220);
+    position:absolute;
+    height:530px;
+    width:75px;
+    top:120px;
+    left:30px;
+  }
+}
