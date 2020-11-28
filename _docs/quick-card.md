@@ -33,6 +33,7 @@ The quick-card template use a lot of custom attributes, here is a quick summary:
   - target: The target of the card. It accepts html code. Refer to the [card template](_docs/card.md) for the syntax. The icon that you type in here can use the shorthand syntax.
   - target-title: The target header.
   - artist-name: The name of the artist.
+  - print-friendly: The only valid value is "yes". It helps to see the elements when you print the cards in black & white.
 
 ### Custom HTML Tags
 
