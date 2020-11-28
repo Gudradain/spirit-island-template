@@ -34,7 +34,7 @@ card{
   background:gray;
   width:488px;
   height:682px;
-  border-radius:22px;
+  border-radius:0px;
 }
 
 card.round-border{
