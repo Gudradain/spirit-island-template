@@ -1207,20 +1207,6 @@ presence-track-image {
     left: -24px;
 }
 
-innate-powers-image {
-    background-image: url('../images/board/Innate_Without_Text.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    background-size: contain;
-    position: absolute;
-    width: 1066px;
-    height: 500px;
-    z-index: -1;
-    top: 254px;
-    left: 76px
-}
-
 presence-tracks {
     position: absolute;
     top: 300px;
@@ -1243,116 +1229,114 @@ icon.player-spirit {
 }
 
 innate-powers {
-    position: absolute;
-    top: 409px;
-    left: 606.75px;
-}
-
-innate-power:nth-child(3) {
-    position: absolute;
-    left: 0px;
-    top: -0px
-}
-
-innate-power:nth-child(4) {
-    position: absolute;
-    left: 505px;
-    top: -0px
-}
-
-innate-power:only-child level {
-    width: 1000px !important;
-}
-
-innate-power-title {
-    position: absolute;
-    top: 315px;
-    width: 420px;
-    left: 110px;
-    font-family: 'JosefinSans-Regular';
-    font-weight: bold;
-    font-style: italic;
-    font-size: 14pt;
-    text-transform: uppercase;
+  position: absolute;
+  top: 663px;
+  left: 682px;
+  background-image: url('../images/board/Innate_Without_Text.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  width: 1066px;
+  height: 500px;
 }
 
 innate-powers-title {
-    display: block;
-    font-family: 'DK Snemand';
-    font-size: 25pt;
-    position: absolute;
-    top: 265px;
-    left: 107px;
-    width: 190px;
+  display: block;
+  font-family: 'DK Snemand';
+  font-size: 25pt;
+  margin-top: 10px;
+  margin-left: 25px;
+  width: 190px;
 }
 
-info {
-    left: 108px;
-    top: 358px;
-    width: 463.25px;
-    height: 50px;
-    display: flex;
-    font-family: 'DK Snemand';
-    text-transform: uppercase;
+innate-power-container{
+  display:block;
+  position:relative;
+  margin-left:25px;
+  margin-top:15px;
+}
+
+innate-power:nth-child(1) {
+  position: absolute;
+  left: 0px;
+  top: 0px
+}
+
+innate-power:nth-child(2) {
+  position: absolute;
+  left: 505px;
+  top: 0px
+}
+
+innate-power:only-child level {
+  width: 1000px !important;
+}
+
+innate-power-title {
+  width: 420px;
+  font-family: 'JosefinSans-Regular';
+  font-weight: bold;
+  font-style: italic;
+  font-size: 14pt;
+  text-transform: uppercase;
 }
 
 info-container {
-    position: absolute;
-    left: 108px;
-    top: 336px;
-    width: 463.25px;
-    height: 66px;
-    border: 3px solid black;
+  width: 463.25px;
+  border: 3px solid black;
+  position: relative;
+  display:block;
 }
 
 info-title {
-    height: 20px;
-    width: 463.25px;
-    display: flex;
-    align-items: center;
-    color: white;
-    font-family: 'DK Snemand';
-    text-transform: uppercase;
-    font-size: 14.26pt;
-    letter-spacing: 1.25pt;
-    text-align: center;
-    white-space: normal;
-    background-color: #7f5623;
+  height: 20px;
+  width: 463.25px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: 'DK Snemand';
+  text-transform: uppercase;
+  font-size: 14.26pt;
+  letter-spacing: 1.25pt;
+  text-align: center;
+  white-space: normal;
+  background-color: #7f5623;
 }
 
-info-title-speed, info-speed {
-    width: 143px;
-    padding-bottom: 4px;
+innate-info {
+  left: 108px;
+  top: 358px;
+  width: 463.25px;
+  display: flex;
+  font-family: 'DK Snemand';
+  text-transform: uppercase;
 }
 
-info-title-range, info-range {
-    width: 160px;
-    padding-bottom: 4px;
+info-title-speed, innate-info-speed {
+  width: 143px;
+  padding-bottom: 4px;
 }
 
-info-title-target, info-target {
-    width: 160px;
-    padding-bottom: 4px;
+info-title-range, innate-info-range {
+  width: 160px;
+  padding-bottom: 4px;
 }
 
-innate-info-speed {
-    width: 143px;
-    height: 50px;
-    border-right: 3px solid black;
+info-title-target, innate-info-target {
+  width: 160px;
+  padding-bottom: 4px;
 }
 
-innate-info-range {
-    width: 160px;
-    height: 50px;
-    border-right: 3px solid black;
+innate-info-speed, innate-info-range, innate-info-target {
+  height: 50px;
 }
 
-innate-info-target {
-    width: 160px;
-    height: 50px;
+innate-info-speed, innate-info-range{
+  border-right: 3px solid black;
 }
 
-info-range, innate-info-range, innate-info-target {
+innate-info-range, innate-info-target {
     font-size: 26px;
     line-height: 24px;
     display: flex;
@@ -1401,11 +1385,10 @@ innate-power.slow innate-info-speed {
 }
 
 description-container {
-    position: absolute;
-    top: 420px;
-    left: 108px;
     width: 465px;
     height: 325px;
+    display:block;
+    margin-top:10px;
 }
 
 note {

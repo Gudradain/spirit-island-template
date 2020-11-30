@@ -344,7 +344,7 @@ function parseInnatePowers(){
         currentPowerHTML += "<info-title-speed>SPEED</info-title-speed><info-title-range>RANGE</info-title-range>";
         
         //Innate Power Target Header
-        currentPowerHTML += "<info-title-target>"+innatePowerHTML.getAttribute("target-title")+"</info-title-target></info-title><info>";
+        currentPowerHTML += "<info-title-target>"+innatePowerHTML.getAttribute("target-title")+"</info-title-target></info-title><innate-info>";
         
         //Innater Power Speed value
         currentPowerHTML += "<innate-info-speed></innate-info-speed>";
@@ -393,7 +393,7 @@ function parseInnatePowers(){
         }
         
         //Innate Power Target value
-        currentPowerHTML += "<innate-info-target>{"+innatePowerHTML.getAttribute("target")+"}</innate-info-target></info></info-container>";
+        currentPowerHTML += "<innate-info-target>{"+innatePowerHTML.getAttribute("target")+"}</innate-info-target></innate-info></info-container>";
 
         if(innateHTML.length == 1){
             currentPowerHTML += "<description-container style='width:1000px !important'>";            
@@ -424,5 +424,5 @@ function parseInnatePowers(){
         }
         fullHTML += currentPowerHTML+"</description-container></innate-power>";
     }
-    document.getElementsByTagName("innate-powers")[0].innerHTML = '<innate-powers-title>Innnate Powers</innate-powers-title><innate-powers-image></innate-powers-image>'+fullHTML;
+    document.getElementsByTagName("innate-powers")[0].innerHTML = '<innate-powers-title>Innnate Powers</innate-powers-title><innate-power-container>'+fullHTML+'</innate-power-container>';
 }
