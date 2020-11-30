@@ -1,0 +1,302 @@
+energy-track-table {
+  display: inline-flex;
+  margin-top: -10px;
+  margin-left: -31px;
+}
+
+energy-track-initial {
+  background-image: url('../../images/board/EnergyInitialBlank.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 160px;
+  width: 160px;
+  margin-left: 25px;
+  margin-right: -30px;
+}
+
+card-play-track-initial {
+  background-image: url('../../images/board/CardPlayInitialBlank.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 160px;
+  width: 160px;
+  margin-left: 4px;
+  margin-right: -30px;
+}
+
+energy-track {
+  background-image: url('../../images/board/TrackEnergyBlank.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 130px;
+  width: 130px;
+}
+
+energy-track-ring {
+  background-image: url('../../images/board/CardPlayRing.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 130px;
+  width: 130px;
+}
+
+card-play-track {
+  background-image: url('../../images/board/CardPlayRing.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 130px;
+  width: 130px;
+}
+
+energy-track icon.reclaim-one, card-play-special icon.reclaim-one {
+  background-image: url('../../images/board/Reclaimone.png');
+}
+
+card-play-special icon.reclaim-one {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 90px;
+  margin-top: 18px;
+  margin-bottom: -5px;
+  margin-left: 18px;
+}
+
+energy-track-ring icon.reclaim-one {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 90px;
+  margin-top: 18px;
+  margin-bottom: -7px;
+  margin-left: 18px;
+}
+
+element-bottom icon.reclaim-one{
+  margin-top: -55px;
+  margin-left: 33px;
+  margin-bottom: -18px;
+}
+
+energy-track icon.any, energy-track icon.fire, energy-track icon.water, energy-track icon.moon, energy-track icon.air, energy-track icon.animal, energy-track icon.plant, energy-track icon.sun, energy-track icon.earth, card-play-special icon.any, card-play-special icon.fire, card-play-special icon.water, card-play-special icon.moon, card-play-special icon.air, card-play-special icon.animal, card-play-special icon.plant, card-play-special icon.sun, card-play-special icon.earth, energy-top, card-play-top, element-top {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 60px;
+  width: 60px;
+  margin-left: 33px;
+  margin-top: 35px;
+  margin-bottom: 3px;
+}
+
+element-top icon.air, element-top icon.fire, element-top icon.any, element-top icon.water, element-top icon.animal, element-top icon.earth, element-top icon.plant, element-top icon.sun, element-top icon.moon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 65px;
+  width: 65px;
+  display: block;
+  margin-left: -9px;
+}
+
+card-play-track element-combination element-top icon.air, card-play-track element-combination element-top icon.fire, card-play-track element-combination element-top icon.any, 
+card-play-track element-combination element-top icon.water, card-play-track element-combination element-top icon.animal, card-play-track element-combination element-top icon.earth, 
+card-play-track element-combination element-top icon.plant, card-play-track element-combination element-top icon.sun, card-play-track element-combination element-top icon.moon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 65px;
+  width: 65px;
+  display: block;
+  margin-left: -9px;
+}
+
+element-bottom icon.air, element-bottom icon.fire, element-bottom icon.any, element-bottom icon.water, element-bottom icon.animal, element-bottom icon.earth, element-bottom icon.plant, element-bottom icon.sun, element-bottom icon.moon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 65px;
+  width: 65px;
+  display: block;
+  margin-left: 50px;
+  margin-top: -35px;
+  margin-bottom: -24px;
+}
+
+card-play-track element-bottom icon.air, card-play-track element-bottom icon.water, card-play-track element-bottom icon.sun,
+card-play-track element-bottom icon.fire, card-play-track element-bottom icon.earth, card-play-track element-bottom icon.animal, 
+card-play-track element-bottom icon.moon, card-play-track element-bottom icon.plant, card-play-track element-bottom icon.any
+{
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 65px;
+  width: 65px;
+  display: block;
+  margin-left: 50px;
+  margin-top: -30px;
+  margin-bottom: -18px;
+}
+
+card-play-special icon.any, card-play-special icon.fire, card-play-special icon.water, card-play-special icon.moon, card-play-special icon.air, card-play-special icon.animal, card-play-special icon.plant, card-play-special icon.sun, card-play-special icon.earth {
+  margin-bottom: 8px;
+  margin-left: 37px;
+}
+
+energy-track-initial value {
+  font-family: 'Gobold Extra2';
+  font-size: 36pt;
+  display: inline-block;
+  margin-top: 37px;
+  margin-left: 50px;
+}
+
+card-play-track-initial card-play {
+  background-image: url('../../images/board/CardPlayBlank.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 75px;
+  width: 75px;
+  display: block;
+  margin-left: 40px;
+  margin-top: 30px;
+}
+
+card-play-track card-play {
+  background-image: url('../../images/board/CardPlayBlank.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 75px;
+  width: 75px;
+  display: block;
+  margin-left: 38px;
+  margin-top: 28px;
+}
+
+card-play value {
+  font-family: 'Gobold Extra2';
+  font-size: 36pt;
+  display: inline-block;
+  margin-left: 12px;
+  margin-top: 7px;
+}
+
+card-play-top value {
+  font-family: 'Gobold Extra2';
+  font-size: 31pt;
+  display: inline-block;
+  margin-left: 14px;
+  margin-top: 10px;
+}
+
+energy-track value {
+  font-family: 'Gobold Extra2';
+  font-size: 36pt;
+  display: inline-block;
+  margin-top: 35px;
+  margin-left: 51px;
+}
+
+energy-top, energy-bottom {
+  background-image: url('../../images/board/EnergyBlank.png');
+  height: 90px;
+  width: 90px;
+}
+
+card-play-top{
+  background-image: url('../../images/board/CardPlayBlank.png');
+  height: 90px;
+}
+
+energy-top {
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+card-play-top {
+  margin-left: 12px;
+  margin-top: 11px;
+  height: 72px;
+}
+
+card-play-track element-combination{
+  margin-top: 46px;
+  margin-bottom: 2px;
+}
+
+element-combination {
+  display: block;
+  margin-bottom: 15px;
+}
+
+card-play-track element-combination element-top{
+  margin-left: 14px;
+  margin-top: -36px;
+  height: 72px;
+}
+
+element-top {
+  margin-left: 24px;
+  margin-top: -19px;
+}
+
+energy-top value {
+  font-family: 'Gobold Extra2';
+  font-size: 21pt;
+  display: inline-block;
+  margin-left: 37px;
+  margin-top: 26px;
+}
+
+energy-bottom, element-bottom {
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+energy-track subtext, energy-track-ring subtext {
+  font-family: 'Lato SemiBold';
+  font-size: 16pt;
+  font-style: italic;
+  display: inline-block;
+  width: 130px;
+  margin-top: 41px;
+  text-align: center;
+}
+
+card-play-track subtext {
+  font-family: 'Lato SemiBold';
+  font-size: 16pt;
+  font-style: italic;
+  display: inline-block;
+  width: 130px;
+  margin-top: 34px;
+  text-align: center;
+}
+
+card-play-track-table {
+  display: inline-flex;
+  margin-top: 20px;
+  margin-left: -10px;
+}
+
+presence-track-image {
+  background-image: url('../../images/board/Presence_Without_Text.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  width: 1089px;
+  height: 428px;
+  z-index: -1;
+  top: -64px;
+  left: -24px;
+}
+
+presence-tracks {
+  position: absolute;
+  top: 300px;
+  left: 700px;
+  width: 1025px;
+  height: 350px;
+}

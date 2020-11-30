@@ -1,0 +1,233 @@
+innate-powers {
+  position: absolute;
+  top: 663px;
+  left: 682px;
+  background-image: url('../../images/board/Innate_Without_Text.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  width: 1066px;
+  height: 500px;
+}
+
+innate-powers-title {
+  display: block;
+  font-family: 'DK Snemand';
+  font-size: 25pt;
+  margin-top: 10px;
+  margin-left: 25px;
+  width: 190px;
+}
+
+innate-power-container{
+  display:block;
+  position:relative;
+  margin-left:25px;
+  margin-top:15px;
+}
+
+innate-power:nth-child(1) {
+  position: absolute;
+  left: 0px;
+  top: 0px
+}
+
+innate-power:nth-child(2) {
+  position: absolute;
+  left: 505px;
+  top: 0px
+}
+
+innate-power:only-child level {
+  width: 1000px !important;
+}
+
+innate-power-title {
+  width: 420px;
+  font-family: 'JosefinSans-Regular';
+  font-weight: bold;
+  font-style: italic;
+  font-size: 14pt;
+  text-transform: uppercase;
+}
+
+info-container {
+  width: 463.25px;
+  border: 3px solid black;
+  position: relative;
+  display:block;
+}
+
+info-title {
+  height: 20px;
+  width: 463.25px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: 'DK Snemand';
+  text-transform: uppercase;
+  font-size: 14.26pt;
+  letter-spacing: 1.25pt;
+  text-align: center;
+  white-space: normal;
+  background-color: #7f5623;
+}
+
+innate-info {
+  left: 108px;
+  top: 358px;
+  width: 463.25px;
+  display: flex;
+  font-family: 'DK Snemand';
+  text-transform: uppercase;
+}
+
+info-title-speed, innate-info-speed {
+  width: 143px;
+  padding-bottom: 4px;
+}
+
+info-title-range, innate-info-range {
+  width: 160px;
+  padding-bottom: 4px;
+}
+
+info-title-target, innate-info-target {
+  width: 160px;
+  padding-bottom: 4px;
+}
+
+innate-info-speed, innate-info-range, innate-info-target {
+  height: 50px;
+}
+
+innate-info-speed, innate-info-range{
+  border-right: 3px solid black;
+}
+
+innate-info-range, innate-info-target {
+  font-size: 26px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+range {
+  width: 50px;
+  height: 32px;
+  text-align: center;
+  background-image: url('../../images/50px-Rangeicon.png');
+  background-repeat: no-repeat;
+  background-position-y: 23px;
+}
+
+no-range {
+  width: 88px;
+  height: 4px;
+  text-align: center;
+  background-image: url('../../images/no-range.png');
+  background-repeat: no-repeat;
+  background-size: 88px 4px;
+}
+
+info-target, innate-info-target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18pt;
+}
+
+innate-power.fast innate-info-speed {
+  background-image: url('../../images/50px-Fasticon.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40px 30px;
+}
+
+innate-power.slow innate-info-speed {
+  background-image: url('../../images/50px-Slowicon.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40px 30px;
+}
+
+description-container {
+  width: 465px;
+  height: 325px;
+  display:block;
+  margin-top:10px;
+}
+
+note {
+  display: inline-block;
+  height: auto;
+  width: 487px;
+  font-family: 'JosefinSans-Regular';
+  font-size: 15pt;
+}
+
+level {
+  display: inline-block;
+  height: auto;
+  width: 487px;
+  font-family: 'JosefinSans-Regular';
+  font-size: 17pt;
+  padding-bottom: 20px;
+}
+
+threshold {
+  font-family: 'Gobold Extra2';
+  font-size: 24pt;
+  color: #431E0AFF;
+  float: left;
+}
+
+innate-info-range icon.range-0, innate-info-range icon.range-1, innate-info-range icon.range-2, 
+innate-info-range icon.range-3, innate-info-range icon.range-4 {
+    width: 75px;
+    height: 75px;
+    margin-left: -10px;
+    margin-bottom: 10px;
+}
+
+info-range icon {
+  width: 40px;
+  height: 32px;
+}
+
+info-target icon {
+  width: 70px;
+  height: 32px;
+}
+
+info-target spirit {
+  width: 32px;
+  height: 28px;
+}
+
+innate-info-range icon.sacred-site {
+  width: 50px;
+  height: 50px;
+  margin-bottom: -10px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+innate-info-range icon.sands-presence, innate-info-range icon.wetland-presence, 
+innate-info-range icon.jungle-presence, innate-info-range icon.mountain-presence {
+  width: 50px;
+  height: 50px;
+  margin-bottom: -2px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+innate-info-target icon.blight, innate-info-target icon.no-blight {
+  height: 30px;
+  width: 30px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}

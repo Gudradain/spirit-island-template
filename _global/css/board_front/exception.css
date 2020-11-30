@@ -1,0 +1,49 @@
+special-rule range-plus-1, 
+div.description range-1, 
+special-rule range-plus-2, 
+div.description range-2, 
+special-rule range-plus-3, 
+div.description range-3, 
+special-rule range-plus-4, 
+div.description range-4 {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 45px;
+  height: 40px;
+  margin-bottom: -20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: -10px;
+}
+
+.description icon.range-0, .description icon.range-1, .description icon.range-2, 
+.description icon.range-3, .description icon.range-4 {
+    width: 45px;
+    height: 30px;
+    margin-left: 0px;
+}
+
+threshold icon.sun, threshold icon.earth, threshold icon.plant, threshold icon.fire, threshold icon.air, threshold icon.moon, threshold icon.animal, threshold icon.water {
+    width: 45px;
+    height: 45px;
+    margin-bottom: -9px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.description icon.sun, .description icon.earth, .description icon.plant, .description icon.fire, .description icon.air, .description icon.moon, .description icon.animal, .description icon.water, special-rule icon.sun, special-rule icon.earth, special-rule icon.plant, special-rule icon.fire, special-rule icon.air, special-rule icon.moon, special-rule icon.animal, special-rule icon.water {
+    width: 45px;
+    height: 30px;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -7px;
+}
+
+description-container icon.city {
+    width: 35px;
+    height: 35px;
+    margin-bottom: -10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
