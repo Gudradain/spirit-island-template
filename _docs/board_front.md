@@ -60,6 +60,7 @@ General Images: Every image in a board can be called by simply using its name en
       - range: {range-0}, {range-1}, {range-2}, {range-3}, or {range-4}. Also supports (sacred-site}
       - target: The value for the target land
       - target-title: Either "TARGET" or "TARGET LAND"
+      - note: (See Volcano Looming High or Lure of the Deep Wilderness as an example)
       - level: Contains the information for one level of an Innate Power
         - threshold: Contains the elemental information for the threshold:
           - Example: 1-plant,2-fire
