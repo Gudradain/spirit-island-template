@@ -393,7 +393,7 @@ function parseInnatePowers(){
         }
         
         //Innate Power Target value
-        currentPowerHTML += "<innate-info-target>{"+innatePowerHTML.getAttribute("target")+"}</innate-info-target></innate-info></info-container>";
+        currentPowerHTML += "<innate-info-target>"+innatePowerHTML.getAttribute("target")+"</innate-info-target></innate-info></info-container>";
 
         if(innateHTML.length == 1){
             currentPowerHTML += "<description-container style='width:1000px !important'>";            
