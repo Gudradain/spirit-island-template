@@ -395,7 +395,7 @@ function parseInnatePowers(){
         //Innate Power Target value
         var targetValue = innatePowerHTML.getAttribute("target");
         console.log(targetValue);
-        var specialLandsList = ["any", "coastal", "invaders", "dahan", "inland"];
+        var specialLandsList = ["any", "coastal", "invaders", "inland"];
 
         if(specialLandsList.includes(targetValue.toLowerCase())){
             targetValue = targetValue.toUpperCase();
