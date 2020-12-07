@@ -393,7 +393,16 @@ function parseInnatePowers(){
         }
         
         //Innate Power Target value
-        currentPowerHTML += "<innate-info-target>{"+innatePowerHTML.getAttribute("target")+"}</innate-info-target></innate-info></info-container>";
+        var targetValue = innatePowerHTML.getAttribute("target");
+        console.log(targetValue);
+        var specialLandsList = ["any", "coastal", "invaders", "dahan", "inland"];
+
+        if(specialLandsList.includes(targetValue.toLowerCase())){
+            targetValue = targetValue.toUpperCase();
+            currentPowerHTML += "<innate-info-target>"+targetValue+"</innate-info-target></innate-info></info-container>";
+        } else {
+            currentPowerHTML += "<innate-info-target>{"+targetValue+"}</innate-info-target></innate-info></info-container>";
+        }
 
         if(innateHTML.length == 1){
             currentPowerHTML += "<description-container style='width:1000px !important'>";            
@@ -401,7 +410,14 @@ function parseInnatePowers(){
             currentPowerHTML += "<description-container>";
         }
         
-        currentPowerHTML += "<note>" + innatePowerHTML.getAttribute("note") + "</note>";
+        var noteValue = innatePowerHTML.getAttribute("note");
+
+        //If the note field is blank
+        if(noteValue == null){
+            noteValue = "";
+        }
+
+        currentPowerHTML += "<note>" + noteValue + "</note>";
 
         //Innate Power Levels and Thresholds
         var currentLevels = innatePowerHTML.getElementsByTagName("level");
