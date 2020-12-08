@@ -53,6 +53,15 @@ card-play-track {
   width: 130px;
 }
 
+card-play-special icon.push {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 90px;
+  margin-top: 18px;
+  margin-bottom: -5px;
+  margin-left: 18px;
+}
 
 card-play-special icon.forget-power-card {
   background-repeat: no-repeat;
