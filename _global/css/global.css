@@ -30,6 +30,7 @@ icon.city{background-image: url('../images/25px-Citiyicon.png');}
 
 icon.presence-white {background-image: url('../images/25px-Presenceicon-inverse.png'); margin-left:3px; margin-right:3px;}
 icon.presence {background-image: url('../images/25px-Presenceicon.png');}
+icon.destroyed-presence {background-image: url('../images/board/NewIcons/Misc Presence Destroy.png');}
 icon.sacred-site {background-image: url('../images/25px-Sacredsiteicon.png') }
 
 icon.earth{ background-image: url('../images/80px-Earthelement.png'); }
