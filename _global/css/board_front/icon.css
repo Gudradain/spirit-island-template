@@ -274,9 +274,9 @@ icon.no-blight {
 
 icon.dahan {
   background-image: url('../../images/board/50px_dahan.png');
-  height: 40px;
-  margin-bottom: -10px;
-  margin-top: 10px;
+  height: 30px;
+  margin-bottom: -8px;
+  margin-top: 0px;
 }
 
 icon.town {
