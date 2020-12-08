@@ -15,6 +15,7 @@ Then, you just need to replace 'class-name' by the icon name. The available choi
 ### Spirit Icons
 
 - presence
+- destroy-presence
 - sacred-site
 - spirit
 
