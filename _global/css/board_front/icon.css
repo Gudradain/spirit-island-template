@@ -339,6 +339,31 @@ icon.gain-power-card {
   width:90px;
 }
 
+icon.forget-power-card {
+  background-image: url('../../images/customIcons/forgetCardIcon.png');
+  display: block;
+  height: 90px;
+  width:90px;
+}
+
+icon.push {
+  background-image: url('../../images/board/NewIcons/Land Push.png');
+  display: block;
+  height: 100px;
+  width:100px;
+}
+
+icon.push > icon {
+  position: relative;
+  text-align: unset;
+  top: 28px;
+  left:30px;
+  width: 25px;
+  height: 25px;
+  margin: 0px;
+  padding: 0px;
+}
+
 icon.reclaim-all {
   background-image: url('../../images/board/Reclaimall.png');
   display: block;

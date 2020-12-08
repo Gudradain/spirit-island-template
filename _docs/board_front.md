@@ -31,6 +31,7 @@ General Images: Every image in a board can be called by simply using its name en
           - discard-cards: Discard 2 Power Cards (as seen on Downpour)
           - gain-card-play: +1 Card Play this turn
           - gain-power-card: Gain Power Card
+          - forget-power-card: Forget Power Card (not cannon)
           - gain-energy(X): Gain X Energy
           - make-fast: One of your Powers may be Fast
           - add-presence(X): Add a Presence up to X Range
@@ -39,20 +40,25 @@ General Images: Every image in a board can be called by simply using its name en
           - presence-no-range: Add a presence anywhere (as seen on Finder)
           - ignore-range: Ignore Range this turn (as seen on Finder)
           - gain-element(X): Gain X Element (currently limited to only one)
+          - push(x): Push x from land (as seen on Trickster with Dahan)
   - **presence-tracks**: The container for the Presence Tracks
     - **energy-track**: The entire Energy Track (current functionality only supports one row)
       - energy-track values: The actual values that will be used to create the Energy Track
         - Supported Options:
           - Integer 1,2,3,4,5,6,7 etc.
           - Elements earth, fire, air, moon, water, plant, animal, sun, or any
+          - forget-power-card: Forget Power (not cannon)
           - Combinations of Elements/Energy: 3+earth, 2+fire, earth+any, water+plant
+          - push(x): Push x from land (as seen on Trickster with Dahan)
     - **card-play-track**: The entire Card Play Track (current functionality only supports one row)
       - card-play-track values: The actual values that will be used to create the Card Play Track
         - Supported Options:
           - Integer 1,2,3,4,5,6,7 etc.
+          - forget-power-card: Forget Power (not cannon)
           - Elements earth, fire, air, moon, water, plant, animal, sun, or any
           - Combinations of Elements/Energy: (3+earth, 2+fire, earth+any, water+plant
           - Reclaim One: reclaim-one, 3+reclaim-one, earth+reclaim-one
+          - push(x): Push x from land (as seen on Trickster with Dahan)
   - **innate-powers**: The container for the Innate Powers
     - quick-innate-power: The container for a single Innate Power
       - name: The name of the Innate Power

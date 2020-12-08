@@ -47,6 +47,9 @@ function parseGrowthTags(){
                 case 'discard-cards':
                     newGrowthCellHTML += "<growth-cell>{discard-cards}<growth-text>Discard 2 Power Cards</growth-text></growth-cell>";
                     break;
+                case 'forget-power-card':
+                    newGrowthCellHTML += "<growth-cell>{forget-power-card}<growth-text>Forget Power Card</growth-text></growth-cell>";
+                    break;
                 case 'gain-card-play':
                     newGrowthCellHTML += "<growth-cell>{gain-card-play}<growth-text>Gain a Card Play</growth-text></growth-cell>";
                     break;
@@ -83,6 +86,12 @@ function parseGrowthTags(){
 
                     newGrowthCellHTML += "<growth-cell>"+presenceReqOpen+"+{presence}{"+presenceReq+"}{range-"+presenceRange+"}"+presenceReqClose+"<growth-text>Add a Presence</growth-text></growth-cell>";
                     break;
+                case 'push':
+                    var matches = regExp.exec(classPieces[j]);
+                    var pushTarget = matches[1];
+                    newGrowthCellHTML += "<growth-cell><icon class='"+growthItem+"'><icon class='"+pushTarget+"'></icon></icon><growth-text>Push "+pushTarget+"</growth-text></growth-cell>";
+                    break;    
+
                 case 'presence-no-range':
                     newGrowthCellHTML += "<growth-cell><custom-presence-no-range>+{presence}</custom-presence-no-range><growth-text>Add a Presence to any Land</growth-text></growth-cell>";
                     break;
@@ -147,6 +156,9 @@ function parseEnergyTrackTags(){
 
     var energyOptions = energyValues.split(",");
 
+    //Find values between parenthesis
+    var regExp = /\(([^)]+)\)/;
+
     for(i = 0; i < energyOptions.length; i++){
         if(!isNaN(energyOptions[i])){
             //The energy option is only a number
@@ -166,6 +178,14 @@ function parseEnergyTrackTags(){
                     case 'reclaim-one':
                         energyHTML += "<energy-track-ring>{"+splitOptions[0]+"}<subtext>Reclaim One</subtext></energy-track-ring>";
                         break;
+                    case 'forget-power-card':
+                        energyHTML += "<energy-track-ring>{"+splitOptions[0]+"}<subtext>Forget Power</subtext></energy-track-ring>";
+                        break;
+                    case 'push':
+                        var matches = regExp.exec(splitOptions[0]);
+                        var pushTarget = matches[1];
+                        energyHTML += "<energy-track><card-play-special><icon class='"+energyOption+"'><icon class='"+pushTarget+"'></icon></icon></card-play-special><subtext>Push "+pushTarget+"</subtext></energy-track>";
+                        break;    
                     case 'move-presence':
                         var matches = regExp.exec(splitOptions[0]);
                         var moveRange = matches[1];
@@ -222,6 +242,14 @@ function parseCardPlayTrackTags(){
                     case 'reclaim-one':
                         cardPlayHTML += "<card-play-track><card-play-special>{"+splitOptions[0]+"}</card-play-special><subtext>Reclaim One</subtext></card-play-track>";
                         break;
+                    case 'forget-power-card':
+                        cardPlayHTML += "<card-play-track><card-play-special>{"+splitOptions[0]+"}</card-play-special><subtext>Forget Power</subtext></card-play-track>";
+                        break;    
+                    case 'push':
+                        var matches = regExp.exec(splitOptions[0]);
+                        var pushTarget = matches[1];
+                        cardPlayHTML += "<card-play-track><card-play-special><icon class='"+cardPlayOption+"'><icon class='"+pushTarget+"'></icon></icon></card-play-special><subtext>Push "+pushTarget+"</subtext></card-play-track>";
+                        break;    
                     case 'move-presence':
                         var matches = regExp.exec(splitOptions[0]);
                         var moveRange = matches[1];
