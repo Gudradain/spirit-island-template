@@ -31,6 +31,7 @@ General Images: Every image in a board can be called by simply using its name en
           - discard-cards: Discard 2 Power Cards (as seen on Downpour)
           - gain-card-play: +1 Card Play this turn
           - gain-power-card: Gain Power Card
+          - forget-power-card: Forget Power Card (not cannon)
           - gain-energy(X): Gain X Energy
           - make-fast: One of your Powers may be Fast
           - add-presence(X): Add a Presence up to X Range
@@ -45,11 +46,13 @@ General Images: Every image in a board can be called by simply using its name en
         - Supported Options:
           - Integer 1,2,3,4,5,6,7 etc.
           - Elements earth, fire, air, moon, water, plant, animal, sun, or any
+          - forget-power-card: Forget Power (not cannon)
           - Combinations of Elements/Energy: 3+earth, 2+fire, earth+any, water+plant
     - **card-play-track**: The entire Card Play Track (current functionality only supports one row)
       - card-play-track values: The actual values that will be used to create the Card Play Track
         - Supported Options:
           - Integer 1,2,3,4,5,6,7 etc.
+          - forget-power-card: Forget Power (not cannon)
           - Elements earth, fire, air, moon, water, plant, animal, sun, or any
           - Combinations of Elements/Energy: (3+earth, 2+fire, earth+any, water+plant
           - Reclaim One: reclaim-one, 3+reclaim-one, earth+reclaim-one
