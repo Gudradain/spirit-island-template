@@ -339,6 +339,13 @@ icon.gain-power-card {
   width:90px;
 }
 
+icon.forget-power-card {
+  background-image: url('../../images/customIcons/forgetCardIcon.png');
+  display: block;
+  height: 90px;
+  width:90px;
+}
+
 icon.reclaim-all {
   background-image: url('../../images/board/Reclaimall.png');
   display: block;

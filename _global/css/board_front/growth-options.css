@@ -148,6 +148,10 @@ growth-cell icon.gain-power-card{
   margin-bottom: 7px;
 }
 
+growth-cell icon.forget-power-card{
+  margin-bottom: 7px;
+}
+
 growth-cell icon.gain-card-play{
   margin-bottom: 7px;
 }
