@@ -2,22 +2,20 @@ special-rules-container {
   background-image: url('../../images/board/Innate__Special_Rules_Without_Text.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-color: transparent;
   position: absolute;
-  z-index: -1;
   left: 18px;
   top: 788px;
   height: 375px;
   width: 665px;
   display: flex;
   flex-direction: column;
-  text-align: center;
   font-family: 'JosefinSans-Regular';
+  padding-left:15px;
+  padding-right:15px;
 }
 
 special-rules-subtitle {
   padding-top: 15px;
-  padding-left: 15px;
   padding-bottom: 3px;
   font-family: 'JosefinSans-Regular';
   font-weight: bold;
@@ -30,7 +28,6 @@ special-rules-subtitle {
 }
 
 special-rule {
-  padding-left: 15px;
   font-family: 'JosefinSans-Regular';
   font-size: 17pt;
   text-align: left;

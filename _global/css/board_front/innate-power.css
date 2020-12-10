@@ -11,13 +11,8 @@ innate-powers {
   height: 500px;
 }
 
-innate-powers-title {
-  display: block;
-  font-family: 'DK Snemand';
-  font-size: 25pt;
-  margin-top: 10px;
-  margin-left: 25px;
-  width: 190px;
+innate-powers section-title{ 
+  margin-left:25px;
 }
 
 innate-power-container{

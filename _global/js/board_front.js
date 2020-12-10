@@ -12,7 +12,7 @@ function parseGrowthTags(){
     var fullHTML = "";
     var growthHTML = document.getElementsByTagName("growth");
     
-    var growthTitle = "<growth-title>"+growthHTML[0].title+"</growth-title>";
+    var growthTitle = "<section-title>"+growthHTML[0].title+"</section-title>";
 
     var newGrowthTableTagOpen = "<growth-table>";
     var newGrowthTableTagClose = "</growth-table>";
@@ -285,7 +285,7 @@ function parseCardPlayTrackTags(){
 }
 
 function setNewEnergyCardPlayTracks(energyHTML, cardPlayHTML){
-    document.getElementsByTagName("presence-tracks")[0].innerHTML = "<presence-track-title>Presence</presence-track-title>"+energyHTML + cardPlayHTML;
+    document.getElementsByTagName("presence-tracks")[0].innerHTML = "<section-title>Presence</section-title>"+energyHTML + cardPlayHTML;
 }
 
 function dynamicCellWidth() {
@@ -468,5 +468,5 @@ function parseInnatePowers(){
         }
         fullHTML += currentPowerHTML+"</description-container></innate-power>";
     }
-    document.getElementsByTagName("innate-powers")[0].innerHTML = '<innate-powers-title>Innnate Powers</innate-powers-title><innate-power-container>'+fullHTML+'</innate-power-container>';
+    document.getElementsByTagName("innate-powers")[0].innerHTML = '<section-title>Innnate Powers</section-title><innate-power-container>'+fullHTML+'</innate-power-container>';
 }

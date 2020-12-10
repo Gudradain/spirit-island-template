@@ -11,21 +11,9 @@ growth {
   height: 241px;
 }
 
-growth-title {
-  display:block;
-  font-family: 'DK Snemand';
-  font-size: 25pt;
+growth section-title{
   margin-left:40px;
   margin-top:15px;
-}
-
-presence-track-title {
-  display: block;
-  font-family: 'DK Snemand';
-  font-size: 25pt;
-  margin-left: 2px;
-  margin-top: -57px;
-  position: absolute;
 }
 
 growth-table {
