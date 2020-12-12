@@ -378,46 +378,25 @@ function parseInnatePowers(){
         currentPowerHTML += "<innate-info-speed></innate-info-speed>";
         
         //Innate Power Range value
-        var range = innatePowerHTML.getAttribute("range");
-        var rangeArray = range.split(",");
-        if(rangeArray.length > 1){
-            //More than one element (second element is an integer)
-            switch(rangeArray[0]){
-                case "sacred-site":
-                    currentPowerHTML += "<innate-info-range>{sacred-site}{range-"+rangeArray[1]+"}</innate-info-range>";
-                    break;
-                case "wetland-presence":
-                    currentPowerHTML += "<innate-info-range>{wetland-presence}{range-"+rangeArray[1]+"}</innate-info-range>";
-                    break;
-                case "mountain-presence":
-                    currentPowerHTML += "<innate-info-range>{mountain-presence}{range-"+rangeArray[1]+"}</innate-info-range>";
-                    break;
-                case "jungle-presence":
-                    currentPowerHTML += "<innate-info-range>{jungle-presence}{range-"+rangeArray[1]+"}</innate-info-range>";
-                    break;
-                case "sands-presence":
-                    currentPowerHTML += "<innate-info-range>{sands-presence}{range-"+rangeArray[1]+"}</innate-info-range>";
-                    break;
-                default:
-                    console.log("Error in case statement");
-                    break;
+        currentPowerHTML += `<innate-info-range>${getRangeModel(innatePowerHTML.getAttribute("range"))}</innate-info-range>`;
+
+        function getRangeModel(rangeString)
+        {
+          if(rangeString === "none"){
+            return "<no-range></no-range>";
+          }else {
+            var result = '';
+            for(var item of rangeString.split(',')){
+              if(!isNaN(item)){
+                result += `<range>${item}</range>`;
+              }
+              else
+              {
+                result += `<icon class="${item}"></icon>`;
+              }
             }
-        } else {
-            //Only a single element
-            switch (range){
-                case "0":
-                    currentPowerHTML += "<innate-info-range>{range-0}</innate-info-range>";
-                    break;
-                case "1":
-                    currentPowerHTML += "<innate-info-range>{range-1}</innate-info-range>";
-                    break;
-                case "none":
-                    currentPowerHTML += "<innate-info-range>{no-range}</innate-info-range>";
-                    break;
-                default:
-                    console.log("Error in case statement");
-                    break;
-            }
+            return result;
+          }
         }
         
         //Innate Power Target value
