@@ -24,7 +24,13 @@ function parseGrowthTags(){
     for (i = 0; i < growthHTML[0].children.length; i++){
         childElement = growthHTML[0].children[i];
         //childElement is the thing that should be replaced when all is said and done
-        
+
+        let cost = childElement.getAttribute("cost")
+
+        if (cost) {
+            newGrowthCellHTML += `<growth-cost>-${cost}</growth-cost>`
+        }
+
         growthClass = childElement.getAttribute("values");
 
         var classPieces = growthClass.split(';');

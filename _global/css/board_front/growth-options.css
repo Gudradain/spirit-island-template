@@ -160,6 +160,33 @@ growth-cell icon.ignore-range{
   margin-bottom: 7px;
 }
 
+growth-cost {
+  font-family: 'Gobold Extra2';
+  font-size: 16pt;
+  background-image: url('../../images/board/NewIcons/Energy Blank.png');
+  background-repeat: no-repeat;
+  background-size: 110%;
+  margin-right: -50px;
+  background-position: center;
+  height: 50px;
+  width: 50px;
+  top: -45px;
+  position: relative;
+  left: -10px;
+  padding-top: 12px;
+}
+
+growth-cost::after {
+  content: 'Cost';
+  font-family: 'Lato SemiBold';
+  font-size: 14pt;
+  font-style: italic;
+  top: 49px;
+  position: absolute;
+  left: 7px;
+
+}
+
 .description icon.dahan {
   height: 25px;
   width: 25px;
