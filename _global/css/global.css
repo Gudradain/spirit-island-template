@@ -1,3 +1,13 @@
+@font-face{
+  font-family: 'Lato SemiBold';
+  src: url(../fonts/lato/Lato-Semibold.ttf);
+}
+@font-face{
+  font-family: 'Lato SemiBold';
+  src: url(../fonts/lato/Lato-SemiboldItalic.ttf);
+  font-style: italic;
+}
+
 icon{
   display:inline-block;
   background-repeat: no-repeat;
