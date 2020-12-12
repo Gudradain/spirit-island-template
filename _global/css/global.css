@@ -60,3 +60,22 @@ icon.mountain-jungle{background-image: url('../images/50px-mountain-jungle.png')
 icon.mountain-sand{background-image: url('../images/50px-mountain-sand.png'); }
 icon.mountain-wetland{background-image: url('../images/50px-mountain-wetland.png'); }
 icon.sand-wetland{background-image: url('../images/50px-sand-wetland.png'); }
+
+range{
+  width:50px;
+  height:32px;
+  display:inline-block;
+  text-align:center;
+  background-image:url('../images/50px-Rangeicon.png');
+  background-repeat: no-repeat;
+  background-position-y:23px;
+}
+
+no-range{
+  width:88px;
+  height:4px;
+  text-align:center;
+  background-image:url('../images/no-range.png');
+  background-repeat: no-repeat;
+  background-size:88px 4px;
+}

@@ -204,25 +204,6 @@ info-range{
   border-left:1px solid gray;
 }
 
-range{
-  width:50px;
-  height:32px;
-  display:inline-block;
-  text-align:center;
-  background-image:url('../images/50px-Rangeicon.png');
-  background-repeat: no-repeat;
-  background-position-y:23px;
-}
-
-no-range{
-  width:88px;
-  height:4px;
-  text-align:center;
-  background-image:url('../images/no-range.png');
-  background-repeat: no-repeat;
-  background-size:88px 4px;
-}
-
 info-target{
   display:flex;
   align-items: center;
