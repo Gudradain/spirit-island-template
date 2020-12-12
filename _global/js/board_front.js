@@ -408,14 +408,18 @@ function parseInnatePowers(){
         //Innate Power Target value
         var targetValue = innatePowerHTML.getAttribute("target");
         console.log(targetValue);
-        var specialLandsList = ["any", "coastal", "invaders", "inland"];
+        var specialLandsList = ["any","another", "coastal", "invaders", "inland"];
 
-        if(specialLandsList.includes(targetValue.toLowerCase())){
-            targetValue = targetValue.toUpperCase();
-            currentPowerHTML += "<innate-info-target>"+targetValue+"</innate-info-target></innate-info></info-container>";
-        } else {
-            currentPowerHTML += "<innate-info-target>{"+targetValue+"}</innate-info-target></innate-info></info-container>";
-        }
+        const transformedTarget =  targetValue.split(' ').map(part=>{
+            if(specialLandsList.includes(part.toLowerCase())){
+                part = part.toUpperCase();
+            }else   {
+                part = `{${part}}`
+            }
+            return part
+        }).join(' ')
+        
+        currentPowerHTML += "<innate-info-target>"+transformedTarget+"</innate-info-target></innate-info></info-container>";
 
         if(innateHTML.length == 1){
             currentPowerHTML += "<description-container style='width:1000px !important'>";            
