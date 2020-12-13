@@ -64,8 +64,15 @@ General Images: Every image in a board can be called by simply using its name en
     - quick-innate-power: The container for a single Innate Power
       - name: The name of the Innate Power
       - speed: Either "fast" or "slow"
-      - range: {range-0}, {range-1}, {range-2}, {range-3}, or {range-4}. Also supports (sacred-site}
-      - target: The value for the target land
+      - range: The range of the innate.
+        - For no range, type "none".
+        - For range, use an icon (if needed) + an integer separated by a comma. Examples:
+          - 0
+          - 1
+          - presence,1
+          - sacred-site,2
+          - wetland-presence,1
+      - target: The target of the innate. It accepts html code. Refer to the [card template](_docs/card.md) for the syntax. The icon that you type in here can use the shorthand syntax.
       - target-title: Either "TARGET" or "TARGET LAND"
       - note: (See Volcano Looming High or Lure of the Deep Wilderness as an example)
       - level: Contains the information for one level of an Innate Power
