@@ -12,6 +12,7 @@
 This project uses 3 fonts:
 
 - JosefinSans-Regular: This font is bundled in the project and use the Open Font License.
+- Lato Semibold Italic: This font is bundled in the project and use the Open Font License.
 - Gobold Extra2: You can download this font [here](https://www.dafont.com/fr/gobold.font).
 - DK Snemand (demo): You can download this font [here](https://www.dafont.com/dk-snemand.font).
 
