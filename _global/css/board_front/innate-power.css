@@ -56,7 +56,7 @@ info-container {
 
 info-title {
   height: 20px;
-  width: 463.25px;
+  width: 100%;
   display: flex;
   align-items: center;
   color: white;
