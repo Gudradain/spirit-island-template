@@ -407,7 +407,9 @@ function parseInnatePowers(){
         
         //Innate Power Target value
         var targetValue = innatePowerHTML.getAttribute("target");
-        console.log(targetValue);
+        currentPowerHTML += `<innate-info-target>${replaceIcon(targetValue)}</innate-info-target></innate-info></info-container>`;
+        
+        /*console.log(targetValue);
         var specialLandsList = ["any", "coastal", "invaders", "inland"];
 
         if(specialLandsList.includes(targetValue.toLowerCase())){
@@ -415,7 +417,7 @@ function parseInnatePowers(){
             currentPowerHTML += "<innate-info-target>"+targetValue+"</innate-info-target></innate-info></info-container>";
         } else {
             currentPowerHTML += "<innate-info-target>{"+targetValue+"}</innate-info-target></innate-info></info-container>";
-        }
+        }*/
 
         if(innateHTML.length == 1){
             currentPowerHTML += "<description-container style='width:1000px !important'>";            

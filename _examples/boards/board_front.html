@@ -47,7 +47,7 @@
         name="explosion"
         speed="fast"
         range="wetland-presence,1"
-        target="invaders"
+        target="any {spirit}"
         target-title="TARGET LAND"
         note="Destroy X (1 or more) of your {presence} in target land; {destroyed-presence} checks how many you destroyed. This Power does Damage (separately and equally) to both Invaders and {Dahan}. Ranges below can't be increased.">
         <level threshold="1-plant">
@@ -64,7 +64,7 @@
         name="explosion2"
         speed="slow"
         range="none"
-        target="blight"
+        target="{blight}"
         target-title="TARGET">
         <level threshold="1-plant">
           1 Damage per 2 {fire} you have.
