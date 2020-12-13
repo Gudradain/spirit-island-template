@@ -368,23 +368,28 @@ function parseInnatePowers(){
 
     for(i = 0; i < innateHTML.length; i++){
         var innatePowerHTML = innateHTML[i];
-        
-        var currentPowerHTML = "<innate-power class='"+innatePowerHTML.getAttribute("speed")+"'>";
-        
-        //Innater Power title
-        currentPowerHTML += "<innate-power-title>"+innatePowerHTML.getAttribute("name")+"</innate-power-title><info-container><info-title>";
-        
-        //Innate Power Speed and Range Header
-        currentPowerHTML += "<info-title-speed>SPEED</info-title-speed><info-title-range>RANGE</info-title-range>";
-        
-        //Innate Power Target Header
-        currentPowerHTML += "<info-title-target>"+innatePowerHTML.getAttribute("target-title")+"</info-title-target></info-title><innate-info>";
-        
-        //Innater Power Speed value
-        currentPowerHTML += "<innate-info-speed></innate-info-speed>";
-        
-        //Innate Power Range value
-        currentPowerHTML += `<innate-info-range>${getRangeModel(innatePowerHTML.getAttribute("range"))}</innate-info-range>`;
+
+        var currentPowerHTML = `
+        <innate-power class='${innatePowerHTML.getAttribute("speed")}'>
+          <innate-power-title>${innatePowerHTML.getAttribute("name")}</innate-power-title>
+          <info-container>
+            <info-title>
+              <info-title-speed>SPEED</info-title-speed>
+              <info-title-range>RANGE</info-title-range>
+              <info-title-target>${innatePowerHTML.getAttribute("target-title")}</info-title-target>
+            </info-title>
+            <innate-info>
+              <innate-info-speed></innate-info-speed>
+              <innate-info-range>${getRangeModel(innatePowerHTML.getAttribute("range"))}</innate-info-range>
+              <innate-info-target>${replaceIcon(innatePowerHTML.getAttribute("target"))}</innate-info-target>
+            </innate-info>
+          </info-container>
+          <description-container ${innateHTML.length == 1 ? "style='width:1000px !important'" : ""}>
+            <note>${innatePowerHTML.getAttribute("note") || ''}</note>
+            ${getLevels()}
+          </description-container>
+        </innate-power>
+        `;
 
         function getRangeModel(rangeString)
         {
@@ -404,35 +409,6 @@ function parseInnatePowers(){
             return result;
           }
         }
-        
-        //Innate Power Target value
-        var targetValue = innatePowerHTML.getAttribute("target");
-        currentPowerHTML += `<innate-info-target>${replaceIcon(targetValue)}</innate-info-target></innate-info></info-container>`;
-        
-        /*console.log(targetValue);
-        var specialLandsList = ["any", "coastal", "invaders", "inland"];
-
-        if(specialLandsList.includes(targetValue.toLowerCase())){
-            targetValue = targetValue.toUpperCase();
-            currentPowerHTML += "<innate-info-target>"+targetValue+"</innate-info-target></innate-info></info-container>";
-        } else {
-            currentPowerHTML += "<innate-info-target>{"+targetValue+"}</innate-info-target></innate-info></info-container>";
-        }*/
-
-        if(innateHTML.length == 1){
-            currentPowerHTML += "<description-container style='width:1000px !important'>";            
-        } else {
-            currentPowerHTML += "<description-container>";
-        }
-        
-        var noteValue = innatePowerHTML.getAttribute("note");
-
-        //If the note field is blank
-        if(noteValue == null){
-            noteValue = "";
-        }
-
-        currentPowerHTML += "<note>" + noteValue + "</note>";
 
         //Innate Power Levels and Thresholds
         var currentLevels = innatePowerHTML.getElementsByTagName("level");
