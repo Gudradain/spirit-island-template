@@ -7,7 +7,7 @@ presence-tracks section-title {
 energy-track-table {
   display: inline-flex;
   margin-top: -10px;
-  margin-left: -31px;
+  margin-left: -24px;
 }
 
 energy-track-initial {
@@ -200,6 +200,17 @@ card-play-track-initial card-play {
   margin-top: 30px;
 }
 
+energy-track-table,
+card-play-track-table 
+{
+  background-image: url('../../images/track-background.png');
+  background-size: 100;
+  background-position-x:  right;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  height:130px;
+}
+
 card-play-track card-play {
   background-image: url('../../images/board/CardPlayBlank.png');
   background-repeat: no-repeat;
@@ -313,8 +324,9 @@ card-play-track subtext {
 
 card-play-track-table {
   display: inline-flex;
-  margin-top: 20px;
-  margin-left: -10px;
+  margin-top: 45px;
+  margin-left: -24px;
+  padding-left: 14px;
 }
 
 presence-track-image {
