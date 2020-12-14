@@ -41,6 +41,25 @@ card.round-border{
   border-radius:22px;
 }
 
+card::after{
+  position: absolute;
+  top:25px;
+  bottom: 25px;
+  left: 25px;
+  right: 26px;
+  z-index: 2;
+  
+  border-radius: 25px;
+  
+  content: '';
+}
+card.major::after{
+  border: 2px solid #7ea4be;
+}
+card.minor::after{
+  border: 2px solid #c09766;
+}
+
 card.fast{
   background-image: url('../images/fast-card-transparent.PNG');
   background-position-y: -20px;
@@ -73,9 +92,34 @@ cost{
   font-family:'Gobold Extra2';
   font-size:34px;
   color:white;
+  text-align: center;
+
   position:absolute;
-  left:68px;
+  left:55px;
   top:47px;
+  width: 36px;
+  z-index: 3;
+}
+
+cost::before{
+  z-index: -1;
+  position:absolute;
+  top:-30px;
+  width: 107px;
+  height: 120px;
+
+  content:'';
+
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+card.fast cost::before{
+  left:-35px;
+  background-image: url('../images/fast-cost-overlay.png');
+}
+card.slow cost::before{
+  left:-32px;
+  background-image: url('../images/slow-cost-overlay.png');
 }
 
 name{
