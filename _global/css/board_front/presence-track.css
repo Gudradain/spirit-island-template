@@ -203,7 +203,6 @@ card-play-track-initial card-play {
 energy-track-table,
 card-play-track-table 
 {
-  background-image: url('../../images/track-background.png');
   background-size: 100;
   background-position-x:  right;
   background-repeat: no-repeat;
