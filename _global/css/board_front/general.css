@@ -71,6 +71,7 @@ spirit-name {
   height: 75.6px;
   width: 665px;
   z-index: 1;
+  background-repeat: no-repeat;
 }
 
 .spirit-image {
@@ -80,6 +81,7 @@ spirit-name {
   width: 667.5px;
   height: 737px;
   z-index: -1;
+  background-repeat: no-repeat;
 }
 
 #single-line {
