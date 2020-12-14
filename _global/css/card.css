@@ -220,7 +220,8 @@ rules-container{
   left:108px;
   top:358px; 
   width:353px;
-  height:283px;
+  height:247px;
+  padding-top: 36px;
 
   background-image: url('../images/card-text-back.png');
 
