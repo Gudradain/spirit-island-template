@@ -183,12 +183,14 @@ info{
   top:358px;
   width:353px;
   height:38px;
+  z-index: 1;
 
   display:flex;
 
   font-family: 'DK Snemand';
   text-transform: uppercase;
-  background-color:rgb(255, 251, 188);
+  background-color:  rgb(255, 251, 188);
+  mix-blend-mode: multiply;
 }
 
 info-title-speed, info-speed{ width:107px; }
@@ -216,9 +218,11 @@ info-target{
 rules-container{
   position:absolute;
   left:108px;
-  top:394px;
+  top:358px; 
   width:353px;
-  height:247px;
+  height:283px;
+
+  background-image: url('../images/card-text-back.png');
 
   display: flex;
   flex-direction: column;
@@ -241,8 +245,6 @@ rules{
   flex-direction:column;
   align-items: center;
   justify-content: center;
-
-  background-color:white;
 }
 
 rules:last-child{
@@ -323,6 +325,8 @@ artist-name{
 or{
   background-image: url('../images/or.PNG');
   background-size: 45%;
+  mix-blend-mode: multiply;
+
   display: block;
   height:40px;
   width:320px;
