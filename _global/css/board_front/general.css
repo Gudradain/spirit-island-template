@@ -122,6 +122,14 @@ section-title {
   display: block;
   font-family: 'DK Snemand';
   font-size: 25pt;
-  margin-top: 10px;
+  padding-top: 10px;
 }
 
+right{
+  position: absolute;
+  left: 660px;
+  bottom: 15px;
+  top: 18px;
+  width: 1090px;
+  overflow: hidden;
+}

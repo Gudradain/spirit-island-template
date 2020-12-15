@@ -14,144 +14,217 @@ function parseGrowthTags(){
     
     var growthTitle = "<section-title>"+growthHTML[0].title+"</section-title>";
 
+    const subList = Array.from(growthHTML[0].getElementsByTagName('sub-growth'))
+    let subTitle = subList
+        .map(e => `<sub-section-title><sub-section-line></sub-section-line><span>${e.title}</span><sub-section-line></sub-section-line></sub-section-title>`).join('')
+
+
+
     var newGrowthTableTagOpen = "<growth-table>";
     var newGrowthTableTagClose = "</growth-table>";
 
     //Find values between parenthesis
     var regExp = /\(([^)]+)\)/;
-
     var newGrowthCellHTML = "";
-    for (i = 0; i < growthHTML[0].children.length; i++){
-        childElement = growthHTML[0].children[i];
+    let currentHeaderIndex = 0
+
+    for (let i = 0; i < growthHTML[0].children.length; i++) {
+        const childElement = growthHTML[0].children[i];
+        const previousElement = i > 0
+            ? growthHTML[0].children[i - 1]
+            : undefined
+        const nextElement = i < growthHTML[0].children.length - 1
+            ? growthHTML[0].children[i + 1]
+            : undefined
+
         //childElement is the thing that should be replaced when all is said and done
+        if (childElement.nodeName.toLowerCase() == 'sub-growth') {
+            if (childElement.getAttribute('bordered') !== undefined && previousElement && (previousElement.nodeName.toLowerCase() != 'sub-growth' || previousElement.getAttribute('bordered') == !undefined)) {
+                newGrowthCellHTML += "<growth-border double></growth-border>";
+            }
 
-        let cost = childElement.getAttribute("cost")
+            for (let j = 0; j < childElement.children.length; j++) {
+                const nextSubElement = j < childElement.children.length - 1
+                    ? childElement.children[j + 1]
+                    : undefined
+                
+                writeGrowthNode(childElement.children[j], nextSubElement, childElement.title ? currentHeaderIndex : undefined);
+            }
+            if (childElement.title) {
+                currentHeaderIndex++
+            }
+            
+            if (childElement.getAttribute('bordered') !== undefined && nextElement) {
+                newGrowthCellHTML += "<growth-border double></growth-border>";
+            }
 
-        if (cost) {
-            newGrowthCellHTML += `<growth-cost>-${cost}</growth-cost>`
+        } else {
+            
+            writeGrowthNode(childElement, nextElement);
         }
 
-        growthClass = childElement.getAttribute("values");
+    }
+    fullHTML += growthTitle + subTitle + newGrowthTableTagOpen + newGrowthCellHTML + newGrowthTableTagClose
 
-        var classPieces = growthClass.split(';');
+    document.getElementsByTagName("growth")[0].removeAttribute("title");
+    document.getElementsByTagName("growth")[0].innerHTML = fullHTML;
 
-        for (j = 0; j < classPieces.length; j++){
+    function writeGrowthNode(childElement, nextElement, headerIndex) {
+        const cost = childElement.getAttribute("cost");
+
+        if (cost) {
+            newGrowthCellHTML += `<growth-cost>-${cost}</growth-cost>`;
+        }
+
+        const growthClass = childElement.getAttribute("values");
+
+        const classPieces = growthClass.split(';');
+        const openTag = headerIndex !== undefined
+            ? `<growth-cell header="${headerIndex}">`
+            : "<growth-cell>"
+        for (j = 0; j < classPieces.length; j++) {
 
             //Find a parenthesis and split out the string before it
-            var growthItem = classPieces[j].split("(")[0];
+            const growthItem = classPieces[j].split("(")[0];
 
-            switch(growthItem) {
+            switch (growthItem) {
                 case 'reclaim-all':
-                    newGrowthCellHTML += "<growth-cell>{reclaim-all}<growth-text>Reclaim Cards</growth-text></growth-cell>";
-                    break;
+                    {
+                        newGrowthCellHTML += `${openTag}{reclaim-all}<growth-text>Reclaim Cards</growth-text></growth-cell>`
+                        break;
+                    }
                 case 'reclaim-one':
-                    newGrowthCellHTML += "<growth-cell>{reclaim-one}<growth-text>Reclaim One</growth-text></growth-cell>";
-                    break;
+                    {
+                        newGrowthCellHTML += `${openTag}{reclaim-one}<growth-text>Reclaim One</growth-text></growth-cell>`
+                        break;
+                    }
                 case 'gain-power-card':
-                    newGrowthCellHTML += "<growth-cell>{gain-power-card}<growth-text>Gain Power Card</growth-text></growth-cell>";
-                    break;
+                    {
+                        newGrowthCellHTML += `${openTag}{gain-power-card}<growth-text>Gain Power Card</growth-text></growth-cell>`
+                        break;
+                    }
                 case 'discard-cards':
-                    newGrowthCellHTML += "<growth-cell>{discard-cards}<growth-text>Discard 2 Power Cards</growth-text></growth-cell>";
-                    break;
+                    {
+                        newGrowthCellHTML += `${openTag}{discard-cards}<growth-text>Discard 2 Power Cards</growth-text></growth-cell>`
+                        break;
+                    }
                 case 'forget-power-card':
-                    newGrowthCellHTML += "<growth-cell>{forget-power-card}<growth-text>Forget Power Card</growth-text></growth-cell>";
-                    break;
+                    {
+                        newGrowthCellHTML += `${openTag}{forget-power-card}<growth-text>Forget Power Card</growth-text></growth-cell>`
+                        break;
+                    }
                 case 'gain-card-play':
-                    newGrowthCellHTML += "<growth-cell>{gain-card-play}<growth-text>Gain a Card Play</growth-text></growth-cell>";
-                    break;
+                    {
+                        newGrowthCellHTML += `${openTag}{gain-card-play}<growth-text>Gain a Card Play</growth-text></growth-cell>`
+                        break;
+                    }
                 case 'make-fast':
-                    newGrowthCellHTML += "<growth-cell>{make-fast}<growth-text>One of your Powers may be Fast</growth-text></growth-cell>";
-                    break;
+                    {
+                        newGrowthCellHTML += `${openTag}{make-fast}<growth-text>One of your Powers may be Fast</growth-text></growth-cell>`
+                        break;
+                    }
                 case 'gain-energy':
-                    var matches = regExp.exec(classPieces[j]);
+                    {
+                        const matches = regExp.exec(classPieces[j]);
 
-                    var gainEnergyBy = matches[1];
+                        const gainEnergyBy = matches[1];
 
-                    if (!isNaN(gainEnergyBy)){
+                        if (!isNaN(gainEnergyBy)) {
                         //Gain Energy has a number in it
-                        newGrowthCellHTML += "<growth-cell><growth-energy><value>"+gainEnergyBy+"</value></growth-energy><growth-text>Gain Energy</growth-text></growth-cell>";
+                        newGrowthCellHTML += `${openTag}<growth-energy><value>` + gainEnergyBy + "</value></growth-energy><growth-text>Gain Energy</growth-text></growth-cell>"
                     } else {
                         //Gain Energy is not from a number
-                        newGrowthCellHTML += "<growth-cell><gain-per><value>1</value></gain-per><"+gainEnergyBy+"></"+gainEnergyBy+"><growth-text>Gain 1 Energy per "+gainEnergyBy.charAt(0).toUpperCase() + gainEnergyBy.slice(1)+"</growth-text></growth-cell>";
+                        newGrowthCellHTML += `${openTag}<gain-per><value>1</value></gain-per><` + gainEnergyBy + "></" + gainEnergyBy + "><growth-text>Gain 1 Energy per " + gainEnergyBy.charAt(0).toUpperCase() + gainEnergyBy.slice(1) + "</growth-text></growth-cell>"
                     }
-                    break;
-                case 'add-presence':
-                    var matches = regExp.exec(classPieces[j]);
+                        break;
+                    }
+                case 'add-presence': {
+                    const matches = regExp.exec(classPieces[j]);
 
-                    var presenceOptions = matches[1].split(",");
-                    var presenceRange = presenceOptions[0];
-                    var presenceReqOpen = "<custom-presence>";
-                    var presenceReqClose = "</custom-presence>";
-                    var presenceReq = "none";
+                    let presenceOptions = matches[1].split(",");
+                    let presenceRange = presenceOptions[0];
+                    let presenceReqOpen = "<custom-presence>";
+                    let presenceReqClose = "</custom-presence>";
+                    let presenceReq = "none";
 
-                    if(presenceOptions.length > 1){
+                    if (presenceOptions.length > 1) {
                         presenceReqOpen = "<custom-presence-req>";
                         presenceReqClose = "</custom-presence-req>";
                         presenceReq = presenceOptions[1];
                     }
 
-                    newGrowthCellHTML += "<growth-cell>"+presenceReqOpen+"+{presence}{"+presenceReq+"}{range-"+presenceRange+"}"+presenceReqClose+"<growth-text>Add a Presence</growth-text></growth-cell>";
+                    newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}{" + presenceReq + "}{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence</growth-text></growth-cell>"
                     break;
+                }
                 case 'push':
-                    var matches = regExp.exec(classPieces[j]);
-                    var pushTarget = matches[1];
-                    newGrowthCellHTML += "<growth-cell><icon class='"+growthItem+"'><icon class='"+pushTarget+"'></icon></icon><growth-text>Push "+pushTarget+"</growth-text></growth-cell>";
-                    break;    
+                    {
+                        const matches = regExp.exec(classPieces[j]);
+                        const pushTarget = matches[1];
+                        newGrowthCellHTML += `${openTag}<icon class='` + growthItem + "'><icon class='" + pushTarget + "'></icon></icon><growth-text>Push " + pushTarget + "</growth-text></growth-cell>"
+                        break;
+                    }
 
                 case 'presence-no-range':
-                    newGrowthCellHTML += "<growth-cell><custom-presence-no-range>+{presence}</custom-presence-no-range><growth-text>Add a Presence to any Land</growth-text></growth-cell>";
-                    break;
+                    {
+                        newGrowthCellHTML += `${openTag}<custom-presence-no-range>+{presence}</custom-presence-no-range><growth-text>Add a Presence to any Land</growth-text></growth-cell>`
+                        break;
+                    }
                 case 'ignore-range':
-                    newGrowthCellHTML += "<growth-cell><custom-presence>{ignore-range}</custom-presence><growth-text>You may ignore Range this turn</growth-text></growth-cell>";
-                    break;
+                    {
+                        newGrowthCellHTML += `${openTag}<custom-presence>{ignore-range}</custom-presence><growth-text>You may ignore Range this turn</growth-text></growth-cell>`
+                        break;
+                    }
                 case 'move-presence':
-                    //Additional things can be done here based on inputs
-                    var matches = regExp.exec(classPieces[j]);
+                    {        //Additional things can be done here based on inputs
+                        const matches = regExp.exec(classPieces[j]);
 
-                    var moveRange = matches[1];
-                    newGrowthCellHTML += "<growth-cell><custom-presence-special>{presence}{move-range-"+moveRange+"}<growth-text>Move a Presence</growth-text></growth-cell>";
+                        const moveRange = matches[1];
+                        newGrowthCellHTML += `${openTag}<custom-presence-special>{presence}{move-range-` + moveRange + "}<growth-text>Move a Presence</growth-text></growth-cell>"
 
-                    break;
+                        break;
+                    }
                 case 'gain-element':
-                    var matches = regExp.exec(classPieces[j]);
+                    {
+                        const matches = regExp.exec(classPieces[j]);
 
-                    var gainedElement = matches[1];
+                        const gainedElement = matches[1];
 
-                    var elementOptions = matches[1].split(",");
-                    
+                        const elementOptions = matches[1].split(",");
+
                     //Check if they want 2 elements
-                    if(elementOptions.length > 1){
-                        if(isNaN(elementOptions[1])){
+                        if (elementOptions.length > 1) {
+                            if (isNaN(elementOptions[1])) {
                             //They want different elements
-                            newGrowthCellHTML += "<growth-cell><gain>";
-                            for(var i = 0; i < elementOptions.length; i++){
-                                newGrowthCellHTML += "{"+elementOptions[i]+"}";
-                                if(i < elementOptions.length-1){
+                            newGrowthCellHTML += `${openTag}<gain>`
+                            for (var i = 0; i < elementOptions.length; i++) {
+                                newGrowthCellHTML += "{" + elementOptions[i] + "}";
+                                if (i < elementOptions.length - 1) {
                                     newGrowthCellHTML += "/";
                                 }
                             }
-                            newGrowthCellHTML += "</gain><growth-text>Gain "+gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1)+"</growth-text></growth-cell>";                            
+                            newGrowthCellHTML += "</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + "</growth-text></growth-cell>";
                         } else {
                             //They just want 2 of the same element
-                            
                         }
-                        //newGrowthCellHTML += "<growth-cell><gain>{"+elementOptions[0]+"}</gain><growth-text>Gain "+gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1)+"</growth-text></growth-cell>";
+                        //newGrowthCellHTML += `${openTag}<gain>{"+elementOptions[0]+"}</gain><growth-text>Gain "+gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1)+"</growth-text></growth-cell>`
                     } else {
-                        newGrowthCellHTML += "<growth-cell><gain>{"+gainedElement+"}</gain><growth-text>Gain "+gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1)+"</growth-text></growth-cell>";
+                        newGrowthCellHTML += `${openTag}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + "</growth-text></growth-cell>"
                     }
 
 
-                    break;
+                        break;
+                    }
                 default:
             }
         }
-        if(i != growthHTML[0].children.length - 1)
-            newGrowthCellHTML += "<growth-border></growth-border>";
-    }
-    fullHTML += growthTitle+newGrowthTableTagOpen+newGrowthCellHTML+newGrowthTableTagClose
 
-    document.getElementsByTagName("growth")[0].removeAttribute("title");
-    document.getElementsByTagName("growth")[0].innerHTML = fullHTML;
+        if (nextElement && nextElement.nodeName.toLowerCase() == 'growth-group') {
+            newGrowthCellHTML += headerIndex !== undefined
+                ? `<growth-border header="${headerIndex}"></growth-border>`
+                : "<growth-border></growth-border>";
+        }
+
+    }
 }
 
 function parseEnergyTrackTags(){
@@ -169,7 +242,7 @@ function parseEnergyTrackTags(){
         if(!isNaN(energyOptions[i])){
             //The energy option is only a number
             if(i == 0){
-                energyHTML += "<energy-track-initial><value>"+energyOptions[i]+"</value></energy-track-initial>";
+                energyHTML += "<energy-track><value>"+energyOptions[i]+"</value><subtext>1</subtext></energy-track>";
             } else {
                 energyHTML += "<energy-track><value>"+energyOptions[i]+"</value><subtext>"+energyOptions[i].charAt(0).toUpperCase() + energyOptions[i].slice(1)+"</subtext></energy-track>";
             }
@@ -213,7 +286,7 @@ function parseEnergyTrackTags(){
             }
         }
     }
-    fullHTML = '<presence-track-image></presence-track-image><energy-track-table>'+energyHTML+'</energy-track-table>';
+    fullHTML = '<energy-track-table>'+energyHTML+'</energy-track-table>';
     document.getElementsByTagName("energy-track")[0].removeAttribute("values");
     return fullHTML;
 }
@@ -233,7 +306,7 @@ function parseCardPlayTrackTags(){
         if(!isNaN(cardPlayOptions[i])){
             //The energy option is only a number
             if(i == 0){
-                cardPlayHTML += "<card-play-track-initial><card-play><value>"+cardPlayOptions[i]+"</value></card-play></card-play-track-initial>";
+                cardPlayHTML += "<card-play-track><card-play><value>"+cardPlayOptions[i]+"</value></card-play></card-play-track>";
             } else {
                 cardPlayHTML += "<card-play-track><card-play><value>"+cardPlayOptions[i]+"</value></card-play><subtext>"+cardPlayOptions[i].charAt(0).toUpperCase() + cardPlayOptions[i].slice(1)+"</subtext></card-play-track>";
             }
@@ -298,26 +371,69 @@ function dynamicCellWidth() {
     growthCells =  document.getElementsByTagName("growth-cell");
     growthCellCount = growthCells.length;
 
-    growthBorders = document.getElementsByTagName("growth-border");
+    growthBorders = Array.from(document.getElementsByTagName("growth-border"));
     growthBorderCount = growthBorders.length;
 
     /* Borders = 7px */
     /* Table width: 1050px */
 
-    borderPixels = growthBorderCount*7;
+    let borderPixels = 0;
+    for (const borderWidth of growthBorders.map(x => x.getAttribute('double') === undefined ? 7 : 11)) {
+        borderPixels += borderWidth
+    }
 
-    growthTable = document.getElementsByTagName("growth-table");
-    growthTableStyle = window.getComputedStyle(growthTable[0]);
-    growthTableWidth = growthTableStyle.getPropertyValue('width');
+    const growthTable = document.getElementsByTagName("growth-table")[0];
+    const growthTableStyle = window.getComputedStyle(growthTable);
+    const growthTableWidth = growthTableStyle.getPropertyValue('width');
 
-    remainingCellWidth = (parseInt(growthTableWidth.replace(/px/,""))-borderPixels)+"px";
-    equalCellWidth = (parseFloat(remainingCellWidth.replace(/px/,""))/growthCellCount)+"px";
+    const remainingCellWidth = (parseInt(growthTableWidth.replace(/px/, "")) - borderPixels) + "px";
+    const equalCellWidth = (parseFloat(remainingCellWidth.replace(/px/, "")) / growthCellCount) + "px";
 
     for (i = 0; i < growthCells.length; i++){
-        growthCells[i].style.maxWidth = equalCellWidth;
+        // growthCells[i].style.maxWidth = equalCellWidth;
         growthCells[i].style.width = equalCellWidth;
-
     }
+
+    const headerWith = {}
+    const headerAdditionalWidth = {}
+    let maxIndex = undefined
+    for (const c of growthTable.children) {
+        const header = parseInt(c.getAttribute('header'))
+        if (!isNaN( header )) {
+            maxIndex = header
+            const addwith = parseFloat(window.getComputedStyle(c).getPropertyValue('margin-right').replace(/px/, ""))
+                + parseFloat(window.getComputedStyle(c).getPropertyValue('margin-left').replace(/px/, ""))
+                + parseFloat(window.getComputedStyle(c).getPropertyValue('width').replace(/px/, ""))
+
+            if (headerWith[header]) {
+                headerWith[header] += addwith
+            } else {
+                headerWith[header] = addwith
+            }
+        } else if (maxIndex != undefined) {
+            const addwith = parseFloat(window.getComputedStyle(c).getPropertyValue('margin-right').replace(/px/, ""))
+                + parseFloat(window.getComputedStyle(c).getPropertyValue('margin-left').replace(/px/, ""))
+                + parseFloat(window.getComputedStyle(c).getPropertyValue('width').replace(/px/, ""))
+            if (headerAdditionalWidth[maxIndex]) {
+                headerAdditionalWidth[maxIndex] += addwith
+            } else {
+                headerAdditionalWidth[maxIndex] = addwith
+            }
+
+        }
+    }
+
+
+    const subGrowthTitle = document.getElementsByTagName('sub-section-title')
+    let position = 0
+    for (let i = 0; i < subGrowthTitle.length; i++) {
+        subGrowthTitle[i].style.left = `${position}px`
+        subGrowthTitle[i].style.width = `${headerWith[i]}px`
+        position += headerWith[i] + headerAdditionalWidth[i]
+
+        
+    }
+
 
     thresholds = document.getElementsByTagName("threshold");
     thresholdsCount = thresholds.length;
