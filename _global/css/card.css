@@ -279,13 +279,14 @@ rules-container{
 
 rules-container::after {
   content: '';
-  height: 247px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
   background-image: url('../images/card-text-overlay.png');
   background-repeat: no-repeat;
   background-position: right bottom;
-  width: 100%;
-  position: absolute;
-  margin-bottom: 42px;
+  width: 3px;
+  height: 6px;
 }
 
 rules{
