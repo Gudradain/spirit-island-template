@@ -1,6 +1,7 @@
 presence-tracks section-title {
   margin-left: 2px;
   margin-bottom: 12px;
+  padding-top: 0px;
 }
 
 energy-track-table {
@@ -337,7 +338,7 @@ presence-tracks {
   margin-left: 10px;
   
   padding-left: 50px;
-  padding-bottom: 12px;
+  padding-bottom: 30px;
   
   background-image: url('../../images/board/Presence_Without_Text.png');
   background-size: 100%;
