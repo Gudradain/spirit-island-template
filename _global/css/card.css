@@ -41,25 +41,6 @@ card.round-border{
   border-radius:22px;
 }
 
-card::after{
-  position: absolute;
-  top:25px;
-  bottom: 25px;
-  left: 25px;
-  right: 26px;
-  z-index: 2;
-  
-  border-radius: 25px;
-  
-  content: '';
-}
-card.major::after{
-  border: 2px solid #7ea4be;
-}
-card.minor::after{
-  border: 2px solid #c09766;
-}
-
 card.fast{
   background-image: url('../images/fast-card-transparent.PNG');
   background-position-y: -20px;
