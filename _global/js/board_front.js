@@ -27,21 +27,15 @@ function dynamicSpecialRuleHeight(board){
 function addImages(board) {
 
     const spiritImage = board.getAttribute('spirit-image');
-    const spiritImageX = board.getAttribute('spirit-image-x');
-    const spiritImageY = board.getAttribute('spirit-image-y');
-    const spiritImageScale = board.getAttribute('spirit-image-scale');
 
     const spiritBorder = board.getAttribute('spirit-border');
-    const spiritBorderX = board.getAttribute('spirit-border-x');
-    const spiritBorderY = board.getAttribute('spirit-border-y');
-    const spiritBorderScale = board.getAttribute('spirit-border-scale');
 
     if(spiritBorder){
         const specialRules = board.querySelectorAll('special-rules-container')[0]
-        specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder}); background-position-x: ${spiritBorderX??'center'};background-position-y: ${spiritBorderY??'center'}; background-size: ${spiritBorderScale??'100%'};" ></div>` + specialRules.innerHTML
+        specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder});" ></div>` + specialRules.innerHTML
     }
     if(spiritImage){
-        board.innerHTML = `<div class="spirit-image" style="background-image: url(${spiritImage}); background-position-x: ${spiritImageX??'center'};background-position-y: ${spiritImageY??'center'}; background-size: ${spiritImageScale??'100%'};" ></div>` + board.innerHTML
+        board.innerHTML = `<div class="spirit-image" style="background-image: url(${spiritImage});" ></div>` + board.innerHTML
     }
 }
 
