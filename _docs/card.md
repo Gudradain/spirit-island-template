@@ -1,6 +1,6 @@
 # Cards
 
-The fastest way to get started is to start from the examples in the file "_examples/card/cards.html".
+The fastest way to get started is to start from the examples in the file "_examples/card/raw-html-card-front.html".
 
 ### Custom HTML Tag
 
