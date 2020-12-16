@@ -1,17 +1,20 @@
 special-rules-container {
   background-image: url('../../images/board/Innate__Special_Rules_Without_Text.png');
-  background-repeat: no-repeat;
-  background-position: center;
+  background-repeat: repeat-y;
+  background-position: top;
   position: absolute;
   left: 18px;
-  top: 788px;
-  height: 375px;
+  top: calc(100% - 442px);
+  height: 442px;
+  padding-bottom: 15px;
+  padding-top: 48px;
   width: 665px;
   display: flex;
   flex-direction: column;
   font-family: 'JosefinSans-Regular';
   padding-left:15px;
   padding-right:15px;
+  z-index: -1;
 }
 
 special-rules-subtitle {

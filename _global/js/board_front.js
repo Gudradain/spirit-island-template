@@ -8,6 +8,20 @@ window.onload = function startMain(){
     var html = board.innerHTML;
     board.innerHTML = replaceIcon(html);
     dynamicCellWidth();
+    dynamicSpecialRuleHeight(board)
+}
+function dynamicSpecialRuleHeight(board){
+    const specialRules = board.querySelectorAll('special-rules-container')[0]
+    const height = specialRules.getAttribute('height')
+
+    const spiritName = board.querySelectorAll('spirit-name')[0]
+    if(specialRules){
+        specialRules.style.top = `calc(100% - ${height})`
+        specialRules.style.height = height
+    }
+    if(spiritName){
+        spiritName.style.top = `calc(100% - ${height})`
+    }
 }
 
 function addImages(board) {
@@ -23,7 +37,8 @@ function addImages(board) {
     const spiritBorderScale = board.getAttribute('spirit-border-scale');
 
     if(spiritBorder){
-        board.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder}); background-position-x: ${spiritBorderX??'center'};background-position-y: ${spiritBorderY??'center'}; background-size: ${spiritBorderScale??'100%'};" ></div>` + board.innerHTML
+        const specialRules = board.querySelectorAll('special-rules-container')[0]
+        specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder}); background-position-x: ${spiritBorderX??'center'};background-position-y: ${spiritBorderY??'center'}; background-size: ${spiritBorderScale??'100%'};" ></div>` + specialRules.innerHTML
     }
     if(spiritImage){
         board.innerHTML = `<div class="spirit-image" style="background-image: url(${spiritImage}); background-position-x: ${spiritImageX??'center'};background-position-y: ${spiritImageY??'center'}; background-size: ${spiritImageScale??'100%'};" ></div>` + board.innerHTML
