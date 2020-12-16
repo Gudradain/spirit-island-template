@@ -159,6 +159,7 @@ function parseEnergyTrackTags(){
     var energyHTML = "";
     
     var energyValues = document.getElementsByTagName("energy-track")[0].getAttribute("values");
+    var energyBackground = document.getElementsByTagName("energy-track")[0].getAttribute("background");
 
     var energyOptions = energyValues.split(",");
 
@@ -213,7 +214,11 @@ function parseEnergyTrackTags(){
             }
         }
     }
-    fullHTML = '<presence-track-image></presence-track-image><energy-track-table>'+energyHTML+'</energy-track-table>';
+    if (energyBackground) {
+        fullHTML = `<presence-track-image></presence-track-image><energy-track-table style="background-image: url(${energyBackground});">${energyHTML}</energy-track-table>`;
+    } else {
+        fullHTML = '<presence-track-image></presence-track-image><energy-track-table>' + energyHTML + '</energy-track-table>';
+    }
     document.getElementsByTagName("energy-track")[0].removeAttribute("values");
     return fullHTML;
 }
@@ -223,6 +228,7 @@ function parseCardPlayTrackTags(){
     var cardPlayHTML = "";
     
     var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
+    var cardPlayBackground = document.getElementsByTagName("card-play-track")[0].getAttribute("background");
 
     var cardPlayOptions = cardPlayValues.split(",");
 
@@ -285,7 +291,11 @@ function parseCardPlayTrackTags(){
             }
         }
     }
-    fullHTML = '<card-play-track-table>'+cardPlayHTML+'</card-play-track-table>';
+    if(cardPlayBackground){
+        fullHTML = `<card-play-track-table style="background-image:url(${cardPlayBackground});">${cardPlayHTML}</card-play-track-table>`;
+    }else{
+        fullHTML = '<card-play-track-table>'+cardPlayHTML+'</card-play-track-table>';
+    }
     document.getElementsByTagName("card-play-track")[0].removeAttribute("values");
     return fullHTML;
 }
