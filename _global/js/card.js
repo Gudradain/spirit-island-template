@@ -55,8 +55,6 @@ function setThreshold(card)
 
   if(threshold){
     threshold.innerHTML = `
-    <threshold-line></threshold-line>
-    <threshold-title>IF YOU HAVE</threshold-title>
     <threshold-condition>
       ${getThresholdElements(threshold)}:
     </threshold-condition>
