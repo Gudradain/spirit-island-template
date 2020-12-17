@@ -1,6 +1,6 @@
 # Quick-Cards
 
-The fastest way to get started is to start from the examples in the file "_examples/card/quick-cards.html".
+The fastest way to get started is to start from the examples in the file "_examples/card/card-front.html".
 
 ### How does it work?
 
