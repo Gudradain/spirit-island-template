@@ -31,10 +31,17 @@
       </special-rule>
     </special-rules-container>
 
-    <growth title="Growth (PICK ONE)">
-      <growth-group values="reclaim-one;gain-power-card;gain-energy(3)"></growth-group>
-      <growth-group values="add-presence(2,ocean);gain-element(fire)"></growth-group>
-      <growth-group cost="3" values="move-presence(4);reclaim-one;add-presence(3,mountain-jungle)"></growth-group>
+    <right>
+
+      <growth title="Growth">
+        <sub-growth title="pick one of:" bordered>
+        <growth-group values="reclaim-one;gain-power-card"></growth-group>
+        <growth-group values="gain-power-card;gain-energy(3)"></growth-group>
+      </sub-growth>
+      <sub-growth title="and one of:">
+        <growth-group values="add-presence(2,ocean);gain-element(fire)"></growth-group>
+        <growth-group cost="3" values="move-presence(4);add-presence(3,mountain-jungle)"></growth-group>
+      </sub-growth>
     </growth>
 
     <presence-tracks>
@@ -61,12 +68,12 @@
         </level>
       </quick-innate-power>
       <quick-innate-power
-        name="explosion2"
-        speed="slow"
-        range="none"
-        target="{blight}"
-        target-title="TARGET">
-        <level threshold="1-plant">
+      name="explosion2"
+      speed="slow"
+      range="none"
+      target="{blight}"
+      target-title="TARGET">
+      <level threshold="1-plant">
           1 Damage per 2 {fire} you have.
         </level>
         <level threshold="3-plant">
@@ -80,8 +87,8 @@
         </level>
       </quick-innate-power>
     </innate-powers>
+  </right>
   </board>
-
 </body>
 
 </html>

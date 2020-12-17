@@ -1,40 +1,40 @@
 innate-powers {
-  position: absolute;
-  top: 663px;
-  left: 682px;
+  display: block;
+  margin-left: 22px;
   background-image: url('../../images/board/Innate_Without_Text.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  position: absolute;
-  width: 1066px;
-  height: 500px;
+  background-position: bottom;
+}
+innate-powers::after {
+  content: '';
+  background-image: url('../../images/board/Innate_Without_Text.png');
+  background-position: top;
+  display: block;
+  height: 9000px;
 }
 
-innate-powers section-title{ 
-  margin-left:25px;
+innate-powers section-title {
+  margin-left: 25px;
+  padding-top: 0px;
 }
 
 innate-power-container{
-  display:block;
+  display:flex;
   position:relative;
   margin-left:25px;
-  margin-top:15px;
+  margin-top:8px;
 }
 
-innate-power:nth-child(1) {
-  position: absolute;
-  left: 0px;
-  top: 0px
-}
-
-innate-power:nth-child(2) {
-  position: absolute;
-  left: 505px;
-  top: 0px
+innate-power {
+  display: inline-block;
+  flex-shrink: 1;
+  flex-grow: 1;
 }
 
 innate-power:only-child level {
+  width: 1000px !important;
+}
+
+innate-power:only-child note {
   width: 1000px !important;
 }
 
