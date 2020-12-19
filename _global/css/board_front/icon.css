@@ -266,12 +266,6 @@ icon.blight {
   margin-top: 10px;
 }
 
-icon.no-blight {
-  background-image: url('../../images/board/75px_no_blight.png');
-  margin-bottom: -7px;
-  margin-top: 10px;
-}
-
 icon.dahan {
   background-image: url('../../images/board/50px_dahan.png');
   height: 30px;
