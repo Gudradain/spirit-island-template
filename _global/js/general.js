@@ -9,7 +9,7 @@ function replaceIcon(html)
     var iconName = match.replace('{', '').replace('}', '');
     let iconHtml
     if(iconName.startsWith('no-')){
-        iconHtml = `<icon class="${iconName.substring(3)}"><icon class="no"></icon></icon>`;
+        iconHtml = `<icon class="no"><icon class="${iconName.substring(3)}"></icon></icon>`;
     }else{
         iconHtml = `<icon class="${iconName}"></icon>`;
     }
