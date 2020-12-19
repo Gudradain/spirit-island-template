@@ -90,6 +90,10 @@ icon.mountain-sand{background-image: url('../images/50px-mountain-sand.png'); }
 icon.mountain-wetland{background-image: url('../images/50px-mountain-wetland.png'); }
 icon.sand-wetland{background-image: url('../images/50px-sand-wetland.png'); }
 
+icon.terror-1{background-image: url('../images/terror-1.png'); padding: 5px; margin-bottom: -8px; }
+icon.terror-2{background-image: url('../images/terror-2.png'); padding: 5px; margin-bottom: -8px; }
+icon.terror-3{background-image: url('../images/terror-3.png'); padding: 5px; margin-bottom: -8px; }
+
 range{
   width:50px;
   height:32px;
