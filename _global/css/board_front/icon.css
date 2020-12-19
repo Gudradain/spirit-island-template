@@ -9,16 +9,6 @@ icon{
   margin-bottom: -4px;
 }
 
-icon>icon.no {
-  background-image: url('../../images/board/no.png');
-  background-position: center center;
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-}
-
 icon.any { background-image: url('../../images/board/Any.png'); }
 icon.fire { background-image: url('../../images/board/Fire.png'); }
 icon.water { background-image: url('../../images/board/Water.png'); }
