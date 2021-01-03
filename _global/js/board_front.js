@@ -3,9 +3,46 @@ window.onload = function startMain(){
     parseGrowthTags();
     setNewEnergyCardPlayTracks(parseEnergyTrackTags(), parseCardPlayTrackTags());
     parseInnatePowers();
-    var html = document.querySelectorAll('board')[0].innerHTML;
-    document.querySelectorAll('board')[0].innerHTML = replaceIcon(html);
+    const board = document.querySelectorAll('board')[0];
+    addImages(board)
+    var html = board.innerHTML;
+    board.innerHTML = replaceIcon(html);
     dynamicCellWidth();
+    dynamicSpecialRuleHeight(board)
+}
+function dynamicSpecialRuleHeight(board){
+    const specialRules = board.querySelectorAll('special-rules-container')[0]
+    let height = specialRules.getAttribute('height')
+
+    if(!height){
+        const computedStyle = window.getComputedStyle(specialRules)
+        height = computedStyle.getPropertyValue('height')
+    }
+
+
+    const spiritName = board.querySelectorAll('spirit-name')[0]
+    if(specialRules){
+        specialRules.style.top = `calc(100% - ${height})`
+        specialRules.style.height = height
+    }
+    if(spiritName){
+        spiritName.style.top = `calc(100% - ${height})`
+    }
+}
+
+function addImages(board) {
+
+    const spiritImage = board.getAttribute('spirit-image');
+
+    const spiritBorder = board.getAttribute('spirit-border');
+
+    if(spiritBorder){
+        const specialRules = board.querySelectorAll('special-rules-container')[0]
+        specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder});" ></div>` + specialRules.innerHTML
+    }
+    if(spiritImage){
+        board.innerHTML = `<div class="spirit-image" style="background-image: url(${spiritImage});" ></div>` + board.innerHTML
+    }
 }
 
 function parseGrowthTags(){

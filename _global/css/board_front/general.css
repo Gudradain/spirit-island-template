@@ -48,9 +48,11 @@ board.round-border {
 
 spirit-name {
   position: absolute;
+  display: flex;
+  align-items: center;
   left: 45px;
   top: 734px;
-  height: 22.67px;
+  height: 0px;
   width: 666.25px;
   font-size:40px;
   font-family: 'DK Snemand';
@@ -61,16 +63,18 @@ spirit-name {
   text-align: left;
   z-index: 1;
   white-space: normal;
-  margin-top:-10px;
 }
 
 .spirit-border {
   position: absolute;
-  left: 17.9px;
-  top: 712.55px;
-  height: 75.6px;
-  width: 665px;
+  left: 0px;
+  top: -50%;
+  height: 100%;
+  width: 100%;
   z-index: 1;
+  background-repeat: no-repeat;
+  background-position: left center;
+  /* background-color: teal; */
 }
 
 .spirit-image {
@@ -78,8 +82,9 @@ spirit-name {
   left: 16.5px;
   top: 17.75px;
   width: 667.5px;
-  height: 737px;
+  height: calc(100% - (17.75px * 2));
   z-index: -1;
+  background-repeat: no-repeat;
 }
 
 #single-line {
