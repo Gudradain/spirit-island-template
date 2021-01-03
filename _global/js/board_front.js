@@ -12,7 +12,13 @@ window.onload = function startMain(){
 }
 function dynamicSpecialRuleHeight(board){
     const specialRules = board.querySelectorAll('special-rules-container')[0]
-    const height = specialRules.getAttribute('height')
+    let height = specialRules.getAttribute('height')
+
+    if(!height){
+        const computedStyle = window.getComputedStyle(specialRules)
+        height = computedStyle.getPropertyValue('height')
+    }
+
 
     const spiritName = board.querySelectorAll('spirit-name')[0]
     if(specialRules){

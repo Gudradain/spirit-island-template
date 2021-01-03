@@ -4,8 +4,7 @@ special-rules-container {
   background-position: top;
   position: absolute;
   left: 18px;
-  top: calc(100% - 442px);
-  height: 442px;
+  min-height: 250px; 
   padding-bottom: 15px;
   padding-top: 48px;
   width: 665px;
