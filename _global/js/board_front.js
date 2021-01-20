@@ -504,93 +504,88 @@ function parseInnatePowers(){
     var innateHTML = document.getElementsByTagName("quick-innate-power");
 
     for(i = 0; i < innateHTML.length; i++){
-        var innatePowerHTML = innateHTML[i];
-        
-        var currentPowerHTML = "<innate-power class='"+innatePowerHTML.getAttribute("speed")+"'>";
-        
-        //Innater Power title
-        currentPowerHTML += "<innate-power-title>"+innatePowerHTML.getAttribute("name")+"</innate-power-title><info-container><info-title>";
-        
-        //Innate Power Speed and Range Header
-        currentPowerHTML += "<info-title-speed>SPEED</info-title-speed><info-title-range>RANGE</info-title-range>";
-        
-        //Innate Power Target Header
-        currentPowerHTML += "<info-title-target>"+innatePowerHTML.getAttribute("target-title")+"</info-title-target></info-title><innate-info>";
-        
-        //Innater Power Speed value
-        currentPowerHTML += "<innate-info-speed></innate-info-speed>";
-        
-        //Innate Power Range value
-        currentPowerHTML += `<innate-info-range>${getRangeModel(innatePowerHTML.getAttribute("range"))}</innate-info-range>`;
-
-        function getRangeModel(rangeString)
-        {
-          if(rangeString === "none"){
-            return "<no-range></no-range>";
-          }else {
-            var result = '';
-            for(var item of rangeString.split(',')){
-              if(!isNaN(item)){
-                result += `<range>${item}</range>`;
-              }
-              else
-              {
-                result += `<icon class="${item}"></icon>`;
-              }
-            }
-            return result;
-          }
-        }
-        
-        //Innate Power Target value
-        var targetValue = innatePowerHTML.getAttribute("target");
-        currentPowerHTML += `<innate-info-target>${replaceIcon(targetValue)}</innate-info-target></innate-info></info-container>`;
-        
-        /*console.log(targetValue);
-        var specialLandsList = ["any", "coastal", "invaders", "inland"];
-
-        if(specialLandsList.includes(targetValue.toLowerCase())){
-            targetValue = targetValue.toUpperCase();
-            currentPowerHTML += "<innate-info-target>"+targetValue+"</innate-info-target></innate-info></info-container>";
-        } else {
-            currentPowerHTML += "<innate-info-target>{"+targetValue+"}</innate-info-target></innate-info></info-container>";
-        }*/
-
-        if(innateHTML.length == 1){
-            currentPowerHTML += "<description-container style='width:1000px !important'>";            
-        } else {
-            currentPowerHTML += "<description-container>";
-        }
-        
-        var noteValue = innatePowerHTML.getAttribute("note");
-
-        //If the note field is blank
-        if(noteValue == null){
-            noteValue = "";
-        }
-
-        currentPowerHTML += "<note>" + noteValue + "</note>";
-
-        //Innate Power Levels and Thresholds
-        var currentLevels = innatePowerHTML.getElementsByTagName("level");
-        for (j = 0; j < currentLevels.length; j++){
-            var currentThreshold = currentLevels[j].getAttribute("threshold");
-            var currentThresholdPieces = currentThreshold.split(",");
-            if(innateHTML.length == 1){
-                currentPowerHTML += "<level style='display:block !important; width:1000px !important'><threshold>";
-            } else {
-                currentPowerHTML += "<level><threshold>";
-            }
-            for (k = 0; k < currentThresholdPieces.length; k++){
-                currentThresholdPieces[k] = currentThresholdPieces[k].replace("-","{");
-                currentThresholdPieces[k] += "}";
-                currentPowerHTML += currentThresholdPieces[k];
-            }
-            currentPowerHTML += "</threshold><div class='description'>";
-            var currentDescription = currentLevels[j].innerHTML;
-            currentPowerHTML += currentDescription+"</div></level>";
-        }
-        fullHTML += currentPowerHTML+"</description-container></innate-power>";
+        fullHTML += parseInnatePower(innateHTML[i]);
     }
     document.getElementsByTagName("innate-powers")[0].innerHTML = '<section-title>Innnate Powers</section-title><innate-power-container>'+fullHTML+'</innate-power-container>';
+}
+
+function parseInnatePower(innatePowerHTML){
+    var currentPowerHTML = "<innate-power class='"+innatePowerHTML.getAttribute("speed")+"'>";
+    
+    //Innater Power title
+    currentPowerHTML += "<innate-power-title>"+innatePowerHTML.getAttribute("name")+"</innate-power-title><info-container><info-title>";
+    
+    //Innate Power Speed and Range Header
+    currentPowerHTML += "<info-title-speed>SPEED</info-title-speed><info-title-range>RANGE</info-title-range>";
+    
+    //Innate Power Target Header
+    currentPowerHTML += "<info-title-target>"+innatePowerHTML.getAttribute("target-title")+"</info-title-target></info-title><innate-info>";
+    
+    //Innater Power Speed value
+    currentPowerHTML += "<innate-info-speed></innate-info-speed>";
+    
+    //Innate Power Range value
+    currentPowerHTML += `<innate-info-range>${getRangeModel(innatePowerHTML.getAttribute("range"))}</innate-info-range>`;
+
+    function getRangeModel(rangeString)
+    {
+      if(rangeString === "none"){
+        return "<no-range></no-range>";
+      }else {
+        var result = '';
+        for(var item of rangeString.split(',')){
+          if(!isNaN(item)){
+            result += `<range>${item}</range>`;
+          }
+          else
+          {
+            result += `<icon class="${item}"></icon>`;
+          }
+        }
+        return result;
+      }
+    }
+    
+    //Innate Power Target value
+    var targetValue = innatePowerHTML.getAttribute("target");
+    currentPowerHTML += `<innate-info-target>${replaceIcon(targetValue)}</innate-info-target></innate-info></info-container>`;
+    
+    /*console.log(targetValue);
+    var specialLandsList = ["any", "coastal", "invaders", "inland"];
+
+    if(specialLandsList.includes(targetValue.toLowerCase())){
+        targetValue = targetValue.toUpperCase();
+        currentPowerHTML += "<innate-info-target>"+targetValue+"</innate-info-target></innate-info></info-container>";
+    } else {
+        currentPowerHTML += "<innate-info-target>{"+targetValue+"}</innate-info-target></innate-info></info-container>";
+    }*/
+
+    currentPowerHTML += "<description-container>";
+    
+    var noteValue = innatePowerHTML.getAttribute("note");
+
+    //If the note field is blank
+    if(noteValue == null){
+        noteValue = "";
+    }
+
+    currentPowerHTML += "<note>" + noteValue + "</note>";
+
+    //Innate Power Levels and Thresholds
+    var currentLevels = innatePowerHTML.getElementsByTagName("level");
+    for (j = 0; j < currentLevels.length; j++){
+        var currentThreshold = currentLevels[j].getAttribute("threshold");
+        var currentThresholdPieces = currentThreshold.split(",");
+        currentPowerHTML += "<level><threshold>";
+        for (k = 0; k < currentThresholdPieces.length; k++){
+            currentThresholdPieces[k] = currentThresholdPieces[k].replace("-","{");
+            currentThresholdPieces[k] += "}";
+            currentPowerHTML += currentThresholdPieces[k];
+        }
+        currentPowerHTML += "</threshold><div class='description'>";
+        var currentDescription = currentLevels[j].innerHTML;
+        currentPowerHTML += currentDescription+"</div></level>";
+    }
+    currentPowerHTML += "</description-container></innate-power>";
+    return currentPowerHTML;
 }
