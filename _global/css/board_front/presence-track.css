@@ -10,7 +10,7 @@ energy-track-table {
   margin-left: -31px;
 }
 
-energy-track:first-of-type {
+energy-track.first {
   background-image: url('../../images/board/EnergyInitialBlank.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -20,7 +20,7 @@ energy-track:first-of-type {
   margin-right: -30px;
 }
 
-card-play-track:first-of-type {
+card-play-track.first {
   background-image: url('../../images/board/CardPlayInitialBlank.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -192,6 +192,10 @@ energy-track:first-of-type subtext {
   opacity: 0;
 }
 
+card-play-track:first-of-type subtext {
+  opacity: 0;
+}
+
 card-play-track:first-of-type card-play {
   background-image: url('../../images/board/CardPlayBlank.png');
   background-repeat: no-repeat;
@@ -217,8 +221,6 @@ card-play value {
   font-family: 'Gobold Extra2';
   font-size: 36pt;
   display: inline-block;
-  margin-left: 12px;
-  margin-top: 7px;
 }
 
 card-play-top value {
