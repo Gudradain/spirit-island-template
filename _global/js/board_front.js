@@ -397,9 +397,9 @@ function getPresenceNodeHtml(nodeText, first, trackType) {
                         "<ring-icon>{move-presence-"+moveRange+"}</ring-icon>" +
                         "<subtext>Move a Presence "+moveRange+"</subtext></presence-node>";
 					break;
-                case 'element':                    
-					var matches = regExp.exec(splitOptions[0]);
-					var elementName = matches[1];
+                default:
+                    // element
+					var elementName = splitOptions[0];
                     result = "<presence-node>" +
                         "<ring-icon><icon class='"+elementName+"'></icon></ring-icon>" +
                         "<subtext>" + Capitalise(elementName) + "</subtext></presence-node>";
