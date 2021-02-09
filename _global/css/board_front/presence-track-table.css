@@ -5,6 +5,7 @@ presence-tracks table {
 
 presence-node {
   display: inline-table;
+  width: 138px;
 }
 
 subtext {
@@ -34,10 +35,6 @@ presence-node ring-icon {
   background-image: url('../../images/board/CardPlayRing.png');
 }
 
-presence-node.first subtext {
-  font-size: 12pt;
-}
-
 presence-node card-icon {
   background-image: url('../../images/board/CardPlayBlank.png');
   background-repeat: no-repeat;
@@ -47,6 +44,10 @@ presence-node card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+card-icon.small {
+  margin-left: 8px;
+  margin-right: 20px;
 }
 
 presence-node energy-icon {
@@ -59,9 +60,29 @@ presence-node energy-icon {
   align-items: center;
   justify-content: center;
 }
+energy-icon.small {
+  height: 90px;
+  width: 90px;  
+}
 
 presence-node value {
   font-family: 'Gobold Extra2';
   font-size: 36pt;
   display: inline-block;
+}
+
+.small value {
+  font-size: 28pt;
+}
+
+presence-node icon {
+  width: 65px;
+  height: 65px;
+}
+
+icon-top {
+  transform: translateY(-20px) translateX(14px);
+}
+icon-bottom {
+  transform: translateY(20px) translateX(-20px);
 }

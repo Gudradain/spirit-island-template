@@ -332,16 +332,10 @@ function getPresenceNodeHtml(nodeText, first, trackType) {
     //Find values between parenthesis
     var regExp = /\(([^)]+)\)/;    
 
-    var elementName = '';
-    var altElementName = '';
-    var extraElementName = '';
-    var extraElementName2 = '';
     var nodeClass = '';
     var subText = '';
 
     if(trackType == 'dynamic'){
-        elementName = 'presence-node'
-
         if(nodeText.startsWith("energy")) {
             nodeText = nodeText.substr(6);
             nodeClass = 'energy';
@@ -356,30 +350,22 @@ function getPresenceNodeHtml(nodeText, first, trackType) {
 	else if(trackType == 'energy'){
         nodeClass = 'energy';
         subText = 'Energy/Turn';
-        elementName = 'energy-track';
-        altElementName = 'energy-track-ring';
-        extraElementName = '';
-        extraElementName2 = 'card-play';
     }
 	else if(trackType == 'card'){
         nodeClass = 'card';
         subText = 'Card Plays';
-		elementName = 'card-play-track';
-		altElementName = 'card-play-track';
-		extraElementName = 'card-play';
-		extraElementName2 = 'card-play';
 	}
 	
 	if(!isNaN(nodeText)){
 		//The value is only a number
 		if(first === true){
-			result = "<presence-node class='first " + nodeClass + "'>" +
+			result = "<presence-node class='first'>" +
                 "<ring-icon><" + nodeClass + "-icon><value>" + nodeText + "</value></" + nodeClass + "-icon></ring-icon>" +
                 "<subtext>" + subText + "</subtext></presence-node>";
 		} else {
-			result = "<presence-node class='" + nodeClass + "'>" +
+			result = "<presence-node>" +
                 "<ring-icon><" + nodeClass + "-icon><value>" + nodeText + "</value></" + nodeClass + "-icon></ring-icon>" +
-                "<subtext>" + nodeText.charAt(0).toUpperCase() + nodeText.slice(1) + "</subtext></presence-node>";
+                "<subtext>" + nodeText + "</subtext></presence-node>";
 		}
 	} else {
 		//It is either a single element or a mix of elements/numbers
@@ -387,72 +373,77 @@ function getPresenceNodeHtml(nodeText, first, trackType) {
 
 		if(splitOptions.length == 1){
 			//It's just a single item
-			var cardPlayOption = splitOptions[0].split("(")[0];
-			switch(cardPlayOption){
+			var option = splitOptions[0].split("(")[0];
+			switch(option){
 				case 'reclaim-one':
-					result = "<" + altElementName + ">";
-					if(extraElementName != '') { result += "<" + extraElementName + "-special>"; }
-					result += "{"+splitOptions[0]+"}";					
-					if(extraElementName != '') { result += "</" + extraElementName + "-special>"; }
-					result += "<subtext>Reclaim One</subtext></" + altElementName + ">";
+                    result = "<presence-node>" +
+                        "<ring-icon>{reclaim-one}</ring-icon><subtext>Reclaim One</subtext></presence-node>";
 					break;
 				case 'forget-power-card':
-					result = "<" + altElementName + ">";					
-					if(extraElementName != '') { result += "<" + extraElementName + "-special>"; }
-					result += "{"+splitOptions[0]+"}";					
-					if(extraElementName != '') { result += "</" + extraElementName + "-special>"; }
-					result += "<subtext>Forget Power</subtext></" + altElementName + ">";
+                    result = "<presence-node>" +
+                        "<ring-icon>{forget-power-card}</ring-icon><subtext>Forget Power</subtext></presence-node>";
 					break;    
 				case 'push':
 					var matches = regExp.exec(splitOptions[0]);
 					var pushTarget = matches[1];
-					result = "<" + elementName + "><" + extraElementName2 + "-special><icon class='"+cardPlayOption+"'><icon class='"+pushTarget+"'></icon></icon></" + extraElementName2 + "-special><subtext>Push "+pushTarget+"</subtext></" + elementName + ">";
+                    result = "<presence-node>" +
+                        "<ring-icon><icon class='push'><icon class='"+pushTarget+"'></icon></icon></ring-icon>" +
+                        "<subtext>Push "+Capitalise(pushTarget)+"</subtext></presence-node>";
 					break;    
 				case 'move-presence':
 					var matches = regExp.exec(splitOptions[0]);
 					var moveRange = matches[1];
-					result = "<" + elementName + "><" + extraElementName2 + "-special>{"+cardPlayOption+"-"+moveRange+"}</" + extraElementName2 + "-special><subtext>Move a Presence "+moveRange+"</subtext></" + elementName + ">";
+                    result = "<presence-node>" +
+                        "<ring-icon>{move-presence-"+moveRange+"}</ring-icon>" +
+                        "<subtext>Move a Presence "+moveRange+"</subtext></presence-node>";
 					break;
-				default:
-					if(trackType == 'card') {
-						result = "<card-play-track><card-play-special><icon class='"+splitOptions[0]+"'></icon></card-play-special><subtext>"+splitOptions[0].charAt(0).toUpperCase() + splitOptions[0].slice(1)+"</subtext></card-play-track>";
-					} else if (trackType == 'energy') {						
-						result = "<energy-track>{"+splitOptions[0]+"}<subtext>"+splitOptions[0].charAt(0).toUpperCase() + splitOptions[0].slice(1)+"</subtext></energy-track>";
-					}
+                case 'element':                    
+					var matches = regExp.exec(splitOptions[0]);
+					var elementName = matches[1];
+                    result = "<presence-node>" +
+                        "<ring-icon><icon class='"+elementName+"'></icon></ring-icon>" +
+                        "<subtext>" + Capitalise(elementName) + "</subtext></presence-node>";
 					break;
 			}
 		} else {
-			if(trackType == 'card') {
-				//Multiple items
-				if(!isNaN(splitOptions[0])){
-					//It's a mix of card play and element
-					var subText = splitOptions[1].charAt(0).toUpperCase() + splitOptions[1].slice(1);
-					if(splitOptions[1] == 'reclaim-one'){
-						subText = "Reclaim One";
-					}
-					result = "<card-play-track><card-play-top><value>"+splitOptions[0]+"</value></card-play-top><element-bottom><icon class='"+splitOptions[1]+"'></icon></element-bottom><subtext>"+splitOptions[0]+", "+subText+"</subtext></card-play-track>";
-				} else {
-					//It's a mix of elements and potentially something else
-					var subText = splitOptions[1].charAt(0).toUpperCase() + splitOptions[1].slice(1);
-					if(splitOptions[1] == 'reclaim-one'){
-						subText = "Reclaim One";
-					}
-					result = "<card-play-track><element-combination><element-top><icon class='"+splitOptions[0]+"'></icon></element-top><element-bottom><icon class='"+splitOptions[1]+"'></icon></element-bottom></element-combination><subtext>"+splitOptions[0].charAt(0).toUpperCase() + splitOptions[0].slice(1)+", "+subText+"</subtext></card-play-track>";
-				}
-			} else if (trackType == 'energy') {					
-				//It's a mix of things
-				if(!isNaN(splitOptions[0])){
-					//It's a mix of energy and element
-					result = "<energy-track-ring><energy-top><value>"+splitOptions[0]+"</value></energy-top><element-bottom><icon class='"+splitOptions[1]+"'></icon></element-bottom><subtext>"+splitOptions[0]+", "+splitOptions[1].charAt(0).toUpperCase() + splitOptions[1].slice(1)+"</subtext></energy-track-ring>";
-				} else {
-					//It's a mix of elements
-					result = "<energy-track><element-combination><element-top><icon class='"+splitOptions[0]+"'></icon></element-top><element-bottom><icon class='"+splitOptions[1]+"'></icon></element-bottom></element-combination><subtext>"+splitOptions[0].charAt(0).toUpperCase() + splitOptions[0].slice(1)+", "+splitOptions[1].charAt(0).toUpperCase() + splitOptions[1].slice(1)+"</subtext></energy-track>";
-				}
-			}
+            splitOptions.forEach(function(part, index) {
+                if(part.startsWith("energy")) {
+                    this[index] = nodeText.substr(6);
+                    nodeClass = 'energy';
+                } else if(part.startsWith("card")) {
+                    this[index] = nodeText.substr(4);
+                    nodeClass = 'card';
+                }
+            }, splitOptions);
+
+            var subText = Capitalise(splitOptions[1]);
+            if(splitOptions[1] == 'reclaim-one'){
+                subText = "Reclaim One";
+            }
+            subText = Capitalise(splitOptions[0])+", "+subText;
+
+            var top = "";
+            var bottom = "<icon class='"+splitOptions[1]+"'></icon>";
+            if(!isNaN(splitOptions[0])){
+                top = "<" + nodeClass + "-icon class='small'><value>" + splitOptions[0] + "</value></" + nodeClass + "-icon>";
+            } else {
+                top = "<icon class='"+splitOptions[0]+"'></icon>";
+            }
+
+            result = "<presence-node>" +
+                "<ring-icon>" +
+                "<icon-top>"+top+"</icon-top>" +
+                "<icon-bottom>"+bottom+"<icon-bottom>" +
+                "</ring-icon>" +
+                "<subtext>"+subText+"</subtext></presence-node>";
 		}
 	}
 	
 	return result;
+}
+
+function Capitalise(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 function setNewEnergyCardPlayTracks(energyHTML, cardPlayHTML){
