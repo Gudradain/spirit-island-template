@@ -320,7 +320,16 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
     var regExp = /\(([^)]+)\)/;    
 
     var nodeClass = '';
+
+    // Every node will have a presence-node element with
+    // a ring-icon element inside, so we can add these now.
+    presenceNode = document.createElement("presence-node");    
+    ring = document.createElement("ring-icon");
+    presenceNode.appendChild(ring);
+    // Will be populated with the sub text that will be added at the end
     var subText = '';
+    // Will be populated with the raw HTML that will go inside the ring-icon element.
+    var inner = "";
 
     if(trackType == 'dynamic'){
         if(nodeText.startsWith("energy")) {
@@ -342,18 +351,17 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
         nodeClass = 'card';
         subText = 'Card Plays';
 	}
+
 	
 	if(!isNaN(nodeText)){
 		//The value is only a number
+        addEnergyRing = false;
 		if(first === true){
-			result = "<presence-node class='first'>" +
-                "<ring-icon><" + nodeClass + "-icon><value>" + nodeText + "</value></" + nodeClass + "-icon></ring-icon>" +
-                "<subtext>" + subText + "</subtext></presence-node>";
+            presenceNode.classList.add("first");
 		} else {
-			result = "<presence-node>" +
-                "<ring-icon><" + nodeClass + "-icon><value>" + nodeText + "</value></" + nodeClass + "-icon></ring-icon>" +
-                "<subtext>" + nodeText + "</subtext></presence-node>";
+            subText = nodeText;
 		}
+        inner = "<" + nodeClass + "-icon><value>" + nodeText + "</value></" + nodeClass + "-icon>";
 	} else {
 		//It is either a single element or a mix of elements/numbers
 		var splitOptions = nodeText.split("+");
@@ -363,45 +371,32 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 			var option = splitOptions[0].split("(")[0];
 			switch(option){
 				case 'reclaim-one':
-                    var inner = "{reclaim-one}";
-                    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
-                    result = "<presence-node>" +
-                        "<ring-icon>"+inner+"</ring-icon><subtext>Reclaim One</subtext></presence-node>";
+                    inner = "{reclaim-one}";
+                    subText = "Reclaim One";
 					break;
 				case 'forget-power-card':
-                    var inner = "{forget-power-card}";
-                    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
-                    result = "<presence-node>" +
-                        "<ring-icon>"+inner+"</ring-icon><subtext>Forget Power</subtext></presence-node>";
+                    inner = "{forget-power-card}";
+                    subText = "Forget Power";
 					break;    
 				case 'push':
 					var matches = regExp.exec(splitOptions[0]);
 					var pushTarget = matches[1];
-                    var inner = "<icon class='push'><icon class='"+pushTarget+"'></icon></icon>";
-                    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
-                    result = "<presence-node>" +
-                        "<ring-icon>"+inner+"</ring-icon>" +
-                        "<subtext>Push "+Capitalise(pushTarget)+"</subtext></presence-node>";
+                    inner = "<icon class='push'><icon class='"+pushTarget+"'></icon></icon>";
+                    subText = "Push "+Capitalise(pushTarget);
 					break;    
 				case 'move-presence':
 					var matches = regExp.exec(splitOptions[0]);
 					var moveRange = matches[1];
-                    var inner = "{move-presence-"+moveRange+"}";
-                    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
-                    result = "<presence-node>" +
-                        "<ring-icon>"+inner+"</ring-icon>" +
-                        "<subtext>Move a Presence "+moveRange+"</subtext></presence-node>";
+                    inner = "{move-presence-"+moveRange+"}";
+                    subText = "Move a Presence "+moveRange;
 					break;
                 default:
                     // element
 					var elementName = splitOptions[0];
-                    var inner = "<icon class='"+elementName+"'></icon>";
-                    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
-                    result = "<presence-node>" +
-                        "<ring-icon>"+inner+"</ring-icon>" +
-                        "<subtext>" + Capitalise(elementName) + "</subtext></presence-node>";
-					break;
-			}
+                    inner = "<icon class='"+elementName+"'></icon>";
+                    subText = Capitalise(elementName);
+					break;                
+			}            
 		} else {
             splitOptions.forEach(function(part, index) {
                 if(part.startsWith("energy")) {
@@ -411,8 +406,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     this[index] = nodeText.substr(4);
                     nodeClass = 'card';
                 }
-            }, splitOptions);
-            
+            }, splitOptions);            
 
             var subText = Capitalise(splitOptions[1]);
             if(splitOptions[1] == 'reclaim-one'){
@@ -434,15 +428,14 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 
             var inner = "<icon-top>"+top+"</icon-top>" +
                 "<icon-bottom>"+bottom+"<icon-bottom>";
-            if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
-
-            result = "<presence-node>" +
-                "<ring-icon>"+inner+"</ring-icon>" +
-                "<subtext>"+subText+"</subtext></presence-node>";
 		}
 	}
+        
+    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
+    ring.innerHTML = inner;
+    presenceNode.innerHTML += "<subtext>" + subText + "</subtext>";
 	
-	return result;
+	return presenceNode.outerHTML;
 }
 
 function Capitalise(str){
