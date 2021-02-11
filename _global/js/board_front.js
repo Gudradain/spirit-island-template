@@ -269,37 +269,34 @@ function parseGrowthTags(){
 }
 
 function parseEnergyTrackTags(){
-    var fullHTML = "";
-    var energyHTML = "";
+    var energyHTML = "<tr>";
     
     var energyValues = document.getElementsByTagName("energy-track")[0].getAttribute("values");
 
     var energyOptions = energyValues.split(",");
 
     for(i = 0; i < energyOptions.length; i++){
-		energyHTML += getPresenceNodeHtml(energyOptions[i], i == 0, 'energy');
+		energyHTML += "<td>"+getPresenceNodeHtml(energyOptions[i], i == 0, "energy", true)+"</td>";
     }
-    fullHTML = '<energy-track-table>'+energyHTML+'</energy-track-table>';
+    energyHTML += "</tr>"
     document.getElementsByTagName("energy-track")[0].removeAttribute("values");
-    return fullHTML;
+    return energyHTML;
 	
 }
 
 function parseCardPlayTrackTags(){	
-    var fullHTML = "";
-    var cardPlayHTML = "";
+    var cardPlayHTML = "<tr>";
     
     var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
 
     var cardPlayOptions = cardPlayValues.split(",");
 
     for(i = 0; i < cardPlayOptions.length; i++){
-		cardPlayHTML += getPresenceNodeHtml(cardPlayOptions[i], i == 0, 'card');
+		cardPlayHTML += "<td>"+getPresenceNodeHtml(cardPlayOptions[i], i == 0, "card", false)+"</td>";
     }
-    fullHTML = '<card-play-track-table>'+cardPlayHTML+'</card-play-track-table>';
+    cardPlayHTML += "</tr>"    
     document.getElementsByTagName("card-play-track")[0].removeAttribute("values");
-    return fullHTML;
-	
+    return cardPlayHTML;	
 }
 
 function enhancePresenceTracksTable() {
@@ -311,22 +308,12 @@ function enhancePresenceTracksTable() {
 	var table = document.getElementById("presence-table");
 	for (var i = 0, row; row = table.rows[i]; i++) {
 	   for (var j = 0, cell; cell = row.cells[j]; j++) {
-        cell.innerHTML = getPresenceNodeHtml(cell.firstChild.nodeValue, j == 0, 'dynamic');
+        cell.innerHTML = getPresenceNodeHtml(cell.firstChild.nodeValue, j == 0, 'dynamic', i == 0);
 	   }  
 	}
-
-    /*var cardNodes = document.querySelectorAll('.card');
-    cardNodes.forEach(function (node) {
-        var elem = document.createElement("card-play");
-        var value = node.getElementsByTagName("Value")[0];
-        var ring = node.getElementsByTagName("ring-icon")[0];
-        elem.innerHTML = value.outerHTML;
-        value.remove();
-        ring.insertBefore(elem, ring.firstChild); 
-    });*/
 }
 
-function getPresenceNodeHtml(nodeText, first, trackType) {
+function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 	var result = '';
 	
     //Find values between parenthesis
@@ -376,32 +363,42 @@ function getPresenceNodeHtml(nodeText, first, trackType) {
 			var option = splitOptions[0].split("(")[0];
 			switch(option){
 				case 'reclaim-one':
+                    var inner = "{reclaim-one}";
+                    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
                     result = "<presence-node>" +
-                        "<ring-icon>{reclaim-one}</ring-icon><subtext>Reclaim One</subtext></presence-node>";
+                        "<ring-icon>"+inner+"</ring-icon><subtext>Reclaim One</subtext></presence-node>";
 					break;
 				case 'forget-power-card':
+                    var inner = "{forget-power-card}";
+                    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
                     result = "<presence-node>" +
-                        "<ring-icon>{forget-power-card}</ring-icon><subtext>Forget Power</subtext></presence-node>";
+                        "<ring-icon>"+inner+"</ring-icon><subtext>Forget Power</subtext></presence-node>";
 					break;    
 				case 'push':
 					var matches = regExp.exec(splitOptions[0]);
 					var pushTarget = matches[1];
+                    var inner = "<icon class='push'><icon class='"+pushTarget+"'></icon></icon>";
+                    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
                     result = "<presence-node>" +
-                        "<ring-icon><icon class='push'><icon class='"+pushTarget+"'></icon></icon></ring-icon>" +
+                        "<ring-icon>"+inner+"</ring-icon>" +
                         "<subtext>Push "+Capitalise(pushTarget)+"</subtext></presence-node>";
 					break;    
 				case 'move-presence':
 					var matches = regExp.exec(splitOptions[0]);
 					var moveRange = matches[1];
+                    var inner = "{move-presence-"+moveRange+"}";
+                    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
                     result = "<presence-node>" +
-                        "<ring-icon>{move-presence-"+moveRange+"}</ring-icon>" +
+                        "<ring-icon>"+inner+"</ring-icon>" +
                         "<subtext>Move a Presence "+moveRange+"</subtext></presence-node>";
 					break;
                 default:
                     // element
 					var elementName = splitOptions[0];
+                    var inner = "<icon class='"+elementName+"'></icon>";
+                    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
                     result = "<presence-node>" +
-                        "<ring-icon><icon class='"+elementName+"'></icon></ring-icon>" +
+                        "<ring-icon>"+inner+"</ring-icon>" +
                         "<subtext>" + Capitalise(elementName) + "</subtext></presence-node>";
 					break;
 			}
@@ -415,6 +412,7 @@ function getPresenceNodeHtml(nodeText, first, trackType) {
                     nodeClass = 'card';
                 }
             }, splitOptions);
+            
 
             var subText = Capitalise(splitOptions[1]);
             if(splitOptions[1] == 'reclaim-one'){
@@ -426,15 +424,20 @@ function getPresenceNodeHtml(nodeText, first, trackType) {
             var bottom = "<icon class='"+splitOptions[1]+"'></icon>";
             if(!isNaN(splitOptions[0])){
                 top = "<" + nodeClass + "-icon class='small'><value>" + splitOptions[0] + "</value></" + nodeClass + "-icon>";
+                // Don't add the big energy ring if we've also got a small one.
+                if(nodeClass == 'energy') { 
+                    addEnergyRing = false;
+                }
             } else {
                 top = "<icon class='"+splitOptions[0]+"'></icon>";
             }
 
+            var inner = "<icon-top>"+top+"</icon-top>" +
+                "<icon-bottom>"+bottom+"<icon-bottom>";
+            if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
+
             result = "<presence-node>" +
-                "<ring-icon>" +
-                "<icon-top>"+top+"</icon-top>" +
-                "<icon-bottom>"+bottom+"<icon-bottom>" +
-                "</ring-icon>" +
+                "<ring-icon>"+inner+"</ring-icon>" +
                 "<subtext>"+subText+"</subtext></presence-node>";
 		}
 	}
@@ -447,7 +450,8 @@ function Capitalise(str){
 }
 
 function setNewEnergyCardPlayTracks(energyHTML, cardPlayHTML){
-    document.getElementsByTagName("presence-tracks")[0].innerHTML = "<section-title>Presence</section-title>"+energyHTML + cardPlayHTML;
+    document.getElementsByTagName("presence-tracks")[0].innerHTML = "<section-title>Presence</section-title>" +
+        "<table id='presence-table'>"+energyHTML + cardPlayHTML+"</table>";
 }
 
 function dynamicCellWidth() {

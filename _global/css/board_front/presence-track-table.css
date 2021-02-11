@@ -1,11 +1,41 @@
+presence-tracks section-title {
+  margin-left: 2px;
+  margin-bottom: 12px;
+  padding-top: 0px;
+}
+
+presence-tracks {
+  display: block;
+  top: 300px;
+  margin-left: 10px;
+  
+  padding-left: 50px;
+  padding-bottom: 30px;
+  
+  background-image: url('../../images/board/Presence_Without_Text.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+}
+
 presence-tracks table {	
   display: inline-block;
   height: 340px;
+  margin-left: -40px;
+}
+
+presence-tracks table td {
+  padding: 0px;
+  vertical-align: top;
+}
+
+presence-tracks table td[rowspan="2"] {
+  vertical-align: middle;
 }
 
 presence-node {
   display: inline-table;
-  width: 130px;
+  max-width: 130px;
 }
 
 subtext {
@@ -60,9 +90,10 @@ presence-node energy-icon {
   align-items: center;
   justify-content: center;
 }
+
 energy-icon.small {
-  height: 90px;
-  width: 90px;  
+  height: 80px;
+  width: 80px;
 }
 
 presence-node value {
@@ -83,6 +114,12 @@ presence-node icon {
 icon-top {
   transform: translateY(-20px) translateX(14px);
 }
+icon-top icon {
+  transform: translateY(4px) translateX(4px);
+}
 icon-bottom {
   transform: translateY(20px) translateX(-20px);
+}
+icon-bottom icon.reclaim-one {
+  transform: translateY(-5px) translateX(0px);
 }
