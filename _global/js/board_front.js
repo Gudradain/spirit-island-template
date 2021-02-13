@@ -1,7 +1,11 @@
 
 window.onload = function startMain(){
     parseGrowthTags();
-    setNewEnergyCardPlayTracks(parseEnergyTrackTags(), parseCardPlayTrackTags());
+	if(document.getElementById("presence-table")) {
+		enhancePresenceTracksTable();
+	} else {		
+        setNewEnergyCardPlayTracks(parseEnergyTrackTags(), parseCardPlayTrackTags());
+	}
     parseInnatePowers();
     const board = document.querySelectorAll('board')[0];
     addImages(board)
@@ -265,143 +269,182 @@ function parseGrowthTags(){
 }
 
 function parseEnergyTrackTags(){
-    var fullHTML = "";
-    var energyHTML = "";
+    var energyHTML = "<tr>";
     
     var energyValues = document.getElementsByTagName("energy-track")[0].getAttribute("values");
 
     var energyOptions = energyValues.split(",");
 
-    //Find values between parenthesis
-    var regExp = /\(([^)]+)\)/;
-
     for(i = 0; i < energyOptions.length; i++){
-        if(!isNaN(energyOptions[i])){
-            //The energy option is only a number
-            if(i == 0){
-                energyHTML += "<energy-track><value>"+energyOptions[i]+"</value><subtext>1</subtext></energy-track>";
-            } else {
-                energyHTML += "<energy-track><value>"+energyOptions[i]+"</value><subtext>"+energyOptions[i].charAt(0).toUpperCase() + energyOptions[i].slice(1)+"</subtext></energy-track>";
-            }
-        } else {
-            //It is either a single element or a mix of elements/numbers
-            var splitOptions = energyOptions[i].split("+");
-
-            if(splitOptions.length == 1){
-                //It's just a single item
-                var energyOption = splitOptions[0].split("(")[0];
-                switch(energyOption){
-                    case 'reclaim-one':
-                        energyHTML += "<energy-track-ring>{"+splitOptions[0]+"}<subtext>Reclaim One</subtext></energy-track-ring>";
-                        break;
-                    case 'forget-power-card':
-                        energyHTML += "<energy-track-ring>{"+splitOptions[0]+"}<subtext>Forget Power</subtext></energy-track-ring>";
-                        break;
-                    case 'push':
-                        var matches = regExp.exec(splitOptions[0]);
-                        var pushTarget = matches[1];
-                        energyHTML += "<energy-track><card-play-special><icon class='"+energyOption+"'><icon class='"+pushTarget+"'></icon></icon></card-play-special><subtext>Push "+pushTarget+"</subtext></energy-track>";
-                        break;    
-                    case 'move-presence':
-                        var matches = regExp.exec(splitOptions[0]);
-                        var moveRange = matches[1];
-                        energyHTML += "<energy-track><card-play-special>{"+energyOption+"-"+moveRange+"}</card-play-special><subtext>Move a Presence "+moveRange+"</subtext></energy-track>";
-                        break;
-                    default:
-                        energyHTML += "<energy-track>{"+splitOptions[0]+"}<subtext>"+splitOptions[0].charAt(0).toUpperCase() + splitOptions[0].slice(1)+"</subtext></energy-track>";
-                        break;
-                }
-            } else {
-                //It's a mix of things
-                if(!isNaN(splitOptions[0])){
-                    //It's a mix of energy and element
-                    energyHTML += "<energy-track-ring><energy-top><value>"+splitOptions[0]+"</value></energy-top><element-bottom><icon class='"+splitOptions[1]+"'></icon></element-bottom><subtext>"+splitOptions[0]+", "+splitOptions[1].charAt(0).toUpperCase() + splitOptions[1].slice(1)+"</subtext></energy-track-ring>";
-                } else {
-                    //It's a mix of elements
-                    energyHTML += "<energy-track><element-combination><element-top><icon class='"+splitOptions[0]+"'></icon></element-top><element-bottom><icon class='"+splitOptions[1]+"'></icon></element-bottom></element-combination><subtext>"+splitOptions[0].charAt(0).toUpperCase() + splitOptions[0].slice(1)+", "+splitOptions[1].charAt(0).toUpperCase() + splitOptions[1].slice(1)+"</subtext></energy-track>";
-                }
-            }
-        }
+		energyHTML += "<td>"+getPresenceNodeHtml(energyOptions[i], i == 0, "energy", true)+"</td>";
     }
-    fullHTML = '<energy-track-table>'+energyHTML+'</energy-track-table>';
+    energyHTML += "</tr>"
     document.getElementsByTagName("energy-track")[0].removeAttribute("values");
-    return fullHTML;
+    return energyHTML;
+	
 }
 
-function parseCardPlayTrackTags(){
-    var fullHTML = "";
-    var cardPlayHTML = "";
+function parseCardPlayTrackTags(){	
+    var cardPlayHTML = "<tr>";
     
     var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
 
     var cardPlayOptions = cardPlayValues.split(",");
 
-    //Find values between parenthesis
-    var regExp = /\(([^)]+)\)/;
-
     for(i = 0; i < cardPlayOptions.length; i++){
-        if(!isNaN(cardPlayOptions[i])){
-            //The energy option is only a number
-            if(i == 0){
-                cardPlayHTML += "<card-play-track><card-play><value>"+cardPlayOptions[i]+"</value></card-play></card-play-track>";
-            } else {
-                cardPlayHTML += "<card-play-track><card-play><value>"+cardPlayOptions[i]+"</value></card-play><subtext>"+cardPlayOptions[i].charAt(0).toUpperCase() + cardPlayOptions[i].slice(1)+"</subtext></card-play-track>";
-            }
-        } else {
-            //It is either a single element or a mix of elements/numbers
-            var splitOptions = cardPlayOptions[i].split("+");
+		cardPlayHTML += "<td>"+getPresenceNodeHtml(cardPlayOptions[i], i == 0, "card", false)+"</td>";
+    }
+    cardPlayHTML += "</tr>"    
+    document.getElementsByTagName("card-play-track")[0].removeAttribute("values");
+    return cardPlayHTML;	
+}
 
-            if(splitOptions.length == 1){
-                //It's just a single item
-                var cardPlayOption = splitOptions[0].split("(")[0];
-                switch(cardPlayOption){
-                    case 'reclaim-one':
-                        cardPlayHTML += "<card-play-track><card-play-special>{"+splitOptions[0]+"}</card-play-special><subtext>Reclaim One</subtext></card-play-track>";
-                        break;
-                    case 'forget-power-card':
-                        cardPlayHTML += "<card-play-track><card-play-special>{"+splitOptions[0]+"}</card-play-special><subtext>Forget Power</subtext></card-play-track>";
-                        break;    
-                    case 'push':
-                        var matches = regExp.exec(splitOptions[0]);
-                        var pushTarget = matches[1];
-                        cardPlayHTML += "<card-play-track><card-play-special><icon class='"+cardPlayOption+"'><icon class='"+pushTarget+"'></icon></icon></card-play-special><subtext>Push "+pushTarget+"</subtext></card-play-track>";
-                        break;    
-                    case 'move-presence':
-                        var matches = regExp.exec(splitOptions[0]);
-                        var moveRange = matches[1];
-                        cardPlayHTML += "<card-play-track><card-play-special>{"+cardPlayOption+"-"+moveRange+"}</card-play-special><subtext>Move a Presence "+moveRange+"</subtext></card-play-track>";
-                        break;
-                    default:
-                        cardPlayHTML += "<card-play-track><card-play-special><icon class='"+splitOptions[0]+"'></icon></card-play-special><subtext>"+splitOptions[0].charAt(0).toUpperCase() + splitOptions[0].slice(1)+"</subtext></card-play-track>";
-                        break;
-                }
-            } else {
-                //Multiple items
-                if(!isNaN(splitOptions[0])){
-                    //It's a mix of energy and element
-                    var subText = splitOptions[1].charAt(0).toUpperCase() + splitOptions[1].slice(1);
-                    if(splitOptions[1] == 'reclaim-one'){
-                        subText = "Reclaim One";
-                    }
-                    cardPlayHTML += "<card-play-track><card-play-top><value>"+splitOptions[0]+"</value></card-play-top><element-bottom><icon class='"+splitOptions[1]+"'></icon></element-bottom><subtext>"+splitOptions[0]+", "+subText+"</subtext></card-play-track>";
-                } else {
-                    //It's a mix of elements and potentially something else
-                    var subText = splitOptions[1].charAt(0).toUpperCase() + splitOptions[1].slice(1);
-                    if(splitOptions[1] == 'reclaim-one'){
-                        subText = "Reclaim One";
-                    }
-                    cardPlayHTML += "<card-play-track><element-combination><element-top><icon class='"+splitOptions[0]+"'></icon></element-top><element-bottom><icon class='"+splitOptions[1]+"'></icon></element-bottom></element-combination><subtext>"+splitOptions[0].charAt(0).toUpperCase() + splitOptions[0].slice(1)+", "+subText+"</subtext></card-play-track>";
-                }
-            }
+function enhancePresenceTracksTable() {
+	var elmt = document.getElementsByTagName("presence-tracks")[0];
+	var title = document.createElement("section-title");
+	title.innerHTML = "Presence";	
+    elmt.insertBefore(title, elmt.firstChild); 
+	
+	var table = document.getElementById("presence-table");
+	for (var i = 0, row; row = table.rows[i]; i++) {
+	   for (var j = 0, cell; cell = row.cells[j]; j++) {
+        cell.innerHTML = getPresenceNodeHtml(cell.firstChild.nodeValue, j == 0, 'dynamic', i == 0);
+	   }  
+	}
+}
+
+function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
+	var result = '';
+	
+    //Find values between parenthesis
+    var regExp = /\(([^)]+)\)/;    
+
+    var nodeClass = '';
+
+    // Every node will have a presence-node element with
+    // a ring-icon element inside, so we can add these now.
+    presenceNode = document.createElement("presence-node");    
+    ring = document.createElement("ring-icon");
+    presenceNode.appendChild(ring);
+    // Will be populated with the sub text that will be added at the end
+    var subText = '';
+    // Will be populated with the raw HTML that will go inside the ring-icon element.
+    var inner = "";
+
+    if(trackType == 'dynamic'){
+        if(nodeText.startsWith("energy")) {
+            nodeText = nodeText.substr(6);
+            nodeClass = 'energy';
+            subText = 'Energy/Turn';
+        }
+        else if(nodeText.startsWith("card")) {
+            nodeText = nodeText.substr(4);
+            nodeClass = 'card';
+            subText = 'Card Plays';
         }
     }
-    fullHTML = '<card-play-track-table>'+cardPlayHTML+'</card-play-track-table>';
-    document.getElementsByTagName("card-play-track")[0].removeAttribute("values");
-    return fullHTML;
+	else if(trackType == 'energy'){
+        nodeClass = 'energy';
+        subText = 'Energy/Turn';
+    }
+	else if(trackType == 'card'){
+        nodeClass = 'card';
+        subText = 'Card Plays';
+	}
+
+	
+	if(!isNaN(nodeText)){
+		//The value is only a number
+        addEnergyRing = false;
+		if(first === true){
+            presenceNode.classList.add("first");
+		} else {
+            subText = nodeText;
+		}
+        inner = "<" + nodeClass + "-icon><value>" + nodeText + "</value></" + nodeClass + "-icon>";
+	} else {
+		//It is either a single element or a mix of elements/numbers
+		var splitOptions = nodeText.split("+");
+
+		if(splitOptions.length == 1){
+			//It's just a single item
+			var option = splitOptions[0].split("(")[0];
+			switch(option){
+				case 'reclaim-one':
+                    inner = "{reclaim-one}";
+                    subText = "Reclaim One";
+					break;
+				case 'forget-power-card':
+                    inner = "{forget-power-card}";
+                    subText = "Forget Power";
+					break;    
+				case 'push':
+					var matches = regExp.exec(splitOptions[0]);
+					var pushTarget = matches[1];
+                    inner = "<icon class='push'><icon class='"+pushTarget+"'></icon></icon>";
+                    subText = "Push "+Capitalise(pushTarget);
+					break;    
+				case 'move-presence':
+					var matches = regExp.exec(splitOptions[0]);
+					var moveRange = matches[1];
+                    inner = "{move-presence-"+moveRange+"}";
+                    subText = "Move a Presence "+moveRange;
+					break;
+                default:
+                    // element
+					var elementName = splitOptions[0];
+                    inner = "<icon class='"+elementName+"'></icon>";
+                    subText = Capitalise(elementName);
+					break;                
+			}            
+		} else {
+            splitOptions.forEach(function(part, index) {
+                if(part.startsWith("energy")) {
+                    this[index] = nodeText.substr(6);
+                    nodeClass = 'energy';
+                } else if(part.startsWith("card")) {
+                    this[index] = nodeText.substr(4);
+                    nodeClass = 'card';
+                }
+            }, splitOptions);            
+
+            var subText = Capitalise(splitOptions[1]);
+            if(splitOptions[1] == 'reclaim-one'){
+                subText = "Reclaim One";
+            }
+            subText = Capitalise(splitOptions[0])+", "+subText;
+
+            var top = "";
+            var bottom = "<icon class='"+splitOptions[1]+"'></icon>";
+            if(!isNaN(splitOptions[0])){
+                top = "<" + nodeClass + "-icon class='small'><value>" + splitOptions[0] + "</value></" + nodeClass + "-icon>";
+                // Don't add the big energy ring if we've also got a small one.
+                if(nodeClass == 'energy') { 
+                    addEnergyRing = false;
+                }
+            } else {
+                top = "<icon class='"+splitOptions[0]+"'></icon>";
+            }
+
+            var inner = "<icon-top>"+top+"</icon-top>" +
+                "<icon-bottom>"+bottom+"<icon-bottom>";
+		}
+	}
+        
+    if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
+    ring.innerHTML = inner;
+    presenceNode.innerHTML += "<subtext>" + subText + "</subtext>";
+	
+	return presenceNode.outerHTML;
+}
+
+function Capitalise(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 function setNewEnergyCardPlayTracks(energyHTML, cardPlayHTML){
-    document.getElementsByTagName("presence-tracks")[0].innerHTML = "<section-title>Presence</section-title>"+energyHTML + cardPlayHTML;
+    document.getElementsByTagName("presence-tracks")[0].innerHTML = "<section-title>Presence</section-title>" +
+        "<table id='presence-table'>"+energyHTML + cardPlayHTML+"</table>";
 }
 
 function dynamicCellWidth() {

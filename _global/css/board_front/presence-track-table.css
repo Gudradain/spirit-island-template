@@ -1,0 +1,125 @@
+presence-tracks section-title {
+  margin-left: 2px;
+  margin-bottom: 12px;
+  padding-top: 0px;
+}
+
+presence-tracks {
+  display: block;
+  top: 300px;
+  margin-left: 10px;
+  
+  padding-left: 50px;
+  padding-bottom: 30px;
+  
+  background-image: url('../../images/board/Presence_Without_Text.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+}
+
+presence-tracks table {	
+  display: inline-block;
+  height: 340px;
+  margin-left: -40px;
+}
+
+presence-tracks table td {
+  padding: 0px;
+  vertical-align: top;
+}
+
+presence-tracks table td[rowspan="2"] {
+  vertical-align: middle;
+}
+
+presence-node {
+  display: inline-table;
+  max-width: 130px;
+}
+
+subtext {
+  font-family: 'Lato SemiBold';
+  font-size: 16pt;
+  font-style: italic;
+  text-align: center;
+  display: table-row;
+}
+
+presence-node ring-icon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 130px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+presence-node.first ring-icon {
+  background-image: url('../../images/board/PresenceInitialRing.png');
+}
+
+presence-node ring-icon {
+  background-image: url('../../images/board/CardPlayRing.png');
+}
+
+presence-node card-icon {
+  background-image: url('../../images/board/CardPlayBlank.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 75px;
+  width: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+card-icon.small {
+  margin-left: 8px;
+  margin-right: 20px;
+}
+
+presence-node energy-icon {
+  background-image: url('../../images/board/EnergyBlank.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 130px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+energy-icon.small {
+  height: 80px;
+  width: 80px;
+}
+
+presence-node value {
+  font-family: 'Gobold Extra2';
+  font-size: 36pt;
+  display: inline-block;
+}
+
+.small value {
+  font-size: 28pt;
+}
+
+presence-node icon {
+  width: 65px;
+  height: 65px;
+}
+
+icon-top {
+  transform: translateY(-20px) translateX(14px);
+}
+icon-top icon {
+  transform: translateY(4px) translateX(4px);
+}
+icon-bottom {
+  transform: translateY(20px) translateX(-20px);
+}
+icon-bottom icon.reclaim-one {
+  transform: translateY(-5px) translateX(0px);
+}

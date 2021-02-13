@@ -42,8 +42,12 @@ General Images: Every image in a board can be called by simply using its name en
           - ignore-range: Ignore Range this turn (as seen on Finder)
           - gain-element(X): Gain X Element (currently limited to only one)
           - push(x): Push x from land (as seen on Trickster with Dahan)
-  - **presence-tracks**: The container for the Presence Tracks
-    - **energy-track**: The entire Energy Track (current functionality only supports one row)
+  - **presence-tracks**: The container for the Presence Tracks.
+
+    There are two mechanisms to populate this. The simple approach is to use the specific energy and card tracks as demonstrated by the 'board_front' example.
+    
+    If you wish to produce a more complex layout then you'll need to use the table-based approach demonstrated by the 'board_front_serpent_style' example. 
+    - **energy-track**: The entire Energy Track
       - energy-track values: The actual values that will be used to create the Energy Track
         - Supported Options:
           - Integer 1,2,3,4,5,6,7 etc.
@@ -51,15 +55,16 @@ General Images: Every image in a board can be called by simply using its name en
           - forget-power-card: Forget Power (not cannon)
           - Combinations of Elements/Energy: 3+earth, 2+fire, earth+any, water+plant
           - push(x): Push x from land (as seen on Trickster with Dahan)
-    - **card-play-track**: The entire Card Play Track (current functionality only supports one row)
+    - **card-play-track**: The entire Card Play Track
       - card-play-track values: The actual values that will be used to create the Card Play Track
         - Supported Options:
           - Integer 1,2,3,4,5,6,7 etc.
           - forget-power-card: Forget Power (not cannon)
           - Elements earth, fire, air, moon, water, plant, animal, sun, or any
-          - Combinations of Elements/Energy: (3+earth, 2+fire, earth+any, water+plant
+          - Combinations of Elements/Energy: (3+earth, 2+fire, earth+any, water+plant)
           - Reclaim One: reclaim-one, 3+reclaim-one, earth+reclaim-one
           - push(x): Push x from land (as seen on Trickster with Dahan)
+    - **table**: An html table that allows more flexible positioning of nodes. Individual presence track options are specified within the `<td>` table cells. The available options are exactly the same as described for the energy and card-play tracks above, with the exception that integer values must be prefixed with with 'card' or 'energy'. For example 'card1' means 1 card play, 'energy2' means 2 energy, etc.
   - **innate-powers**: The container for the Innate Powers
     - quick-innate-power: The container for a single Innate Power
       - name: The name of the Innate Power
