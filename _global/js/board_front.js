@@ -194,7 +194,15 @@ function parseGrowthTags(){
                         presenceReq = presenceOptions[1];
                     }
 
-                    newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}{" + presenceReq + "}{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence</growth-text></growth-cell>"
+                    switch (presenceReq){
+                        case 'presence':
+                            newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}<presence-req>{" + presenceReq + "}</presence-req>{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence to a land with Presence</growth-text></growth-cell>"
+                            break;
+
+                        default:
+                            newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}{" + presenceReq + "}{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence</growth-text></growth-cell>"
+                            break;
+                    }
                     break;
                 }
                 case 'push':

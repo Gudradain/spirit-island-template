@@ -149,6 +149,24 @@ custom-presence icon.range-4 {
   margin-bottom: 10px;
 }
 
+custom-presence-req icon.dahan {
+    display: block;
+    height: 45px;
+    width: 45px;
+    margin-top: 7px;
+    margin-bottom: -5px;
+    margin-left: 43px;
+}
+
+presence-req icon.presence {
+    display: block;
+    height: 45px;
+    width: 45px;
+    margin-top: 7px;
+    margin-bottom: -5px;
+    margin-left: 43px !important;
+}
+
 presence-req {
   display: block;
 }
