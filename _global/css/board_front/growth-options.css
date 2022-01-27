@@ -214,6 +214,10 @@ growth-cell icon.reclaim-one {
   margin-bottom: 7px;
 }
 
+growth-cell icon.reclaim-none {
+  margin-bottom: 7px;
+}
+
 growth-cell icon.ignore-range {
   margin-left: 20px;
   margin-bottom: 7px;
@@ -288,8 +292,6 @@ add-presence-req {
 growth icon.presence {
   margin-left: 6px;
 }
-
-
 
 .description icon.beast {
   background-image: url('../../images/board/beast.png');
@@ -389,10 +391,17 @@ growth-cell gain icon.sun,
 growth-cell gain icon.moon {
   background-repeat: no-repeat;
   background-size: contain;
-  display: block;
+  display: inline-block;
   height: 60px;
   width: 60px;
   margin-top: 21px;
+}
+
+growth-cell gain icon.orelement {
+  background-size: 75%;
+  transform: translateY(0px);
+  margin-right: -5px;
+  margin-left: -5px;
 }
 
 growth-cell icon.fire,
@@ -410,5 +419,16 @@ growth-cell icon.moon {
   height: 60px;
   margin-left: 0px;
   margin-top: -73px;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
+}
+
+
+
+icon-gtop icon {
+  transform: translateY(-24px) translateX(14px);
+  display: inline-block;
+}
+icon-gbottom icon {
+  transform: translateY(0px) translateX(-14px);
+  display: inline-block;
 }
