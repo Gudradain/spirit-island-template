@@ -8,11 +8,14 @@ window.onload = function startMain(){
 	}
     parseInnatePowers();
     const board = document.querySelectorAll('board')[0];
-    addImages(board)
+    
     var html = board.innerHTML;
     board.innerHTML = replaceIcon(html);
     dynamicCellWidth();
     dynamicSpecialRuleHeight(board)
+	
+	// I moved this to the end so that the image could rescale to the special box
+	addImages(board)
 }
 function dynamicSpecialRuleHeight(board){
     const specialRules = board.querySelectorAll('special-rules-container')[0]
@@ -39,13 +42,24 @@ function addImages(board) {
     const spiritImage = board.getAttribute('spirit-image');
 
     const spiritBorder = board.getAttribute('spirit-border');
+	
+    const imageSize = board.getAttribute('spirit-image-scale');
 
+    
+	const specialRules = board.querySelectorAll('special-rules-container')[0]
+    let height = specialRules.getAttribute('height')
+	    if(!height){
+        const computedStyle = window.getComputedStyle(specialRules)
+        height = computedStyle.getPropertyValue('height')
+    }
+	
     if(spiritBorder){
         const specialRules = board.querySelectorAll('special-rules-container')[0]
         specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder});" ></div>` + specialRules.innerHTML
     }
     if(spiritImage){
-        board.innerHTML = `<div class="spirit-image" style="background-image: url(${spiritImage});" ></div>` + board.innerHTML
+		//Image now scales to fill gap. 'imageSize' allows the user to specify what % of the gap to cover
+        board.innerHTML = `<div class="spirit-image" style="background-image: url(${spiritImage}); background-size: auto ${imageSize}; height:calc(100% - ${height}); width:1700px;" ></div>` + board.innerHTML
     }
 }
 
@@ -137,6 +151,11 @@ function parseGrowthTags(){
                 case 'reclaim-one':
                     {
                         newGrowthCellHTML += `${openTag}{reclaim-one}<growth-text>Reclaim One</growth-text></growth-cell>`
+                        break;
+                    }
+				case 'reclaim-none':
+                    {
+                        newGrowthCellHTML += `${openTag}{reclaim-none}<growth-text>Reclaim None</growth-text></growth-cell>`
                         break;
                     }
                 case 'gain-power-card':
@@ -240,25 +259,38 @@ function parseGrowthTags(){
 
                         const elementOptions = matches[1].split(",");
 
-                    //Check if they want 2 elements
+						//Check if they want 2 elements (multiple of the same element, and OR between multiple elements are implemented. AND is not)
                         if (elementOptions.length > 1) {
-                            if (isNaN(elementOptions[1])) {
-                            //They want different elements
-                            newGrowthCellHTML += `${openTag}<gain>`
+                            
+							//Check if they want multiples of the same element or a choice of elements by looking for a numeral
+							if (isNaN(elementOptions[1])) {//They want different elements. For example gain-element(water,fire)
+                            //Icons
+							newGrowthCellHTML += `${openTag}<gain class='or'>`
                             for (var i = 0; i < elementOptions.length; i++) {
-                                newGrowthCellHTML += "{" + elementOptions[i] + "}";
+                                newGrowthCellHTML += "<icon class='orelement " + elementOptions[i] + "'></icon>";
                                 if (i < elementOptions.length - 1) {
-                                    newGrowthCellHTML += "/";
+                                    newGrowthCellHTML += "{backslash}";
                                 }
                             }
-                            newGrowthCellHTML += "</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + "</growth-text></growth-cell>";
-                        } else {
-                            //They just want 2 of the same element
-                        }
-                        //newGrowthCellHTML += `${openTag}<gain>{"+elementOptions[0]+"}</gain><growth-text>Gain "+gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1)+"</growth-text></growth-cell>`
-                    } else {
-                        newGrowthCellHTML += `${openTag}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + "</growth-text></growth-cell>"
-                    }
+                            //Text
+							newGrowthCellHTML += "</gain><growth-text>Gain ";
+							for (var i = 0; i < elementOptions.length; i++) {
+                                newGrowthCellHTML += elementOptions[i].charAt(0).toUpperCase() + elementOptions[i].slice(1);
+								if (i < elementOptions.length-2) {
+                                    newGrowthCellHTML += ", ";
+                                } else if (i == elementOptions.length-2) {
+									newGrowthCellHTML += " or ";
+								}
+                            }
+							newGrowthCellHTML += "</growth-text></growth-cell>";
+							} else { //They just want 2 or more of the same element
+								var inner = "<icon-gtop><icon class='"+elementOptions[0]+"'></icon></icon-gtop><icon-gbottom><icon class='"+elementOptions[0]+"'></icon></icon-gbottom>";
+								//Text: include the numeral in the text. For example gain-element(water,2)
+								newGrowthCellHTML += `${openTag}<gain>` + inner + "</gain><growth-text>Gain "+elementOptions[1]+" "+elementOptions[0].charAt(0).toUpperCase() + elementOptions[0].slice(1)+"</growth-text></growth-cell>";
+							}
+						} else {
+							newGrowthCellHTML += `${openTag}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + "</growth-text></growth-cell>"
+						}
 
 
                         break;
