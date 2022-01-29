@@ -24,13 +24,7 @@ div.description range-4 {
     margin-left: 0px;
 }
 
-threshold icon.sun, threshold icon.earth, threshold icon.plant, threshold icon.fire, threshold icon.air, threshold icon.moon, threshold icon.animal, threshold icon.water {
-    width: 45px;
-    height: 45px;
-    margin-bottom: -9px;
-    margin-left: 5px;
-    margin-right: 5px;
-}
+
 
 .description icon.sun, .description icon.earth, .description icon.plant, .description icon.fire, .description icon.air, .description icon.moon, .description icon.animal, .description icon.water, special-rule icon.sun, special-rule icon.earth, special-rule icon.plant, special-rule icon.fire, special-rule icon.air, special-rule icon.moon, special-rule icon.animal, special-rule icon.water {
     width: 45px;
