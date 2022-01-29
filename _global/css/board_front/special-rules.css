@@ -20,9 +20,9 @@ special-rules-subtitle {
   padding-top: 15px;
   padding-bottom: 3px;
   font-family: 'JosefinSans-Regular';
+  font-size: 14pt;
   font-weight: bold;
   font-style: italic;
-  font-size: 14pt;
   text-transform: uppercase;
   text-align: left;
   letter-spacing: -0.5px;
@@ -45,16 +45,25 @@ special-rule icon.any, special-rule icon.moon, special-rule icon.sun{
   width: 25px;
 }
 
-special-rule icon.town, special-rule icon.city, special-rule icon.blight,
-special-rule icon.dahan, special-rule icon.presence, special-rule icon.wilds,
-special-rule icon.beast, special-rule icon.disease, special-rule icon.strife,
-special-rule icon.explorer, special-rule icon.badlands, special-rule icon.fear,
-special-rule icon.range-plus-1{
+special-rule icon.town, special-rule icon.blight, special-rule icon.dahan,
+special-rule icon.presence, special-rule icon.wilds, special-rule icon.beast,
+special-rule icon.disease, special-rule icon.strife, special-rule icon.explorer, 
+special-rule icon.badlands, special-rule icon.fear, special-rule icon.range-plus-1{
     width:30px;
     height:30px
 }
 
+special-rule icon.sacred-site{
+    width:50px;
+    height:30px;
+	margin-bottom: -8px;
+}
 
+special-rule icon.city{
+    width:40px;
+    height:30px;
+	margin-top: 0px;
+}
 
 special-rule dahan {
   width: 25px;
