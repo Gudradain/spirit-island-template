@@ -397,6 +397,7 @@ growth-cell gain icon.moon {
   margin-top: 21px;
 }
 
+/* Enables growth option - OR multiple different elements */
 growth-cell gain icon.orelement {
   background-size: 75%;
   transform: translateY(0px);
@@ -423,7 +424,7 @@ growth-cell icon.moon {
 }
 
 
-
+/* Enables growth option - 2 of same element */
 icon-gtop icon {
   transform: translateY(-24px) translateX(14px);
   display: inline-block;
