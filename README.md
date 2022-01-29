@@ -21,8 +21,10 @@ Note: Due to licensing, I did not include some of the fonts in the project.
 ### Getting Started
 
 1. Download the ZIP file and extract it on your computer.
-2. Navigate to the "_examples/card" folder then open "cards.html" in your browser.
-3. Open "cards.html" in your favorite text editor and create your cards.
+2. Open the folder "spirit-island-template-master". You should see folders such as _docs", "_examples" and "_global". 
+3. Create a new folder for your project. If your project is not in a folder (or if its in a folder within a folder), the file paths will not connect properly.
+4. Copy an example file from one of the subfolders in "_examples" into your new folder. Open it with your favorite text editor and create your content!
+5. Open the example file or your edited file in your browser to see the example cards or your creations!
 
 ### Tips for Maintenance
 
