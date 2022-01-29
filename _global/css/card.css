@@ -367,7 +367,7 @@ info-range icon{
 }
 
 info-target icon{
-  width:70px;
+  width:45px;
   height:32px;
 }
 
@@ -409,6 +409,7 @@ rules icon.ocean,
 rules icon.jungle-presence,
 rules icon.mountain-presence,
 rules icon.sand-presence,
+rules icon.sacred-site
 rules icon.wetland-presence{
   width:30px;
   height:30px;
