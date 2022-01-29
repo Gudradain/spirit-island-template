@@ -50,6 +50,13 @@ icon.presence {
   margin-left:0px;
 }
 
+icon.backslash {
+  background-image: url('../../images/board/backslash.png');
+  width: 10px;
+  margin-bottom:20px;
+  margin-left:0px;
+}
+
 icon.beast{
   background-image: url('../../images/board/beast.png');
   height: 25px;
@@ -139,7 +146,16 @@ icon.jungle-presence { background-image: url('../../images/board/jungle-presence
 icon.presence {
   width: 35px;
   height: 35px;
-  margin-bottom: -13px;
+  margin-bottom: -8px;
+  margin-left: -2px;
+  margin-right: -2px;
+}
+
+icon.destroyed-presence {
+  background-image: url('../../images/board/NewIcons/Misc Presence Destroy.png');
+  width: 35px;
+  height: 35px;
+  margin-bottom: -8px;
   margin-left: -2px;
   margin-right: -2px;
 }
@@ -158,8 +174,6 @@ icon.dahan {
   width: 30px;
   height: 30px;
   margin-bottom: -8px;
-  margin-left: 5px;
-  margin-right: 5px;
   margin-top: -10px;
 }
 
@@ -314,6 +328,13 @@ icon.ignore-range {
 
 icon.reclaim-one {
   background-image: url('../../images/board/Reclaimone.png');
+  display: block;
+  height: 90px;
+  width:90px;
+}
+
+icon.reclaim-none {
+  background-image: url('../../images/board/Reclaimnone.png');
   display: block;
   height: 90px;
   width:90px;
