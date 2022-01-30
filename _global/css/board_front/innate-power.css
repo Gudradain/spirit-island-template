@@ -165,7 +165,7 @@ note {
 }
 
 note icon{
-  width: 20px;
+    width:24px;
 }
 
 level {
@@ -240,34 +240,18 @@ threshold icon {
     margin-right: 5px;
 }
 
-threshold icon.sun {
-	background-image: url(../../images/board/element_simple_sun.png);
-}
+threshold icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
 
-threshold icon.earth {
-	background-image: url(../../images/board/element_simple_earth.png);	
-}
+threshold icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
 
-threshold icon.plant {
-	background-image: url(../../images/board/element_simple_plant.png);	
-}
+threshold icon.plant {background-image: url(../../images/board/element_simple_plant.png);}
 
-threshold icon.fire {
-	background-image: url(../../images/board/element_simple_fire.png);	
-}
+threshold icon.fire {background-image: url(../../images/board/element_simple_fire.png);}
 
-threshold icon.air {
-	background-image: url(../../images/board/element_simple_air.png);	
-}
+threshold icon.air {background-image: url(../../images/board/element_simple_air.png);}
 
-threshold icon.moon {
-	background-image: url(../../images/board/element_simple_moon.png);	
-}
+threshold icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
 
-threshold icon.animal {
-	background-image: url(../../images/board/element_simple_animal.png);	
-}
+threshold icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
 
-threshold icon.water {
-	background-image: url(../../images/board/element_simple_water.png);	
-}
+threshold icon.water {background-image: url(../../images/board/element_simple_water.png);}

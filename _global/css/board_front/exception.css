@@ -34,6 +34,22 @@ div.description range-4 {
     margin-bottom: -7px;
 }
 
+.description icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
+
+.description icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
+
+.description icon.plant {background-image: url(../../images/board/element_simple_plant.png);}
+
+.description icon.fire {background-image: url(../../images/board/element_simple_fire.png);}
+
+.description icon.air {background-image: url(../../images/board/element_simple_air.png);}
+
+.description icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
+
+.description icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
+
+.description icon.water {background-image: url(../../images/board/element_simple_water.png);}
+
 description-container icon.city {
     width: 35px;
     height: 35px;
