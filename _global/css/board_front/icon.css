@@ -18,13 +18,12 @@ icon.animal { background-image: url('../../images/board/Animal.png'); }
 icon.plant { background-image: url('../../images/board/Plant.png'); }
 icon.sun { background-image: url('../../images/board/Sun.png'); }
 icon.earth { background-image: url('../../images/board/Earth.png'); }
-
-icon.jungle-wetland { background-image: url('../../images/board/junglewetland.png'); }
-icon.jungle-sand { background-image: url('../../images/board/junglesand.png'); }
-icon.sand-wetland { background-image: url('../../images/board/sandwetland.png'); }
-icon.mountain-jungle { background-image: url('../../images/board/mountainjungle.png'); }
-icon.mountain-wetland { background-image: url('../../images/board/mountainwetland.png'); }
-icon.mountain-sand { background-image: url('../../images/board/mountainsand.png'); }
+icon.jungle-wetland, icon.wetland-jungle { background-image: url('../../images/board/junglewetland.png'); }
+icon.jungle-sand, icon.sand-jungle { background-image: url('../../images/board/junglesand.png'); }
+icon.sand-wetland, icon.wetland-sand { background-image: url('../../images/board/sandwetland.png'); }
+icon.mountain-jungle, icon.jungle-mountain { background-image: url('../../images/board/mountainjungle.png'); }
+icon.mountain-wetland, icon.wetland-mountain { background-image: url('../../images/board/mountainwetland.png'); }
+icon.mountain-sand, icon.sand-mountain { background-image: url('../../images/board/mountainsand.png'); }
 icon.sand { background-image: url('../../images/board/sand.png'); }
 icon.mountain { background-image: url('../../images/board/mountain.png'); }
 icon.jungle { background-image: url('../../images/board/jungle.png'); }
