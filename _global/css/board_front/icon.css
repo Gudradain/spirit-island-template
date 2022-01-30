@@ -59,11 +59,6 @@ icon.backslash {
 
 icon.beast{
   background-image: url('../../images/board/beast.png');
-  height: 25px;
-  width: 35px;
-  margin-bottom: -7px;
-  margin-right: -4px;
-  margin-left: -4px;
 }
 
 icon.move-presence {
@@ -171,10 +166,6 @@ icon.explorer {
 
 icon.dahan {
   background-image: url('../../images/board/dahan.png');
-  width: 30px;
-  height: 30px;
-  margin-bottom: -8px;
-  margin-top: -10px;
 }
 
 icon.disease {
@@ -278,13 +269,6 @@ icon.blight {
   background-image: url('../../images/board/75px_blight.png');
   margin-bottom: -7px;
   margin-top: 10px;
-}
-
-icon.dahan {
-  background-image: url('../../images/board/50px_dahan.png');
-  height: 30px;
-  margin-bottom: -8px;
-  margin-top: 0px;
 }
 
 icon.town {

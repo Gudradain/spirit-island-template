@@ -54,7 +54,7 @@ special-rule icon.badlands, special-rule icon.fear, special-rule icon.range-plus
 }
 
 special-rule icon.dahan {
-	transform: translateY(-4px) translateX(0px);
+	transform: translateY(2px) translateX(0px);
 }
 
 special-rule icon.sacred-site{
