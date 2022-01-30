@@ -212,29 +212,14 @@ function parseGrowthTags(){
                         presenceReqClose = "</custom-presence-req>";
                         presenceReq = presenceOptions[1];
                     }
-					
-					let presenceReqText = "";
-					let multiLandText = "";
-					if (presenceReq) {
-						let multiLandCheck = presenceReq.split("-");
-						if (multiLandCheck[1]){
-							multiLandText = Capitalise(multiLandCheck[0]) + " or " + Capitalise(multiLandCheck[1]);
-							presenceReqText = presenceReq;
-							presenceReq = 'multiland';
-						}
-					}
-					
-					switch (presenceReq){
+
+                    switch (presenceReq){
                         case 'presence':
                             newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}<presence-req>{" + presenceReq + "}</presence-req>{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence to a land with Presence</growth-text></growth-cell>"
                             break;
 
                         case 'dahan':
                             newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}<presence-req>{" + presenceReq + "}</presence-req>{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence to a land with Dahan</growth-text></growth-cell>"
-                            break;
-							
-						case 'multiland':
-							newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}<presence-req>{" + presenceReqText + "}</presence-req>{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence to a " + multiLandText+ "</growth-text></growth-cell>"
                             break;
 
                         default:
