@@ -218,6 +218,10 @@ function parseGrowthTags(){
                             newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}<presence-req>{" + presenceReq + "}</presence-req>{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence to a land with Presence</growth-text></growth-cell>"
                             break;
 
+                        case 'dahan':
+                            newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}<presence-req>{" + presenceReq + "}</presence-req>{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence to a land with Dahan</growth-text></growth-cell>"
+                            break;
+
                         default:
                             newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}{" + presenceReq + "}{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence</growth-text></growth-cell>"
                             break;
