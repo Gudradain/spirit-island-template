@@ -244,6 +244,16 @@ growth-text {
     font-style: normal;
 }
 
+.non-icon {
+    font-family: 'DK Snemand';
+    font-size: 20pt;
+	font-style: normal;
+}
+
+.non-icon.small {
+    font-size: 14pt;
+}
+
 growth-cell icon.gain-power-card {
   margin-bottom: 7px;
 }

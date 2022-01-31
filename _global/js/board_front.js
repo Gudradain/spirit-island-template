@@ -257,7 +257,19 @@ function parseGrowthTags(){
 								}
 								
 								// Icons
-								presenceIcon += "{"+presenceReq+"}";
+								switch (presenceReq){
+									case 'inland':
+									case 'coastal':
+									case 'invaders':
+										presenceIcon += presenceOptions.length < 3
+											? "<span class='non-icon'>"+presenceReq+"</span><icon style='height:50px; width:0px;'></icon>"
+											: "<span class='non-icon small'>"+presenceReq+"</span><icon style='height:50px; width:0px;'></icon>"
+										break;
+										
+									default:
+										presenceIcon += "{"+presenceReq+"}";
+								}
+
 								if (i < presenceOptions.length - 2) {
 									presenceIcon += operator;
 								}
@@ -281,6 +293,13 @@ function parseGrowthTags(){
 										presenceText += Capitalise(presenceReq);
 										break;
 									
+									case 'inland':
+									case 'coastal':
+										// Icons not implemented - need to somehow catch a call to a class without a class.
+										presenceText += i != 1 ? operator : "";
+										presenceText += Capitalise(presenceReq) + " Land";
+										break;
+									
 									case 'multiland':
 										presenceText += multiLandText;
 										break;
@@ -295,7 +314,7 @@ function parseGrowthTags(){
 										presenceTextEnd = "s"
 									case 'presence':
 										presenceTextLead += presenceTextEnd==="" ? "Your " : "";
-										
+										//Intentionally do not break.
 									default:
 										if (flag == 0 && i != 1) {
 											presenceText += operator+"Land with ";
