@@ -220,6 +220,23 @@ function parseGrowthTags(){
 						if(presenceOptions[1]=='text'){
 							// User wants a custom text presence addition
 							presenceIcon += presenceOptions[2];
+						} else if (presenceOptions[1]=='token'){
+							// User wants to add a token in growth
+							switch (presenceOptions[2]){
+									case 'and':
+										//add presence and token
+										presenceIcon += "<span class='plus-text'>+ </span>";
+										presenceIcon += "{"+presenceOptions[3]+"}";
+										presenceText += " and a " + Capitalise(presenceOptions[3]);
+										break;
+									case 'or':
+										//add presence or token
+										presenceIcon += "<span class='plus-text'>or </span>";
+										presenceIcon += "{"+presenceOptions[3]+"}";
+										presenceText += " or a " + Capitalise(presenceOptions[3]);
+									case 'instead':
+										//no option to add presence, just token
+							}
 						} else {
 							// User wants an OR or an AND requirement
 							let operator = "";
@@ -277,7 +294,7 @@ function parseGrowthTags(){
 									case 'beast':
 										presenceTextEnd = "s"
 									case 'presence':
-										presenceTextLead += presenceTextEnd==="" ? "your " : "";
+										presenceTextLead += presenceTextEnd==="" ? "Your " : "";
 										
 									default:
 										if (flag == 0 && i != 1) {

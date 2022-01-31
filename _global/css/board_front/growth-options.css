@@ -187,6 +187,8 @@ presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus
 
 presence-req icon.presence {
 	width: 35px;
+	height: 27px;
+	margin-top: 20px;	
 }
 
 presence-req icon.blight {
@@ -233,6 +235,13 @@ growth-text {
   padding-left: 5px;
   padding-right: 5px;
   box-sizing: border-box;
+}
+
+.plus-text {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 20pt;
+    font-weight: bold;
+    font-style: normal;
 }
 
 growth-cell icon.gain-power-card {
