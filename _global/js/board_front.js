@@ -222,7 +222,13 @@ function parseGrowthTags(){
 							presenceIcon += presenceOptions[2];
 						} else {
 							// User wants an OR or an AND requirement
-							let operator = presenceOptions.at(-1);
+							let operator = "";
+							if (presenceOptions.length > 4) {
+								operator = "/";
+							}else{
+								operator = " "+presenceOptions.at(-1)+" ";
+							}
+							
 							presenceText += " to ";
 							let flag = 0;
 							for (var i = 1; i < presenceOptions.length; i++) {
@@ -236,7 +242,7 @@ function parseGrowthTags(){
 								// Icons
 								presenceIcon += "{"+presenceReq+"}";
 								if (i < presenceOptions.length - 2) {
-									presenceIcon += presenceOptions.length > 4 ?  "/" : " "+operator+" ";
+									presenceIcon += operator;
 								}
 								
 								// Text
@@ -254,7 +260,7 @@ function parseGrowthTags(){
 									case 'mountain':
 									case 'wetland':
 									case 'jungle':
-										presenceText += i != 1 ? " "+operator+" " : "";
+										presenceText += i != 1 ? operator : "";
 										presenceText += Capitalise(presenceReq);
 										break;
 									
@@ -267,8 +273,7 @@ function parseGrowthTags(){
 										presenceText += "Blight";
 										break;
 									
-									case 'disease':
-										console.log('test')
+
 									case 'beast':
 										presenceTextEnd = "s"
 									case 'presence':
@@ -276,11 +281,11 @@ function parseGrowthTags(){
 										
 									default:
 										if (flag == 0 && i != 1) {
-											presenceText += " "+operator+" Land with ";
+											presenceText += operator+"Land with ";
 										}else if(flag == 0){
 											presenceText += " Land with ";
 										}else{
-											presenceText += " "+operator+" ";
+											presenceText += operator;
 										}
 										flag = 1;
 										presenceText += presenceTextLead + Capitalise(presenceReq) + presenceTextEnd;
