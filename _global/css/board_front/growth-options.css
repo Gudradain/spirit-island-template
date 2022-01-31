@@ -164,11 +164,51 @@ presence-req icon.presence {
     width: 45px;
     margin-top: 7px;
     margin-bottom: -5px;
-    margin-left: 43px !important;
+/*     margin-left: 43px !important; */
+}
+
+presence-req icon.sand, presence-req icon.wetland, presence-req icon.jungle, presence-req icon.mountain, 
+presence-req icon.jungle-wetland, presence-req icon.jungle-sand, presence-req icon.sand-wetland, 
+presence-req icon.mountain-sand, presence-req icon.mountain-wetland, presence-req icon.mountain-jungle,
+presence-req icon.wetland-jungle, presence-req icon.sand-jungle, presence-req icon.wetland-sand, 
+presence-req icon.sand-mountain, presence-req icon.wetland-mountain, presence-req icon.jungle-mountain,
+presence-req icon.town, presence-req icon.city, presence-req icon.blight, 
+presence-req icon.dahan, presence-req icon.invaders,
+presence-req icon.presence, presence-req icon.wilds, presence-req icon.beast,
+presence-req icon.disease, presence-req icon.strife, presence-req icon.explorer, 
+presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus-1{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+    margin-left: auto;
+    margin-right: auto;
+	margin-top: 7px;
+}
+
+presence-req icon.presence {
+	width: 35px;
+}
+
+presence-req icon.invaders {
+	width: 70px;
+	height: 25px;
+	margin-top: 22px;
+}
+
+presence-req icon.jungle-wetland, presence-req icon.jungle-sand, presence-req icon.sand-wetland, 
+presence-req icon.mountain-sand, presence-req icon.mountain-wetland, presence-req icon.mountain-jungle,
+presence-req icon.wetland-jungle, presence-req icon.sand-jungle, presence-req icon.wetland-sand, 
+presence-req icon.sand-mountain, presence-req icon.wetland-mountain, presence-req icon.jungle-mountain {
+	width: 80px;
+	transform: translateY(0px) translateX(6px);
 }
 
 presence-req {
+  font-family: 'Lato SemiBold';
+  font-size: 14pt;
+  font-style: italic;
   display: block;
+  height:45px;
 }
 
 growth-cell icon.make-fast {
@@ -289,9 +329,9 @@ add-presence-req {
   margin-bottom: -8px;
 }
 
-growth icon.presence {
+/* growth icon.presence {
   margin-left: 6px;
-}
+} */
 
 .description icon.beast {
   background-image: url('../../images/board/beast.png');

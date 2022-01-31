@@ -56,6 +56,10 @@ icon.backslash {
   margin-left:0px;
 }
 
+icon.invaders {
+  background-image: url('../../images/board/invaders.png');
+}
+
 icon.beast{
   background-image: url('../../images/board/beast.png');
 }
@@ -266,6 +270,11 @@ icon.move-presence-4 {
 
 icon.blight {
   background-image: url('../../images/board/75px_blight.png');
+
+}
+
+icon.no-blight {
+  background-image: url('../../images/board/75px_no_blight.png');
   margin-bottom: -7px;
   margin-top: 10px;
 }
@@ -284,7 +293,9 @@ icon.city {
 
 icon.sand, icon.wetland, icon.jungle, icon.mountain, 
 icon.jungle-wetland, icon.jungle-sand, icon.sand-wetland, 
-icon.mountain-sand, icon.mountain-wetland, icon.mountain-jungle {
+icon.mountain-sand, icon.mountain-wetland, icon.mountain-jungle,
+icon.wetland-jungle, icon.sand-jungle, icon.wetland-sand, 
+icon.sand-mountain, icon.wetland-mountain, icon.jungle-mountain {
     display: block;
     height: 45px;
     width:70px;

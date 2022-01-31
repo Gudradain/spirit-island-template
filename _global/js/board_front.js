@@ -206,26 +206,91 @@ function parseGrowthTags(){
                     let presenceReqOpen = "<custom-presence>";
                     let presenceReqClose = "</custom-presence>";
                     let presenceReq = "none";
+					let presenceText = "";
+					let presenceIcon = "";
+					let presenceTextLead = "";
+					let presenceTextEnd = "";
+					let terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
 
                     if (presenceOptions.length > 1) {
-                        presenceReqOpen = "<custom-presence-req>";
-                        presenceReqClose = "</custom-presence-req>";
-                        presenceReq = presenceOptions[1];
+						presenceReqOpen = "<custom-presence-req>";
+						presenceReqClose = "</custom-presence-req>";
+						presenceIcon += "<presence-req>";
+						
+						if(presenceOptions[1]=='text'){
+							// User wants a custom text presence addition
+							presenceIcon += presenceOptions[2];
+						} else {
+							// User wants an OR or an AND requirement
+							let operator = presenceOptions.at(-1);
+							presenceText += " to ";
+							let flag = 0;
+							for (var i = 1; i < presenceOptions.length; i++) {
+								
+								// Check to see if we've reached an 'or', which shouldn't be parsed
+								presenceReq = presenceOptions[i];
+								if (presenceReq === 'or' || presenceReq === 'and') {
+									break;
+								}
+								
+								// Icons
+								presenceIcon += "{"+presenceReq+"}";
+								if (i < presenceOptions.length - 2) {
+									presenceIcon += presenceOptions.length > 4 ?  "/" : " "+operator+" ";
+								}
+								
+								// Text
+								multiLandCheck = presenceReq.split("-");
+								if (terrains.has(multiLandCheck[1])){
+									multiLandText = Capitalise(multiLandCheck[0]) + " or " + Capitalise(multiLandCheck[1]);
+									presenceReq = 'multiland';
+								}
+								
+								presenceTextLead = "";
+								presenceTextEnd = "";	
+								
+								switch (presenceReq){
+									case 'sand':
+									case 'mountain':
+									case 'wetland':
+									case 'jungle':
+										presenceText += i != 1 ? " "+operator+" " : "";
+										presenceText += Capitalise(presenceReq);
+										break;
+									
+									case 'multiland':
+										presenceText += multiLandText;
+										break;
+										
+									case 'no-blight':
+										presenceText += i == 1 ? " Land without " : " and no ";
+										presenceText += "Blight";
+										break;
+									
+									case 'disease':
+										console.log('test')
+									case 'beast':
+										presenceTextEnd = "s"
+									case 'presence':
+										presenceTextLead += presenceTextEnd==="" ? "your " : "";
+										
+									default:
+										if (flag == 0 && i != 1) {
+											presenceText += " "+operator+" Land with ";
+										}else if(flag == 0){
+											presenceText += " Land with ";
+										}else{
+											presenceText += " "+operator+" ";
+										}
+										flag = 1;
+										presenceText += presenceTextLead + Capitalise(presenceReq) + presenceTextEnd;
+								}
+							}							
+						}
+						presenceIcon += "</presence-req>";
                     }
 
-                    switch (presenceReq){
-                        case 'presence':
-                            newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}<presence-req>{" + presenceReq + "}</presence-req>{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence to a land with Presence</growth-text></growth-cell>"
-                            break;
-
-                        case 'dahan':
-                            newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}<presence-req>{" + presenceReq + "}</presence-req>{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence to a land with Dahan</growth-text></growth-cell>"
-                            break;
-
-                        default:
-                            newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}{" + presenceReq + "}{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence</growth-text></growth-cell>"
-                            break;
-                    }
+					newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+ {presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence" + presenceText + "</growth-text></growth-cell>"
                     break;
                 }
                 case 'push':

@@ -36,7 +36,11 @@ General Images: Every image in a board can be called by simply using its name en
           - gain-energy(X): Gain X Energy
           - make-fast: One of your Powers may be Fast
           - add-presence(X): Add a Presence up to X Range
-          - add-presence(X,Y): Add a Presence limited to Y Land type up to X Range
+		  - add-presence(X,Y): Add a Presence with Y conditions at X Range
+          - add-presence(X,Y,Z,...,W): Add a Presence with Y, Z, ... conditions at X Range
+			- Y, Z, and so on can be terrain types (including dual types), tokens, invaders, invader pieces, dahan, blight, etc.
+			- If using more than just Y, the last parameter W must be 'or' or 'and'. For example, add-presence(3,jungle,beast,or) as seen on Sharp Fangs or add-presence(2,town,city,blight,or) from Vengeance
+		  - add-presence(2,text,your_text_here): adds arbitrary text in case the desired option is not implemented
           - move-presence(X): Move a Presence up to X Range
           - presence-no-range: Add a presence anywhere (as seen on Finder)
           - ignore-range: Ignore Range this turn (as seen on Finder)
