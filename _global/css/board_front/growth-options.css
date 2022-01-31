@@ -189,6 +189,10 @@ presence-req icon.presence {
 	width: 35px;
 }
 
+presence-req icon.blight {
+	height: 35px;
+}
+
 presence-req icon.invaders {
 	width: 70px;
 	height: 25px;
