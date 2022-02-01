@@ -1,5 +1,14 @@
 var quickCards = document.querySelectorAll('quick-card');
 
+window.onload = function startMain(){
+    const cards = document.querySelectorAll('card');
+    
+	for (i = 0; i < cards.length; ++i) {
+		var html = cards[i].innerHTML;
+		cards[i].innerHTML = replaceIcon(html);
+	}
+}
+
 for(var quickCard of quickCards)
 {
   var data = getData(quickCard);
