@@ -688,7 +688,6 @@ function dynamicCellWidth() {
         formattedWidth = dynamicThresholdWidth + "px";
         thresholds[i].style.width = formattedWidth;
 		
-		console.log("Threshold"+i+" " + thresholds[i].innerHTML+", "+iconCount+" icons, "+ dynamicThresholdWidth + "px");
     }
     var description = document.getElementsByClassName("description");
     for(i = 0; i < description.length; i++){
