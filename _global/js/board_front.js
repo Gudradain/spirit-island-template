@@ -289,13 +289,13 @@ function parseGrowthTags(){
 									case 'mountain':
 									case 'wetland':
 									case 'jungle':
+									case 'ocean':
 										presenceText += i != 1 ? operator : "";
 										presenceText += Capitalise(presenceReq);
 										break;
 									
 									case 'inland':
 									case 'coastal':
-										// Icons not implemented - need to somehow catch a call to a class without a class.
 										presenceText += i != 1 ? operator : "";
 										presenceText += Capitalise(presenceReq) + " Land";
 										break;
@@ -373,31 +373,40 @@ function parseGrowthTags(){
                         if (elementOptions.length > 1) {
                             
 							//Check if they want multiples of the same element or a choice of elements by looking for a numeral
-							if (isNaN(elementOptions[1])) {//They want different elements. For example gain-element(water,fire)
-                            //Icons
-							newGrowthCellHTML += `${openTag}<gain class='or'>`
-                            for (var i = 0; i < elementOptions.length; i++) {
-                                newGrowthCellHTML += "<icon class='orelement " + elementOptions[i] + "'></icon>";
-                                if (i < elementOptions.length - 1) {
-                                    newGrowthCellHTML += "{backslash}";
-                                }
-                            }
-                            //Text
-							newGrowthCellHTML += "</gain><growth-text>Gain ";
-							for (var i = 0; i < elementOptions.length; i++) {
-                                newGrowthCellHTML += elementOptions[i].charAt(0).toUpperCase() + elementOptions[i].slice(1);
-								if (i < elementOptions.length-2) {
-                                    newGrowthCellHTML += ", ";
-                                } else if (i == elementOptions.length-2) {
-									newGrowthCellHTML += " or ";
+							if (isNaN(elementOptions[1])) {
+								//No numeral - user wants different elements. For example gain-element(water,fire)
+								if (elementOptions.at(-1) === 'or' || elementOptions.at(-1) === 'and'){}
+						
+								//Icons
+								newGrowthCellHTML += `${openTag}<gain class='or'>`
+								for (var i = 0; i < elementOptions.length; i++) {
+									newGrowthCellHTML += "<icon class='orelement " + elementOptions[i] + "'></icon>";
+									if (i < elementOptions.length - 1) {
+										newGrowthCellHTML += "{backslash}";
+									}
 								}
-                            }
-							newGrowthCellHTML += "</growth-text></growth-cell>";
-							} else { //They just want 2 or more of the same element
+								//Text
+								newGrowthCellHTML += "</gain><growth-text>Gain ";
+								for (var i = 0; i < elementOptions.length; i++) {
+									newGrowthCellHTML += elementOptions[i].charAt(0).toUpperCase() + elementOptions[i].slice(1);
+									if (i < elementOptions.length-2) {
+										newGrowthCellHTML += ", ";
+									} else if (i == elementOptions.length-2) {
+										newGrowthCellHTML += " or ";
+									}
+								}
+								newGrowthCellHTML += "</growth-text></growth-cell>";
+									
+							} else { 
+								//They just want 2 or more of the same element
 								var inner = "<icon-gtop><icon class='"+elementOptions[0]+"'></icon></icon-gtop><icon-gbottom><icon class='"+elementOptions[0]+"'></icon></icon-gbottom>";
+								if(elementOptions[1]>2){
+									inner += "<icon-gthird><icon class='"+elementOptions[0]+"'></icon></icon-third>"
+								}
 								//Text: include the numeral in the text. For example gain-element(water,2)
 								newGrowthCellHTML += `${openTag}<gain>` + inner + "</gain><growth-text>Gain "+elementOptions[1]+" "+elementOptions[0].charAt(0).toUpperCase() + elementOptions[0].slice(1)+"</growth-text></growth-cell>";
 							}
+									
 						} else {
 							newGrowthCellHTML += `${openTag}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + "</growth-text></growth-cell>"
 						}
@@ -678,14 +687,16 @@ function dynamicCellWidth() {
             (iconCount * ICONWIDTH) + (iconCount * 12);
         formattedWidth = dynamicThresholdWidth + "px";
         thresholds[i].style.width = formattedWidth;
+		
+		console.log("Threshold"+i+" " + thresholds[i].innerHTML+", "+iconCount+" icons, "+ dynamicThresholdWidth + "px");
     }
     var description = document.getElementsByClassName("description");
     for(i = 0; i < description.length; i++){
         
-        var textWidth = description[i].clientHeight;
-        console.log(textWidth);
+        var textHeight = description[i].clientHeight;
+
         //Get the icon width and add it to length
-        if (textWidth < 50){
+        if (textHeight < 40){
             description[i].id = "single-line";
         }
     }
@@ -782,6 +793,7 @@ function parseInnatePowers(){
             currentPowerHTML += "</threshold><div class='description'>";
             var currentDescription = currentLevels[j].innerHTML;
             currentPowerHTML += currentDescription+"</div></level>";
+			console.log(currentDescription)
         }
         fullHTML += currentPowerHTML+"</description-container></innate-power>";
     }

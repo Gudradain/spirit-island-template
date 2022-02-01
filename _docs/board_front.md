@@ -91,3 +91,4 @@ General Images: Every image in a board can be called by simply using its name en
         - threshold: Contains the elemental information for the threshold:
           - Example: 1-plant,2-fire
         - The actual text for the level sits within the level tag
+		- To achieve 'for each element' effects, use the notation {element, #}. For example, Serpent's second innate has "for each {moon,2} {stone,2}" on the second level.
