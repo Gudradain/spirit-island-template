@@ -155,7 +155,7 @@ description-container {
   width: 465px;
   height: 325px;
   display:block;
-  margin-top: 2px;
+  margin-top: 10px;
 }
 
 note {
@@ -164,7 +164,8 @@ note {
   width: 487px;
   font-family: 'JosefinSans-Regular';
   font-size: 15pt;
-  margin-bottom:2px;
+  margin-bottom:4px;
+  margin-top: -4px;
 }
 
 note icon{
