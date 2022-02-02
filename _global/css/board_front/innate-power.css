@@ -266,6 +266,15 @@ threshold icon {
     margin-right: 5px;
 }
 
+threshold icon.wilds, threshold icon.disease, threshold icon.strife,
+threshold icon.badlands, threshold icon.blight {
+    width: 45px;
+    height: 45px;
+    margin-bottom: -9px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 threshold icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
 
 threshold icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
