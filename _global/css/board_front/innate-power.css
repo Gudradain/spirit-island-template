@@ -102,7 +102,7 @@ innate-info-speed, innate-info-range{
 }
 
 innate-info-range, innate-info-target {
-  font-size: 26px;
+  font-size: 34px;
   line-height: 24px;
   display: flex;
   align-items: center;
@@ -110,12 +110,14 @@ innate-info-range, innate-info-target {
 }
 
 range {
-  width: 50px;
-  height: 32px;
-  text-align: center;
   background-image: url('../../images/50px-Rangeicon.png');
+  width: 70px;
+  height: 40px;
+  margin-top: 5px;
+  text-align: center;
   background-repeat: no-repeat;
-  background-position-y: 23px;
+  background-size: contain;
+  background-position-y: 27px;
 }
 
 no-range {
@@ -220,7 +222,7 @@ innate-info-range icon.sands-presence, innate-info-range icon.wetland-presence,
 innate-info-range icon.jungle-presence, innate-info-range icon.mountain-presence {
   width: 50px;
   height: 50px;
-  margin-bottom: -2px;
+  margin-bottom: -10px;
   margin-left: 0px;
   margin-right: 10px;
 }
@@ -228,6 +230,13 @@ innate-info-range icon.jungle-presence, innate-info-range icon.mountain-presence
 innate-info-target icon.blight, innate-info-target icon.no-blight {
   height: 30px;
   width: 30px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+innate-info-target icon.spirit {
+  height: 35px;
+  width: 35px;
   margin-bottom: 0px;
   margin-top: 0px;
 }
