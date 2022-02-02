@@ -770,9 +770,9 @@ function parseInnatePowers(){
         //If the note field is blank
         if(noteValue == null){
             noteValue = "";
-        }
-
-        currentPowerHTML += "<note>" + noteValue + "</note>";
+        }else{
+			currentPowerHTML += "<note>" + noteValue + "</note>";
+		}       
 
         //Innate Power Levels and Thresholds
         var currentLevels = innatePowerHTML.getElementsByTagName("level");
