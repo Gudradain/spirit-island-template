@@ -19,7 +19,7 @@ sub-growth {
 
 growth sub-section-title {
   top: 17px;
-  margin-top: 8px;
+  margin-top: 14px;
   position: absolute;
 
   display: flex;
@@ -34,12 +34,12 @@ growth sub-section-title>span {
 }
 
 growth sub-section-line {
-  height: 1px;
+  background-image: url('../../images/board/growth_underline.png');	
+  height: 5px;
   width: 100%;
+  background-size: 100% 100%;
   flex-shrink: 99;
-  background-color:black;
-  overflow: visible;
-
+  background-repeat: no-repeat;
   margin-bottom: auto;
   margin-top: auto;
   margin-left: 8px;
@@ -486,6 +486,9 @@ growth-cell icon.moon {
   margin-bottom: 7px;
 }
 
+growth-cell icon.presence{
+  margin-left: 5px;
+}
 
 /* Enables growth option - 2 of same element */
 icon-gtop icon {
@@ -494,5 +497,9 @@ icon-gtop icon {
 }
 icon-gbottom icon {
   transform: translateY(0px) translateX(-14px);
+  display: inline-block;
+}
+icon-gthird icon {
+  transform: translateY(-25px) translateX(-40px);
   display: inline-block;
 }
