@@ -155,7 +155,7 @@ description-container {
   width: 465px;
   height: 325px;
   display:block;
-  margin-top:10px;
+  margin-top: 2px;
 }
 
 note {
@@ -164,6 +164,7 @@ note {
   width: 487px;
   font-family: 'JosefinSans-Regular';
   font-size: 15pt;
+  margin-bottom:2px;
 }
 
 note icon{
@@ -173,8 +174,16 @@ note icon{
 note icon.town, note icon.blight, note icon.dahan,
 note icon.presence, note icon.wilds, note icon.beast,
 note icon.disease, note icon.strife, note icon.explorer, 
-note icon.badlands, note icon.fear, note icon.range-plus-1{
+note icon.badlands, note icon.fear, note icon.range-plus-1,
+note icon.destroyed-presence{
     width:24px;
+	height: 20px;
+	margin-bottom: -4px;
+	background-position: bottom;
+}
+
+note icon.destroyed-presence{
+    width:30px;
 }
 
 level {
