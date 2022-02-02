@@ -170,6 +170,13 @@ note icon{
     width:24px;
 }
 
+note icon.town, note icon.blight, note icon.dahan,
+note icon.presence, note icon.wilds, note icon.beast,
+note icon.disease, note icon.strife, note icon.explorer, 
+note icon.badlands, note icon.fear, note icon.range-plus-1{
+    width:24px;
+}
+
 level {
   display: inline-block;
   height: auto;
