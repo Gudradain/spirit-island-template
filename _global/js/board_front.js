@@ -331,7 +331,7 @@ function parseGrowthTags(){
 						presenceIcon += "</presence-req>";
                     }
 
-					newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+ {presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence" + presenceText + "</growth-text></growth-cell>"
+					newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence" + presenceText + "</growth-text></growth-cell>"
                     break;
                 }
                 case 'push':
@@ -357,7 +357,7 @@ function parseGrowthTags(){
                         const matches = regExp.exec(classPieces[j]);
 
                         const moveRange = matches[1];
-                        newGrowthCellHTML += `${openTag}<custom-presence-special>{presence}{move-range-` + moveRange + "}<growth-text>Move a Presence</growth-text></growth-cell>"
+                        newGrowthCellHTML += `${openTag}<custom-presence>{presence}{move-range-` + moveRange + "}</custom-presence><growth-text>Move a Presence</growth-text></growth-cell>"
 
                         break;
                     }
