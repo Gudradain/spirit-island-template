@@ -247,7 +247,7 @@ function parseGrowthTags(){
 							}
 							
 							presenceText += " to ";
-							let flag = 0;
+							let flag = 0; // This flag is used to figure out if 'land with' has been said already. It comes up with add-presence(3,jungle,beast,or)
 							for (var i = 1; i < presenceOptions.length; i++) {
 								
 								// Check to see if we've reached an 'or', which shouldn't be parsed
@@ -262,7 +262,7 @@ function parseGrowthTags(){
 									case 'coastal':
 									case 'invaders':
 										presenceIcon += presenceOptions.length < 3
-											? "<span class='non-icon'>"+presenceReq+"</span><icon style='height:50px; width:0px;'></icon>"
+											? "<span class='non-icon'>"+presenceReq+"</span><icon style='height:50px; width:0px;'></icon>" // This do-nothing Icon just creates 50px of height to make everything line up. Other ideas?
 											: "<span class='non-icon small'>"+presenceReq+"</span><icon style='height:50px; width:0px;'></icon>"
 										break;
 										
@@ -541,7 +541,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 					var matches = regExp.exec(splitOptions[0]);
 					var pushTarget = matches[1];
                     inner = "<icon class='push'><icon class='"+pushTarget+"'></icon></icon>";
-                    subText = "Push "+Capitalise(pushTarget);
+                    subText = "Push 1 "+Capitalise(pushTarget) + " from 1 of your Lands";
 					break;    
 				case 'move-presence':
 					var matches = regExp.exec(splitOptions[0]);
@@ -699,6 +699,22 @@ function dynamicCellWidth() {
             description[i].id = "single-line";
         }
     }
+	
+	// Presence node subtext (for longer descriptions, allows flowing over into neighbors.
+	var subtext = document.getElementsByTagName("subtext");
+    for(i = 0; i < subtext.length; i++){
+        
+        var textHeight = subtext[i].clientHeight;
+		
+        //This solution is really jank, but it works for now
+		if (textHeight > 60){
+			subtext[i].style.width = "200px";
+			subtext[i].style.position = "absolute";
+			subtext[i].style.transform = "translateX(-34px)";
+			console.log(i+", "+subtext[i])
+        }
+    }
+	
 }
 
 function parseInnatePowers(){
@@ -792,7 +808,6 @@ function parseInnatePowers(){
             currentPowerHTML += "</threshold><div class='description'>";
             var currentDescription = currentLevels[j].innerHTML;
             currentPowerHTML += currentDescription+"</div></level>";
-			console.log(currentDescription)
         }
         fullHTML += currentPowerHTML+"</description-container></innate-power>";
     }
