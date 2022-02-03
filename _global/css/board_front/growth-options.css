@@ -462,7 +462,7 @@ growth-cell gain icon.moon {
 
 /* Enables growth option - OR multiple different elements */
 growth-cell gain icon.orelement {
-  background-size: 75%;
+  background-size: 70%;
   transform: translateY(0px);
   margin-right: -7px;
   margin-left: -7px;
@@ -491,7 +491,7 @@ growth-cell icon.presence{
 }
 
 /* Enables growth option - 2 of same element */
-icon-multi-element icon {
+icon-multi-element icon, icon-multi-element energy-icon,icon-multi-element card-icon {
   display: inline-block;
   position: absolute;
 }
