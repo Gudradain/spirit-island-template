@@ -373,7 +373,7 @@ function parseGrowthTags(){
                         if (elementOptions.length > 1) {
                             
 							//Check if they want multiples of the same element or a choice of elements by looking for a numeral
-							if (isNaN(elementOptions[1])) {
+							if (isNaN(elementOptions[1]) && elementOptions.at(-1) !== 'and') {
 								//No numeral - user wants different elements. For example gain-element(water,fire)
 								if (elementOptions.at(-1) === 'or' || elementOptions.at(-1) === 'and'){}
 						
@@ -398,23 +398,41 @@ function parseGrowthTags(){
 								newGrowthCellHTML += "</growth-text></growth-cell>";
 									
 							} else { 
-								//They just want 2 or more of the same element
-								// This code lets them pick any number of the same element and puts them on a circle.
-								let numLocs = elementOptions[1];
-								let rad_size = 20 + 1*numLocs; // this should be something related to the width in pixels
-								console.log(numLocs)
-								var inner = ""
+								// They multiple of the same element or multiple different elements (all of them, not or)
+
+								let numLocs								
+								// Text
+								let elementText = "";
+								if (elementOptions.at(-1) == 'and'){
+									// gain multiple different elements
+									numLocs = elementOptions.length - 1;
+									for (var i = 0; i < numLocs; i++) {
+										elementText += elementOptions[i].charAt(0).toUpperCase() + elementOptions[i].slice(1);
+										if (i < numLocs-2) {
+											elementText += ", ";
+										} else if (i == numLocs-2) {
+											elementText += " and ";
+										}
+									}
+								} else {
+									// gain multiple of the same element
+									numLocs = elementOptions[1];
+									elementText = elementOptions[1]+" "+elementOptions[0].charAt(0).toUpperCase() + elementOptions[0].slice(1);
+								}
+								
+								// Icons
+								let rad_size = 20 + 1*numLocs; // this expands slightly as more icons are used
+								var elementIcons = ""
 								for (var i = 0; i < numLocs; i++) {
 									pos_angle = i * 2*Math.PI / numLocs - (Math.PI)*(1-(1/6));
 									x_loc = rad_size * Math.cos(pos_angle) - 30;
 									y_loc = rad_size * Math.sin(pos_angle) - 20;
 									let element_loc = "style='transform: translateY("+y_loc+"px) translateX("+x_loc+"px)'";
-									inner += "<icon-multi-element><icon class='"+elementOptions[0]+"'"+element_loc+"></icon></icon-multi-element>"
-									console.log(inner)
+									elementIcons += "<icon-multi-element><icon class='"+elementOptions[i]+"'"+element_loc+"></icon></icon-multi-element>"
 								}
-								inner += "<icon style='width:0px;height:98px'></icon>"; // This is a filler icon to make sure the spacing is right. Any idea for a better solution?
-								//Text: include the numeral in the text. For example gain-element(water,2)
-								newGrowthCellHTML += `${openTag}<gain>` + inner + "</gain><growth-text>Gain "+elementOptions[1]+" "+elementOptions[0].charAt(0).toUpperCase() + elementOptions[0].slice(1)+"</growth-text></growth-cell>";
+								elementIcons += "<icon style='width:0px;height:98px'></icon>"; // This is a filler icon to make sure the spacing is right. Any idea for a better solution?
+								
+								newGrowthCellHTML += `${openTag}<gain>` + elementIcons + "</gain><growth-text>Gain "+elementText+"</growth-text></growth-cell>";
 							}
 									
 						} else {
