@@ -428,9 +428,13 @@ function parseGrowthTags(){
 									x_loc = rad_size * Math.cos(pos_angle) - 30;
 									y_loc = rad_size * Math.sin(pos_angle) - 20;
 									let element_loc = "style='transform: translateY("+y_loc+"px) translateX("+x_loc+"px)'";
-									elementIcons += "<icon-multi-element><icon class='"+elementOptions[i]+"'"+element_loc+"></icon></icon-multi-element>"
+									let cur_element = elementOptions.at(-1) === 'and'
+										? elementOptions[i]
+										: elementOptions[0]
+									console.log(cur_element)
+									elementIcons += "<icon-multi-element><icon class='"+cur_element+"'"+element_loc+"></icon></icon-multi-element>"
 								}
-								elementIcons += "<icon style='width:0px;height:98px'></icon>"; // This is a filler icon to make sure the spacing is right. Any idea for a better solution?
+								elementIcons += "<icon style='width:0px;height:99px'></icon>"; // This is a filler icon to make sure the spacing is right. Any idea for a better solution?
 								
 								newGrowthCellHTML += `${openTag}<gain>` + elementIcons + "</gain><growth-text>Gain "+elementText+"</growth-text></growth-cell>";
 							}
@@ -601,6 +605,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
             }
             subText = Capitalise(splitOptions[0])+", "+subText; */
 			
+			// Alternate Version
 			var subText = ""
 			for (var i = 0; i < splitOptions.length; i++) {
 				if(splitOptions[i] == 'reclaim-one'){
@@ -628,7 +633,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
             var inner = "<icon-top>"+top+"</icon-top>" +
                 "<icon-bottom>"+bottom+"<icon-bottom>"; */
 			
-			// alternate version
+			// Alternate Version
 			numLocs = splitOptions.length;
 			let rad_size = 20 + 1*numLocs; // this expands slightly as more icons are used
 			var trackIcons = ""
@@ -774,7 +779,6 @@ function dynamicCellWidth() {
 			subtext[i].style.width = "200px";
 			subtext[i].style.position = "absolute";
 			subtext[i].style.transform = "translateX(-34px)";
-			console.log(i+", "+subtext[i])
         }
     }
 	
