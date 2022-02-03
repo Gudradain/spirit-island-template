@@ -398,7 +398,7 @@ function parseGrowthTags(){
 								newGrowthCellHTML += "</growth-text></growth-cell>";
 									
 							} else { 
-								// They multiple of the same element or multiple different elements (all of them, not or)
+								// Gain multiple of the same element or gain multiple different elements (all of them, not or)
 
 								let numLocs								
 								// Text
@@ -594,14 +594,26 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     nodeClass = 'card';
                 }
             }, splitOptions);            
-
-            var subText = Capitalise(splitOptions[1]);
+			
+/*             var subText = Capitalise(splitOptions[1]);
             if(splitOptions[1] == 'reclaim-one'){
                 subText = "Reclaim One";
             }
-            subText = Capitalise(splitOptions[0])+", "+subText;
+            subText = Capitalise(splitOptions[0])+", "+subText; */
+			
+			var subText = ""
+			for (var i = 0; i < splitOptions.length; i++) {
+				if(splitOptions[i] == 'reclaim-one'){
+					subText += "Reclaim One";
+				}else{
+					subText += Capitalise(splitOptions[i]);
+				}
+				if(i < splitOptions.length-1){
+					subText += ", "
+				}
+			}
 
-            var top = "";
+/*             var top = "";
             var bottom = "<icon class='"+splitOptions[1]+"'></icon>";
             if(!isNaN(splitOptions[0])){
                 top = "<" + nodeClass + "-icon class='small'><value>" + splitOptions[0] + "</value></" + nodeClass + "-icon>";
@@ -614,7 +626,30 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
             }
 
             var inner = "<icon-top>"+top+"</icon-top>" +
-                "<icon-bottom>"+bottom+"<icon-bottom>";
+                "<icon-bottom>"+bottom+"<icon-bottom>"; */
+			
+			// alternate version
+			numLocs = splitOptions.length;
+			let rad_size = 20 + 1*numLocs; // this expands slightly as more icons are used
+			var trackIcons = ""
+			for (var i = 0; i < numLocs; i++) {
+				pos_angle = i * 2*Math.PI / numLocs - (Math.PI)*(1-(1/6));
+				x_loc = rad_size * Math.cos(pos_angle) - 35;
+				y_loc = rad_size * Math.sin(pos_angle) - 25;
+				let track_icon_loc = "style='transform: translateY("+y_loc+"px) translateX("+x_loc+"px)'";
+				
+				// deal with cards and energy
+				if(!isNaN(splitOptions[i])){
+					trackIcons += "<icon-multi-element><" + nodeClass + "-icon class='small'"+track_icon_loc+"><value>" + splitOptions[i] + "</value></" + nodeClass + "-icon></icon-multi-element>";
+					if(nodeClass == 'energy') { 
+						addEnergyRing = false;
+					}
+				} else {
+					trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+"'"+track_icon_loc+"></icon></icon-multi-element>"
+				}
+			}
+			var inner = trackIcons;
+			console.log(inner)
 		}
 	}
         
