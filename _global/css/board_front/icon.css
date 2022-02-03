@@ -50,10 +50,14 @@ icon.presence {
 }
 
 icon.backslash {
-  background-image: url('../../images/board/backslash.png');
-  width: 10px;
-  margin-bottom:20px;
-  margin-left:0px;
+    background-image: url(../../images/board/backslash.png);
+    background-size: cover;
+    width: 8px;
+    height: 28px;
+    margin-bottom: 22px;
+    margin-left: 0px;
+    margin-right: 0px;
+	margin-top: 37px;
 }
 
 icon.invaders {

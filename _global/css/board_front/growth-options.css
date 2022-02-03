@@ -464,8 +464,8 @@ growth-cell gain icon.moon {
 growth-cell gain icon.orelement {
   background-size: 75%;
   transform: translateY(0px);
-  margin-right: -5px;
-  margin-left: -5px;
+  margin-right: -7px;
+  margin-left: -7px;
 }
 
 growth-cell icon.fire,
@@ -491,15 +491,7 @@ growth-cell icon.presence{
 }
 
 /* Enables growth option - 2 of same element */
-icon-gtop icon {
-  transform: translateY(-24px) translateX(14px);
+icon-multi-element icon {
   display: inline-block;
-}
-icon-gbottom icon {
-  transform: translateY(0px) translateX(-14px);
-  display: inline-block;
-}
-icon-gthird icon {
-  transform: translateY(-25px) translateX(-40px);
-  display: inline-block;
+  position: absolute;
 }

@@ -399,10 +399,20 @@ function parseGrowthTags(){
 									
 							} else { 
 								//They just want 2 or more of the same element
-								var inner = "<icon-gtop><icon class='"+elementOptions[0]+"'></icon></icon-gtop><icon-gbottom><icon class='"+elementOptions[0]+"'></icon></icon-gbottom>";
-								if(elementOptions[1]>2){
-									inner += "<icon-gthird><icon class='"+elementOptions[0]+"'></icon></icon-third>"
+								// This code lets them pick any number of the same element and puts them on a circle.
+								let numLocs = elementOptions[1];
+								let rad_size = 20 + 1*numLocs; // this should be something related to the width in pixels
+								console.log(numLocs)
+								var inner = ""
+								for (var i = 0; i < numLocs; i++) {
+									pos_angle = i * 2*Math.PI / numLocs - (Math.PI)*(1-(1/6));
+									x_loc = rad_size * Math.cos(pos_angle) - 30;
+									y_loc = rad_size * Math.sin(pos_angle) - 20;
+									let element_loc = "style='transform: translateY("+y_loc+"px) translateX("+x_loc+"px)'";
+									inner += "<icon-multi-element><icon class='"+elementOptions[0]+"'"+element_loc+"></icon></icon-multi-element>"
+									console.log(inner)
 								}
+								inner += "<icon style='width:0px;height:98px'></icon>"; // This is a filler icon to make sure the spacing is right. Any idea for a better solution?
 								//Text: include the numeral in the text. For example gain-element(water,2)
 								newGrowthCellHTML += `${openTag}<gain>` + inner + "</gain><growth-text>Gain "+elementOptions[1]+" "+elementOptions[0].charAt(0).toUpperCase() + elementOptions[0].slice(1)+"</growth-text></growth-cell>";
 							}
