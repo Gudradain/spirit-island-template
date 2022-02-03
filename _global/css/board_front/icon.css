@@ -166,7 +166,7 @@ icon.explorer {
   background-image: url('../../images/board/explorer.png');
   width: 20px;
   height: 35px;
-  margin-bottom: -8px;
+  margin-bottom: -5px;
   margin-left: -5px;
   margin-right: -5px;
 }
@@ -198,8 +198,8 @@ icon.wilds {
   width: 30px;
   height: 30px;
   margin-bottom: -8px;
-  margin-left: -5px;
-  margin-right: -5px;
+  margin-left: -3px;
+  margin-right: -3px;
 }
 
 icon.badlands {

@@ -185,6 +185,7 @@ note icon.destroyed-presence{
 
 note icon.destroyed-presence{
     width:30px;
+	margin-bottom: -1px;
 }
 
 level {
