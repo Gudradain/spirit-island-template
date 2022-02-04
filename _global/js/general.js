@@ -20,7 +20,6 @@ function replaceIcon(html)
 	iconHtml = elementCountText;
     if(iconName.startsWith('no-')){
         iconHtml += `<icon class="no ${iconName.substring(3)}"></icon>`;
-/*         iconHtml = `<icon class="no"><icon class="${iconName.substring(3)}"></icon></icon>`; */
     }else{
         iconHtml += `<icon class="${iconName}"></icon>`;
     }
