@@ -48,7 +48,7 @@ innate-power-title {
 }
 
 info-container {
-  width: 463.25px;
+  width: 463px;
   border: 3px solid black;
   position: relative;
   display:block;
@@ -62,7 +62,7 @@ info-title {
   color: white;
   font-family: 'DK Snemand';
   text-transform: uppercase;
-  font-size: 14.26pt;
+  font-size: 14pt;
   letter-spacing: 1.25pt;
   text-align: center;
   white-space: normal;
@@ -205,8 +205,8 @@ threshold {
   float: left;
 }
 
-innate-info-range icon.range-0, innate-info-range icon.range-1, innate-info-range icon.range-2, 
-innate-info-range icon.range-3, innate-info-range icon.range-4 {
+innate-info icon.range-0, innate-info icon.range-1, innate-info icon.range-2, 
+innate-info icon.range-3, innate-info icon.range-4 {
     width: 75px;
     height: 75px;
     margin-left: -10px;
@@ -228,7 +228,15 @@ info-target spirit {
   height: 28px;
 }
 
-innate-info-range icon.sacred-site {
+innate-info icon {
+  width: 30px;
+  height: 30px;
+  margin-bottom: -4px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+innate-info icon.sacred-site {
   width: 50px;
   height: 50px;
   margin-bottom: -10px;
@@ -236,8 +244,8 @@ innate-info-range icon.sacred-site {
   margin-right: 10px;
 }
 
-innate-info-range icon.sands-presence, innate-info-range icon.wetland-presence, 
-innate-info-range icon.jungle-presence, innate-info-range icon.mountain-presence {
+innate-info icon.sands-presence, innate-info icon.wetland-presence, 
+innate-info icon.jungle-presence, innate-info icon.mountain-presence {
   width: 50px;
   height: 50px;
   margin-bottom: -10px;
@@ -245,14 +253,14 @@ innate-info-range icon.jungle-presence, innate-info-range icon.mountain-presence
   margin-right: 10px;
 }
 
-innate-info-target icon.blight, innate-info-target icon.no-blight {
+innate-info icon.blight, innate-info icon.no-blight {
   height: 30px;
   width: 30px;
   margin-bottom: 0px;
   margin-top: 0px;
 }
 
-innate-info-target icon.spirit {
+innate-info icon.spirit {
   height: 35px;
   width: 35px;
   margin-bottom: 0px;
