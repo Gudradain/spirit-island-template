@@ -11,6 +11,10 @@ html {
   overflow-y: auto;
 }
 
+bullet {
+margin-left:30px;
+}
+
 *{
   box-sizing:border-box;
 }
