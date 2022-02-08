@@ -792,7 +792,7 @@ function parseInnatePowers(){
 }
 
 function parseInnatePower(innatePowerHTML){
-        
+
     var currentPowerHTML = "<innate-power class='"+innatePowerHTML.getAttribute("speed")+"'>";
     
     //Innater Power title
@@ -854,12 +854,13 @@ function parseInnatePower(innatePowerHTML){
         currentPowerHTML += "<note>" + noteValue + "</note>";
     }       
 
+
     //Innate Power Levels and Thresholds
     var currentLevels = innatePowerHTML.getElementsByTagName("level");
     for (j = 0; j < currentLevels.length; j++){
         var currentThreshold = currentLevels[j].getAttribute("threshold");
         var currentThresholdPieces = currentThreshold.split(",");
-
+      
         currentPowerHTML += "<level><threshold>";
         for (k = 0; k < currentThresholdPieces.length; k++){
             currentThresholdPieces[k] = currentThresholdPieces[k].replace("-","{");
@@ -874,3 +875,4 @@ function parseInnatePower(innatePowerHTML){
     currentPowerHTML+="</description-container></innate-power>";
     return currentPowerHTML;
 }
+
