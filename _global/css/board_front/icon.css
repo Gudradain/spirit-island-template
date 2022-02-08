@@ -55,9 +55,9 @@ icon.backslash {
     width: 8px;
     height: 28px;
     margin-bottom: 22px;
-    margin-left: 0px;
-    margin-right: 0px;
-	margin-top: 37px;
+    margin-left: -2px;
+    margin-right: -2px;
+    margin-top: 37px;
 }
 
 icon.invaders {
@@ -291,7 +291,9 @@ icon.town {
 icon.city {
   background-image: url('../../images/board/75px_city.png');
   margin-bottom: -7px;
-  margin-top: 10px;
+  margin-top: -8px;
+  width:40px;
+  height:50px;
 }
 
 icon.sand, icon.wetland, icon.jungle, icon.mountain, 
