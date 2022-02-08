@@ -82,6 +82,13 @@ presence-node card-icon {
   align-items: center;
   justify-content: center;
 }
+
+.small-reclaim {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: -25px;
+}
+
 card-icon.small {
     margin-left: 0px;
     margin-right: 0px;
