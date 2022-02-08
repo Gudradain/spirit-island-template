@@ -18,13 +18,12 @@ icon.animal { background-image: url('../../images/board/Animal.png'); }
 icon.plant { background-image: url('../../images/board/Plant.png'); }
 icon.sun { background-image: url('../../images/board/Sun.png'); }
 icon.earth { background-image: url('../../images/board/Earth.png'); }
-
-icon.jungle-wetland { background-image: url('../../images/board/junglewetland.png'); }
-icon.jungle-sand { background-image: url('../../images/board/junglesand.png'); }
-icon.sand-wetland { background-image: url('../../images/board/sandwetland.png'); }
-icon.mountain-jungle { background-image: url('../../images/board/mountainjungle.png'); }
-icon.mountain-wetland { background-image: url('../../images/board/mountainwetland.png'); }
-icon.mountain-sand { background-image: url('../../images/board/mountainsand.png'); }
+icon.jungle-wetland, icon.wetland-jungle { background-image: url('../../images/board/junglewetland.png'); }
+icon.jungle-sand, icon.sand-jungle { background-image: url('../../images/board/junglesand.png'); }
+icon.sand-wetland, icon.wetland-sand { background-image: url('../../images/board/sandwetland.png'); }
+icon.mountain-jungle, icon.jungle-mountain { background-image: url('../../images/board/mountainjungle.png'); }
+icon.mountain-wetland, icon.wetland-mountain { background-image: url('../../images/board/mountainwetland.png'); }
+icon.mountain-sand, icon.sand-mountain { background-image: url('../../images/board/mountainsand.png'); }
 icon.sand { background-image: url('../../images/board/sand.png'); }
 icon.mountain { background-image: url('../../images/board/mountain.png'); }
 icon.jungle { background-image: url('../../images/board/jungle.png'); }
@@ -50,13 +49,23 @@ icon.presence {
   margin-left:0px;
 }
 
+icon.backslash {
+    background-image: url(../../images/board/backslash.png);
+    background-size: cover;
+    width: 8px;
+    height: 28px;
+    margin-bottom: 22px;
+    margin-left: -2px;
+    margin-right: -2px;
+    margin-top: 37px;
+}
+
+icon.invaders {
+  background-image: url('../../images/board/invaders.png');
+}
+
 icon.beast{
   background-image: url('../../images/board/beast.png');
-  height: 25px;
-  width: 35px;
-  margin-bottom: -7px;
-  margin-right: -4px;
-  margin-left: -4px;
 }
 
 icon.move-presence {
@@ -139,7 +148,16 @@ icon.jungle-presence { background-image: url('../../images/board/jungle-presence
 icon.presence {
   width: 35px;
   height: 35px;
-  margin-bottom: -13px;
+  margin-bottom: -8px;
+  margin-left: -2px;
+  margin-right: -2px;
+}
+
+icon.destroyed-presence {
+  background-image: url('../../images/board/NewIcons/Misc Presence Destroy.png');
+  width: 35px;
+  height: 35px;
+  margin-bottom: -8px;
   margin-left: -2px;
   margin-right: -2px;
 }
@@ -148,19 +166,13 @@ icon.explorer {
   background-image: url('../../images/board/explorer.png');
   width: 20px;
   height: 35px;
-  margin-bottom: -8px;
+  margin-bottom: -5px;
   margin-left: -5px;
   margin-right: -5px;
 }
 
 icon.dahan {
   background-image: url('../../images/board/dahan.png');
-  width: 30px;
-  height: 30px;
-  margin-bottom: -8px;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: -10px;
 }
 
 icon.disease {
@@ -186,8 +198,8 @@ icon.wilds {
   width: 30px;
   height: 30px;
   margin-bottom: -8px;
-  margin-left: -5px;
-  margin-right: -5px;
+  margin-left: -3px;
+  margin-right: -3px;
 }
 
 icon.badlands {
@@ -262,32 +274,33 @@ icon.move-presence-4 {
 
 icon.blight {
   background-image: url('../../images/board/75px_blight.png');
-  margin-bottom: -7px;
-  margin-top: 10px;
+
 }
 
-icon.dahan {
-  background-image: url('../../images/board/50px_dahan.png');
-  height: 30px;
-  margin-bottom: -8px;
-  margin-top: 0px;
+icon.no-blight {
+  background-image: url('../../images/board/75px_no_blight.png');
+  margin-bottom: -7px;
+  margin-top: 10px;
 }
 
 icon.town {
   background-image: url('../../images/board/50px_town.png');
   margin-bottom: -7px;
-  margin-top: 10px;
 }
 
 icon.city {
   background-image: url('../../images/board/75px_city.png');
   margin-bottom: -7px;
-  margin-top: 10px;
+  margin-top: -8px;
+  width:40px;
+  height:50px;
 }
 
 icon.sand, icon.wetland, icon.jungle, icon.mountain, 
 icon.jungle-wetland, icon.jungle-sand, icon.sand-wetland, 
-icon.mountain-sand, icon.mountain-wetland, icon.mountain-jungle {
+icon.mountain-sand, icon.mountain-wetland, icon.mountain-jungle,
+icon.wetland-jungle, icon.sand-jungle, icon.wetland-sand, 
+icon.sand-mountain, icon.wetland-mountain, icon.jungle-mountain {
     display: block;
     height: 45px;
     width:70px;
@@ -314,6 +327,13 @@ icon.ignore-range {
 
 icon.reclaim-one {
   background-image: url('../../images/board/Reclaimone.png');
+  display: block;
+  height: 90px;
+  width:90px;
+}
+
+icon.reclaim-none {
+  background-image: url('../../images/board/Reclaimnone.png');
   display: block;
   height: 90px;
   width:90px;
@@ -350,8 +370,8 @@ icon.push {
 icon.push > icon {
   position: relative;
   text-align: unset;
-  top: 28px;
-  left:30px;
+  top: 32px;
+  left:26px;
   width: 25px;
   height: 25px;
   margin: 0px;

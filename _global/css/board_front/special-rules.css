@@ -20,9 +20,9 @@ special-rules-subtitle {
   padding-top: 15px;
   padding-bottom: 3px;
   font-family: 'JosefinSans-Regular';
+  font-size: 14pt;
   font-weight: bold;
   font-style: italic;
-  font-size: 14pt;
   text-transform: uppercase;
   text-align: left;
   letter-spacing: -0.5px;
@@ -45,19 +45,75 @@ special-rule icon.any, special-rule icon.moon, special-rule icon.sun{
   width: 25px;
 }
 
-special-rule icon.town, special-rule icon.city, special-rule icon.blight,
-special-rule icon.dahan, special-rule icon.presence, special-rule icon.wilds,
-special-rule icon.beast, special-rule icon.disease, special-rule icon.strife,
-special-rule icon.explorer, special-rule icon.badlands, special-rule icon.fear,
-special-rule icon.range-plus-1{
+special-rule icon.town, special-rule icon.blight, special-rule icon.dahan,
+special-rule icon.presence, special-rule icon.wilds, special-rule icon.beast,
+special-rule icon.disease, special-rule icon.strife, special-rule icon.explorer, 
+special-rule icon.badlands, special-rule icon.fear, special-rule icon.range-plus-1,
+special-rule icon.fast, special-rule icon.slow {
     width:30px;
     height:30px
 }
 
+special-rule icon.fast, special-rule icon.slow {
+    width:35px;
+    margin-bottom: -7px;
+}
 
+special-rule icon.disease{
+    margin-left: -2px;
+    margin-right: -2px;
+}
+
+special-rule icon.dahan {
+	transform: translateY(2px) translateX(0px);
+}
+
+special-rule icon.sacred-site{
+    width:50px;
+    height:30px;
+	margin-bottom: -8px;
+}
+
+special-rule icon.city{
+    width:40px;
+    height:30px;
+	margin-top: 0px;
+}
 
 special-rule dahan {
   width: 25px;
   margin-left: 0px;
   margin-top: -10px;
+}
+
+special-rule icon.sun {
+	background-image: url(../../images/board/element_simple_sun.png);
+}
+
+special-rule icon.earth {
+	background-image: url(../../images/board/element_simple_earth.png);	
+}
+
+special-rule icon.plant {
+	background-image: url(../../images/board/element_simple_plant.png);	
+}
+
+special-rule icon.fire {
+	background-image: url(../../images/board/element_simple_fire.png);	
+}
+
+special-rule icon.air {
+	background-image: url(../../images/board/element_simple_air.png);	
+}
+
+special-rule icon.moon {
+	background-image: url(../../images/board/element_simple_moon.png);	
+}
+
+special-rule icon.animal {
+	background-image: url(../../images/board/element_simple_animal.png);	
+}
+
+special-rule icon.water {
+	background-image: url(../../images/board/element_simple_water.png);	
 }

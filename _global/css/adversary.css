@@ -59,6 +59,21 @@ adversary-title{
   width:140px;
 }
 
+adversary-base-dif{
+  display:block;
+  position:absolute;
+  right:207px;
+  top:45px;
+  height:44px;
+  width:600px;
+  
+  text-align:right;
+  line-height: 36px;
+  font-size:16px;
+  font-family: 'DK Snemand';
+  text-transform: uppercase;
+}
+
 top-info{
   display:block;
   position:absolute;
@@ -180,6 +195,10 @@ level-info{
   color:rgb(100, 100, 100);
 }
 
+.level-difficulty{
+  font-size:8px;
+}
+
 icon{
   height:17px;
   width:17px;
@@ -195,6 +214,19 @@ icon.city{
   height:19px;
   width:19px;
   margin-top:-5px;
+  background-image: url('../images/50px-Citiyicon.png');
+}
+
+icon.escalation{
+  height:17px;
+  width:15px;
+  margin-bottom:-2px;
+  margin-top:-10px;
+  background-image: url('../images/25px-Stage_II_Escalation.png');
+}
+
+icon.presence{
+  background-image: url('../images/board/50px_presence.png');
 }
 
 adversary-levels icon.city{

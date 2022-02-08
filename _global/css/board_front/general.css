@@ -11,6 +11,10 @@ html {
   overflow-y: auto;
 }
 
+bullet {
+margin-left:30px;
+}
+
 *{
   box-sizing:border-box;
 }
@@ -88,7 +92,8 @@ spirit-name {
 }
 
 #single-line {
-  padding-top: 13px;
+  padding-top: 9px;
+  padding-bottom: 4px;
 }
 
 .note {

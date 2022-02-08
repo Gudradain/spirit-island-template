@@ -1,18 +1,21 @@
 
 window.onload = function startMain(){
     parseGrowthTags();
-	if(document.getElementById("presence-table")) {
-		enhancePresenceTracksTable();
-	} else {		
+    if(document.getElementById("presence-table")) {
+        enhancePresenceTracksTable();
+    } else {        
         setNewEnergyCardPlayTracks(parseEnergyTrackTags(), parseCardPlayTrackTags());
-	}
+    }
     parseInnatePowers();
     const board = document.querySelectorAll('board')[0];
-    addImages(board)
+    
     var html = board.innerHTML;
     board.innerHTML = replaceIcon(html);
     dynamicCellWidth();
     dynamicSpecialRuleHeight(board)
+    
+    // I moved this to the end so that the image could rescale to the special box
+    addImages(board)
 }
 function dynamicSpecialRuleHeight(board){
     const specialRules = board.querySelectorAll('special-rules-container')[0]
@@ -39,13 +42,24 @@ function addImages(board) {
     const spiritImage = board.getAttribute('spirit-image');
 
     const spiritBorder = board.getAttribute('spirit-border');
+    
+    const imageSize = board.getAttribute('spirit-image-scale');
 
+    
+    const specialRules = board.querySelectorAll('special-rules-container')[0]
+    let height = specialRules.getAttribute('height')
+        if(!height){
+        const computedStyle = window.getComputedStyle(specialRules)
+        height = computedStyle.getPropertyValue('height')
+    }
+    
     if(spiritBorder){
         const specialRules = board.querySelectorAll('special-rules-container')[0]
         specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder});" ></div>` + specialRules.innerHTML
     }
     if(spiritImage){
-        board.innerHTML = `<div class="spirit-image" style="background-image: url(${spiritImage});" ></div>` + board.innerHTML
+        //Image now scales to fill gap. 'imageSize' allows the user to specify what % of the gap to cover
+        board.innerHTML = `<div class="spirit-image" style="background-image: url(${spiritImage}); background-size: auto ${imageSize}; height:calc(100% - ${height}); width:1700px;" ></div>` + board.innerHTML
     }
 }
 
@@ -139,6 +153,11 @@ function parseGrowthTags(){
                         newGrowthCellHTML += `${openTag}{reclaim-one}<growth-text>Reclaim One</growth-text></growth-cell>`
                         break;
                     }
+                case 'reclaim-none':
+                    {
+                        newGrowthCellHTML += `${openTag}{reclaim-none}<growth-text>Reclaim None</growth-text></growth-cell>`
+                        break;
+                    }
                 case 'gain-power-card':
                     {
                         newGrowthCellHTML += `${openTag}{gain-power-card}<growth-text>Gain Power Card</growth-text></growth-cell>`
@@ -169,13 +188,19 @@ function parseGrowthTags(){
                         const matches = regExp.exec(classPieces[j]);
 
                         const gainEnergyBy = matches[1];
-
-                        if (!isNaN(gainEnergyBy)) {
+						let energyOptions = matches[1].split(",");
+						
+                        if (!isNaN(energyOptions[0])) {
                         //Gain Energy has a number in it
-                        newGrowthCellHTML += `${openTag}<growth-energy><value>` + gainEnergyBy + "</value></growth-energy><growth-text>Gain Energy</growth-text></growth-cell>"
+                        newGrowthCellHTML += `${openTag}<growth-energy><value>` + energyOptions[0] + "</value></growth-energy><growth-text>Gain Energy</growth-text></growth-cell>"
                     } else {
                         //Gain Energy is not from a number
-                        newGrowthCellHTML += `${openTag}<gain-per><value>1</value></gain-per><` + gainEnergyBy + "></" + gainEnergyBy + "><growth-text>Gain 1 Energy per " + gainEnergyBy.charAt(0).toUpperCase() + gainEnergyBy.slice(1) + "</growth-text></growth-cell>"
+						if (energyOptions.length<2){
+							newGrowthCellHTML += `${openTag}<growth-cell-double><gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='` + energyOptions[0] + "'></icon></ring-icon></gain-per-element></growth-cell-double><growth-text>Gain 1 Energy per " + Capitalise(energyOptions[0]) + "</growth-text></growth-cell>"
+						}else{
+							let flatEnergy = energyOptions[1]
+							newGrowthCellHTML += `${openTag}<growth-cell-double><growth-energy><value>` + energyOptions[1] + "</value></growth-energy><gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='" + energyOptions[0] + "'></icon></ring-icon></gain-per-element></growth-cell-double><growth-text>Gain "+flatEnergy+" Energy and +1 Energy per " + Capitalise(energyOptions[0]) + "</growth-text></growth-cell>"
+						}
                     }
                         break;
                     }
@@ -187,22 +212,132 @@ function parseGrowthTags(){
                     let presenceReqOpen = "<custom-presence>";
                     let presenceReqClose = "</custom-presence>";
                     let presenceReq = "none";
+                    let presenceText = "";
+                    let presenceIcon = "";
+                    let presenceTextLead = "";
+                    let presenceTextEnd = "";
+                    let terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
 
                     if (presenceOptions.length > 1) {
                         presenceReqOpen = "<custom-presence-req>";
                         presenceReqClose = "</custom-presence-req>";
-                        presenceReq = presenceOptions[1];
+                        presenceIcon += "<presence-req>";
+                        
+                        if(presenceOptions[1]=='text'){
+                            // User wants a custom text presence addition
+                            presenceIcon += presenceOptions[2];
+                        } else if (presenceOptions[1]=='token'){
+                            // User wants to add a token in growth
+                            switch (presenceOptions[2]){
+                                    case 'and':
+                                        //add presence and token
+                                        presenceIcon += "<span class='plus-text'>+ </span>";
+                                        presenceIcon += "{"+presenceOptions[3]+"}";
+                                        presenceText += " and a " + Capitalise(presenceOptions[3]);
+                                        break;
+                                    case 'or':
+                                        //add presence or token
+                                        presenceIcon += "<span class='plus-text'>or </span>";
+                                        presenceIcon += "{"+presenceOptions[3]+"}";
+                                        presenceText += " or a " + Capitalise(presenceOptions[3]);
+                                    case 'instead':
+                                        //no option to add presence, just token
+                            }
+                        } else {
+                            // User wants an OR or an AND requirement
+                            let operator = "";
+                            if (presenceOptions.length > 4) {
+                                operator = "/";
+                            }else{
+                                operator = " "+presenceOptions.at(-1)+" ";
+                            }
+                            
+                            presenceText += " to ";
+                            let flag = 0; // This flag is used to figure out if 'land with' has been said already. It comes up with add-presence(3,jungle,beast,or)
+                            for (var i = 1; i < presenceOptions.length; i++) {
+                                
+                                // Check to see if we've reached an 'or', which shouldn't be parsed
+                                presenceReq = presenceOptions[i];
+                                if (presenceReq === 'or' || presenceReq === 'and') {
+                                    break;
+                                }
+                                
+                                // Icons
+                                switch (presenceReq){
+                                    case 'inland':
+                                    case 'coastal':
+                                    case 'invaders':
+                                        presenceIcon += presenceOptions.length < 3
+                                            ? "<span class='non-icon'>"+presenceReq+"</span><icon style='height:50px; width:0px;'></icon>" // This do-nothing Icon just creates 50px of height to make everything line up. Other ideas?
+                                            : "<span class='non-icon small'>"+presenceReq+"</span><icon style='height:50px; width:0px;'></icon>"
+                                        break;
+                                        
+                                    default:
+                                        presenceIcon += "{"+presenceReq+"}";
+                                }
+
+                                if (i < presenceOptions.length - 2) {
+                                    presenceIcon += operator;
+                                }
+                                
+                                // Text
+                                multiLandCheck = presenceReq.split("-");
+                                if (terrains.has(multiLandCheck[1])){
+                                    multiLandText = Capitalise(multiLandCheck[0]) + " or " + Capitalise(multiLandCheck[1]);
+                                    presenceReq = 'multiland';
+                                }
+                                
+                                presenceTextLead = "";
+                                presenceTextEnd = "";    
+                                
+                                switch (presenceReq){
+                                    case 'sand':
+                                    case 'mountain':
+                                    case 'wetland':
+                                    case 'jungle':
+                                    case 'ocean':
+                                        presenceText += i != 1 ? operator : "";
+                                        presenceText += Capitalise(presenceReq);
+                                        break;
+                                    
+                                    case 'inland':
+                                    case 'coastal':
+                                        presenceText += i != 1 ? operator : "";
+                                        presenceText += Capitalise(presenceReq) + " Land";
+                                        break;
+                                    
+                                    case 'multiland':
+                                        presenceText += multiLandText;
+                                        break;
+                                        
+                                    case 'no-blight':
+                                        presenceText += i == 1 ? " Land without " : " and no ";
+                                        presenceText += "Blight";
+                                        break;
+                                    
+
+                                    case 'beast':
+                                        presenceTextEnd = "s"
+                                    case 'presence':
+                                        presenceTextLead += presenceTextEnd==="" ? "Your " : "";
+                                        //Intentionally do not break.
+                                    default:
+                                        if (flag == 0 && i != 1) {
+                                            presenceText += operator+"Land with ";
+                                        }else if(flag == 0){
+                                            presenceText += " Land with ";
+                                        }else{
+                                            presenceText += operator;
+                                        }
+                                        flag = 1;
+                                        presenceText += presenceTextLead + Capitalise(presenceReq) + presenceTextEnd;
+                                }
+                            }                            
+                        }
+                        presenceIcon += "</presence-req>";
                     }
 
-                    switch (presenceReq){
-                        case 'presence':
-                            newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}<presence-req>{" + presenceReq + "}</presence-req>{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence to a land with Presence</growth-text></growth-cell>"
-                            break;
-
-                        default:
-                            newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}{" + presenceReq + "}{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence</growth-text></growth-cell>"
-                            break;
-                    }
+                    newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence" + presenceText + "</growth-text></growth-cell>"
                     break;
                 }
                 case 'push':
@@ -228,7 +363,7 @@ function parseGrowthTags(){
                         const matches = regExp.exec(classPieces[j]);
 
                         const moveRange = matches[1];
-                        newGrowthCellHTML += `${openTag}<custom-presence-special>{presence}{move-range-` + moveRange + "}<growth-text>Move a Presence</growth-text></growth-cell>"
+                        newGrowthCellHTML += `${openTag}<custom-presence>{presence}{move-range-` + moveRange + "}</custom-presence><growth-text>Move a Presence</growth-text></growth-cell>"
 
                         break;
                     }
@@ -240,25 +375,79 @@ function parseGrowthTags(){
 
                         const elementOptions = matches[1].split(",");
 
-                    //Check if they want 2 elements
+                        //Check if they want 2 elements (multiple of the same element, and OR between multiple elements are implemented. AND is not)
                         if (elementOptions.length > 1) {
-                            if (isNaN(elementOptions[1])) {
-                            //They want different elements
-                            newGrowthCellHTML += `${openTag}<gain>`
-                            for (var i = 0; i < elementOptions.length; i++) {
-                                newGrowthCellHTML += "{" + elementOptions[i] + "}";
-                                if (i < elementOptions.length - 1) {
-                                    newGrowthCellHTML += "/";
+                            
+                            //Check if they want multiples of the same element or a choice of elements by looking for a numeral
+                            if (isNaN(elementOptions[1]) && elementOptions.at(-1) !== 'and') {
+                                //No numeral - user wants different elements. For example gain-element(water,fire)
+                                if (elementOptions.at(-1) === 'or' || elementOptions.at(-1) === 'and'){}
+                        
+                                //Icons
+                                newGrowthCellHTML += `${openTag}<gain class='or'>`
+                                for (var i = 0; i < elementOptions.length; i++) {
+                                    newGrowthCellHTML += "<icon class='orelement " + elementOptions[i] + "'></icon>";
+                                    if (i < elementOptions.length - 1) {
+                                        newGrowthCellHTML += "{backslash}";
+                                    }
                                 }
+                                //Text
+                                newGrowthCellHTML += "</gain><growth-text>Gain ";
+                                for (var i = 0; i < elementOptions.length; i++) {
+                                    newGrowthCellHTML += elementOptions[i].charAt(0).toUpperCase() + elementOptions[i].slice(1);
+                                    if (i < elementOptions.length-2) {
+                                        newGrowthCellHTML += ", ";
+                                    } else if (i == elementOptions.length-2) {
+                                        newGrowthCellHTML += " or ";
+                                    }
+                                }
+                                newGrowthCellHTML += "</growth-text></growth-cell>";
+                                    
+                            } else { 
+                                // Gain multiple of the same element or gain multiple different elements (all of them, not or)
+
+                                let numLocs                                
+                                // Text
+                                let elementText = "";
+                                if (elementOptions.at(-1) == 'and'){
+                                    // gain multiple different elements
+                                    numLocs = elementOptions.length - 1;
+                                    for (var i = 0; i < numLocs; i++) {
+                                        elementText += elementOptions[i].charAt(0).toUpperCase() + elementOptions[i].slice(1);
+                                        if (i < numLocs-2) {
+                                            elementText += ", ";
+                                        } else if (i == numLocs-2) {
+                                            elementText += " and ";
+                                        }
+                                    }
+                                } else {
+                                    // gain multiple of the same element
+                                    numLocs = elementOptions[1];
+                                    elementText = elementOptions[1]+" "+elementOptions[0].charAt(0).toUpperCase() + elementOptions[0].slice(1);
+                                }
+                                
+                                // Icons
+                                let rad_size = 20 + 5*(numLocs-2); // this expands slightly as more icons are used
+                                var elementIcons = ""
+                                for (var i = 0; i < numLocs; i++) {
+                                    pos_angle = i * 2*Math.PI / numLocs - (Math.PI)*(1-(1/6));
+                                    x_loc = rad_size * Math.cos(pos_angle) - 30;
+                                    y_loc = rad_size * Math.sin(pos_angle) - 20;
+                                    let element_loc = "style='transform: translateY("+y_loc+"px) translateX("+x_loc+"px)'";
+                                    let cur_element = elementOptions.at(-1) === 'and'
+                                        ? elementOptions[i]
+                                        : elementOptions[0]
+                                    console.log(cur_element)
+                                    elementIcons += "<icon-multi-element><icon class='"+cur_element+"'"+element_loc+"></icon></icon-multi-element>"
+                                }
+                                elementIcons += "<icon style='width:0px;height:99px'></icon>"; // This is a filler icon to make sure the spacing is right. Any idea for a better solution?
+                                
+                                newGrowthCellHTML += `${openTag}<gain>` + elementIcons + "</gain><growth-text>Gain "+elementText+"</growth-text></growth-cell>";
                             }
-                            newGrowthCellHTML += "</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + "</growth-text></growth-cell>";
+                                    
                         } else {
-                            //They just want 2 of the same element
+                            newGrowthCellHTML += `${openTag}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + "</growth-text></growth-cell>"
                         }
-                        //newGrowthCellHTML += `${openTag}<gain>{"+elementOptions[0]+"}</gain><growth-text>Gain "+gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1)+"</growth-text></growth-cell>`
-                    } else {
-                        newGrowthCellHTML += `${openTag}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + "</growth-text></growth-cell>"
-                    }
 
 
                         break;
@@ -284,15 +473,15 @@ function parseEnergyTrackTags(){
     var energyOptions = energyValues.split(",");
 
     for(i = 0; i < energyOptions.length; i++){
-		energyHTML += "<td>"+getPresenceNodeHtml(energyOptions[i], i == 0, "energy", true)+"</td>";
+        energyHTML += "<td>"+getPresenceNodeHtml(energyOptions[i], i == 0, "energy", true)+"</td>";
     }
     energyHTML += "</tr>"
     document.getElementsByTagName("energy-track")[0].removeAttribute("values");
     return energyHTML;
-	
+    
 }
 
-function parseCardPlayTrackTags(){	
+function parseCardPlayTrackTags(){    
     var cardPlayHTML = "<tr>";
     
     var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
@@ -300,30 +489,30 @@ function parseCardPlayTrackTags(){
     var cardPlayOptions = cardPlayValues.split(",");
 
     for(i = 0; i < cardPlayOptions.length; i++){
-		cardPlayHTML += "<td>"+getPresenceNodeHtml(cardPlayOptions[i], i == 0, "card", false)+"</td>";
+        cardPlayHTML += "<td>"+getPresenceNodeHtml(cardPlayOptions[i], i == 0, "card", false)+"</td>";
     }
     cardPlayHTML += "</tr>"    
     document.getElementsByTagName("card-play-track")[0].removeAttribute("values");
-    return cardPlayHTML;	
+    return cardPlayHTML;    
 }
 
 function enhancePresenceTracksTable() {
-	var elmt = document.getElementsByTagName("presence-tracks")[0];
-	var title = document.createElement("section-title");
-	title.innerHTML = "Presence";	
+    var elmt = document.getElementsByTagName("presence-tracks")[0];
+    var title = document.createElement("section-title");
+    title.innerHTML = "Presence";    
     elmt.insertBefore(title, elmt.firstChild); 
-	
-	var table = document.getElementById("presence-table");
-	for (var i = 0, row; row = table.rows[i]; i++) {
-	   for (var j = 0, cell; cell = row.cells[j]; j++) {
+    
+    var table = document.getElementById("presence-table");
+    for (var i = 0, row; row = table.rows[i]; i++) {
+       for (var j = 0, cell; cell = row.cells[j]; j++) {
         cell.innerHTML = getPresenceNodeHtml(cell.firstChild.nodeValue, j == 0, 'dynamic', i == 0);
-	   }  
-	}
+       }  
+    }
 }
 
 function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
-	var result = '';
-	
+    var result = '';
+    
     //Find values between parenthesis
     var regExp = /\(([^)]+)\)/;    
 
@@ -351,99 +540,126 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
             subText = 'Card Plays';
         }
     }
-	else if(trackType == 'energy'){
+    else if(trackType == 'energy'){
         nodeClass = 'energy';
         subText = 'Energy/Turn';
     }
-	else if(trackType == 'card'){
+    else if(trackType == 'card'){
         nodeClass = 'card';
         subText = 'Card Plays';
-	}
+    }
 
-	
-	if(!isNaN(nodeText)){
-		//The value is only a number
+    
+    if(!isNaN(nodeText)){
+        //The value is only a number
         addEnergyRing = false;
-		if(first === true){
+        if(first === true){
             presenceNode.classList.add("first");
-		} else {
+        } else {
             subText = nodeText;
-		}
+        }
         inner = "<" + nodeClass + "-icon><value>" + nodeText + "</value></" + nodeClass + "-icon>";
-	} else {
-		//It is either a single element or a mix of elements/numbers
-		var splitOptions = nodeText.split("+");
+    } else {
+        //It is either a single element or a mix of elements/numbers
+        var splitOptions = nodeText.split("+");
 
-		if(splitOptions.length == 1){
-			//It's just a single item
-			var option = splitOptions[0].split("(")[0];
-			switch(option){
-				case 'reclaim-one':
+        if(splitOptions.length == 1){
+            //It's just a single item
+            var option = splitOptions[0].split("(")[0];
+            switch(option){
+                case 'reclaim-one':
                     inner = "{reclaim-one}";
                     subText = "Reclaim One";
-					break;
-				case 'forget-power-card':
+                    break;
+                case 'forget-power-card':
                     inner = "{forget-power-card}";
                     subText = "Forget Power";
-					break;    
-				case 'push':
-					var matches = regExp.exec(splitOptions[0]);
-					var pushTarget = matches[1];
+                    break;    
+                case 'push':
+                    var matches = regExp.exec(splitOptions[0]);
+                    var pushTarget = matches[1];
                     inner = "<icon class='push'><icon class='"+pushTarget+"'></icon></icon>";
-                    subText = "Push "+Capitalise(pushTarget);
-					break;    
-				case 'move-presence':
-					var matches = regExp.exec(splitOptions[0]);
-					var moveRange = matches[1];
+                    subText = "Push 1 "+Capitalise(pushTarget) + " from 1 of your Lands";
+                    break;    
+                case 'move-presence':
+                    var matches = regExp.exec(splitOptions[0]);
+                    var moveRange = matches[1];
                     inner = "{move-presence-"+moveRange+"}";
                     subText = "Move a Presence "+moveRange;
-					break;
+                    break;
                 default:
                     // element
-					var elementName = splitOptions[0];
+                    var elementName = splitOptions[0];
                     inner = "<icon class='"+elementName+"'></icon>";
                     subText = Capitalise(elementName);
-					break;                
-			}            
-		} else {
-            splitOptions.forEach(function(part, index) {
+                    break;                
+            }            
+        } else {
+               //this block of text doesn't do anything.
+/*             splitOptions.forEach(function(part, index) {
                 if(part.startsWith("energy")) {
+					console.log("->"+this[index])
                     this[index] = nodeText.substr(6);
-                    nodeClass = 'energy';
+                    console.log("->"+this[index])
+					nodeClass = 'energy';
                 } else if(part.startsWith("card")) {
                     this[index] = nodeText.substr(4);
                     nodeClass = 'card';
-                }
-            }, splitOptions);            
-
-            var subText = Capitalise(splitOptions[1]);
-            if(splitOptions[1] == 'reclaim-one'){
-                subText = "Reclaim One";
-            }
-            subText = Capitalise(splitOptions[0])+", "+subText;
-
-            var top = "";
-            var bottom = "<icon class='"+splitOptions[1]+"'></icon>";
-            if(!isNaN(splitOptions[0])){
-                top = "<" + nodeClass + "-icon class='small'><value>" + splitOptions[0] + "</value></" + nodeClass + "-icon>";
-                // Don't add the big energy ring if we've also got a small one.
-                if(nodeClass == 'energy') { 
-                    addEnergyRing = false;
-                }
+					console.log("->"+this[index])
+                } else {
+					console.log("test")
+				}
+            }, splitOptions);      */       
+            
+            
+            var subText = ""
+            
+			//Prepare text. First, check if multiple of the same icon (ie. 2 Water)
+            if (splitOptions.every( (val, i, arr) => val === arr[0] )) {
+                subText = splitOptions.length + " " + Capitalise(splitOptions[0]);
             } else {
-                top = "<icon class='"+splitOptions[0]+"'></icon>";
+                for (var i = 0; i < splitOptions.length; i++) {
+                    if(splitOptions[i].startsWith("reclaim")){
+                        subText += "Reclaim One";
+                    }else{
+                        subText += Capitalise(splitOptions[i]);
+                    }
+                    if(i < splitOptions.length-1){
+                        subText += ", "
+                    }
+                }
             }
+        
+            numLocs = splitOptions.length;
+            let rad_size = 20 + 1*numLocs; // this expands slightly as more icons are used
+            var trackIcons = ""
+            for (var i = 0; i < numLocs; i++) {
+                pos_angle = i * 2*Math.PI / numLocs - (Math.PI)*(1-(1/6));
+                x_loc = rad_size * Math.cos(pos_angle) - 33;
+                y_loc = rad_size * Math.sin(pos_angle) - 25;
+                let track_icon_loc = "style='transform: translateY("+y_loc+"px) translateX("+x_loc+"px)'";
 
-            var inner = "<icon-top>"+top+"</icon-top>" +
-                "<icon-bottom>"+bottom+"<icon-bottom>";
-		}
-	}
+                // deal with cards and energy
+                if(!isNaN(splitOptions[i])){
+                    trackIcons += "<icon-multi-element><" + nodeClass + "-icon class='small'"+track_icon_loc+"><value>" + splitOptions[i] + "</value></" + nodeClass + "-icon></icon-multi-element>";
+                    if(nodeClass == 'energy') { 
+                        addEnergyRing = false;
+                    }
+                } else if(splitOptions[i].startsWith("reclaim")){
+					trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+" small-reclaim'"+track_icon_loc+"></icon></icon-multi-element>"
+				} else {
+                    trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+"'"+track_icon_loc+"></icon></icon-multi-element>"
+                }
+            }
+            var inner = trackIcons;
+        }
+    }
         
     if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
     ring.innerHTML = inner;
     presenceNode.innerHTML += "<subtext>" + subText + "</subtext>";
-	
-	return presenceNode.outerHTML;
+    
+    return presenceNode.outerHTML;
 }
 
 function Capitalise(str){
@@ -478,7 +694,6 @@ function dynamicCellWidth() {
     const equalCellWidth = (parseFloat(remainingCellWidth.replace(/px/, "")) / growthCellCount) + "px";
 
     for (i = 0; i < growthCells.length; i++){
-        // growthCells[i].style.maxWidth = equalCellWidth;
         growthCells[i].style.width = equalCellWidth;
     }
 
@@ -536,24 +751,40 @@ function dynamicCellWidth() {
             (iconCount * ICONWIDTH) + (iconCount * 12);
         formattedWidth = dynamicThresholdWidth + "px";
         thresholds[i].style.width = formattedWidth;
+        
     }
     var description = document.getElementsByClassName("description");
     for(i = 0; i < description.length; i++){
         
-        var textWidth = description[i].clientHeight;
-        console.log(textWidth);
+        var textHeight = description[i].clientHeight;
+
         //Get the icon width and add it to length
-        if (textWidth < 50){
+        if (textHeight < 40){
             description[i].id = "single-line";
         }
     }
+    
+    // Presence node subtext (for longer descriptions, allows flowing over into neighbors.
+    var subtext = document.getElementsByTagName("subtext");
+    for(i = 0; i < subtext.length; i++){
+        
+        var textHeight = subtext[i].clientHeight;
+        
+        //This solution is really jank, but it works for now
+        if (textHeight > 60){
+            subtext[i].style.width = "200px";
+            subtext[i].style.position = "absolute";
+            subtext[i].style.transform = "translateX(-34px)";
+        }
+    }
+    
 }
 
 function parseInnatePowers(){
     var fullHTML = "";
     
     var innateHTML = document.getElementsByTagName("quick-innate-power");
-
+    
     for(i = 0; i < innateHTML.length; i++){
         fullHTML += parseInnatePower(innateHTML[i]);
     }
@@ -561,6 +792,7 @@ function parseInnatePowers(){
 }
 
 function parseInnatePower(innatePowerHTML){
+
     var currentPowerHTML = "<innate-power class='"+innatePowerHTML.getAttribute("speed")+"'>";
     
     //Innater Power title
@@ -618,15 +850,17 @@ function parseInnatePower(innatePowerHTML){
     //If the note field is blank
     if(noteValue == null){
         noteValue = "";
-    }
+    }else{
+        currentPowerHTML += "<note>" + noteValue + "</note>";
+    }       
 
-    currentPowerHTML += "<note>" + noteValue + "</note>";
 
     //Innate Power Levels and Thresholds
     var currentLevels = innatePowerHTML.getElementsByTagName("level");
     for (j = 0; j < currentLevels.length; j++){
         var currentThreshold = currentLevels[j].getAttribute("threshold");
         var currentThresholdPieces = currentThreshold.split(",");
+      
         currentPowerHTML += "<level><threshold>";
         for (k = 0; k < currentThresholdPieces.length; k++){
             currentThresholdPieces[k] = currentThresholdPieces[k].replace("-","{");
@@ -637,6 +871,8 @@ function parseInnatePower(innatePowerHTML){
         var currentDescription = currentLevels[j].innerHTML;
         currentPowerHTML += currentDescription+"</div></level>";
     }
-    currentPowerHTML += "</description-container></innate-power>";
+    
+    currentPowerHTML+="</description-container></innate-power>";
     return currentPowerHTML;
 }
+

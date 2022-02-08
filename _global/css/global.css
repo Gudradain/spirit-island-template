@@ -46,7 +46,7 @@ icon.strife{background-image: url('../images/25px-Strifeicon.png'); }
 icon.wild{background-image: url('../images/25px-Wildicon.png'); }
 icon.wilds{background-image: url('../images/25px-Wildicon.png'); }
 
-icon.fast{background-image: url('../images/25px-Fasticon.png');}
+icon.fast{background-image: url('../images/50px-Fasticon.png');}
 icon.slow{background-image: url('../images/50px-Slowicon.png');}
 icon.blight{background-image: url('../images/25px-Blighticon.png');}
 icon.dahan{background-image: url('../images/25px-Dahanicon.png');}
@@ -60,7 +60,7 @@ icon.city{background-image: url('../images/25px-Citiyicon.png');}
 icon.presence-white {background-image: url('../images/25px-Presenceicon-inverse.png'); margin-left:3px; margin-right:3px;}
 icon.presence {background-image: url('../images/25px-Presenceicon.png');}
 icon.destroyed-presence {background-image: url('../images/board/NewIcons/Misc Presence Destroy.png');}
-icon.sacred-site {background-image: url('../images/25px-Sacredsiteicon.png') }
+icon.sacred-site {background-image: url('../images/50px-Sacredsiteicon.png') }
 
 icon.earth{ background-image: url('../images/80px-Earthelement.png'); }
 icon.sun{ background-image: url('../images/80px-Sunelement.png'); }
@@ -102,6 +102,7 @@ range{
   background-image:url('../images/50px-Rangeicon.png');
   background-repeat: no-repeat;
   background-position-y:23px;
+  background-size: contain;
 }
 
 no-range{
