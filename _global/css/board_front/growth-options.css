@@ -88,6 +88,13 @@ growth-cell {
   flex-direction: column;
 }
 
+growth-cell-double {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
 growth-cell icon.discard-cards {
   margin-bottom: 7px;
 }
@@ -352,10 +359,6 @@ add-presence-req {
   margin-bottom: -8px;
 }
 
-/* growth icon.presence {
-  margin-left: 6px;
-} */
-
 .description icon.beast {
   background-image: url('../../images/board/beast.png');
   background-repeat: no-repeat;
@@ -371,24 +374,25 @@ add-presence-req {
 
 
 gain-per {
-  background-image: url('../../images/board/AddEnergyBlank.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  height: 60px;
-  display: block;
-  z-index: 1;
-  position: relative;
-  margin-left: -57px;
-  margin-bottom: 45px;
-  margin-top: -10px;
+    background-image: url(../../images/board/AddEnergyBlank.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 75px;
+    width: 75px;
+    display: block;
+    z-index: 1;
+    position: relative;
+    margin-left: -20px;
+    margin-bottom: 50px;
+    margin-top: -35px;
 }
 
 gain-per value {
   font-family: 'Gobold Extra2';
-  font-size: 14pt;
+  font-size: 16pt;
   display: inline-block;
-  margin-top: 19px;
+  margin-top: 25px;
   margin-left: 11px;
 }
 
@@ -494,4 +498,63 @@ growth-cell icon.presence{
 icon-multi-element icon, icon-multi-element energy-icon,icon-multi-element card-icon {
   display: inline-block;
   position: absolute;
+}
+
+gain-per-element icon{
+    height: 60px;
+    width: 60px;
+    z-index: 1;
+    position: relative;
+    margin-left: -15px;
+    margin-bottom: 50px;
+    margin-top: -35px;
+}
+
+gain-per-element icon.fire,
+gain-per-element icon.any,
+gain-per-element icon.water,
+gain-per-element icon.air,
+gain-per-element icon.earth,
+gain-per-element icon.animal,
+gain-per-element icon.plant,
+gain-per-element icon.sun,
+gain-per-element icon.moon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 60px;
+  z-index: 0;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+gain-per-element icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
+
+gain-per-element icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
+
+gain-per-element icon.plant {background-image: url(../../images/board/element_simple_plant.png);}
+
+gain-per-element icon.fire {background-image: url(../../images/board/element_simple_fire.png);}
+
+gain-per-element icon.air {background-image: url(../../images/board/element_simple_air.png);}
+
+gain-per-element icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
+
+gain-per-element icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
+
+gain-per-element icon.water {background-image: url(../../images/board/element_simple_water.png);}
+
+gain-per-element ring-icon{
+    background-image: url(../../images/board/CardPlayRing.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+    z-index: 2;
+    margin-left: -35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
