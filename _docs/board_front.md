@@ -52,7 +52,10 @@ General Images: Every image in a board can be called by simply using its name en
           - presence-no-range: Add a presence anywhere (as seen on Finder)
           - ignore-range: Ignore Range this turn (as seen on Finder)
           - gain-element(X): Gain X Element (currently limited to only one)
-          - push(x): Push x from land (as seen on Trickster with Dahan)
+          - push(x): Push x from your land (as seen on Trickster with Dahan)
+		  - push(x,y): Push x into a land at y range (as seen on Many Minds)
+		  - gather(x): Gather x into your land
+		  - gather(x,y): Gather x into a land at y range (as seen on Many Minds)
   - **presence-tracks**: The container for the Presence Tracks.
 
     There are two mechanisms to populate this. The simple approach is to use the specific energy and card tracks as demonstrated by the 'board_front' example.

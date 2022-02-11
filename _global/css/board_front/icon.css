@@ -360,22 +360,41 @@ icon.forget-power-card {
   width:90px;
 }
 
+icon.gather {
+  background-image: url('../../images/board/NewIcons/Land Gather.png');
+  display: inline-block;
+  height: 62px;
+  width:100px;
+  margin-right: 20px;
+}
+
+icon.gather > icon {
+    position: relative;
+    text-align: unset;
+    top: 17px;
+    left: 24px;
+    width: 30px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
 icon.push {
   background-image: url('../../images/board/NewIcons/Land Push.png');
-  display: block;
-  height: 100px;
+  display: inline-block;
+  height: 62px;
   width:100px;
 }
 
 icon.push > icon {
-  position: relative;
-  text-align: unset;
-  top: 32px;
-  left:26px;
-  width: 25px;
-  height: 25px;
-  margin: 0px;
-  padding: 0px;
+    position: relative;
+    text-align: unset;
+    top: 17px;
+    left: 24px;
+    width: 25px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
 }
 
 icon.reclaim-all {

@@ -274,11 +274,14 @@ growth-cell icon.gain-card-play {
 }
 
 growth-cell icon.push>icon {
-  left: 0px;
-  top: 35px;
+  left: -15px;
+  top: 17px;
 }
 
-
+growth-cell icon.gather>icon {
+  left: 65px;
+  top: 17px;
+}
 
 growth-cell icon.reclaim-one {
   margin-bottom: 7px;
@@ -445,6 +448,26 @@ gather {
   height: 17px;
   margin-left: 45px;
   margin-top: -34px;
+}
+
+push-gather {
+  font-size: 20pt;
+  font-weight: bold;
+  display: block;
+  margin-top: 4px;
+  width: auto;
+  height: 110px;
+  margin-bottom: -22px;
+}
+
+push-gather-range-req {
+    font-size: 20pt;
+    font-weight: bold;
+    margin-top: -27px;
+    margin-bottom: 8px;
+    width: auto;
+    height: 110px;
+    display: block;
 }
 
 growth-cell gain icon.fire,

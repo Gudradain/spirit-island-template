@@ -341,13 +341,25 @@ function parseGrowthTags(){
                     break;
                 }
                 case 'push':
+				case 'gather':
                     {
                         const matches = regExp.exec(classPieces[j]);
-                        const pushTarget = matches[1];
-                        newGrowthCellHTML += `${openTag}<icon class='` + growthItem + "'><icon class='" + pushTarget + "'></icon></icon><growth-text>Push " + pushTarget + "</growth-text></growth-cell>"
-                        break;
-                    }
+						
+						let preposition = growthItem=='push'
+							? ' from'
+							: ' into'
 
+                        let pushTarget = matches[1];
+						const pushOptions = matches[1].split(",");
+						const pushRange = pushOptions[1];
+						if(pushRange){
+							pushTarget = pushOptions[0];
+							newGrowthCellHTML += `${openTag}<push-gather-range-req><icon class='` + growthItem + "'><icon class='" + pushTarget + "'></icon></icon>"+"{range-" + pushRange + "}</push-gather-range-req><growth-text>"+Capitalise(growthItem)+" up to 1 " + Capitalise(pushTarget) + preposition + " a Land</growth-text></growth-cell>"
+						}else{
+							newGrowthCellHTML += `${openTag}<push-gather><icon class='` + growthItem + "'><icon class='" + pushTarget + "'></icon></icon></push-gather><growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(pushTarget) + preposition + " 1 of your Lands</growth-text></growth-cell>"
+                        }
+						break;
+                    }
                 case 'presence-no-range':
                     {
                         newGrowthCellHTML += `${openTag}<custom-presence-no-range>+{presence}</custom-presence-no-range><growth-text>Add a Presence to any Land</growth-text></growth-cell>`
