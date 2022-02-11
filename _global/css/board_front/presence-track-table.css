@@ -21,7 +21,8 @@ presence-tracks {
 presence-tracks table {	
   display: inline-block;
   height: 340px;
-  margin-left: -40px;
+  margin-left: -50px; /* adding a blank row for an image. This gives us some space. */
+  border-collapse: collapse;
 }
 
 presence-tracks table td {
