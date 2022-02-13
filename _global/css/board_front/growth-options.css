@@ -294,6 +294,12 @@ growth-cell icon.gather-into>.into {
   width:35px;
 }
 
+growth-cell icon.gather-into>icon.explorer {
+    height: 35px;
+    margin-top: -10px;
+    margin-bottom: -6px;
+}
+
 growth-cell icon.reclaim-one {
   margin-bottom: 7px;
 }

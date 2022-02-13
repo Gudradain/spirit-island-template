@@ -652,6 +652,12 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     inner = "<icon class='gather'><icon class='"+moveTarget+"'></icon></icon>";
                     subText = "Gather 1 "+Capitalise(moveTarget) + " into 1 of your Lands";
                     break;
+				case 'text':
+                    var matches = regExp.exec(splitOptions[0]);
+                    var custom_text = matches[1];
+					inner = "<" + nodeClass + "-icon><value>!</value></" + nodeClass + "-icon>";
+					subText = custom_text
+					break;
 				case 'move-presence':
                     var matches = regExp.exec(splitOptions[0]);
                     var moveRange = matches[1];

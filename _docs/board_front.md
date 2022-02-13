@@ -66,19 +66,24 @@ General Images: Every image in a board can be called by simply using its name en
       - energy-track values: The actual values that will be used to create the Energy Track
         - Supported Options:
           - Integer 1,2,3,4,5,6,7 etc.
-          - Elements earth, fire, air, moon, water, plant, animal, sun, or any
+          - Elements: earth, fire, air, moon, water, plant, animal, sun, or any
           - forget-power-card: Forget Power (not cannon)
           - Combinations of Elements/Energy: 3+earth, 2+fire, earth+any, water+plant
           - push(x): Push x from land (as seen on Trickster with Dahan)
+		  - gather(x): Gather x into land
+		  - text(yourtext): Allows any arbitrary text in the subtext, paired with a "!" icon in the presence node
     - **card-play-track**: The entire Card Play Track
       - card-play-track values: The actual values that will be used to create the Card Play Track
         - Supported Options:
           - Integer 1,2,3,4,5,6,7 etc.
           - forget-power-card: Forget Power (not cannon)
-          - Elements earth, fire, air, moon, water, plant, animal, sun, or any
-          - Combinations of Elements/Energy: (3+earth, 2+fire, earth+any, water+plant)
+          - Elements: earth, fire, air, moon, water, plant, animal, sun, or any
+		  - Element star: use element-start (as seen on Starlight)
+          - Combinations of Elements/Energy/Reclaim One: (3+earth, earth+any, earth+air+fire, 2+water+reclaim-one)
           - Reclaim One: reclaim-one, 3+reclaim-one, earth+reclaim-one
           - push(x): Push x from land (as seen on Trickster with Dahan)
+		  - gather(x): Gather x into land
+		  - text(yourtext): Allows any arbitrary textin the subtext, paired with a "!" icon in the presence node
     - **table**: An html table that allows more flexible positioning of nodes. Individual presence track options are specified within the `<td>` table cells. The available options are exactly the same as described for the energy and card-play tracks above, with the exception that integer values must be prefixed with with 'card' or 'energy'. For example 'card1' means 1 card play, 'energy2' means 2 energy, etc.
   - **innate-powers**: The container for the Innate Powers
     - quick-innate-power: The container for a single Innate Power
