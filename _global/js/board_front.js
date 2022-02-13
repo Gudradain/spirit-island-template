@@ -253,7 +253,7 @@ function parseGrowthTags(){
                             }
                             
                             presenceText += " to ";
-                            let flag = 0; // This flag is used to figure out if 'land with' has been said already. It comes up with add-presence(3,jungle,beast,or)
+                            let flag = 0; // This flag is used to figure out if 'land with' has been said already. It comes up with add-presence(3,jungle,beasts,or)
                             for (var i = 1; i < presenceOptions.length; i++) {
                                 
                                 // Check to see if we've reached an 'or', which shouldn't be parsed

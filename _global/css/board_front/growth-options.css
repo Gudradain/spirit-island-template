@@ -181,7 +181,7 @@ presence-req icon.wetland-jungle, presence-req icon.sand-jungle, presence-req ic
 presence-req icon.sand-mountain, presence-req icon.wetland-mountain, presence-req icon.jungle-mountain,
 presence-req icon.town, presence-req icon.city, presence-req icon.blight, 
 presence-req icon.dahan, presence-req icon.invaders,
-presence-req icon.presence, presence-req icon.wilds, presence-req icon.beast,
+presence-req icon.presence, presence-req icon.wilds, presence-req icon.beasts,
 presence-req icon.disease, presence-req icon.strife, presence-req icon.explorer, 
 presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus-1{
 	display: inline-block;
@@ -359,7 +359,7 @@ add-presence-req {
   margin-bottom: -8px;
 }
 
-.description icon.beast {
+.description icon.beasts {
   background-image: url('../../images/board/beast.png');
   background-repeat: no-repeat;
   background-size: contain;
