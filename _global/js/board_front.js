@@ -188,19 +188,19 @@ function parseGrowthTags(){
                         const matches = regExp.exec(classPieces[j]);
 
                         const gainEnergyBy = matches[1];
-						let energyOptions = matches[1].split(",");
-						
+                        let energyOptions = matches[1].split(",");
+                        
                         if (!isNaN(energyOptions[0])) {
                         //Gain Energy has a number in it
                         newGrowthCellHTML += `${openTag}<growth-energy><value>` + energyOptions[0] + "</value></growth-energy><growth-text>Gain Energy</growth-text></growth-cell>"
                     } else {
                         //Gain Energy is not from a number
-						if (energyOptions.length<2){
-							newGrowthCellHTML += `${openTag}<growth-cell-double><gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='` + energyOptions[0] + "'></icon></ring-icon></gain-per-element></growth-cell-double><growth-text>Gain 1 Energy per " + Capitalise(energyOptions[0]) + "</growth-text></growth-cell>"
-						}else{
-							let flatEnergy = energyOptions[1]
-							newGrowthCellHTML += `${openTag}<growth-cell-double><growth-energy><value>` + energyOptions[1] + "</value></growth-energy><gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='" + energyOptions[0] + "'></icon></ring-icon></gain-per-element></growth-cell-double><growth-text>Gain "+flatEnergy+" Energy and +1 Energy per " + Capitalise(energyOptions[0]) + "</growth-text></growth-cell>"
-						}
+                        if (energyOptions.length<2){
+                            newGrowthCellHTML += `${openTag}<growth-cell-double><gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='` + energyOptions[0] + "'></icon></ring-icon></gain-per-element></growth-cell-double><growth-text>Gain 1 Energy per " + Capitalise(energyOptions[0]) + "</growth-text></growth-cell>"
+                        }else{
+                            let flatEnergy = energyOptions[1]
+                            newGrowthCellHTML += `${openTag}<growth-cell-double><growth-energy><value>` + energyOptions[1] + "</value></growth-energy><gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='" + energyOptions[0] + "'></icon></ring-icon></gain-per-element></growth-cell-double><growth-text>Gain "+flatEnergy+" Energy and +1 Energy per " + Capitalise(energyOptions[0]) + "</growth-text></growth-cell>"
+                        }
                     }
                         break;
                     }
@@ -341,24 +341,24 @@ function parseGrowthTags(){
                     break;
                 }
                 case 'push':
-				case 'gather':
+                case 'gather':
                     {
                         const matches = regExp.exec(classPieces[j]);
-						
-						let preposition = growthItem=='push'
-							? ' from'
-							: ' into'
+                        
+                        let preposition = growthItem=='push'
+                            ? ' from'
+                            : ' into'
 
                         let pushTarget = matches[1];
-						const pushOptions = matches[1].split(",");
-						const pushRange = pushOptions[1];
-						if(pushRange){
-							pushTarget = pushOptions[0];
-							newGrowthCellHTML += `${openTag}<push-gather-range-req><icon class='` + growthItem + "'><icon class='" + pushTarget + "'></icon></icon>"+"{range-" + pushRange + "}</push-gather-range-req><growth-text>"+Capitalise(growthItem)+" up to 1 " + Capitalise(pushTarget) + preposition + " a Land</growth-text></growth-cell>"
-						}else{
-							newGrowthCellHTML += `${openTag}<push-gather><icon class='` + growthItem + "'><icon class='" + pushTarget + "'></icon></icon></push-gather><growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(pushTarget) + preposition + " 1 of your Lands</growth-text></growth-cell>"
+                        const pushOptions = matches[1].split(",");
+                        const pushRange = pushOptions[1];
+                        if(pushRange){
+                            pushTarget = pushOptions[0];
+                            newGrowthCellHTML += `${openTag}<push-gather-range-req><icon class='` + growthItem + "'><icon class='" + pushTarget + "'></icon></icon>"+"{range-" + pushRange + "}</push-gather-range-req><growth-text>"+Capitalise(growthItem)+" up to 1 " + Capitalise(pushTarget) + preposition + " a Land</growth-text></growth-cell>"
+                        }else{
+                            newGrowthCellHTML += `${openTag}<push-gather><icon class='` + growthItem + "'><icon class='" + pushTarget + "'></icon></icon></push-gather><growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(pushTarget) + preposition + " 1 of your Lands</growth-text></growth-cell>"
                         }
-						break;
+                        break;
                     }
                 case 'presence-no-range':
                     {
@@ -481,22 +481,22 @@ function parseEnergyTrackTags(){
     
     var energyValues = document.getElementsByTagName("energy-track")[0].getAttribute("values");
     var energyOptions = energyValues.split(",");
-	var energyBanner = document.getElementsByTagName("energy-track")[0].getAttribute("banner");
-	var energyBannerScale = document.getElementsByTagName("energy-track")[0].getAttribute("banner-v-scale");
-	var energyHTML = "";
-	
-	//Determine the length of the energy track
-	//If for some reason the width of a presence track spot changes, this needs to be updated. Ideas for automating?
-	let energyLength = energyOptions.length * 130 + 40;
-	if(energyBanner){
-		energyHTML = "<tr style='background-image:  url("+energyBanner+"); background-size: "+energyLength+"px "+energyBannerScale+"; background-repeat: no-repeat; background-position: left 0px top 20px;'>"
-		console.log(energyHTML)
-	} else {
-		energyHTML = "<tr>";
-	}
-	
-	// This can be scaled to move the first presence icon. 
-	energyHTML += "<td style='width:10px'></td>"
+    var energyBanner = document.getElementsByTagName("energy-track")[0].getAttribute("banner");
+    var energyBannerScale = document.getElementsByTagName("energy-track")[0].getAttribute("banner-v-scale");
+    var energyHTML = "";
+    
+    //Determine the length of the energy track
+    //If for some reason the width of a presence track spot changes, this needs to be updated. Ideas for automating?
+    let energyLength = energyOptions.length * 130 + 40;
+    if(energyBanner){
+        energyHTML = "<tr style='background-image:  url("+energyBanner+"); background-size: "+energyLength+"px "+energyBannerScale+"; background-repeat: no-repeat; background-position: left 0px top 20px;'>"
+        console.log(energyHTML)
+    } else {
+        energyHTML = "<tr>";
+    }
+    
+    // This can be scaled to move the first presence icon. 
+    energyHTML += "<td style='width:10px'></td>"
     for(i = 0; i < energyOptions.length; i++){
         energyHTML += "<td>"+getPresenceNodeHtml(energyOptions[i], i == 0, "energy", true)+"</td>";
     }
@@ -510,25 +510,25 @@ function parseCardPlayTrackTags(){
     
     var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
     var cardPlayOptions = cardPlayValues.split(",");
-	var cardPlayBanner = document.getElementsByTagName("card-play-track")[0].getAttribute("banner");
-	var cardPlayBannerScale = document.getElementsByTagName("card-play-track")[0].getAttribute("banner-v-scale");
-	if(!cardPlayBannerScale){
-		cardPlayBannerScale = "100%"
-	}
-	var cardPlayHTML = "";
-	
-	//Determine the length of the energy track
-	//If for some reason the width of a presence track spot changes, this needs to be updated. Ideas for automating?
-	let cardPlayLength = cardPlayOptions.length * 130 + 40;
-	if(cardPlayBanner){
-		cardPlayHTML = "<tr style='background-image:  url("+cardPlayBanner+"); background-size: "+cardPlayLength+"px "+cardPlayBannerScale+"; background-repeat: no-repeat; background-position: left 0px top 20px;'>"
-		console.log(cardPlayHTML)
-	} else {
-		cardPlayHTML = "<tr>";
-	}
-	
-	// This can be scaled to move the first presence icon.
-	cardPlayHTML += "<td style='width:10px'></td>"
+    var cardPlayBanner = document.getElementsByTagName("card-play-track")[0].getAttribute("banner");
+    var cardPlayBannerScale = document.getElementsByTagName("card-play-track")[0].getAttribute("banner-v-scale");
+    if(!cardPlayBannerScale){
+        cardPlayBannerScale = "100%"
+    }
+    var cardPlayHTML = "";
+    
+    //Determine the length of the energy track
+    //If for some reason the width of a presence track spot changes, this needs to be updated. Ideas for automating?
+    let cardPlayLength = cardPlayOptions.length * 130 + 40;
+    if(cardPlayBanner){
+        cardPlayHTML = "<tr style='background-image:  url("+cardPlayBanner+"); background-size: "+cardPlayLength+"px "+cardPlayBannerScale+"; background-repeat: no-repeat; background-position: left 0px top 20px;'>"
+        console.log(cardPlayHTML)
+    } else {
+        cardPlayHTML = "<tr>";
+    }
+    
+    // This can be scaled to move the first presence icon.
+    cardPlayHTML += "<td style='width:10px'></td>"
     for(i = 0; i < cardPlayOptions.length; i++){
         cardPlayHTML += "<td>"+getPresenceNodeHtml(cardPlayOptions[i], i == 0, "card", false)+"</td>";
     }
@@ -639,23 +639,23 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                //this block of text doesn't do anything.
 /*             splitOptions.forEach(function(part, index) {
                 if(part.startsWith("energy")) {
-					console.log("->"+this[index])
+                    console.log("->"+this[index])
                     this[index] = nodeText.substr(6);
                     console.log("->"+this[index])
-					nodeClass = 'energy';
+                    nodeClass = 'energy';
                 } else if(part.startsWith("card")) {
                     this[index] = nodeText.substr(4);
                     nodeClass = 'card';
-					console.log("->"+this[index])
+                    console.log("->"+this[index])
                 } else {
-					console.log("test")
-				}
+                    console.log("test")
+                }
             }, splitOptions);      */       
             
             
             var subText = ""
             
-			//Prepare text. First, check if multiple of the same icon (ie. 2 Water)
+            //Prepare text. First, check if multiple of the same icon (ie. 2 Water)
             if (splitOptions.every( (val, i, arr) => val === arr[0] )) {
                 subText = splitOptions.length + " " + Capitalise(splitOptions[0]);
             } else {
@@ -687,8 +687,8 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                         addEnergyRing = false;
                     }
                 } else if(splitOptions[i].startsWith("reclaim")){
-					trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+" small-reclaim'"+track_icon_loc+"></icon></icon-multi-element>"
-				} else {
+                    trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+" small-reclaim'"+track_icon_loc+"></icon></icon-multi-element>"
+                } else {
                     trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+"'"+track_icon_loc+"></icon></icon-multi-element>"
                 }
             }
