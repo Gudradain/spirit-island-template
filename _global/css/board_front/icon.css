@@ -64,7 +64,7 @@ icon.invaders {
   background-image: url('../../images/board/invaders.png');
 }
 
-icon.beast{
+icon.beasts{
   background-image: url('../../images/board/beast.png');
 }
 
@@ -106,7 +106,7 @@ icon.move-range-1, icon.move-range-2, icon.move-range-3, icon.move-range-4 {
 icon.range-0, icon.range-1, icon.range-2, icon.range-3, icon.range-4 {
   height: 45px;
   width: 130px;
-  margin-top: 11px;
+  margin-top: 0px;
 }
 
 icon.range-0 {
@@ -366,6 +366,7 @@ icon.gather {
   height: 62px;
   width:100px;
   margin-right: 20px;
+  margin-bottom: 7px;
 }
 
 icon.gather > icon {
@@ -384,6 +385,7 @@ icon.push {
   display: inline-block;
   height: 62px;
   width:100px;
+  margin-bottom: 7px;
 }
 
 icon.push > icon {
