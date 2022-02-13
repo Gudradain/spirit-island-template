@@ -85,7 +85,7 @@ presence-node card-icon {
 }
 
 .small-reclaim {
-    margin-left: 0px;
+    margin-left: -5px;
     margin-right: 0px;
     margin-top: -25px;
 }
@@ -127,6 +127,18 @@ presence-node value {
 presence-node icon {
   width: 65px;
   height: 65px;
+}
+
+presence-node icon.gather {
+  left: 65px;
+  top: 17px;
+  width: 76px;
+  margin-right: 34px
+}
+
+presence-node icon.gather>icon {
+  left: 77px;
+  top: 17px;
 }
 
 icon-multi {

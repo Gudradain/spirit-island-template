@@ -21,7 +21,7 @@ Note: Due to licensing, I did not include some of the fonts in the project.
 ### Getting Started
 
 1. Download the ZIP file and extract it on your computer.
-2. Open the folder "spirit-island-template-master". You should see folders such as _docs", "_examples" and "_global". 
+2. Open the folder "spirit-island-template-master". You should see folders such as "_docs", "_examples" and "_global". 
 3. Create a new folder in "spirit-island-template-master" called "my_projects" or whatever you like. 
 4. Create a new folder in "my_projects" and name it for a specific project. If your project is not two folder levels inside "spirit-island-template-master", the html won't work.
 5. Copy an example file from one of the subfolders in "_examples" into your new folder. Open it with your favorite text editor and create your content!

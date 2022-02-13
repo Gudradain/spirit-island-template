@@ -30,6 +30,11 @@ icon.jungle { background-image: url('../../images/board/jungle.png'); }
 icon.wetland { background-image: url('../../images/board/wetland.png'); }
 icon.ocean { background-image: url('../../images/board/ocean.png'); }
 
+icon.element-star{
+    background-image: url('../../images/board/NewIcons/Element Star.png');
+    width: 110px;
+    height: 110px;}
+
 icon.discard-cards {
   background-image: url('../../images/board/discard_power_cards.png');
   display: block;
@@ -99,7 +104,7 @@ icon.move-range-4 {
 icon.move-range-1, icon.move-range-2, icon.move-range-3, icon.move-range-4 {
   height: 55px;
   width: 133px;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 7px;
 }
 
@@ -135,11 +140,10 @@ icon.range-4 {
 }
 
 icon.sacred-site {
-  background-image: url('../../images/board/sacred_site.png');
   width: 50px;
 }
 
-icon.presence { background-image: url('../../images/board/75px_presence.png'); }
+icon.presence { background-image: url('../../images/board/50px_presence.png'); }
 icon.sands-presence { background-image: url('../../images/board/sands-presence.png'); }
 icon.mountain-presence { background-image: url('../../images/board/mountain-presence.png'); }
 icon.wetland-presence { background-image: url('../../images/board/wetland-presence.png'); }
@@ -311,7 +315,7 @@ icon.sand-mountain, icon.wetland-mountain, icon.jungle-mountain {
 
 icon.ocean {
     display: block;
-    height: 60px;
+    height: 45px;
     width: 70px;
     margin-top: 0px;
     margin-bottom: -12px;
@@ -370,6 +374,26 @@ icon.gather {
 }
 
 icon.gather > icon {
+    position: relative;
+    text-align: unset;
+    top: 17px;
+    left: 24px;
+    width: 30px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+icon.gather-into {
+  background-image: url('../../images/board/NewIcons/Land Gather Into.png');
+  display: inline-block;
+  height: 62px;
+  width:100px;
+  margin-right: 20px;
+  margin-bottom: 7px;
+}
+
+icon.gather-into > icon {
     position: relative;
     text-align: unset;
     top: 17px;

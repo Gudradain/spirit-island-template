@@ -303,7 +303,7 @@ function parseGrowthTags(){
                                     case 'inland':
                                     case 'coastal':
                                         presenceText += i != 1 ? operator : "";
-                                        presenceText += Capitalise(presenceReq) + " Land";
+                                        presenceText += Capitalise(presenceReq) + " land";
                                         break;
                                     
                                     case 'multiland':
@@ -346,20 +346,41 @@ function parseGrowthTags(){
                         const matches = regExp.exec(classPieces[j]);
                         
                         let preposition = growthItem=='push'
-                            ? ' from'
-                            : ' into'
-
-                        let pushTarget = matches[1];
-                        const pushOptions = matches[1].split(",");
-                        const pushRange = pushOptions[1];
-                        if(pushRange){
-                            pushTarget = pushOptions[0];
-                            newGrowthCellHTML += `${openTag}<push-gather-range-req><icon class='` + growthItem + "'><icon class='" + pushTarget + "'></icon></icon>"+"{range-" + pushRange + "}</push-gather-range-req><growth-text>"+Capitalise(growthItem)+" up to 1 " + Capitalise(pushTarget) + preposition + " a Land</growth-text></growth-cell>"
+                            ? 'from'
+                            : 'into'
+						
+						let moveText = ""
+						let moveIcons = `${openTag}`
+                        let moveTarget = matches[1];
+                        const moveOptions = matches[1].split(",");
+                        const moveRange = moveOptions[1];
+                        if(moveRange){
+							moveTarget = moveOptions[0];
+							if(isNaN(moveRange)){
+								let moveCondition = moveRange;
+								// Gather/Push into/from a sacred site
+								moveIcons += "<push-gather><icon class='" + growthItem + "-" + preposition + "'><icon class='" + moveTarget + "'></icon><icon class='" + preposition + " " + moveCondition + "'></icon></icon></push-gather>"
+								moveText += "<growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(moveTarget) +" "+ preposition + " 1 of your "
+								switch (moveCondition){
+									case 'sacred-site':
+										moveText += "Sacred Sites"
+										break;
+									default:
+										moveText += "Lands with " + Capitalise(moveCondition)
+								}
+								moveText += "</growth-text></growth-cell>"
+							}else{
+							// Gather/Push at range
+								moveIcons += "<push-gather-range-req><icon class='" + growthItem + "'><icon class='" + moveTarget + "'></icon></icon>"+"{range-" + moveRange + "}</push-gather-range-req>"
+								moveText += "<growth-text>"+Capitalise(growthItem)+" up to 1 " + Capitalise(moveTarget)+" " + preposition + " a Land</growth-text></growth-cell>"
+							}
                         }else{
-                            newGrowthCellHTML += `${openTag}<push-gather><icon class='` + growthItem + "'><icon class='" + pushTarget + "'></icon></icon></push-gather><growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(pushTarget) + preposition + " 1 of your Lands</growth-text></growth-cell>"
+                            moveIcons += "<push-gather><icon class='" + growthItem + "'><icon class='" + moveTarget + "'></icon></icon></push-gather>"
+							moveText += "<growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(moveTarget)+" " + preposition + " 1 of your Lands</growth-text></growth-cell>"
                         }
+						newGrowthCellHTML += moveIcons + moveText;
+						console.log(newGrowthCellHTML)
                         break;
-
                     }
                 case 'presence-no-range':
                     {
@@ -461,8 +482,6 @@ function parseGrowthTags(){
                         } else {
                             newGrowthCellHTML += `${openTag}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + "</growth-text></growth-cell>"
                         }
-
-
                         break;
                     }
                 default:
@@ -489,7 +508,7 @@ function parseEnergyTrackTags(){
     
     //Determine the length of the energy track
     //If for some reason the width of a presence track spot changes, this needs to be updated. Ideas for automating?
-    let energyLength = energyOptions.length * 130 + 40;
+    let energyLength = energyOptions.length * 130 + 15;
     if(energyBanner){
         energyHTML = "<tr style='background-image:  url("+energyBanner+"); background-size: "+energyLength+"px "+energyBannerScale+"; background-repeat: no-repeat; background-position: left 0px top 20px;'>"
         console.log(energyHTML)
@@ -523,7 +542,7 @@ function parseCardPlayTrackTags(){
     
     //Determine the length of the energy track
     //If for some reason the width of a presence track spot changes, this needs to be updated. Ideas for automating?
-    let cardPlayLength = cardPlayOptions.length * 130 + 40;
+    let cardPlayLength = cardPlayOptions.length * 130 + 15;
     if(cardPlayBanner){
         cardPlayHTML = "<tr style='background-image:  url("+cardPlayBanner+"); background-size: "+cardPlayLength+"px "+cardPlayBannerScale+"; background-repeat: no-repeat; background-position: left 0px top 20px;'>"
         console.log(cardPlayHTML)
@@ -623,16 +642,26 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     break;    
                 case 'push':
                     var matches = regExp.exec(splitOptions[0]);
-                    var pushTarget = matches[1];
-                    inner = "<icon class='push'><icon class='"+pushTarget+"'></icon></icon>";
-                    subText = "Push 1 "+Capitalise(pushTarget) + " from 1 of your Lands";
+                    var moveTarget = matches[1];
+                    inner = "<icon class='push'><icon class='"+moveTarget+"'></icon></icon>";
+                    subText = "Push 1 "+Capitalise(moveTarget) + " from 1 of your Lands";
                     break;    
-                case 'move-presence':
+                case 'gather':
+                    var matches = regExp.exec(splitOptions[0]);
+                    var moveTarget = matches[1];
+                    inner = "<icon class='gather'><icon class='"+moveTarget+"'></icon></icon>";
+                    subText = "Gather 1 "+Capitalise(moveTarget) + " into 1 of your Lands";
+                    break;
+				case 'move-presence':
                     var matches = regExp.exec(splitOptions[0]);
                     var moveRange = matches[1];
                     inner = "{move-presence-"+moveRange+"}";
                     subText = "Move a Presence "+moveRange;
                     break;
+				case 'element-star':
+					inner = "{element-star}";
+					subText = "Element"
+					break;
                 default:
                     // element
                     var elementName = splitOptions[0];
@@ -641,23 +670,6 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     break;                
             }            
         } else {
-               //this block of text doesn't do anything.
-/*             splitOptions.forEach(function(part, index) {
-                if(part.startsWith("energy")) {
-                    console.log("->"+this[index])
-                    this[index] = nodeText.substr(6);
-                    console.log("->"+this[index])
-                    nodeClass = 'energy';
-                } else if(part.startsWith("card")) {
-                    this[index] = nodeText.substr(4);
-                    nodeClass = 'card';
-                    console.log("->"+this[index])
-                } else {
-                    console.log("test")
-                }
-            }, splitOptions);      */       
-            
-            
             var subText = ""
             
             //Prepare text. First, check if multiple of the same icon (ie. 2 Water)
@@ -818,9 +830,9 @@ function dynamicCellWidth() {
         
         //This solution is really jank, but it works for now
         if (textHeight > 60){
-            subtext[i].style.width = "200px";
+            subtext[i].style.width = "148px";
             subtext[i].style.position = "absolute";
-            subtext[i].style.transform = "translateX(-34px)";
+            subtext[i].style.transform = "translateX(-14px)";
         }
     }
     

@@ -132,10 +132,10 @@ custom-presence {
   font-size: 20pt;
   font-weight: bold;
   display: block;
-  margin-top: 4px;
+  margin-top: 5px;
   width: auto;
   height: 110px;
-  margin-bottom: -22px;
+  margin-bottom: -24px;
 }
 
 custom-presence-no-range {
@@ -281,6 +281,17 @@ growth-cell icon.push>icon {
 growth-cell icon.gather>icon {
   left: 65px;
   top: 17px;
+}
+
+growth-cell icon.gather-into>icon {
+  left: 79px;
+  top: 23px;
+}
+
+growth-cell icon.gather-into>.into {
+  left: -30px;
+  top: 10px;
+  width:35px;
 }
 
 growth-cell icon.reclaim-one {
