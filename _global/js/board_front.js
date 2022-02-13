@@ -478,12 +478,25 @@ function parseGrowthTags(){
 }
 
 function parseEnergyTrackTags(){
-    var energyHTML = "<tr>";
     
     var energyValues = document.getElementsByTagName("energy-track")[0].getAttribute("values");
-
     var energyOptions = energyValues.split(",");
-
+	var energyBanner = document.getElementsByTagName("energy-track")[0].getAttribute("banner");
+	var energyBannerScale = document.getElementsByTagName("energy-track")[0].getAttribute("banner-v-scale");
+	var energyHTML = "";
+	
+	//Determine the length of the energy track
+	//If for some reason the width of a presence track spot changes, this needs to be updated. Ideas for automating?
+	let energyLength = energyOptions.length * 130 + 40;
+	if(energyBanner){
+		energyHTML = "<tr style='background-image:  url("+energyBanner+"); background-size: "+energyLength+"px "+energyBannerScale+"; background-repeat: no-repeat; background-position: left 0px top 20px;'>"
+		console.log(energyHTML)
+	} else {
+		energyHTML = "<tr>";
+	}
+	
+	// This can be scaled to move the first presence icon. 
+	energyHTML += "<td style='width:10px'></td>"
     for(i = 0; i < energyOptions.length; i++){
         energyHTML += "<td>"+getPresenceNodeHtml(energyOptions[i], i == 0, "energy", true)+"</td>";
     }
@@ -494,12 +507,28 @@ function parseEnergyTrackTags(){
 }
 
 function parseCardPlayTrackTags(){    
-    var cardPlayHTML = "<tr>";
     
     var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
-
     var cardPlayOptions = cardPlayValues.split(",");
-
+	var cardPlayBanner = document.getElementsByTagName("card-play-track")[0].getAttribute("banner");
+	var cardPlayBannerScale = document.getElementsByTagName("card-play-track")[0].getAttribute("banner-v-scale");
+	if(!cardPlayBannerScale){
+		cardPlayBannerScale = "100%"
+	}
+	var cardPlayHTML = "";
+	
+	//Determine the length of the energy track
+	//If for some reason the width of a presence track spot changes, this needs to be updated. Ideas for automating?
+	let cardPlayLength = cardPlayOptions.length * 130 + 40;
+	if(cardPlayBanner){
+		cardPlayHTML = "<tr style='background-image:  url("+cardPlayBanner+"); background-size: "+cardPlayLength+"px "+cardPlayBannerScale+"; background-repeat: no-repeat; background-position: left 0px top 20px;'>"
+		console.log(cardPlayHTML)
+	} else {
+		cardPlayHTML = "<tr>";
+	}
+	
+	// This can be scaled to move the first presence icon.
+	cardPlayHTML += "<td style='width:10px'></td>"
     for(i = 0; i < cardPlayOptions.length; i++){
         cardPlayHTML += "<td>"+getPresenceNodeHtml(cardPlayOptions[i], i == 0, "card", false)+"</td>";
     }
