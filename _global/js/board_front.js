@@ -359,6 +359,7 @@ function parseGrowthTags(){
                             newGrowthCellHTML += `${openTag}<push-gather><icon class='` + growthItem + "'><icon class='" + pushTarget + "'></icon></icon></push-gather><growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(pushTarget) + preposition + " 1 of your Lands</growth-text></growth-cell>"
                         }
                         break;
+
                     }
                 case 'presence-no-range':
                     {
@@ -481,6 +482,7 @@ function parseEnergyTrackTags(){
     
     var energyValues = document.getElementsByTagName("energy-track")[0].getAttribute("values");
     var energyOptions = energyValues.split(",");
+
     var energyBanner = document.getElementsByTagName("energy-track")[0].getAttribute("banner");
     var energyBannerScale = document.getElementsByTagName("energy-track")[0].getAttribute("banner-v-scale");
     var energyHTML = "";
@@ -497,6 +499,7 @@ function parseEnergyTrackTags(){
     
     // This can be scaled to move the first presence icon. 
     energyHTML += "<td style='width:10px'></td>"
+
     for(i = 0; i < energyOptions.length; i++){
         energyHTML += "<td>"+getPresenceNodeHtml(energyOptions[i], i == 0, "energy", true)+"</td>";
     }
@@ -510,6 +513,7 @@ function parseCardPlayTrackTags(){
     
     var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
     var cardPlayOptions = cardPlayValues.split(",");
+
     var cardPlayBanner = document.getElementsByTagName("card-play-track")[0].getAttribute("banner");
     var cardPlayBannerScale = document.getElementsByTagName("card-play-track")[0].getAttribute("banner-v-scale");
     if(!cardPlayBannerScale){
@@ -529,6 +533,7 @@ function parseCardPlayTrackTags(){
     
     // This can be scaled to move the first presence icon.
     cardPlayHTML += "<td style='width:10px'></td>"
+
     for(i = 0; i < cardPlayOptions.length; i++){
         cardPlayHTML += "<td>"+getPresenceNodeHtml(cardPlayOptions[i], i == 0, "card", false)+"</td>";
     }
