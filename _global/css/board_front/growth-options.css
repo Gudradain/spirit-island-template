@@ -119,13 +119,13 @@ growth-energy value {
 }
 
 custom-presence-req {
-  font-size: 20pt;
-  font-weight: bold;
-  margin-top: -45px;
-  margin-bottom: 26px;
-  width: auto;
-  height: 110px;
-  display: block;
+    font-size: 20pt;
+    font-weight: bold;
+    margin-top: -34px;
+    margin-bottom: 15px;
+    width: auto;
+    height: 110px;
+    display: block;
 }
 
 custom-presence {
@@ -189,7 +189,7 @@ presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus
 	width: 40px;
     margin-left: auto;
     margin-right: auto;
-	margin-top: 7px;
+	margin-top: 0px;
 }
 
 presence-req icon.presence {
