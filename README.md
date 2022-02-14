@@ -21,11 +21,11 @@ Note: Due to licensing, I did not include some of the fonts in the project.
 ### Getting Started
 
 1. Download the ZIP file and extract it on your computer.
-2. Open the folder "spirit-island-template-master". You should see folders such as "_docs", "_examples" and "_global". 
-3. Create a new folder in "spirit-island-template-master" called "my_projects" or whatever you like. 
-4. Create a new folder in "my_projects" and name it for a specific project. If your project is not two folder levels inside "spirit-island-template-master", the html won't work.
-5. Copy an example file from one of the subfolders in "_examples" into your new folder. Open it with your favorite text editor and create your content!
-6. Open the example file or your edited file in your browser to see the example cards or your creations!
+2. Open the folder "spirit-island-template-master". You should see folders such as "_docs", "_examples", "_global", and "My Custom Content". 
+3. Open the 'My Custom Content' folder and then open the folder for spirits, adversary, etc.
+4. Open the examples in a browser to view the stylized content. Open the examples in a text editor to modify.
+     **NOTE:** The folder depth is important. You can create new folders but the .html files must be at the same folder depth (ie. 2 deeper than the root folder).
+5. You can copy the examples again from the "_examples" folder.
 
 ### Tips for Maintenance
 
