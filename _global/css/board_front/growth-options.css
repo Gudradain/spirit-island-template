@@ -148,6 +148,10 @@ custom-presence-no-range {
   margin-top: 55px;
 }
 
+custom-presence-no-range icon.range-any {
+width:0px
+}
+
 custom-presence icon.range-0,
 custom-presence icon.range-1,
 custom-presence icon.range-2,
@@ -195,7 +199,7 @@ presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus
 presence-req icon.presence {
 	width: 35px;
 	height: 27px;
-	margin-top: 20px;	
+	margin-top: 0px;
 }
 
 presence-req icon.blight {
@@ -267,6 +271,12 @@ growth-cell icon.gain-power-card {
 
 growth-cell icon.forget-power-card {
   margin-bottom: 7px;
+}
+
+growth-cell icon.destroyed-presence {
+  margin-bottom: 7px;
+  height:90px;
+  width:100px;
 }
 
 growth-cell icon.gain-card-play {

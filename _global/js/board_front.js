@@ -173,6 +173,11 @@ function parseGrowthTags(){
                         newGrowthCellHTML += `${openTag}{forget-power-card}<growth-text>Forget Power Card</growth-text></growth-cell>`
                         break;
                     }
+				case 'destroy-presence':
+                    {
+                        newGrowthCellHTML += `${openTag}{destroyed-presence}<growth-text>Destroy a Presence</growth-text></growth-cell>`
+                        break;
+                    }
                 case 'gain-card-play':
                     {
                         newGrowthCellHTML += `${openTag}{gain-card-play}<growth-text>Gain a Card Play</growth-text></growth-cell>`
@@ -217,15 +222,20 @@ function parseGrowthTags(){
                     let presenceTextLead = "";
                     let presenceTextEnd = "";
                     let terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
+					if (presenceRange=='any' && presenceOptions.length==1) {
 
-                    if (presenceOptions.length > 1) {
+						presenceReqOpen = "<custom-presence-no-range>";
+						presenceReqClose = "</custom-presence-no-range>";
+						presenceText = " to any Land"
+					} else if (presenceOptions.length > 1) {
                         presenceReqOpen = "<custom-presence-req>";
                         presenceReqClose = "</custom-presence-req>";
                         presenceIcon += "<presence-req>";
                         
                         if(presenceOptions[1]=='text'){
                             // User wants a custom text presence addition
-                            presenceIcon += presenceOptions[2];
+                            presenceIcon += "<span style='font-family: DK Snemand; font-size: 24pt; font-style: normal;'>!!!</span>";
+							presenceText += presenceOptions[2];
                         } else if (presenceOptions[1]=='token'){
                             // User wants to add a token in growth
                             switch (presenceOptions[2]){
@@ -253,6 +263,8 @@ function parseGrowthTags(){
                             }
                             
                             presenceText += " to ";
+							presenceText += presenceRange === 'any' ? 'any ' : '';
+							
                             let flag = 0; // This flag is used to figure out if 'land with' has been said already. It comes up with add-presence(3,jungle,beasts,or)
                             for (var i = 1; i < presenceOptions.length; i++) {
                                 
@@ -288,7 +300,7 @@ function parseGrowthTags(){
                                 }
                                 
                                 presenceTextLead = "";
-                                presenceTextEnd = "";    
+                                presenceTextEnd = "";
                                 
                                 switch (presenceReq){
                                     case 'sand':
@@ -299,35 +311,30 @@ function parseGrowthTags(){
                                         presenceText += i != 1 ? operator : "";
                                         presenceText += Capitalise(presenceReq);
                                         break;
-                                    
                                     case 'inland':
                                     case 'coastal':
                                         presenceText += i != 1 ? operator : "";
                                         presenceText += Capitalise(presenceReq) + " land";
                                         break;
-                                    
                                     case 'multiland':
                                         presenceText += multiLandText;
                                         break;
-                                        
                                     case 'no-blight':
                                         presenceText += i == 1 ? " Land without " : " and no ";
                                         presenceText += "Blight";
                                         break;
-                                    
-
                                     case 'beast':
                                         presenceTextEnd = "s"
                                     case 'presence':
                                         presenceTextLead += presenceTextEnd==="" ? "Your " : "";
                                         //Intentionally do not break.
                                     default:
-                                        if (flag == 0 && i != 1) {
+                                        if (flag == 0 && i != 1 && operator != ' and ') {
                                             presenceText += operator+"Land with ";
-                                        }else if(flag == 0){
+                                        }else if(flag == 0 && operator != ' and '){
                                             presenceText += " Land with ";
                                         }else{
-                                            presenceText += operator;
+                                            presenceText += operator !== ' and ' ? operator : ' with ';
                                         }
                                         flag = 1;
                                         presenceText += presenceTextLead + Capitalise(presenceReq) + presenceTextEnd;
@@ -335,7 +342,7 @@ function parseGrowthTags(){
                             }                            
                         }
                         presenceIcon += "</presence-req>";
-                    }
+					}
 
                     newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence" + presenceText + "</growth-text></growth-cell>"
                     break;

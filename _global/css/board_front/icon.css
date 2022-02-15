@@ -108,7 +108,7 @@ icon.move-range-1, icon.move-range-2, icon.move-range-3, icon.move-range-4 {
   margin-bottom: 7px;
 }
 
-icon.range-0, icon.range-1, icon.range-2, icon.range-3, icon.range-4 {
+icon.range-0, icon.range-1, icon.range-2, icon.range-3, icon.range-4, icon.range-any {
   height: 45px;
   width: 130px;
   margin-top: 0px;
@@ -137,6 +137,11 @@ icon.range-3 {
 icon.range-4 {
   background-image: url('../../images/board/presence_range_4.png');
   display: block;
+}
+
+icon.range-any {
+  background-image: url('../../images/board/presence_range_any.png');
+  display: inline-block;
 }
 
 icon.sacred-site {
