@@ -175,7 +175,7 @@ function parseGrowthTags(){
                     }
 				case 'destroy-presence':
                     {
-                        newGrowthCellHTML += `${openTag}{destroyed-presence}<growth-text>Destroy a Presence</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}{destroyed-presence}<growth-text>Destroy 1 of your Presence</growth-text></growth-cell>`
                         break;
                     }
                 case 'gain-card-play':
