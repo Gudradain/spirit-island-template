@@ -142,6 +142,7 @@ icon.range-4 {
 icon.range-any {
   background-image: url('../../images/board/presence_range_any.png');
   display: inline-block;
+  width:0px;
 }
 
 icon.sacred-site {

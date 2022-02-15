@@ -232,6 +232,10 @@ function parseGrowthTags(){
                         presenceReqClose = "</custom-presence-req>";
                         presenceIcon += "<presence-req>";
                         
+						if (presenceRange=='any'){
+							presenceReqOpen += "<presence-req></presence-req>"
+						}
+						
                         if(presenceOptions[1]=='text'){
                             // User wants a custom text presence addition
                             presenceIcon += "<span style='font-family: DK Snemand; font-size: 24pt; font-style: normal;'>!!!</span>";
@@ -266,6 +270,7 @@ function parseGrowthTags(){
 							presenceText += presenceRange === 'any' ? 'any ' : '';
 							
                             let flag = 0; // This flag is used to figure out if 'land with' has been said already. It comes up with add-presence(3,jungle,beasts,or)
+							let and_flag = 0;
                             for (var i = 1; i < presenceOptions.length; i++) {
                                 
                                 // Check to see if we've reached an 'or', which shouldn't be parsed
@@ -310,6 +315,7 @@ function parseGrowthTags(){
                                     case 'ocean':
                                         presenceText += i != 1 ? operator : "";
                                         presenceText += Capitalise(presenceReq);
+										and_flag = 1;
                                         break;
                                     case 'inland':
                                     case 'coastal':
@@ -318,6 +324,7 @@ function parseGrowthTags(){
                                         break;
                                     case 'multiland':
                                         presenceText += multiLandText;
+										and_flag = 1;
                                         break;
                                     case 'no-blight':
                                         presenceText += i == 1 ? " Land without " : " and no ";
@@ -331,10 +338,17 @@ function parseGrowthTags(){
                                     default:
                                         if (flag == 0 && i != 1 && operator != ' and ') {
                                             presenceText += operator+"Land with ";
+											console.log("1")
                                         }else if(flag == 0 && operator != ' and '){
                                             presenceText += " Land with ";
+											console.log("2")
                                         }else{
-                                            presenceText += operator !== ' and ' ? operator : ' with ';
+											console.log("3"+operator+flag+and_flag)
+											if(operator === ' and ' && flag !== 1){
+												presenceText += (and_flag===1) ? ' with ' : ' Land with ';
+											}else{
+												presenceText += operator;
+											}
                                         }
                                         flag = 1;
                                         presenceText += presenceTextLead + Capitalise(presenceReq) + presenceTextEnd;
