@@ -49,7 +49,7 @@ General Images: Every image in a board can be called by simply using its name en
           - add-presence(X,token,and/or,token_type): allows for adding tokens in addition to or instead of presence
             - For example, add-presence(3,token,and,beast) is Many Minds, add-presence(1,token,or,disease) is Vengeance
           - move-presence(X): Move a Presence up to X Range
-          - presence-no-range: Add a presence anywhere (as seen on Finder)
+          - ~~presence-no-range: Add a presence anywhere (as seen on Finder)~~ this option is now redundant with using 'any' range
           - ignore-range: Ignore Range this turn (as seen on Finder)
           - gain-element(X): Gain X Element (currently limited to only one)
           - push(x): Push x from your land (as seen on Trickster with Dahan)
