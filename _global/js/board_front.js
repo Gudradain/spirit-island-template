@@ -137,6 +137,8 @@ function parseGrowthTags(){
         const openTag = headerIndex !== undefined
             ? `<growth-cell header="${headerIndex}">`
             : "<growth-cell>"
+        const terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
+					
         for (j = 0; j < classPieces.length; j++) {
 
             //Find a parenthesis and split out the string before it
@@ -209,7 +211,7 @@ function parseGrowthTags(){
                     }
                         break;
                     }
-                case 'add-presence': {
+				case 'add-presence': {
                     const matches = regExp.exec(classPieces[j]);
 
                     let presenceOptions = matches[1].split(",");
@@ -221,7 +223,7 @@ function parseGrowthTags(){
                     let presenceIcon = "";
                     let presenceTextLead = "";
                     let presenceTextEnd = "";
-                    let terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
+
 					if (presenceRange=='any' && presenceOptions.length==1) {
 
 						presenceReqOpen = "<custom-presence-no-range>";
@@ -285,8 +287,8 @@ function parseGrowthTags(){
                                     case 'coastal':
                                     case 'invaders':
                                         presenceIcon += presenceOptions.length < 3
-                                            ? "<span class='non-icon'>"+presenceReq+"</span><icon style='height:50px; width:0px;'></icon>" // This do-nothing Icon just creates 50px of height to make everything line up. Other ideas?
-                                            : "<span class='non-icon small'>"+presenceReq+"</span><icon style='height:50px; width:0px;'></icon>"
+                                            ? "<span class='non-icon'>"+presenceReq.toUpperCase()+"</span><icon style='height:50px; width:0px;'></icon>" // This do-nothing Icon just creates 50px of height to make everything line up. Other ideas?
+                                            : "<span class='non-icon small'>"+presenceReq.toUpperCase()+"</span><icon style='height:50px; width:0px;'></icon>"
                                         break;
                                         
                                     default:
@@ -338,12 +340,9 @@ function parseGrowthTags(){
                                     default:
                                         if (flag == 0 && i != 1 && operator != ' and ') {
                                             presenceText += operator+"Land with ";
-											console.log("1")
                                         }else if(flag == 0 && operator != ' and '){
                                             presenceText += " Land with ";
-											console.log("2")
                                         }else{
-											console.log("3"+operator+flag+and_flag)
 											if(operator === ' and ' && flag !== 1){
 												presenceText += (and_flag===1) ? ' with ' : ' Land with ';
 											}else{
@@ -373,21 +372,41 @@ function parseGrowthTags(){
 						let moveText = ""
 						let moveIcons = `${openTag}`
                         let moveTarget = matches[1];
-                        const moveOptions = matches[1].split(",");
-                        const moveRange = moveOptions[1];
+                        let moveOptions = matches[1].split(",");
+                        let moveRange = moveOptions[1];
+						let moveNum = moveOptions[2];
+						let plural = "";
+						if(!moveNum){
+							moveNum = 1;
+						}else if(isNaN(moveNum)){
+							moveNum = moveNum.toUpperCase();
+						}else{
+							plural = moveNum > 1 ? "s" : "";
+						}
                         if(moveRange){
 							moveTarget = moveOptions[0];
 							if(isNaN(moveRange)){
 								let moveCondition = moveRange;
-								// Gather/Push into/from a sacred site
-								moveIcons += "<push-gather><icon class='" + growthItem + "-" + preposition + "'><icon class='" + moveTarget + "'></icon><icon class='" + preposition + " " + moveCondition + "'></icon></icon></push-gather>"
-								moveText += "<growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(moveTarget) +" "+ preposition + " 1 of your "
+								// Gather/Push into/from a sacred site or land with token
+								// WIP need to update for oceans/etc. Also, gathering presence is weird.
+								// Text
+								moveText += "<growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(moveTarget) +" "+ preposition + " " + moveNum;
 								switch (moveCondition){
 									case 'sacred-site':
-										moveText += "Sacred Sites"
+										moveText += " of your Sacred Sites"
+										moveIcons += "<push-gather><icon class='" + growthItem + "-" + preposition + "'><icon class='" + moveTarget + "'></icon><icon class='" + preposition + " " + moveCondition + "'></icon></icon></push-gather>"
+										break;
+									case 'wetland':
+									case 'sands':
+									case 'mountain':
+									case 'jungle':
+									case 'ocean':
+										moveIcons += "<push-gather><icon class='" + moveCondition + " terrain-"+growthItem+"'>{"+growthItem+"-arrow}<icon class='" + moveTarget + " "+preposition+"'></icon></icon></push-gather>"
+										moveText += " " + Capitalise(moveCondition) + plural
 										break;
 									default:
-										moveText += "Lands with " + Capitalise(moveCondition)
+										moveText += " of your Lands with " + Capitalise(moveCondition)
+										moveIcons += "<push-gather><icon class='" + growthItem + "-" + preposition + "'><icon class='" + moveTarget + "'></icon><icon class='" + preposition + " " + moveCondition + "'></icon></icon></push-gather>"
 								}
 								moveText += "</growth-text></growth-cell>"
 							}else{

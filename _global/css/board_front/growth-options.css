@@ -2,6 +2,7 @@ growth {
   background-image: url('../../images/board/Growth_Without_Text.png');
   background-repeat: no-repeat;
   background-position: left bottom;
+  background-size: cover;
   margin-top: -8px;
   background-color: transparent;
   background-clip: border-box;
@@ -273,6 +274,30 @@ growth-cell icon.forget-power-card {
   margin-bottom: 7px;
 }
 
+growth-cell icon.gather-arrow {
+  margin-bottom: 7px;
+  background-image: url('../../images/board/half_arrow_gather.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 70px;
+  height: 17px;
+  margin-left: 45px;
+  margin-top: -34px;
+}
+
+growth-cell icon.push-arrow {
+  margin-bottom: 7px;
+  background-image: url('../../images/board/half_arrow_push.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 70px;
+  height: 17px;
+  margin-left: 45px;
+  margin-top: -34px;
+}
+
 growth-cell icon.destroyed-presence {
   margin-bottom: 7px;
   height:90px;
@@ -485,6 +510,75 @@ push-gather {
   width: auto;
   height: 110px;
   margin-bottom: -22px;
+}
+
+push-gather icon.terrain-gather {
+	display: inline-block;
+    height: 62px;
+    width: 100px;
+    margin-right: 20px;
+    margin-bottom: 7px;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+push-gather icon.terrain-push {
+	display: inline-block;
+    height: 62px;
+    width: 100px;
+    margin-right: 0px;
+    margin-bottom: 7px;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+push-gather icon.terrain-gather>icon.into{
+    left: 58px;
+    top: -8px;
+	position: relative;
+    text-align: unset;
+    width: 30px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+push-gather icon.terrain-push>icon.from{
+	left: -26px;
+    top: 13px;
+	position: relative;
+    text-align: unset;
+    width: 30px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+push-gather icon.terrain-push.ocean>icon.from{
+	left: -8px;
+    top: -8px;
+}
+
+push-gather icon.terrain-gather>icon.gather-arrow{
+	left: 60px;
+    top: 17px;
+	position: relative;
+    text-align: unset;
+	width: 32px;
+    height: 25px;
+	margin: 0px;
+    padding: 0px;
+}
+
+push-gather icon.terrain-push>icon.push-arrow{
+	left: 63px;
+    top: 17px;
+	position: relative;
+    text-align: unset;
+	width: 32px;
+    height: 25px;
+	margin: 0px;
+    padding: 0px;
 }
 
 push-gather-range-req {
