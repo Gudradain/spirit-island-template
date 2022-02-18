@@ -29,6 +29,15 @@ growth sub-section-title {
   font-weight: bold;
 }
 
+growth .tint{
+    width: 80%;
+    height: 110%;
+    opacity: 0.2;
+    position: absolute;
+    top: -20%;
+    left: 10%;
+}
+
 growth sub-section-title>span {
   flex-grow: 0;
   flex-shrink: 0;

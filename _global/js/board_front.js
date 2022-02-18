@@ -130,14 +130,21 @@ function parseGrowthTags(){
         if (cost) {
             newGrowthCellHTML += `<growth-cost>-${cost}</growth-cost>`;
         }
-
+		
+		const tint = childElement.getAttribute("tint");
+		let tint_text = ""
+		if (tint) {
+			tint_text += "<div class='tint' style='background-color:"+tint+";'></div>"
+		}
+		
         const growthClass = childElement.getAttribute("values");
 
         const classPieces = growthClass.split(';');
         const openTag = headerIndex !== undefined
             ? `<growth-cell header="${headerIndex}">`
             : "<growth-cell>"
-        const terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
+        const closeTag = tint_text + '</growth-cell>'
+		const terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
 					
         for (j = 0; j < classPieces.length; j++) {
 
@@ -147,47 +154,47 @@ function parseGrowthTags(){
             switch (growthItem) {
                 case 'reclaim-all':
                     {
-                        newGrowthCellHTML += `${openTag}{reclaim-all}<growth-text>Reclaim Cards</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}{reclaim-all}<growth-text>Reclaim Cards</growth-text>${closeTag}`
                         break;
                     }
                 case 'reclaim-one':
                     {
-                        newGrowthCellHTML += `${openTag}{reclaim-one}<growth-text>Reclaim One</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}{reclaim-one}<growth-text>Reclaim One</growth-text>${closeTag}`
                         break;
                     }
                 case 'reclaim-none':
                     {
-                        newGrowthCellHTML += `${openTag}{reclaim-none}<growth-text>Reclaim None</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}{reclaim-none}<growth-text>Reclaim None</growth-text>${closeTag}`
                         break;
                     }
                 case 'gain-power-card':
                     {
-                        newGrowthCellHTML += `${openTag}{gain-power-card}<growth-text>Gain Power Card</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}{gain-power-card}<growth-text>Gain Power Card</growth-text>${closeTag}`
                         break;
                     }
                 case 'discard-cards':
                     {
-                        newGrowthCellHTML += `${openTag}{discard-cards}<growth-text>Discard 2 Power Cards</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}{discard-cards}<growth-text>Discard 2 Power Cards</growth-text>${closeTag}`
                         break;
                     }
                 case 'forget-power-card':
                     {
-                        newGrowthCellHTML += `${openTag}{forget-power-card}<growth-text>Forget Power Card</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}{forget-power-card}<growth-text>Forget Power Card</growth-text>${closeTag}`
                         break;
                     }
 				case 'destroy-presence':
                     {
-                        newGrowthCellHTML += `${openTag}{destroyed-presence}<growth-text>Destroy 1 of your Presence</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}{destroyed-presence}<growth-text>Destroy 1 of your Presence</growth-text>${closeTag}`
                         break;
                     }
                 case 'gain-card-play':
                     {
-                        newGrowthCellHTML += `${openTag}{gain-card-play}<growth-text>Gain a Card Play</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}{gain-card-play}<growth-text>Gain a Card Play</growth-text>${closeTag}`
                         break;
                     }
                 case 'make-fast':
                     {
-                        newGrowthCellHTML += `${openTag}{make-fast}<growth-text>One of your Powers may be Fast</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}{make-fast}<growth-text>One of your Powers may be Fast</growth-text>${closeTag}`
                         break;
                     }
                 case 'gain-energy':
@@ -199,14 +206,14 @@ function parseGrowthTags(){
                         
                         if (!isNaN(energyOptions[0])) {
                         //Gain Energy has a number in it
-                        newGrowthCellHTML += `${openTag}<growth-energy><value>` + energyOptions[0] + "</value></growth-energy><growth-text>Gain Energy</growth-text></growth-cell>"
+                        newGrowthCellHTML += `${openTag}<growth-energy><value>` + energyOptions[0] + `</value></growth-energy><growth-text>Gain Energy</growth-text>${closeTag}`
                     } else {
                         //Gain Energy is not from a number
                         if (energyOptions.length<2){
-                            newGrowthCellHTML += `${openTag}<growth-cell-double><gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='` + energyOptions[0] + "'></icon></ring-icon></gain-per-element></growth-cell-double><growth-text>Gain 1 Energy per " + Capitalise(energyOptions[0]) + "</growth-text></growth-cell>"
+                            newGrowthCellHTML += `${openTag}<growth-cell-double><gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='` + energyOptions[0] + "'></icon></ring-icon></gain-per-element></growth-cell-double><growth-text>Gain 1 Energy per " + Capitalise(energyOptions[0]) + `</growth-text>${closeTag}`
                         }else{
                             let flatEnergy = energyOptions[1]
-                            newGrowthCellHTML += `${openTag}<growth-cell-double><growth-energy><value>` + energyOptions[1] + "</value></growth-energy><gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='" + energyOptions[0] + "'></icon></ring-icon></gain-per-element></growth-cell-double><growth-text>Gain "+flatEnergy+" Energy and +1 Energy per " + Capitalise(energyOptions[0]) + "</growth-text></growth-cell>"
+                            newGrowthCellHTML += `${openTag}<growth-cell-double><growth-energy><value>` + energyOptions[1] + "</value></growth-energy><gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='" + energyOptions[0] + "'></icon></ring-icon></gain-per-element></growth-cell-double><growth-text>Gain "+flatEnergy+" Energy and +1 Energy per " + Capitalise(energyOptions[0]) + `</growth-text>${closeTag}`
                         }
                     }
                         break;
@@ -357,7 +364,7 @@ function parseGrowthTags(){
                         presenceIcon += "</presence-req>";
 					}
 
-                    newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence" + presenceText + "</growth-text></growth-cell>"
+                    newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence" + presenceText + `</growth-text>${closeTag}`
                     break;
                 }
                 case 'push':
@@ -408,15 +415,15 @@ function parseGrowthTags(){
 										moveText += " of your Lands with " + Capitalise(moveCondition)
 										moveIcons += "<push-gather><icon class='" + growthItem + "-" + preposition + "'><icon class='" + moveTarget + "'></icon><icon class='" + preposition + " " + moveCondition + "'></icon></icon></push-gather>"
 								}
-								moveText += "</growth-text></growth-cell>"
+								moveText += `</growth-text>${closeTag}`
 							}else{
 							// Gather/Push at range
 								moveIcons += "<push-gather-range-req><icon class='" + growthItem + "'><icon class='" + moveTarget + "'></icon></icon>"+"{range-" + moveRange + "}</push-gather-range-req>"
-								moveText += "<growth-text>"+Capitalise(growthItem)+" up to 1 " + Capitalise(moveTarget)+" " + preposition + " a Land</growth-text></growth-cell>"
+								moveText += "<growth-text>"+Capitalise(growthItem)+" up to 1 " + Capitalise(moveTarget)+" " + preposition + ` a Land</growth-text>${closeTag}`
 							}
                         }else{
                             moveIcons += "<push-gather><icon class='" + growthItem + "'><icon class='" + moveTarget + "'></icon></icon></push-gather>"
-							moveText += "<growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(moveTarget)+" " + preposition + " 1 of your Lands</growth-text></growth-cell>"
+							moveText += "<growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(moveTarget)+" " + preposition + ` 1 of your Lands</growth-text>${closeTag}`
                         }
 						newGrowthCellHTML += moveIcons + moveText;
 						console.log(newGrowthCellHTML)
@@ -424,12 +431,12 @@ function parseGrowthTags(){
                     }
                 case 'presence-no-range':
                     {
-                        newGrowthCellHTML += `${openTag}<custom-presence-no-range>+{presence}</custom-presence-no-range><growth-text>Add a Presence to any Land</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}<custom-presence-no-range>+{presence}</custom-presence-no-range><growth-text>Add a Presence to any Land</growth-text>${closeTag}`
                         break;
                     }
                 case 'ignore-range':
                     {
-                        newGrowthCellHTML += `${openTag}<custom-presence>{ignore-range}</custom-presence><growth-text>You may ignore Range this turn</growth-text></growth-cell>`
+                        newGrowthCellHTML += `${openTag}<custom-presence>{ignore-range}</custom-presence><growth-text>You may ignore Range this turn</growth-text>${closeTag}`
                         break;
                     }
                 case 'move-presence':
@@ -437,7 +444,7 @@ function parseGrowthTags(){
                         const matches = regExp.exec(classPieces[j]);
 
                         const moveRange = matches[1];
-                        newGrowthCellHTML += `${openTag}<custom-presence>{presence}{move-range-` + moveRange + "}</custom-presence><growth-text>Move a Presence</growth-text></growth-cell>"
+                        newGrowthCellHTML += `${openTag}<custom-presence>{presence}{move-range-` + moveRange + `}</custom-presence><growth-text>Move a Presence</growth-text>${closeTag}`
 
                         break;
                     }
@@ -475,7 +482,7 @@ function parseGrowthTags(){
                                         newGrowthCellHTML += " or ";
                                     }
                                 }
-                                newGrowthCellHTML += "</growth-text></growth-cell>";
+                                newGrowthCellHTML += `</growth-text>${closeTag}`;
                                     
                             } else { 
                                 // Gain multiple of the same element or gain multiple different elements (all of them, not or)
@@ -516,11 +523,11 @@ function parseGrowthTags(){
                                 }
                                 elementIcons += "<icon style='width:0px;height:99px'></icon>"; // This is a filler icon to make sure the spacing is right. Any idea for a better solution?
                                 
-                                newGrowthCellHTML += `${openTag}<gain>` + elementIcons + "</gain><growth-text>Gain "+elementText+"</growth-text></growth-cell>";
+                                newGrowthCellHTML += `${openTag}<gain>` + elementIcons + "</gain><growth-text>Gain "+elementText+`</growth-text>${closeTag}`;
                             }
                                     
                         } else {
-                            newGrowthCellHTML += `${openTag}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + "</growth-text></growth-cell>"
+                            newGrowthCellHTML += `${openTag}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + gainedElement.charAt(0).toUpperCase() + gainedElement.slice(1) + `</growth-text>${closeTag}`
                         }
                         break;
                     }
