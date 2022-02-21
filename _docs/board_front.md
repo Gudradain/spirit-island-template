@@ -57,20 +57,26 @@ General Images: Every image in a board can be called by simply using its name en
 |Move Presence|Move Presence|move-presence(x)|Move a Presence up to x Range||
 |Gaining Energy|Gain Energy|gain-energy(x)|Gain x Energy||
 ||Gain Energy per Element|gain-energy(x)|Gain 1 Energy per Element x||
-||Gain Energy per Element plus Flat|gain-energy(x,y)|Gain x Energy plus 1 Energy per Element y|gain-energy(2,fire) - Wildfire|
-||Gain Energy per Element|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
-||Gain Energy per Element|gain-energy(x,text,*your_text_here*)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be a !!!.||
+||Gain Energy per Element plus Flat Energy|gain-energy(x,y)|Gain x Energy plus 1 Energy per Element y|gain-energy(2,fire) - Wildfire|
+||Gain Energy per Custom Item|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
+||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be a !!!.||
 |Gain Power Card|Gain a Power Card|gain-power-card|||
 |Discard 2 Cards|Discard 2 Power Cards|discard-cards|As seen on Downpour||
 |Gain Card Play|Gain 1 Card Play|gain-card-play|||
+||Gain  Card Plays|gain-card-play(x)|Gain x card plays||
 |Forget Power Card|Forget a Power Card|forget-power-card|||
 |Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
 |Ignore Range |Ignore Range this Turn|ignore-range|Ignore Range this turn (as seen on Finder)||
 |Isolate|Isolate one of your Lands|isolate|||
 ||Isolate a land at Range|isolate(x)|Isolate a land at x Range||
 |Destroy Presence|Destroy a Presence|destroy-presence|||
+|Gaining Fear|Gain Fear|fear(x)|Gain x Fear||
+||Gain Fear per Element|fear(x)|Gain 1 Fear per Element x||
+||Gain Fear per Element plus Flat Fear|fear(x,y)|Gain x Fear plus 1 Fear per Element y||
+||Gain Fear per Custom Item|fear(text,*your_text_here*)|Gain 1 Fear per condition of your choosing. Icon will be a !!!.||
+||Gain Fear per Custom Item Plus Flat Fear|fear(x,text,*your_text_here*)|Gain x Fear plus 1 Fear per condition of your choosing. Icon will be a !!!.||
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
-|Custom|Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the icon of your choice||
+||Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the icon of your choice||
 
 
   - **presence-tracks**: The container for the Presence Tracks.
