@@ -32,6 +32,8 @@ General Images: Every image in a board can be called by simply using its name en
       - growth-group values: The Spirit Actions within a growth group.
 	    - Example: <growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"></growth-group>
         - Supported Options for Values:
+		
+
 |Category|Action|Usage|Details|Examples|
 |------|------|------|------|----|
 |Reclaim|Reclaim All|reclaim-all|||
@@ -65,6 +67,7 @@ General Images: Every image in a board can be called by simply using its name en
 |Isolate|Isolate one of your Lands|isolate|||
 ||Isolate a land at Range|isolate(x)|Isolate a land at x Range||
 |Destroy Presence|Destroy a Presence|destroy-presence|||
+
 		  - discard-cards: Discard 2 Power Cards (as seen on Downpour)
           - gain-card-play: +1 Card Play this turn
           - gain-power-card: Gain Power Card
