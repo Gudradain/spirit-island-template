@@ -546,10 +546,12 @@ function parseGrowthTags(){
 					let customOptions = matches[1].split(",");
 					customIcon = customOptions[1];
 					customText = customOptions[0];
-					if (!customIcon){
+					if (customIcon){
+						customIcon = "{" + customIcon + "}";
+					}else{
 						customIcon = "<div class='custom-scaling'>!!!</div>";
 					}
-					newGrowthCellHTML += `${openTag}<custom-growth-icon>{`  + customIcon + `}</custom-growth-icon><growth-text>`+customText+`</growth-text>${closeTag}`;
+					newGrowthCellHTML += `${openTag}<custom-growth-icon>`  + customIcon + `</custom-growth-icon><growth-text>`+customText+`</growth-text>${closeTag}`;
 					break;
 				}
 				case 'fear': {

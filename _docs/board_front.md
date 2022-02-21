@@ -69,6 +69,8 @@ General Images: Every image in a board can be called by simply using its name en
 |Isolate|Isolate one of your Lands|isolate|||
 ||Isolate a land at Range|isolate(x)|Isolate a land at x Range||
 |Destroy Presence|Destroy a Presence|destroy-presence|||
+|Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
+|Custom|Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the icon of your choice||
 
 
   - **presence-tracks**: The container for the Presence Tracks.
