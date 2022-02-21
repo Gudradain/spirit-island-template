@@ -246,6 +246,27 @@ growth-cell icon.reclaim-all {
   margin-bottom: 7px;
 }
 
+growth-cell icon.isolate {
+  width:70px;
+  margin-bottom: 7px;
+}
+
+custom-icon {
+    font-size: 20pt;
+    font-weight: bold;
+    display: block;
+    margin-top: -31px;
+    width: auto;
+    height: 122px;
+    margin-bottom: 0px;
+}
+
+custom-icon icon.isolate{
+    width: 50px;
+    margin-bottom: -20px;
+}
+
+
 growth-text {
   font-family: 'Lato SemiBold';
   font-size: 14pt;
@@ -307,7 +328,7 @@ growth-cell icon.push-arrow {
   margin-top: -34px;
 }
 
-growth-cell icon.destroyed-presence {
+growth-cell icon.destroyed-presence, growth-cell icon.destroy-presence {
   margin-bottom: 7px;
   height:90px;
   width:100px;
@@ -320,6 +341,17 @@ growth-cell icon.gain-card-play {
 growth-cell icon.push>icon {
   left: -15px;
   top: 17px;
+}
+
+growth-cell icon.push-from>icon {
+	left: -10px;
+    top: 30px;
+}
+
+growth-cell icon.push-from>.from {
+    left: -20px;
+    top: 11px;
+    width: 35px;
 }
 
 growth-cell icon.gather>icon {
@@ -580,14 +612,19 @@ push-gather icon.terrain-gather>icon.gather-arrow{
 }
 
 push-gather icon.terrain-push>icon.push-arrow{
-	left: 63px;
-    top: 17px;
+	left: 47px;
+    top: 38px;
 	position: relative;
     text-align: unset;
-	width: 32px;
+	width: 40px;
     height: 25px;
 	margin: 0px;
     padding: 0px;
+}
+
+push-gather icon.terrain-push.ocean>icon.push-arrow{
+	left: 63px;
+    top: 17px;
 }
 
 push-gather-range-req {
@@ -615,6 +652,15 @@ growth-cell gain icon.moon {
   height: 60px;
   width: 60px;
   margin-top: 21px;
+}
+
+growth-cell gain icon.star {
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 82px;
+    width: 82px;
+    margin-top: 10px;
 }
 
 /* Enables growth option - OR multiple different elements */
@@ -645,6 +691,12 @@ growth-cell icon.moon {
 
 growth-cell icon.presence{
   margin-left: 5px;
+}
+
+growth-cell div.custom-scaling{
+    font-family: DK Snemand;
+    font-size: 28pt;
+    font-style: normal;
 }
 
 /* Enables growth option - 2 of same element */
