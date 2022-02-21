@@ -120,6 +120,17 @@ growth-energy {
   margin-top: -20px;
 }
 
+growth-fear {
+  background-image: url('../../images/board/fear.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: block;
+  height: 110px;
+  width: 110px;
+  margin-top: -20px;
+}
+
 growth-energy value {
   font-family: 'Gobold Extra2';
   font-size: 24pt;
@@ -277,6 +288,17 @@ growth-text {
   padding-left: 5px;
   padding-right: 5px;
   box-sizing: border-box;
+}
+
+growth-text icon.explorer,
+growth-text icon.town,
+growth-text icon.city,
+growth-text icon.explorer{
+	width:30px;
+	height:20px;
+    margin-bottom: -3px;
+    margin-left: -9px;
+    margin-right: -5px;
 }
 
 .plus-text {
@@ -763,4 +785,20 @@ gain-per-element ring-icon{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+custom-growth-icon {
+    font-size: 20pt;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: auto;
+    height: 90px;
+    display: block;
+}
+
+custom-growth-icon icon.explorer {
+    width: 50px;
+    height: 70px;
+	margin-top: 0px;
 }

@@ -541,11 +541,21 @@ function parseGrowthTags(){
 					}
 					break;
 				}
-                case 'fear': {
+                case 'custom': {
+					const matches = regExp.exec(classPieces[j]);
+					let customOptions = matches[1].split(",");
+					customIcon = customOptions[1];
+					customText = customOptions[0];
+					if (!customIcon){
+						customIcon = "<div class='custom-scaling'>!!!</div>";
+					}
+					newGrowthCellHTML += `${openTag}<custom-growth-icon>{`  + customIcon + `}</custom-growth-icon><growth-text>`+customText+`</growth-text>${closeTag}`;
+					break;
+				}
+				case 'fear': {
 					// WORKIN PROGRESS
 					const matches = regExp.exec(classPieces[j]);
 
-					const gainFearBy = matches[1];
 					let fearOptions = matches[1].split(",");
                     let fearManyIconOpen = "" 
 					let fearManyIconClose = ""
@@ -558,7 +568,7 @@ function parseGrowthTags(){
 					if (!isNaN(fearOptions[0])) {
                         //Gain Fear has a number first
 						let flatFear = fearOptions[0];
-						fearGrowthIcons = "<growth-energy><value>" + flatFear + "</value></growth-energy>"
+						fearGrowthIcons = "<growth-fear><value>" + flatFear + "</value></growth-fear>"
 						if (fearOptions.length>1){
 							// Flat fear + scaling
 							scaling = fearOptions[1];
