@@ -32,39 +32,39 @@ General Images: Every image in a board can be called by simply using its name en
       - growth-group values: The Spirit Actions within a growth group.
 	    - Example: <growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"></growth-group>
         - Supported Options for Values:
-		  |Category|Action|Usage|Details|Examples|
-		  |------|------|------|------|----|
-		  |Reclaim|Reclaim All|reclaim-all|||
-		  ||Reclaim One|reclaim-one|||
-		  |Adding Presence|Add Presence at Range|add-presence(x)|Add a Presence up to x Range. *x can be 'any' or 1, 2, 3 or 4*||
-		  ||Add Presence with Condition|add-presence(x,y)|Add a Presence with y conditions at x Range. y can be terrain types (including dual types), tokens, invaders, invader pieces, dahan, blight, etc.||
-		  ||Add Presence with Multiple Conditions|add-presence(x,y,z,...,*and/or*)|Add a Presence with multiple conditions y, z, etc at x Range, the last parameter must be 'or' or 'and'.|add-presence(3,jungle,beast,or) - Sharp Fangs<\br>add-presence(2,town,city,blight,or) - Vengeance|
-		  ||Add Presence with Custom Text|add-presence(x,text,*your_text_here*)|Add a Presence at x Range. The presence text will read "Add a Presence *your_text_here*". The icon will be **!!!**||
-		  ||Add Presence and/or Tokens|add-presence(x,token,y,and/or)|Add a Presence and/or a token y (beasts, disease, etc) at x Range.|add-presence(3,token,beast,and) - Many Minds<\br>add-presence(1,token,disease,or) - Vengeance|
-		  |Gaining Elements|Gain One Element|gain-element(x)|Gain Element x, which can by all the elements or 'any' or 'star'|'star' is the Starlight element icon|
-		  ||Gain Multiple Elements|gain-element(x,y)|If y is a number, gain y of x Element||
-		  ||Gain Multiple Elements|gain-element(x,y)|If y is an element, gain x or y Elements||
-		  ||Gain Multiple Elements|gain-element(x,y,z,...,*or*/*and*)|Gain elements x, y, z or more. The last option must be *or* or *and*||
-		  |Pushing|Push from Your Lands|push(x)|Push entity x (dahan, beasts, presence, etc) from 1 of your lands.||
-		  ||Push from Your Lands|push(x,y)|Push entity x (dahan, beasts, presence, etc) a land at range y.||
-		  ||Push from Your Lands|push(x,y,z)|Push x from z lands of condition y. y can be terrain types, sacred site, token types, etc. z can be a numeral or 'each' (or another word at your own risk).|push(presence,ocean,each) - Ocean|
-		  |Gathering|Gather into Your Lands|gather(x)|Gather entity x (dahan, beasts, presence, etc) into 1 of your lands.||
-		  ||Gather at Range|gather(x,y)|If y is a number, gather x into a land at y range.|gather(2,beasts) - Many Minds|
-		  ||Gather with Conditions|gather(x,y)|If y is a condition, gather x into 1 of your lands with y condition (sacred site, beasts, etc).||
-		  ||Gather into Multiple Lands with Conditions|gather(x,y,z)|Gather x into z lands of y condition. z can be a number or 'each'|gather(presence,ocean,each) - Ocean|
-		  |Move Presence|Move Presence|move-presence(x)|Move a Presence up to x Range||
-		  |Gaining Energy|Gain Energy|gain-energy(x)|Gain x Energy||
- 		  ||Gain Energy per Element|gain-energy(x)|Gain 1 Energy per Element x||
- 		  ||Gain Energy per Element plus Flat|gain-energy(x)|Gain y Energy plus 1 Energy per Element x|gain-energy(2,fire) - Wildfire|
-		  |Gain Power Card|Gain a Power Card|gain-power-card|||
-		  |Discard 2 Cards|Discard 2 Power Cards|discard-cards|As seen on Downpour||
-		  |Gain Card Play|Gain 1 Card Play|gain-card-play|||
-		  |Forget Power Card|Forget a Power Card|forget-power-card|||
-		  |Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
-		  |Ignore Range |Ignore Range this Turn|ignore-range|Ignore Range this turn (as seen on Finder)||
-		  |Isolate|Isolate one of your Lands|isolate|||
-		  ||Isolate a land at Range|isolate(x)|Isolate a land at x Range||
-          |Destroy Presence|Destroy a Presence|destroy-presence|||
+|Category|Action|Usage|Details|Examples|
+|------|------|------|------|----|
+|Reclaim|Reclaim All|reclaim-all|||
+||Reclaim One|reclaim-one|||
+|Adding Presence|Add Presence at Range|add-presence(x)|Add a Presence up to x Range. *x can be 'any' or 1, 2, 3 or 4*||
+||Add Presence with Condition|add-presence(x,y)|Add a Presence with y conditions at x Range. y can be terrain types (including dual types), tokens, invaders, invader pieces, dahan, blight, etc.||
+||Add Presence with Multiple Conditions|add-presence(x,y,z,...,*and/or*)|Add a Presence with multiple conditions y, z, etc at x Range, the last parameter must be 'or' or 'and'.|add-presence(3,jungle,beast,or) - Sharp Fangs<\br>add-presence(2,town,city,blight,or) - Vengeance|
+||Add Presence with Custom Text|add-presence(x,text,*your_text_here*)|Add a Presence at x Range. The presence text will read "Add a Presence *your_text_here*". The icon will be **!!!**||
+||Add Presence and/or Tokens|add-presence(x,token,y,and/or)|Add a Presence and/or a token y (beasts, disease, etc) at x Range.|add-presence(3,token,beast,and) - Many Minds<\br>add-presence(1,token,disease,or) - Vengeance|
+|Gaining Elements|Gain One Element|gain-element(x)|Gain Element x, which can by all the elements or 'any' or 'star'|'star' is the Starlight element icon|
+||Gain Multiple Elements|gain-element(x,y)|If y is a number, gain y of x Element||
+||Gain Multiple Elements|gain-element(x,y)|If y is an element, gain x or y Elements||
+||Gain Multiple Elements|gain-element(x,y,z,...,*or*/*and*)|Gain elements x, y, z or more. The last option must be *or* or *and*||
+|Pushing|Push from Your Lands|push(x)|Push entity x (dahan, beasts, presence, etc) from 1 of your lands.||
+||Push from Your Lands|push(x,y)|Push entity x (dahan, beasts, presence, etc) a land at range y.||
+||Push from Your Lands|push(x,y,z)|Push x from z lands of condition y. y can be terrain types, sacred site, token types, etc. z can be a numeral or 'each' (or another word at your own risk).|push(presence,ocean,each) - Ocean|
+|Gathering|Gather into Your Lands|gather(x)|Gather entity x (dahan, beasts, presence, etc) into 1 of your lands.||
+||Gather at Range|gather(x,y)|If y is a number, gather x into a land at y range.|gather(2,beasts) - Many Minds|
+||Gather with Conditions|gather(x,y)|If y is a condition, gather x into 1 of your lands with y condition (sacred site, beasts, etc).||
+||Gather into Multiple Lands with Conditions|gather(x,y,z)|Gather x into z lands of y condition. z can be a number or 'each'|gather(presence,ocean,each) - Ocean|
+|Move Presence|Move Presence|move-presence(x)|Move a Presence up to x Range||
+|Gaining Energy|Gain Energy|gain-energy(x)|Gain x Energy||
+||Gain Energy per Element|gain-energy(x)|Gain 1 Energy per Element x||
+||Gain Energy per Element plus Flat|gain-energy(x)|Gain y Energy plus 1 Energy per Element x|gain-energy(2,fire) - Wildfire|
+|Gain Power Card|Gain a Power Card|gain-power-card|||
+|Discard 2 Cards|Discard 2 Power Cards|discard-cards|As seen on Downpour||
+|Gain Card Play|Gain 1 Card Play|gain-card-play|||
+|Forget Power Card|Forget a Power Card|forget-power-card|||
+|Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
+|Ignore Range |Ignore Range this Turn|ignore-range|Ignore Range this turn (as seen on Finder)||
+|Isolate|Isolate one of your Lands|isolate|||
+||Isolate a land at Range|isolate(x)|Isolate a land at x Range||
+|Destroy Presence|Destroy a Presence|destroy-presence|||
 		  - discard-cards: Discard 2 Power Cards (as seen on Downpour)
           - gain-card-play: +1 Card Play this turn
           - gain-power-card: Gain Power Card
