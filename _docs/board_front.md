@@ -40,9 +40,9 @@ General Images: Every image in a board can be called by simply using its name en
 ||Reclaim One|reclaim-one|||
 |Adding Presence|Add Presence at Range|add-presence(x)|Add a Presence up to x Range. *x can be 'any' or 1, 2, 3 or 4*||
 ||Add Presence with Condition|add-presence(x,y)|Add a Presence with y conditions at x Range. y can be terrain types (including dual types), tokens, invaders, invader pieces, dahan, blight, etc.||
-||Add Presence with Multiple Conditions|add-presence(x,y,z,...,*and/or*)|Add a Presence with multiple conditions y, z, etc at x Range, the last parameter must be 'or' or 'and'.|add-presence(3,jungle,beast,or) - Sharp Fangs<br>add-presence(2,town,city,blight,or) - Vengeance|
+||Add Presence with Multiple Conditions|add-presence(x,y,z,...,*and/or*)|Add a Presence with multiple conditions y, z, etc at x Range, the last parameter must be 'or' or 'and'.|Sharp Fangs: add-presence(3,jungle,beast,or)<br>Vengeance: add-presence(2,town,city,blight,or)|
 ||Add Presence with Custom Text|add-presence(x,text,*your_text_here*)|Add a Presence at x Range. The presence text will read "Add a Presence *your_text_here*". The icon will be **!!!**||
-||Add Presence and/or Tokens|add-presence(x,token,y,and/or)|Add a Presence and/or a token y (beasts, disease, etc) at x Range.|add-presence(3,token,beast,and) - Many Minds<br>add-presence(1,token,disease,or) - Vengeance|
+||Add Presence and/or Tokens|add-presence(x,token,y,and/or)|Add a Presence and/or a token y (beasts, disease, etc) at x Range.|Many Minds: add-presence(3,token,beast,and)<br>Vengeance: add-presence(1,token,disease,or)|
 |Gaining Elements|Gain One Element|gain-element(x)|Gain Element x, which can by all the elements or 'any' or 'star'|'star' is the Starlight element icon|
 ||Gain Multiple Elements|gain-element(x,y)|If y is a number, gain y of x Element||
 ||Gain Multiple Elements|gain-element(x,y)|If y is an element, gain x or y Elements||
@@ -76,7 +76,7 @@ General Images: Every image in a board can be called by simply using its name en
 ||Gain Fear per Custom Item|fear(text,*your_text_here*)|Gain 1 Fear per condition of your choosing. Icon will be a !!!.||
 ||Gain Fear per Custom Item Plus Flat Fear|fear(x,text,*your_text_here*)|Gain x Fear plus 1 Fear per condition of your choosing. Icon will be a !!!.||
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
-||Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the icon of your choice||
+||Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the x icon of your choice||
 
 
   - **presence-tracks**: The container for the Presence Tracks.
