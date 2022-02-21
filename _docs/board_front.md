@@ -24,13 +24,13 @@ General Images: Every image in a board can be called by simply using its name en
   - **growth**: The container for the Growth Options
     - growth title: Usually "Growth (PICK ONE)"
 	- growth sub-group: Groupings of growth options (as seen on Lure)
-	  - Example: <sub-growth title="pick one of:" bordered>
+	  - Example: \<sub-growth title="pick one of:" bordered\>
 	  - Use bordered for all but the last sub-group
     - growth-group: Each individual section in the Growth section
       - growth-group cost: The cost associated with this group (as seen on Keeper).
       - growth-group tint: A color shift on growth options (as seen on Spread of Rampant Green).
       - growth-group values: The Spirit Actions within a growth group.
-	    - Example: <growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"></growth-group>
+	    - Example: \<growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"\>\<\/growth-group\>"
         - Supported Options for Values:
 		
 
@@ -40,9 +40,9 @@ General Images: Every image in a board can be called by simply using its name en
 ||Reclaim One|reclaim-one|||
 |Adding Presence|Add Presence at Range|add-presence(x)|Add a Presence up to x Range. *x can be 'any' or 1, 2, 3 or 4*||
 ||Add Presence with Condition|add-presence(x,y)|Add a Presence with y conditions at x Range. y can be terrain types (including dual types), tokens, invaders, invader pieces, dahan, blight, etc.||
-||Add Presence with Multiple Conditions|add-presence(x,y,z,...,*and/or*)|Add a Presence with multiple conditions y, z, etc at x Range, the last parameter must be 'or' or 'and'.|add-presence(3,jungle,beast,or) - Sharp Fangs<\br>add-presence(2,town,city,blight,or) - Vengeance|
+||Add Presence with Multiple Conditions|add-presence(x,y,z,...,*and/or*)|Add a Presence with multiple conditions y, z, etc at x Range, the last parameter must be 'or' or 'and'.|add-presence(3,jungle,beast,or) - Sharp Fangs<br>add-presence(2,town,city,blight,or) - Vengeance|
 ||Add Presence with Custom Text|add-presence(x,text,*your_text_here*)|Add a Presence at x Range. The presence text will read "Add a Presence *your_text_here*". The icon will be **!!!**||
-||Add Presence and/or Tokens|add-presence(x,token,y,and/or)|Add a Presence and/or a token y (beasts, disease, etc) at x Range.|add-presence(3,token,beast,and) - Many Minds<\br>add-presence(1,token,disease,or) - Vengeance|
+||Add Presence and/or Tokens|add-presence(x,token,y,and/or)|Add a Presence and/or a token y (beasts, disease, etc) at x Range.|add-presence(3,token,beast,and) - Many Minds<br>add-presence(1,token,disease,or) - Vengeance|
 |Gaining Elements|Gain One Element|gain-element(x)|Gain Element x, which can by all the elements or 'any' or 'star'|'star' is the Starlight element icon|
 ||Gain Multiple Elements|gain-element(x,y)|If y is a number, gain y of x Element||
 ||Gain Multiple Elements|gain-element(x,y)|If y is an element, gain x or y Elements||
@@ -57,7 +57,9 @@ General Images: Every image in a board can be called by simply using its name en
 |Move Presence|Move Presence|move-presence(x)|Move a Presence up to x Range||
 |Gaining Energy|Gain Energy|gain-energy(x)|Gain x Energy||
 ||Gain Energy per Element|gain-energy(x)|Gain 1 Energy per Element x||
-||Gain Energy per Element plus Flat|gain-energy(x)|Gain y Energy plus 1 Energy per Element x|gain-energy(2,fire) - Wildfire|
+||Gain Energy per Element plus Flat|gain-energy(x,y)|Gain x Energy plus 1 Energy per Element y|gain-energy(2,fire) - Wildfire|
+||Gain Energy per Element|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
+||Gain Energy per Element|gain-energy(x,text,*your_text_here*)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be a !!!.||
 |Gain Power Card|Gain a Power Card|gain-power-card|||
 |Discard 2 Cards|Discard 2 Power Cards|discard-cards|As seen on Downpour||
 |Gain Card Play|Gain 1 Card Play|gain-card-play|||
@@ -68,47 +70,7 @@ General Images: Every image in a board can be called by simply using its name en
 ||Isolate a land at Range|isolate(x)|Isolate a land at x Range||
 |Destroy Presence|Destroy a Presence|destroy-presence|||
 
-		  - discard-cards: Discard 2 Power Cards (as seen on Downpour)
-          - gain-card-play: +1 Card Play this turn
-          - gain-power-card: Gain Power Card
-          - forget-power-card: Forget Power Card (not cannon)
-          - gain-energy(X): Gain X Energy
-            - If X is a numeral, Gain X Energy
-            - If X is a element, Gain 1 per Element
-          - gain-energy(X,Y)
-            - If X is an element, Gain Y Energy plus 1 per Element x
-          - make-fast: One of your Powers may be Fast
-		  - **Adding Presence**
-			  - add-presence(X): Add a Presence up to X Range. *X can be 'any' or 1, 2, 3 or 4*
-			  - add-presence(X,Y): Add a Presence with Y conditions at X Range
-				- Y can be terrain types (including dual types), tokens, invaders, invader pieces, dahan, blight, etc.
-			  - add-presence(X,Y,Z,...,and/or): Add a Presence with multiple Y, Z, ... conditions at X Range, the last parameter must be 'or' or 'and'.
-				- If using more than just Y, the last parameter must be *or* or *and*. 
-				- For example, add-presence(3,jungle,beast,or) as seen on Sharp Fangs or add-presence(2,town,city,blight,or) from Vengeance
-			  - add-presence(X,text,*your_text_here*): the presence text will read "Add a Presence your_text_here". The icon will be **!!!**
-			  - add-presence(X,token,and/or,token_type): allows for adding tokens in addition to or instead of presence
-				- For example, add-presence(3,token,and,beast) is Many Minds, add-presence(1,token,or,disease) is Vengeance
-          - move-presence(X): Move a Presence up to X Range
-          - ignore-range: Ignore Range this turn (as seen on Finder)
-          - **Gaining Elements**
-			  - gain-element(X): Gain X Element
-			  - gain-element(X,Y):
-				- if Y is a number, gain Y of X Element
-				- if Y is an Element, gain X or Y
-			  - gain-element(X,Y,Z,...,or):
-			    - gain X, Y, or Z elements (can have more than 3 if desired)
-			  - gain-element(X,Y,Z,...,and):
-			    - gain X, Y, and Z elements (can have more than 3 if desired)
-          - **Pushing/Gathering**
-			  - push(x): Push x from your land (as seen on Trickster with Dahan)
-			  - push(x,y): Push x from a land at y range (as seen on Many Minds)
-			  - push(x,y,z): Push x from z lands of terrain y (for example, push(presence,ocean,each) as seen on Ocean)
-				- y can be an number of conditions (terrain types, sacred site, token types, etc)
-				- z can be a numeral or 'each' (or another word at your own risk).
-			  - gather(x): Gather x into your land
-			  - gather(x,y): Gather x into a land at y range (as seen on Many Minds)
-			  - gather(x,y): Gather x into 1 of your lands with y condition (sacred site, beasts, etc)
-			  - gather(x,y,z): Gather x into z lands of y type
+
   - **presence-tracks**: The container for the Presence Tracks.
 
     There are two mechanisms to populate this. The simple approach is to use the specific energy and card tracks as demonstrated by the 'board_front' example.
