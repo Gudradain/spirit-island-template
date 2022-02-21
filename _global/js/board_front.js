@@ -541,24 +541,58 @@ function parseGrowthTags(){
 					}
 					break;
 				}
-/*                 case 'fear': {
+                case 'fear': {
+					// WORKIN PROGRESS
 					const matches = regExp.exec(classPieces[j]);
-					const fearOptions = matches[1].split(",");
-					let fearText = ""
-					let fearIcon = ""
-					// Gain X fear
-					// X fear per Y
-					let fearGain = fearOptions[0];
-					if (fearOptions.length > 1) {
-						perIcon = fearOptions[1];
-						newGrowthCellHTML += `${openTag}<growth-energy>{` + fearGain + "}</growth-energy><growth-text>" + fearGain + ` Fear per `+Capitalise(perIcon)+`</growth-text>${closeTag}`
-					}else{
-						newGrowthCellHTML += `${openTag}<growth-energy>{` + fearGain + "}</growth-energy><growth-text>" + fearGain + ` Fear</growth-text>${closeTag}`
-			
+
+					const gainFearBy = matches[1];
+					let fearOptions = matches[1].split(",");
+                    let fearManyIconOpen = "" 
+					let fearManyIconClose = ""
+					if (isNaN(fearOptions[0]) || fearOptions.length!=1) {
+							fearManyIconOpen = "<growth-cell-double>"
+							fearManyIconClose = "</growth-cell-double>"
 					}
-					
+					let fearGrowthIcons = ""
+					let fearGrowthText = ""
+					if (!isNaN(fearOptions[0])) {
+                        //Gain Fear has a number first
+						let flatFear = fearOptions[0];
+						fearGrowthIcons = "<growth-energy><value>" + flatFear + "</value></growth-energy>"
+						if (fearOptions.length>1){
+							// Flat fear + scaling
+							scaling = fearOptions[1];
+							fearGrowthIcons += "<gain-per><value>1</value></gain-per>"
+							fearGrowthText = "Gain "+flatFear+" Fear and +1 Fear per "
+							if (scaling==='text'){
+								//determine some arbitrary scaling rule
+								scaling_text = fearOptions[2] !== undefined ? fearOptions[2] : 'ENTER SCALING TEXT AS THIRD PARAMETER';
+								fearGrowthIcons += "<gain-per-element><ring-icon><div class='custom-scaling'>!!!</div></ring-icon></gain-per-element>";
+								fearGrowthText += scaling_text								
+							}else{
+								fearGrowthIcons += "<gain-per-element><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-element>"
+								fearGrowthText += Capitalise(scaling)
+							}
+						}else{
+							// Flat fear
+							fearGrowthText = "Gain Fear"								
+						}
+                    } else {
+                        // Scaling
+						scaling = fearOptions[0];						
+						if (scaling==='text'){
+							//determine some arbitrary scaling rule
+							scaling_text = fearOptions[1] !== undefined ? fearOptions[1] : 'ENTER SCALING TEXT AS SECOND PARAMETER';
+							fearGrowthIcons += "<gain-per><value>1</value></gain-per><gain-per-element><ring-icon><div class='custom-scaling'>!!!</div></ring-icon></gain-per-element>";
+							fearGrowthText = "Gain 1 Fear per " + scaling_text								
+						}else{
+							fearGrowthIcons = "<gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-element>"
+							fearGrowthText = "Gain 1 Fear per " + Capitalise(scaling)
+						}
+                    }
+					newGrowthCellHTML += `${openTag}` + fearManyIconOpen + fearGrowthIcons + fearManyIconClose + "<growth-text>" + fearGrowthText +"</growth-text>"+ `${closeTag}`
 					break;
-				} */
+				}
 				default:
 					console.log("default")
 					newGrowthCellHTML += `${openTag}{`+growthItem+`}<growth-text>`+IconName(growthItem)+`</growth-text>${closeTag}`
@@ -862,6 +896,8 @@ function Capitalise(str){
 	for (var i = 1; i < hyphenCheck.length; i++) {
 		if (terrains.has(hyphenCheck[i])){
 			return_str += ' or ';
+		}else{
+			return_str += ' ';
 		}		
 		return_str += hyphenCheck[i].charAt(0).toUpperCase() + hyphenCheck[i].slice(1);
 	}		

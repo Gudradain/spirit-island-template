@@ -479,7 +479,7 @@ gain-per {
     display: block;
     z-index: 1;
     position: relative;
-    margin-left: -20px;
+    margin-left: -27px;
     margin-bottom: 50px;
     margin-top: -35px;
 }
@@ -723,7 +723,8 @@ gain-per-element icon.earth,
 gain-per-element icon.animal,
 gain-per-element icon.plant,
 gain-per-element icon.sun,
-gain-per-element icon.moon {
+gain-per-element icon.moon,
+gain-per-element icon.sacred-site {
   background-repeat: no-repeat;
   background-size: contain;
   display: block;
@@ -758,7 +759,7 @@ gain-per-element ring-icon{
     height: 70px;
     width: 70px;
     z-index: 2;
-    margin-left: -35px;
+	margin-left: -47px;
     display: flex;
     align-items: center;
     justify-content: center;
