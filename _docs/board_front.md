@@ -24,13 +24,13 @@ General Images: Every image in a board can be called by simply using its name en
   - **growth**: The container for the Growth Options
     - growth title: Usually "Growth (PICK ONE)"
 	- growth sub-group: Groupings of growth options (as seen on Lure)
-	  - Example: \<sub-growth title="pick one of:" bordered\>
+	  - Example: *\<sub-growth title="pick one of:" bordered\>*
 	  - Use bordered for all but the last sub-group
     - growth-group: Each individual section in the Growth section
       - growth-group cost: The cost associated with this group (as seen on Keeper).
       - growth-group tint: A color shift on growth options (as seen on Spread of Rampant Green).
       - growth-group values: The Spirit Actions within a growth group.
-	    - Example: \<growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"\>\<\/growth-group\>"
+	    - Example: *\<growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"\>\<\/growth-group\>*
         - Supported Options for Values:
 		
 
