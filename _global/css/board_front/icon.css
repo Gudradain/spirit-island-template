@@ -366,6 +366,13 @@ icon.gain-card-play {
   width:90px;
 }
 
+icon.gain-card-play-blank {
+  background-image: url('../../images/board/NewIcons/Cardplay Gain Blank.png');
+  display: block;
+  height: 90px;
+  width:90px;
+}
+
 icon.gain-power-card {
   background-image: url('../../images/board/Gaincardicon.png');
   display: block;
