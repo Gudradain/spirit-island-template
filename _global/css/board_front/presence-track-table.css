@@ -129,6 +129,12 @@ presence-node icon {
   height: 65px;
 }
 
+presence-node icon.isolate {
+    height: 90px;
+    width: 90px;
+    margin-top: -3px;
+}
+
 presence-node icon.gather {
   left: 65px;
   top: 17px;
@@ -143,17 +149,4 @@ presence-node icon.gather>icon {
 
 icon-multi {
     position: absolute;
-}
-
-icon-top {
-  transform: translateY(-20px) translateX(14px);
-}
-icon-top icon {
-  transform: translateY(4px) translateX(4px);
-}
-icon-bottom {
-  transform: translateY(20px) translateX(-20px);
-}
-icon-bottom icon.reclaim-one {
-  transform: translateY(-5px) translateX(0px);
 }
