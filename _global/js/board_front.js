@@ -574,15 +574,15 @@ function parseGrowthTags(){
 						if (fearOptions.length>1){
 							// Flat fear + scaling
 							scaling = fearOptions[1];
-							fearGrowthIcons += "<gain-per><value>1</value></gain-per>"
+							fearGrowthIcons += "<fear-per><value>1</value></fear-per>"
 							fearGrowthText = "Gain "+flatFear+" Fear and +1 Fear per "
 							if (scaling==='text'){
 								//determine some arbitrary scaling rule
 								scaling_text = fearOptions[2] !== undefined ? fearOptions[2] : 'ENTER SCALING TEXT AS THIRD PARAMETER';
-								fearGrowthIcons += "<gain-per-element><ring-icon><div class='custom-scaling'>!!!</div></ring-icon></gain-per-element>";
+								fearGrowthIcons += "<gain-per-fear><ring-icon><div class='custom-scaling'>!!!</div></ring-icon></gain-per-fear>";
 								fearGrowthText += scaling_text								
 							}else{
-								fearGrowthIcons += "<gain-per-element><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-element>"
+								fearGrowthIcons += "<gain-per-fear><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-fear>"
 								fearGrowthText += Capitalise(scaling)
 							}
 						}else{
@@ -595,18 +595,29 @@ function parseGrowthTags(){
 						if (scaling==='text'){
 							//determine some arbitrary scaling rule
 							scaling_text = fearOptions[1] !== undefined ? fearOptions[1] : 'ENTER SCALING TEXT AS SECOND PARAMETER';
-							fearGrowthIcons += "<gain-per><value>1</value></gain-per><gain-per-element><ring-icon><div class='custom-scaling'>!!!</div></ring-icon></gain-per-element>";
+							fearGrowthIcons += "<gain-per><value>1</value></gain-per><gain-per-fear><ring-icon><div class='custom-scaling'>!!!</div></ring-icon></gain-per-fear>";
 							fearGrowthText = "Gain 1 Fear per " + scaling_text								
 						}else{
-							fearGrowthIcons = "<gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-element>"
+							fearGrowthIcons = "<gain-per><value>1</value></gain-per><gain-per-fear><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-fear>"
 							fearGrowthText = "Gain 1 Fear per " + Capitalise(scaling)
 						}
                     }
 					newGrowthCellHTML += `${openTag}` + fearManyIconOpen + fearGrowthIcons + fearManyIconClose + "<growth-text>" + fearGrowthText +"</growth-text>"+ `${closeTag}`
 					break;
 				}
+				case 'gain-card-play': {
+					const matches = regExp.exec(classPieces[j]);
+					
+					if(matches){
+						let cardplayOptions = matches[1].split(",");
+						num_card_plays = cardplayOptions[0];
+						newGrowthCellHTML += `${openTag}<card-play-num><value>` + num_card_plays + "</value></card-play-num><growth-text> Gain "+num_card_plays+" Card Plays"+`</growth-text>${closeTag}`
+					}else{
+						newGrowthCellHTML += `${openTag}{`+growthItem+`}<growth-text>`+IconName(growthItem)+`</growth-text>${closeTag}`
+					}
+					break;
+				}
 				default:
-					console.log("default")
 					newGrowthCellHTML += `${openTag}{`+growthItem+`}<growth-text>`+IconName(growthItem)+`</growth-text>${closeTag}`
 
             }
@@ -860,9 +871,6 @@ function IconName(str){
 		case 'make-fast':  
 			subText = "One of your Powers may be Fast"
 			break;
-		case 'gain-card-pay-2':
-			subText = "Pay 2 Energy to Gain a Power Card";
-			break; 
 		case 'forget-power-card':
 			subText = "Forget Power";
 			break;    
