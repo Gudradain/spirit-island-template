@@ -7,20 +7,9 @@
 - [Cards](_docs/quick-card.md)
 - [Icons](_docs/icon.md)
 
-### Fonts
-
-This project uses 3 fonts:
-
-- JosefinSans-Regular: This font is bundled in the project and use the Open Font License.
-- Lato Semibold Italic: This font is bundled in the project and use the Open Font License.
-- Gobold Extra2: You can download this font [here](https://www.dafont.com/fr/gobold.font).
-- DK Snemand (demo): You can download this font [here](https://www.dafont.com/dk-snemand.font).
-
-Note: Due to licensing, I did not include some of the fonts in the project.
-
 ### Getting Started
 
-1. Download the ZIP file and extract it on your computer.
+1. Download the ZIP file (On GitHub, Code -> Download Zip) and extract it on your computer.
 2. Open the folder "spirit-island-template-master". You should see folders such as "_docs", "_examples", "_global", and "My Custom Content". 
 3. Open the 'My Custom Content' folder and then open the folder for spirits, adversary, etc.
 4. Open the examples in a browser to view the stylized content. Open the examples in a text editor to modify.
@@ -31,6 +20,17 @@ Note: Due to licensing, I did not include some of the fonts in the project.
 
 1. Cloning the project with GIT instead of downloading it as a ZIP file make it easier to receive updates later on.
 2. Don't modify the files in the folder "_docs", "_examples" and "_global". Your modifications might be lost when you get the latest version of the project. Instead, create new folders for your creations.
+
+### Fonts
+
+This project uses 3 fonts:
+
+- JosefinSans-Regular: This font is bundled in the project and use the Open Font License.
+- Lato Semibold Italic: This font is bundled in the project and use the Open Font License.
+- Gobold Extra2: You can download this font [here](https://www.dafont.com/fr/gobold.font).
+- DK Snemand (demo): You can download this font [here](https://www.dafont.com/dk-snemand.font).
+
+Note: Due to licensing, I did not include some of the fonts in the project.
 
 ### License
 
