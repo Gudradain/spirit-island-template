@@ -7,28 +7,28 @@ The fastest way to get started is to start from the example template in the fold
 The board template uses some custom HTML tags, here is a quick summary:
 
 General Images: Images for invaders, elements, dahan, etc in a board can be called by enclosing its name with "{}". Here is a list of what is available:
-- **general icons**
+
+### General Icons
     - Elements (fire, water, earth, air, plant, animal, sun, moon, any, star (think the element icon on starlight))  
     - Invaders (explorer, town, city)  
     - Island symbols (blight, dahan, fear, disease, wilds, beast, strife, badlands)  
     - Land symbols (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)
     - Targetting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)
 
-
-- **Spirit Name & Board**: 
+### Spirit Name & Board
   - board: Represents the whole board.
   - spirit-name: The name of the Spirit.
   - spirit-image: The main Spirit image.
 		- spirit-image-scale: Used to scale the main spirit image
   - spirit-border: The image that sits underneath the Spirit name.
 
-- **Special Rules**
+### Special Rules
   - special-rules-container: The container for the Special Rules
 	- section-title: The section title "Special Rules". Typically this isn't changed.
     - special-rules-subtitle: The name of the Special Rule. You may have multiple special rules.
     - special-rule: The rule itself.
 
-- **Growth**
+### Growth
 	- growth: The container for the Growth Options
     - growth title: "Growth (PICK ONE)" or "Growth (PICK TWO)" or just "Growth" if you are using subgroups
     - growth sub-group: Groupings of growth options (as seen on Lure)
@@ -41,7 +41,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
       - growth-group values: The Spirit Actions within a growth group, separated by semicolons (;).
 		- Example: *\<growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"\>\<\/growth-group\>*
 		
-### Supported growth-group values
+#### Supported growth-group values
 |Category|Action|Usage|Details|Examples|
 |------|------|------|------|----|
 |Reclaim|Reclaim All|reclaim-all|||
@@ -86,6 +86,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
 ||Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc)||
 
+### Presence Tracks
   - **presence-tracks**: The container for the Presence Tracks.
     There are two mechanisms to populate this. The simple approach is to use the specific energy and card tracks as demonstrated by the 'board_front' example. If you wish to produce a more complex layout then you'll need to use the table-based approach demonstrated by the 'board_front_serpent_style' example. 
     - **energy-track**: The entire Energy Track
@@ -98,14 +99,15 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 		- banner: Artwork behind the presence track can be added with the banner="example.png". The artwork should be in the same folder as the html
 	    - banner-v-scale: Allows you to stretch your banner artwork vertically
 		- Example: *\<card-play-track banner="example2.png" banner-v-scale="50%" values="1,star,gain-card-pay-2,isolate,markerplus,fire+markerplus,5+reclaim-one,fire+reclaim-one"\>\</card-play-track\>
-### Supported Presence Track Options
+
+#### Supported Presence Track Options
 |Presence Track Effect|Usage|Details|Examples|
 |------|------|------|----|
 |Energy/Turn or Card Plays|Integer 1,2,3,4,5,6,7 etc.|Number will become Energy/Turn in energy track and Card Plays in the card play track|River cardplay track: values="1,2,2,3,reclaim-one,4,5"|
 |Elements|sun,moon,fire,air,water,earth,plant,animal|Can be used in combinations|Thunderspeaker energy track: values="1,air,2,fire,sun,3"|
 ||any, star|'any' is any element, 'star' is the Element icon from Starlight||
 |Element Markers|markerplus, markerminus|Gain or pay element markers|Shifting Memory energy track: values="0,1,2,3+markerplus,4,reclaim-one,5,6+markerplus"|
-|Reclaim One|reclaim-one|Reclaim one card, can be used in combinations|Shifting Memory energy track: values="0,1,2,3+markerplus,4,reclaim-one,5,6+markerplus"|
+|Reclaim One|reclaim-one|Reclaim one card, can be used in combinations||
 |Combinations|separate with a '+'|Can include energy, cardplays, markers, move-presence, and reclaim one. Can be more than 2 things.|Stone's cardplay track: values="1,earth,earth,earth+reclaim-one,earth+any,2+earth"|
 |Push/Gather|push(x), gather(x)|Push or Gather x from/into one of your Lands. x can be most token/entities (explorer, wilds, presence, etc).|Trickster's cardplay track: values="2,push(dahan),3,3,4,air,5"|
 |Isolate|isolate|Isolate one of your Lands.|Custom cardplay track: values="1,2,isolate,3,3,4,5"|
@@ -113,11 +115,14 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 |Pay 2 to Gain Power Card|gain-card-pay-2|Pay 2 Energy to Gain Power Card|Many Minds cardplay track: values="1,2,gain-card-pay-2,3,3,4,5"|
 |Gain Card Play|gain-card-play|Gain A Card Play||
 ||gain-card-play(*minor*)|Can also be major or other icon names (at your own risk)|Stone energy track: values="2,3,gain-card-play(minor),4,gain-card-play(minor),6,gain-card-play(minor)"|
-|Forget Power|forget-power-card|Forget a power card.|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
+|Forget Power|forget-power-card|Forget a power card. Unlikely to be useful because presence track actions are optional|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
 |Custom|custom(*your_text*)|Add custom text to the presence node. Image will be !!!.|Custom energy track: values="1,2,custom(Draw 1 Minor Power),3,water,4"|
 ||custom(*your_text*;x)|Add custom text to the presence node. x is the icon (for example, city). Note the semicolon.|Custom energy track: values="1,2,custom(Draw 1 Minor Power;city),3,water,4"|
 
+#### Serpent/Finder style tracks
     - **table**: An html table that allows more flexible positioning of nodes. Individual presence track options are specified within the `<td>` table cells. The available options are exactly the same as described for the energy and card-play tracks above, with the exception that integer values must be prefixed with with 'card' or 'energy'. For example 'card1' means 1 card play, 'energy2' means 2 energy, etc.
+
+### Innate Powers
   - **innate-powers**: The container for the Innate Powers
     - quick-innate-power: The container for a single Innate Power. Don't confuse 'quick' with 'fast'. Speed is set below.
       - name: The name of the Innate Power
