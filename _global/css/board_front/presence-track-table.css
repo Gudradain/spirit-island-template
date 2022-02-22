@@ -96,6 +96,17 @@ card-icon.small {
     margin-top: -10px;
 }
 
+.move-presence-1.small,
+.move-presence-2.small,
+.move-presence-3.small,
+.move-presence-4.small {
+    margin-left: -15px;
+    margin-right: 0px;
+    margin-top: -21px;
+    width: 80px;
+    z-index: 2;
+}
+
 presence-node energy-icon {
   background-image: url('../../images/board/EnergyBlank.png');
   background-repeat: no-repeat;
@@ -145,6 +156,14 @@ presence-node icon.gather {
 presence-node icon.gather>icon {
   left: 77px;
   top: 17px;
+}
+
+presence-node icon.gain-card-play>icon {
+    position: relative;
+    left: -25px;
+    top: -27px;
+    height: 45px;
+    width: 45px;
 }
 
 icon-multi {

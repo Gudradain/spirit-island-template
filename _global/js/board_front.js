@@ -666,7 +666,7 @@ function parseCardPlayTrackTags(){
     
     var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
     var cardPlayOptions = cardPlayValues.split(",");
-
+	console.log("cardPlayOptions: "+cardPlayOptions)
     var cardPlayBanner = document.getElementsByTagName("card-play-track")[0].getAttribute("banner");
     var cardPlayBannerScale = document.getElementsByTagName("card-play-track")[0].getAttribute("banner-v-scale");
     if(!cardPlayBannerScale){
@@ -760,10 +760,11 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
     } else {
         //It is either a single element or a mix of elements/numbers
         var splitOptions = nodeText.split("+");
-
+		console.log("nodetext:"+nodeText)
         if(splitOptions.length == 1){
             //It's just a single item
             var option = splitOptions[0].split("(")[0];
+			console.log(splitOptions[0]+" > "+option + " > " + splitOptions)
             switch(option){
 				case 'push':
                     var matches = regExp.exec(splitOptions[0]);
@@ -773,14 +774,20 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     break;    
                 case 'gather':
                     var matches = regExp.exec(splitOptions[0]);
+					console.log(matches)
                     var moveTarget = matches[1];
                     inner = "<icon class='gather'><icon class='"+moveTarget+"'></icon></icon>";
                     subText = "Gather 1 "+Capitalise(moveTarget) + " into 1 of your Lands";
                     break;
-				case 'text':
+				case 'custom':
                     var matches = regExp.exec(splitOptions[0]);
-                    var custom_text = matches[1];
-					inner = "<" + nodeClass + "-icon><value>!</value></" + nodeClass + "-icon>";
+                    var custom_node = matches[1].split(";");
+					var custom_text = custom_node[0];
+					if(custom_node[1]){
+						inner = "{"+custom_node[1]+"}";
+					}else{
+						inner = "<" + nodeClass + "-icon><value>!!!</value></" + nodeClass + "-icon>";
+					}
 					subText = custom_text
 					break;
 				case 'move-presence':
@@ -789,6 +796,21 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     inner = "{move-presence-"+moveRange+"}";
                     subText = "Move a Presence "+moveRange;
                     break;
+				case 'gain-card-play':
+					var matches = regExp.exec(splitOptions[0]);
+					cardplay_text = splitOptions[0]
+					cardplay_icon = splitOptions[0]
+					console.log(matches)
+					if(matches){
+						var cardplay_node = matches[1].split(";");
+						var cardplay_text = cardplay_node[0];
+						console.log(matches+ " " +cardplay_node + " " +cardplay_text)
+						inner = "<icon class='"+option+" deep-layers'><icon class='minor'></icon></icon>";
+					}else{
+						inner = "<icon class='"+cardplay_text+"'></icon>";
+					}
+					subText = "+1 Card Play/Turn"
+					break;
                 default:
                     var iconText = splitOptions[0];
                     inner = "<icon class='"+iconText+"'></icon>";
@@ -828,7 +850,13 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     }
                 } else if(splitOptions[i].startsWith("reclaim")){
                     trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+" small-reclaim'"+track_icon_loc+"></icon></icon-multi-element>"
-                } else {
+                } else if(splitOptions[i].startsWith("move-presence")){
+					console.log("check here " + splitOptions[i])
+					var matches = regExp.exec(splitOptions[i]);
+                    var moveRange = matches[1];
+					console.log(moveRange)
+                    trackIcons += "<icon-multi-element><icon class='move-presence-"+moveRange+" small'"+track_icon_loc+"'></icon></icon-multi-element>"
+				} else {
                     trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+"'"+track_icon_loc+"></icon></icon-multi-element>"
                 }
             }
@@ -844,7 +872,11 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 }
 
 function IconName(str){
-
+	console.log(str)
+	num = str.split("(")[1];
+	str = str.split("(")[0];
+	
+	console.log(">"+str+" "+num)
 	switch(str){
 
 		case 'gain-power-card':
@@ -894,6 +926,9 @@ function IconName(str){
 			break;
 		case 'reclaim-none':
 			subText = "Reclaim None"
+			break;
+		case 'move-presence':
+			subText = "Move Presence " + num[0];
 			break;
 		case 'inland':
 		case 'coastal':

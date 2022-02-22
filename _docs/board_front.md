@@ -89,34 +89,34 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
   - **presence-tracks**: The container for the Presence Tracks.
     There are two mechanisms to populate this. The simple approach is to use the specific energy and card tracks as demonstrated by the 'board_front' example. If you wish to produce a more complex layout then you'll need to use the table-based approach demonstrated by the 'board_front_serpent_style' example. 
     - **energy-track**: The entire Energy Track
-      - energy-track values: The actual values that will be used to create the Energy Track
-        - Supported Options:
-          - Integer 1,2,3,4,5,6,7 etc.
-          - Elements: earth, fire, air, moon, water, plant, animal, sun, or any or star (as seen on Starlight)
-          - Combinations of Elements/Energy: 3+earth, 2+fire, earth+any, water+plant
-          - Push: push(x) - Push x from land (as seen on Trickster with Dahan)
-		  - Gather: gather(x) - Gather x into land
-		  - Forget Power (not cannon): forget-power-card
-		  - Isolate: isolate
-		  - text(yourtext): Allows any arbitrary text in the subtext, paired with a "!" icon in the presence node
+      - energy-track values: The actual values that will be used to create the Energy Track. See 'Supported Presence Track Options'
 	  - banner: Artwork behind the presence track can be added with the banner="example.png". The artwork should be in the same folder as the html
 	  - banner-v-scale: Allows you to stretch your banner artwork vertically
-	  - Example: *\<energy-track banner="example2.png" banner-v-scale="50%" values="1,text(custom text here),isolate,star,forget-power-card,gain-card-pay-2,isolate"\>\</energy-track\>*
+	  - Example: *\<energy-track banner="example2.png" banner-v-scale="50%" values="1,isolate,2,text(custom text here),3,gain-card-pay-2,4+reclaim-one"\>\</energy-track\>*
     - **card-play-track**: The entire Card Play Track
-      - card-play-track values: The actual values that will be used to create the Card Play Track
-        - Supported Options:
-          - Integer 1,2,3,4,5,6,7 etc.
-          - Elements: earth, fire, air, moon, water, plant, animal, sun, or any or star (as seen on Starlight)
-          - Combinations of one or more Elements/Card Plays/Reclaim One: (3+earth, earth+any, earth+air+fire, 2+water+reclaim-one)
-          - Reclaim One: reclaim-one, 3+reclaim-one, earth+reclaim-one
-          - Push: push(x) - Push x from land (as seen on Trickster with Dahan)
-		  - Gather: gather(x) - Gather x into land
-		  - Forget Power (not cannon): forget-power-card
-		  - Isolate: isolate
-		  - text(yourtext): Allows any arbitrary textin the subtext, paired with a "!" icon in the presence node
+      - card-play-track values: The actual values that will be used to create the Card Play Track.  See 'Supported Presence Track Options'
 		- banner: Artwork behind the presence track can be added with the banner="example.png". The artwork should be in the same folder as the html
 	    - banner-v-scale: Allows you to stretch your banner artwork vertically
 		- Example: *\<card-play-track banner="example2.png" banner-v-scale="50%" values="1,star,gain-card-pay-2,isolate,markerplus,fire+markerplus,5+reclaim-one,fire+reclaim-one"\>\</card-play-track\>
+### Supported Presence Track Options
+|Presence Track Effect|Usage|Details|Examples|
+|------|------|------|----|
+|Energy/Turn or Card Plays|Integer 1,2,3,4,5,6,7 etc.|Number will become Energy/Turn in energy track and Card Plays in the card play track|River cardplay track: values="1,2,2,3,reclaim-one,4,5"|
+|Elements|sun,moon,fire,air,water,earth,plant,animal|Can be used in combinations|Thunderspeaker energy track: values="1,air,2,fire,sun,3"|
+||any, star|'any' is any element, 'star' is the Element icon from Starlight||
+|Element Markers|markerplus, markerminus|Gain or pay element markers|Shifting Memory energy track: values="0,1,2,3+markerplus,4,reclaim-one,5,6+markerplus"|
+|Reclaim One|reclaim-one|Reclaim one card, can be used in combinations|Shifting Memory energy track: values="0,1,2,3+markerplus,4,reclaim-one,5,6+markerplus"|
+|Combinations|separate with a '+'|Can include energy, cardplays, markers, move-presence, and reclaim one. Can be more than 2 things.|Stone's cardplay track: values="1,earth,earth,earth+reclaim-one,earth+any,2+earth"|
+|Push/Gather|push(x), gather(x)|Push or Gather x from/into one of your Lands. x can be most token/entities (explorer, wilds, presence, etc).|Trickster's cardplay track: values="2,push(dahan),3,3,4,air,5"|
+|Isolate|isolate|Isolate one of your Lands.|Custom cardplay track: values="1,2,isolate,3,3,4,5"|
+|Move A Presence|move-presence(x)|Move a presence x range.|Downpour cardplay track: values="1,move-presence(1),water,2,move-presence(1),3"|
+|Pay 2 to Gain Power Card|gain-card-pay-2|Pay 2 Energy to Gain Power Card|Many Minds cardplay track: values="1,2,gain-card-pay-2,3,3,4,5"|
+|Gain Card Play|gain-card-play|Gain A Card Play||
+||gain-card-play(*minor*)|Can also be major or other icon names (at your own risk)|Stone energy track: values="2,3,gain-card-play(minor),4,gain-card-play(minor),6,gain-card-play(minor)"|
+|Forget Power|forget-power-card|Forget a power card.|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
+|Custom|custom(*your_text*)|Add custom text to the presence node. Image will be !!!.|Custom energy track: values="1,2,custom(Draw 1 Minor Power),3,water,4"|
+||custom(*your_text*;x)|Add custom text to the presence node. x is the icon (for example, city). Note the semicolon.|Custom energy track: values="1,2,custom(Draw 1 Minor Power;city),3,water,4"|
+
     - **table**: An html table that allows more flexible positioning of nodes. Individual presence track options are specified within the `<td>` table cells. The available options are exactly the same as described for the energy and card-play tracks above, with the exception that integer values must be prefixed with with 'card' or 'energy'. For example 'card1' means 1 card play, 'energy2' means 2 energy, etc.
   - **innate-powers**: The container for the Innate Powers
     - quick-innate-power: The container for a single Innate Power. Don't confuse 'quick' with 'fast'. Speed is set below.

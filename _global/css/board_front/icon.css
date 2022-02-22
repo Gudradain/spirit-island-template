@@ -345,6 +345,20 @@ icon.isolate {
     width:90px;
 }
 
+icon.minor {
+    background-image: url('../../images/board/NewIcons/Misc Minor.png');
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+}
+
+icon.major {
+    background-image: url('../../images/board/NewIcons/Misc Major.png');
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+}
+
 icon.reclaim-one {
   background-image: url('../../images/board/Reclaimone.png');
   display: block;
