@@ -13,9 +13,9 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 ### Spirit Name & Board
 - board: Represents the whole board.
 - spirit-name: The name of the Spirit.
-- spirit-image: The main Spirit image.
+- spirit-image: The main Spirit image. The image should be in the same folder as the html.
 	- spirit-image-scale: Used to scale the main spirit image
-- spirit-border: The image that sits underneath the Spirit name.
+- spirit-border: The image that sits underneath the Spirit name. The image should be in the same folder as the html.
 
 ### Special Rules
 - special-rules-container: The container for the Special Rules
@@ -48,8 +48,8 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 ||Add Presence and/or Tokens|add-presence(x,token,y,and/or)|Add a Presence and/or a token y (beasts, disease, etc) at x Range.|Many Minds: <br>add-presence(3,token,beast,and)<br>Vengeance: <br>add-presence(1,token,disease,or)|
 |Gaining Elements|Gain One Element|gain-element(x)|Gain Element x, which can by all the elements or 'any' or 'star'|'star' is the Starlight element icon|
 ||Gain Multiple Elements|gain-element(x,y)|If y is a number, gain y of x Element||
-||Gain Multiple Elements|gain-element(x,y)|If y is an element, gain x or y Elements||
-||Gain Multiple Elements|gain-element(x,y,z,...,*or*/*and*)|Gain elements x, y, z or more. The last option must be *or* or *and*||
+||Gain Multiple Elements|gain-element(x,y,z,...)|If y is an element, gain x or y or z Elements||
+||Gain Multiple Elements|gain-element(x,y,z,...,*and*)|Gain elements x, y, and z (or more). The last option must *and*||
 |Pushing|Push from Your Lands|push(x)|Push entity x (dahan, beasts, presence, etc) from 1 of your lands.||
 ||Push from Your Lands|push(x,y)|Push entity x (dahan, beasts, presence, etc) a land at range y.||
 ||Push from Your Lands|push(x,y,z)|Push x from z lands of condition y. y can be terrain types, sacred site, token types, etc. z can be a numeral or 'each' (or another word at your own risk).|Ocean: push(presence,ocean,each)|

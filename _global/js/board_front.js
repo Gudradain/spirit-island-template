@@ -595,10 +595,10 @@ function parseGrowthTags(){
 						if (scaling==='text'){
 							//determine some arbitrary scaling rule
 							scaling_text = fearOptions[1] !== undefined ? fearOptions[1] : 'ENTER SCALING TEXT AS SECOND PARAMETER';
-							fearGrowthIcons += "<gain-per><value>1</value></gain-per><gain-per-fear><ring-icon><div class='custom-scaling'>!!!</div></ring-icon></gain-per-fear>";
+							fearGrowthIcons += "<fear-per><value>1</value></fear-per><gain-per-fear><ring-icon><div class='custom-scaling'>!!!</div></ring-icon></gain-per-fear>";
 							fearGrowthText = "Generate 1 Fear per " + scaling_text								
 						}else{
-							fearGrowthIcons = "<gain-per><value>1</value></gain-per><gain-per-fear><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-fear>"
+							fearGrowthIcons = "<fear-per><value>1</value></fear-per><gain-per-fear><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-fear>"
 							fearGrowthText = "Generate 1 Fear per " + Capitalise(scaling)
 						}
                     }
