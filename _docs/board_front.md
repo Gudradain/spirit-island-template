@@ -7,9 +7,10 @@ The fastest way to get started is to start from the example template in the fold
 The board template uses some custom HTML tags, here is a quick summary:
 
 General Images: Every image in a board can be called by simply using its name enclosed within "{}". Here is a list of what is available:
-    - Elements (fire, water, earth, air, plant, animal, sun, moon)
-    - Invaders (explorer, town, city)
-    - Island symbols (blight, dahan, fear, disease, wilds, beast, strife, badlands)
+- **general icons**
+    - Elements (fire, water, earth, air, plant, animal, sun, moon)  
+    - Invaders (explorer, town, city)  
+    - Island symbols (blight, dahan, fear, disease, wilds, beast, strife, badlands)  
     - Land symbols (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)
     - Targetting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)
 
@@ -21,16 +22,16 @@ General Images: Every image in a board can be called by simply using its name en
   - special-rules-container: The container for the Special Rules
     - special-rules-subtitle: The name of the Special Rule.
     - special-rule: The rule itself.
-  - **growth**: The container for the Growth Options
+- **growth**: The container for the Growth Options
     - growth title: Usually "Growth (PICK ONE)"
-	- growth sub-group: Groupings of growth options (as seen on Lure)
-	  - Example: *\<sub-growth title="pick one of:" bordered\>*
-	  - Use bordered for all but the last sub-group
+    - growth sub-group: Groupings of growth options (as seen on Lure)
+    - Example: *\<sub-growth title="pick one of:" bordered\>*
+    - Use bordered for all but the last sub-group
     - growth-group: Each individual section in the Growth section
       - growth-group cost: The cost associated with this group (as seen on Keeper).
       - growth-group tint: A color shift on growth options (as seen on Spread of Rampant Green).
       - growth-group values: The Spirit Actions within a growth group.
-	    - Example: *\<growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"\>\<\/growth-group\>*
+		- Example: *\<growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"\>\<\/growth-group\>*
         - Supported Options for Values:
 		
 ### Growth Options
