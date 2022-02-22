@@ -568,14 +568,14 @@ function parseGrowthTags(){
 					let fearGrowthIcons = ""
 					let fearGrowthText = ""
 					if (!isNaN(fearOptions[0])) {
-                        //Gain Fear has a number first
+                        //Generate Fear has a number first
 						let flatFear = fearOptions[0];
 						fearGrowthIcons = "<growth-fear><value>" + flatFear + "</value></growth-fear>"
 						if (fearOptions.length>1){
 							// Flat fear + scaling
 							scaling = fearOptions[1];
 							fearGrowthIcons += "<fear-per><value>1</value></fear-per>"
-							fearGrowthText = "Gain "+flatFear+" Fear and +1 Fear per "
+							fearGrowthText = "Generate "+flatFear+" Fear and +1 Fear per "
 							if (scaling==='text'){
 								//determine some arbitrary scaling rule
 								scaling_text = fearOptions[2] !== undefined ? fearOptions[2] : 'ENTER SCALING TEXT AS THIRD PARAMETER';
@@ -587,7 +587,7 @@ function parseGrowthTags(){
 							}
 						}else{
 							// Flat fear
-							fearGrowthText = "Gain Fear"								
+							fearGrowthText = "Generate Fear"								
 						}
                     } else {
                         // Scaling
@@ -596,10 +596,10 @@ function parseGrowthTags(){
 							//determine some arbitrary scaling rule
 							scaling_text = fearOptions[1] !== undefined ? fearOptions[1] : 'ENTER SCALING TEXT AS SECOND PARAMETER';
 							fearGrowthIcons += "<gain-per><value>1</value></gain-per><gain-per-fear><ring-icon><div class='custom-scaling'>!!!</div></ring-icon></gain-per-fear>";
-							fearGrowthText = "Gain 1 Fear per " + scaling_text								
+							fearGrowthText = "Generate 1 Fear per " + scaling_text								
 						}else{
 							fearGrowthIcons = "<gain-per><value>1</value></gain-per><gain-per-fear><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-fear>"
-							fearGrowthText = "Gain 1 Fear per " + Capitalise(scaling)
+							fearGrowthText = "Generate 1 Fear per " + Capitalise(scaling)
 						}
                     }
 					newGrowthCellHTML += `${openTag}` + fearManyIconOpen + fearGrowthIcons + fearManyIconClose + "<growth-text>" + fearGrowthText +"</growth-text>"+ `${closeTag}`
