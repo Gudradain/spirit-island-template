@@ -33,7 +33,7 @@ General Images: Every image in a board can be called by simply using its name en
 	    - Example: *\<growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"\>\<\/growth-group\>*
         - Supported Options for Values:
 		
-
+### Growth Options
 |Category|Action|Usage|Details|Examples|
 |------|------|------|------|----|
 |Reclaim|Reclaim All|reclaim-all|||
