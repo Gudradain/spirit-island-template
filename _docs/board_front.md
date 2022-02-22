@@ -1,6 +1,6 @@
 # Board
 
-The fastest way to get started is to start from the example template in the folder boards/example.
+The fastest way to get started is to start from the example template in the folder boards/example. Return here for detailed explanations of options for different parts of the board.
 
 ### General Icons
 General Images: Images for invaders, elements, dahan, etc in a board can be called by enclosing its name with "{}". For example, {dahan} or {fire}. Here is a list of what is available:
