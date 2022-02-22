@@ -2,18 +2,13 @@
 
 The fastest way to get started is to start from the example template in the folder boards/example.
 
-## Custom HTML Tag
-
-The board template uses some custom HTML tags, here is a quick summary:
-
-General Images: Images for invaders, elements, dahan, etc in a board can be called by enclosing its name with "{}". Here is a list of what is available:
-
 ### General Icons
+General Images: Images for invaders, elements, dahan, etc in a board can be called by enclosing its name with "{}". For example, {dahan} or {fire}. Here is a list of what is available:
 - Elements (fire, water, earth, air, plant, animal, sun, moon, any, star (think the element icon on starlight))  
 - Invaders (explorer, town, city)  
 - Island symbols (blight, dahan, fear, disease, wilds, beast, strife, badlands)  
 - Land symbols (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)
-- Targetting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)
+- Targeting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)
 
 ### Spirit Name & Board
 - board: Represents the whole board.
@@ -112,7 +107,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 |Combinations|separate with a '+'|Can include energy, cardplays, markers, move-presence, and reclaim one. Can be more than 2 things.|Stone's cardplay track: values="1,earth,earth,earth+reclaim-one,earth+any,2+earth"|
 |Push/Gather|push(x), gather(x)|Push or Gather x from/into one of your Lands. x can be most token/entities (explorer, wilds, presence, etc).|Trickster's cardplay track: values="2,push(dahan),3,3,4,air,5"|
 |Isolate|isolate|Isolate one of your Lands.|Custom cardplay track: values="1,2,isolate,3,3,4,5"|
-|Move A Presence|move-presence(x)|Move a presence x range.|Downpour cardplay track: values="1,move-presence(1),water,2,move-presence(1),3"|
+|Move a Presence|move-presence(x)|Move a presence x range, can be used in combinations.|Downpour cardplay track: values="1,move-presence(1),water,2,move-presence(1),3"|
 |Pay 2 to Gain Power Card|gain-card-pay-2|Pay 2 Energy to Gain Power Card|Many Minds cardplay track: values="1,2,gain-card-pay-2,3,3,4,5"|
 |Gain Card Play|gain-card-play|Gain A Card Play||
 ||gain-card-play(*minor*)|Can also be major or other icon names (at your own risk)|Stone energy track: values="2,3,gain-card-play(minor),4,gain-card-play(minor),6,gain-card-play(minor)"|
