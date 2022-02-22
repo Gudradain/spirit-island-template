@@ -49,21 +49,21 @@ General Images: Every image in a board can be called by simply using its name en
 ||Gain Multiple Elements|gain-element(x,y,z,...,*or*/*and*)|Gain elements x, y, z or more. The last option must be *or* or *and*||
 |Pushing|Push from Your Lands|push(x)|Push entity x (dahan, beasts, presence, etc) from 1 of your lands.||
 ||Push from Your Lands|push(x,y)|Push entity x (dahan, beasts, presence, etc) a land at range y.||
-||Push from Your Lands|push(x,y,z)|Push x from z lands of condition y. y can be terrain types, sacred site, token types, etc. z can be a numeral or 'each' (or another word at your own risk).|push(presence,ocean,each) - Ocean|
+||Push from Your Lands|push(x,y,z)|Push x from z lands of condition y. y can be terrain types, sacred site, token types, etc. z can be a numeral or 'each' (or another word at your own risk).|Ocean: push(presence,ocean,each)|
 |Gathering|Gather into Your Lands|gather(x)|Gather entity x (dahan, beasts, presence, etc) into 1 of your lands.||
 ||Gather at Range|gather(x,y)|If y is a number, gather x into a land at y range.|gather(2,beasts) - Many Minds|
 ||Gather with Conditions|gather(x,y)|If y is a condition, gather x into 1 of your lands with y condition (sacred site, beasts, etc).||
-||Gather into Multiple Lands with Conditions|gather(x,y,z)|Gather x into z lands of y condition. z can be a number or 'each'|gather(presence,ocean,each) - Ocean|
+||Gather into Multiple Lands with Conditions|gather(x,y,z)|Gather x into z lands of y condition. z can be a number or 'each'|Ocean: gather(presence,ocean,each)|
 |Move Presence|Move Presence|move-presence(x)|Move a Presence up to x Range||
 |Gaining Energy|Gain Energy|gain-energy(x)|Gain x Energy||
 ||Gain Energy per Element|gain-energy(x)|Gain 1 Energy per Element x||
-||Gain Energy per Element plus Flat Energy|gain-energy(x,y)|Gain x Energy plus 1 Energy per Element y|gain-energy(2,fire) - Wildfire|
+||Gain Energy per Element plus Flat Energy|gain-energy(x,y)|Gain x Energy plus 1 Energy per Element y|Wildfire: gain-energy(2,fire)|
 ||Gain Energy per Custom Item|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
 ||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be a !!!.||
 |Gain Power Card|Gain a Power Card|gain-power-card|||
 |Discard 2 Cards|Discard 2 Power Cards|discard-cards|As seen on Downpour||
 |Gain Card Play|Gain 1 Card Play|gain-card-play|||
-||Gain  Card Plays|gain-card-play(x)|Gain x card plays||
+||Gain Card Plays|gain-card-play(x)|Gain x card plays||
 |Forget Power Card|Forget a Power Card|forget-power-card|||
 |Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
 |Ignore Range |Ignore Range this Turn|ignore-range|Ignore Range this turn (as seen on Finder)||
