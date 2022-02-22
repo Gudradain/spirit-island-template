@@ -6,35 +6,42 @@ The fastest way to get started is to start from the example template in the fold
 
 The board template uses some custom HTML tags, here is a quick summary:
 
-General Images: Every image in a board can be called by simply using its name enclosed within "{}". Here is a list of what is available:
+General Images: Images for invaders, elements, dahan, etc in a board can be called by enclosing its name with "{}". Here is a list of what is available:
 - **general icons**
-    - Elements (fire, water, earth, air, plant, animal, sun, moon)  
+    - Elements (fire, water, earth, air, plant, animal, sun, moon, any, star (think the element icon on starlight))  
     - Invaders (explorer, town, city)  
     - Island symbols (blight, dahan, fear, disease, wilds, beast, strife, badlands)  
     - Land symbols (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)
     - Targetting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)
 
 
-- **board**: Represent the whole board.
+- **Spirit Name & Board**: 
+  - board: Represents the whole board.
   - spirit-name: The name of the Spirit.
-  - img class="spirit-image": The main Spirit image.
-  - img class="spirit-border": The image that sits underneath the Spirit name.
+  - spirit-image: The main Spirit image.
+		- spirit-image-scale: Used to scale the main spirit image
+  - spirit-border: The image that sits underneath the Spirit name.
+
+- **Special Rules**
   - special-rules-container: The container for the Special Rules
-    - special-rules-subtitle: The name of the Special Rule.
+	- section-title: The section title "Special Rules". Typically this isn't changed.
+    - special-rules-subtitle: The name of the Special Rule. You may have multiple special rules.
     - special-rule: The rule itself.
-- **growth**: The container for the Growth Options
-    - growth title: Usually "Growth (PICK ONE)"
+
+- **Growth**
+	- growth: The container for the Growth Options
+    - growth title: "Growth (PICK ONE)" or "Growth (PICK TWO)" or whatever you like
     - growth sub-group: Groupings of growth options (as seen on Lure)
-    - Example: *\<sub-growth title="pick one of:" bordered\>*
-    - Use bordered for all but the last sub-group
-    - growth-group: Each individual section in the Growth section
+		- title: instructions for how to pick among the subgroup (ie. "Pick one of:")
+		- bordered: adds the double border that sepaarates subgroups (ie. leave it off for the last subgroup)
+		- Example: *\<sub-growth title="pick one of:" bordered\>*
+    - growth-group: Each individual section in the Growth section (within the subgroup, if you are using subgroups)
       - growth-group cost: The cost associated with this group (as seen on Keeper).
       - growth-group tint: A color shift on growth options (as seen on Spread of Rampant Green).
-      - growth-group values: The Spirit Actions within a growth group.
+      - growth-group values: The Spirit Actions within a growth group, separated by semicolons (;).
 		- Example: *\<growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"\>\<\/growth-group\>*
-        - Supported Options for Values:
 		
-### Growth Options
+### Supported growth-group values
 |Category|Action|Usage|Details|Examples|
 |------|------|------|------|----|
 |Reclaim|Reclaim All|reclaim-all|||
