@@ -207,7 +207,7 @@ icon{
 }
 
 adversary-levels icon{
-  margin-top:0px;
+  margin-top:-2px;
 }
 
 icon.city{
@@ -230,7 +230,8 @@ icon.presence{
 }
 
 adversary-levels icon.city{
-  margin-top:-6px;
+    margin-top: -2px;
+    margin-bottom: -4px;
 }
 
 icon.town{

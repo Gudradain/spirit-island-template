@@ -49,6 +49,7 @@ innate-power-title {
 
 info-container {
   width: 463px;
+  background-color: rgba(255,255,255,.5);
   border: 3px solid black;
   position: relative;
   display:block;
@@ -98,7 +99,7 @@ innate-info-speed, innate-info-range, innate-info-target {
 }
 
 innate-info-speed, innate-info-range{
-  border-right: 3px solid black;
+  border-right: 2px solid #7f5623;
 }
 
 innate-info-range, innate-info-target {
@@ -173,7 +174,7 @@ note icon{
 }
 
 note icon.town, note icon.blight, note icon.dahan,
-note icon.presence, note icon.wilds, note icon.beast,
+note icon.presence, note icon.wilds, note icon.beasts,
 note icon.disease, note icon.strife, note icon.explorer, 
 note icon.badlands, note icon.fear, note icon.range-plus-1,
 note icon.destroyed-presence{

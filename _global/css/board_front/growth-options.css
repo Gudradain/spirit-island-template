@@ -2,6 +2,7 @@ growth {
   background-image: url('../../images/board/Growth_Without_Text.png');
   background-repeat: no-repeat;
   background-position: left bottom;
+  background-size: cover;
   margin-top: -8px;
   background-color: transparent;
   background-clip: border-box;
@@ -26,6 +27,15 @@ growth sub-section-title {
   font-family: 'DK Snemand';
   font-size: 18pt;
   font-weight: bold;
+}
+
+growth .tint{
+    width: 80%;
+    height: 110%;
+    opacity: 0.2;
+    position: absolute;
+    top: -20%;
+    left: 10%;
 }
 
 growth sub-section-title>span {
@@ -118,6 +128,62 @@ growth-energy value {
   margin-left: 25px;
 }
 
+growth-fear {
+  background-image: url('../../images/board/fear.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: block;
+    height: 110px;
+    width: 80px;
+    margin-top: -20px;
+}
+
+growth-fear value {
+    font-family: 'Gobold Extra2';
+    font-size: 20pt;
+    display: inline-block;
+    margin-top: 48px;
+    margin-left: 0px;
+}
+
+fear-per {
+    background-image: url('../../images/board/fear.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 75px;
+    width: 53px;
+    display: block;
+    z-index: 1;
+    position: relative;
+    margin-left: 0px;
+    margin-bottom: 50px;
+    margin-top: -35px;
+}
+
+fear-per value{
+    font-family: 'Gobold Extra2';
+    font-size: 14pt;
+    display: inline-block;
+    margin-top: 33px;
+    margin-left: 0px;
+}
+
+gain-per-fear ring-icon{
+    background-image: url(../../images/board/CardPlayRing.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+    z-index: 2;
+    margin-left: -32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 custom-presence-req {
     font-size: 20pt;
     font-weight: bold;
@@ -132,10 +198,10 @@ custom-presence {
   font-size: 20pt;
   font-weight: bold;
   display: block;
-  margin-top: 4px;
+  margin-top: 5px;
   width: auto;
   height: 110px;
-  margin-bottom: -22px;
+  margin-bottom: -24px;
 }
 
 custom-presence-no-range {
@@ -144,8 +210,12 @@ custom-presence-no-range {
   display: block;
   width: auto;
   height: 110px;
-  margin-bottom: -74px;
-  margin-top: 55px;
+  margin-bottom: -60px;
+  margin-top: 41px;
+}
+
+custom-presence-no-range icon.range-any {
+width:0px
 }
 
 custom-presence icon.range-0,
@@ -195,7 +265,7 @@ presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus
 presence-req icon.presence {
 	width: 35px;
 	height: 27px;
-	margin-top: 20px;	
+	margin-top: 0px;
 }
 
 presence-req icon.blight {
@@ -232,6 +302,27 @@ growth-cell icon.reclaim-all {
   margin-bottom: 7px;
 }
 
+growth-cell icon.isolate {
+  width:70px;
+  margin-bottom: 7px;
+}
+
+custom-icon {
+    font-size: 20pt;
+    font-weight: bold;
+    display: block;
+    margin-top: -31px;
+    width: auto;
+    height: 122px;
+    margin-bottom: 0px;
+}
+
+custom-icon icon.isolate{
+    width: 50px;
+    margin-bottom: -20px;
+}
+
+
 growth-text {
   font-family: 'Lato SemiBold';
   font-size: 14pt;
@@ -242,6 +333,17 @@ growth-text {
   padding-left: 5px;
   padding-right: 5px;
   box-sizing: border-box;
+}
+
+growth-text icon.explorer,
+growth-text icon.town,
+growth-text icon.city,
+growth-text icon.explorer{
+	width:30px;
+	height:20px;
+    margin-bottom: -3px;
+    margin-left: -9px;
+    margin-right: -5px;
 }
 
 .plus-text {
@@ -269,6 +371,36 @@ growth-cell icon.forget-power-card {
   margin-bottom: 7px;
 }
 
+growth-cell icon.gather-arrow {
+  margin-bottom: 7px;
+  background-image: url('../../images/board/half_arrow_gather.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 70px;
+  height: 17px;
+  margin-left: 45px;
+  margin-top: -34px;
+}
+
+growth-cell icon.push-arrow {
+  margin-bottom: 7px;
+  background-image: url('../../images/board/half_arrow_push.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 70px;
+  height: 17px;
+  margin-left: 45px;
+  margin-top: -34px;
+}
+
+growth-cell icon.destroyed-presence, growth-cell icon.destroy-presence {
+  margin-bottom: 7px;
+  height:90px;
+  width:100px;
+}
+
 growth-cell icon.gain-card-play {
   margin-bottom: 7px;
 }
@@ -278,9 +410,37 @@ growth-cell icon.push>icon {
   top: 17px;
 }
 
+growth-cell icon.push-from>icon {
+	left: -10px;
+    top: 30px;
+}
+
+growth-cell icon.push-from>.from {
+    left: -20px;
+    top: 11px;
+    width: 35px;
+}
+
 growth-cell icon.gather>icon {
   left: 65px;
   top: 17px;
+}
+
+growth-cell icon.gather-into>icon {
+  left: 79px;
+  top: 23px;
+}
+
+growth-cell icon.gather-into>.into {
+  left: -30px;
+  top: 10px;
+  width:35px;
+}
+
+growth-cell icon.gather-into>icon.explorer {
+    height: 35px;
+    margin-top: -10px;
+    margin-bottom: -6px;
 }
 
 growth-cell icon.reclaim-one {
@@ -377,7 +537,7 @@ add-presence-req {
 
 
 gain-per {
-    background-image: url(../../images/board/AddEnergyBlank.png);
+    background-image: url('../../images/board/AddEnergyBlank.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -386,7 +546,7 @@ gain-per {
     display: block;
     z-index: 1;
     position: relative;
-    margin-left: -20px;
+    margin-left: -27px;
     margin-bottom: 50px;
     margin-top: -35px;
 }
@@ -397,6 +557,29 @@ gain-per value {
   display: inline-block;
   margin-top: 25px;
   margin-left: 11px;
+}
+
+card-play-num {
+    background-image: url('../../images/board/NewIcons/Cardplay Gain Blank.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 90px;
+    width: 90px;
+    display: block;
+    z-index: 1;
+    position: relative;
+    margin-left: 0;
+    margin-bottom: 7px;
+    margin-top: -7px;
+}
+
+card-play-num value {
+    font-family: 'Gobold Extra2';
+    font-size: 24pt;
+    display: inline-block;
+    margin-top: 32px;
+    margin-left: 0px;
 }
 
 growth-cell card-play {
@@ -460,6 +643,80 @@ push-gather {
   margin-bottom: -22px;
 }
 
+push-gather icon.terrain-gather {
+	display: inline-block;
+    height: 62px;
+    width: 100px;
+    margin-right: 20px;
+    margin-bottom: 7px;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+push-gather icon.terrain-push {
+	display: inline-block;
+    height: 62px;
+    width: 100px;
+    margin-right: 0px;
+    margin-bottom: 7px;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+push-gather icon.terrain-gather>icon.into{
+    left: 58px;
+    top: -8px;
+	position: relative;
+    text-align: unset;
+    width: 30px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+push-gather icon.terrain-push>icon.from{
+	left: -26px;
+    top: 13px;
+	position: relative;
+    text-align: unset;
+    width: 30px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+push-gather icon.terrain-push.ocean>icon.from{
+	left: -8px;
+    top: -8px;
+}
+
+push-gather icon.terrain-gather>icon.gather-arrow{
+	left: 60px;
+    top: 17px;
+	position: relative;
+    text-align: unset;
+	width: 32px;
+    height: 25px;
+	margin: 0px;
+    padding: 0px;
+}
+
+push-gather icon.terrain-push>icon.push-arrow{
+	left: 47px;
+    top: 38px;
+	position: relative;
+    text-align: unset;
+	width: 40px;
+    height: 25px;
+	margin: 0px;
+    padding: 0px;
+}
+
+push-gather icon.terrain-push.ocean>icon.push-arrow{
+	left: 63px;
+    top: 17px;
+}
+
 push-gather-range-req {
     font-size: 20pt;
     font-weight: bold;
@@ -485,6 +742,15 @@ growth-cell gain icon.moon {
   height: 60px;
   width: 60px;
   margin-top: 21px;
+}
+
+growth-cell gain icon.star {
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 82px;
+    width: 82px;
+    margin-top: 10px;
 }
 
 /* Enables growth option - OR multiple different elements */
@@ -517,6 +783,12 @@ growth-cell icon.presence{
   margin-left: 5px;
 }
 
+growth-cell div.custom-scaling{
+    font-family: DK Snemand;
+    font-size: 28pt;
+    font-style: normal;
+}
+
 /* Enables growth option - 2 of same element */
 icon-multi-element icon, icon-multi-element energy-icon,icon-multi-element card-icon {
   display: inline-block;
@@ -541,7 +813,8 @@ gain-per-element icon.earth,
 gain-per-element icon.animal,
 gain-per-element icon.plant,
 gain-per-element icon.sun,
-gain-per-element icon.moon {
+gain-per-element icon.moon,
+gain-per-element icon.sacred-site {
   background-repeat: no-repeat;
   background-size: contain;
   display: block;
@@ -553,19 +826,12 @@ gain-per-element icon.moon {
 }
 
 gain-per-element icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
-
 gain-per-element icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
-
 gain-per-element icon.plant {background-image: url(../../images/board/element_simple_plant.png);}
-
 gain-per-element icon.fire {background-image: url(../../images/board/element_simple_fire.png);}
-
 gain-per-element icon.air {background-image: url(../../images/board/element_simple_air.png);}
-
 gain-per-element icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
-
 gain-per-element icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
-
 gain-per-element icon.water {background-image: url(../../images/board/element_simple_water.png);}
 
 gain-per-element ring-icon{
@@ -576,8 +842,54 @@ gain-per-element ring-icon{
     height: 70px;
     width: 70px;
     z-index: 2;
-    margin-left: -35px;
+	margin-left: -47px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+custom-growth-icon {
+    font-size: 20pt;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: auto;
+    height: 90px;
+    display: block;
+}
+
+custom-growth-icon icon.explorer {
+    width: 50px;
+    height: 70px;
+	margin-top: 0px;
+}
+
+gain-per-fear icon.fire,
+gain-per-fear icon.any,
+gain-per-fear icon.water,
+gain-per-fear icon.air,
+gain-per-fear icon.earth,
+gain-per-fear icon.animal,
+gain-per-fear icon.plant,
+gain-per-fear icon.sun,
+gain-per-fear icon.moon,
+gain-per-fear icon.sacred-site {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 60px;
+  width: 60px;
+  z-index: 0;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+gain-per-fear icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
+gain-per-fear icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
+gain-per-fear icon.plant {background-image: url(../../images/board/element_simple_plant.png);}
+gain-per-fear icon.fire {background-image: url(../../images/board/element_simple_fire.png);}
+gain-per-fear icon.air {background-image: url(../../images/board/element_simple_air.png);}
+gain-per-fear icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
+gain-per-fear icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
+gain-per-fear icon.water {background-image: url(../../images/board/element_simple_water.png);}
