@@ -43,15 +43,17 @@
 		-->
 		<growth title="Growth">
 		  <sub-growth title="pick one of:" bordered>
-			<growth-group tint="green" values="reclaim-all"></growth-group>
+			<growth-group values="isolate"></growth-group>
 		  </sub-growth>
 		  <sub-growth title="and one of:">
-			<growth-group values="gain-power-card;add-presence(any,mountain);isolate;custom(Gain 1 Frozen {explorer})"></growth-group>
+			<growth-group values="isolate(2);gather(presence,ocean,each)"></growth-group>
+			<growth-group values="custom([custom]Drown 1 {town} in a Coastal Land,town)"></growth-group>
+			<growth-group values="gain-card-play(3);destroy-presence;custom(Your custom ability text.)"></growth-group>
 		  </sub-growth>
 		</growth>
 
 		<presence-tracks>
-		  <energy-track banner="example2.png" banner-v-scale="50%" values="2,3,gain-card-play(minor),4,gain-card-play(minor),6,gain-card-play(minor)"></energy-track>
+		  <energy-track banner="example2.png" banner-v-scale="50%" values="2,3,gain-card-play(minor),4,gain-card-play(major),6,gain-card-play(make-fast)"></energy-track>
 		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,gather(dahan),custom(Draw 1 Minor Power;city),move-presence(1),move-presence(1)+air,4+reclaim-one"></card-play-track>
 		</presence-tracks>
 

@@ -547,7 +547,7 @@ function parseGrowthTags(){
 					customIcon = customOptions[1];
 					customText = customOptions[0];
 					if (customIcon){
-						customIcon = "{" + customIcon + "}";
+						customIcon = "<icon class='"+customIcon+" custom-growth-icon'></icon>";
 					}else{
 						customIcon = "<div class='custom-scaling'>!!!</div>";
 					}
@@ -555,7 +555,6 @@ function parseGrowthTags(){
 					break;
 				}
 				case 'fear': {
-					// WORKIN PROGRESS
 					const matches = regExp.exec(classPieces[j]);
 
 					let fearOptions = matches[1].split(",");
@@ -804,8 +803,8 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 					if(matches){
 						var cardplay_node = matches[1].split(";");
 						var cardplay_text = cardplay_node[0];
-						console.log(matches+ " " +cardplay_node + " " +cardplay_text)
-						inner = "<icon class='"+option+" deep-layers'><icon class='minor'></icon></icon>";
+						console.log("!!! "+matches+ " " +cardplay_node + " " +cardplay_text)
+						inner = "<icon class='"+option+" deep-layers'><icon class='"+cardplay_node[0]+"'></icon></icon>";
 					}else{
 						inner = "<icon class='"+cardplay_text+"'></icon>";
 					}
