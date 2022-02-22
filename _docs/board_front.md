@@ -7,11 +7,11 @@ The fastest way to get started is to start from the example template in the fold
 The board template uses some custom HTML tags, here is a quick summary:
 
 General Images: Every image in a board can be called by simply using its name enclosed within "{}". Here is a list of what is available:
-- Elements (fire, water, earth, air, plant, animal, sun, moon)
-- Invaders (explorer, town, city)
-- Island symbols (blight, dahan, fear, disease, wilds, beast, strife, badlands)
-- Land symbols (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)
-- Targetting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)
+    - Elements (fire, water, earth, air, plant, animal, sun, moon)
+    - Invaders (explorer, town, city)
+    - Island symbols (blight, dahan, fear, disease, wilds, beast, strife, badlands)
+    - Land symbols (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)
+    - Targetting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)
 
 
 - **board**: Represent the whole board.
