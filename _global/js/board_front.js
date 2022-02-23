@@ -11,11 +11,16 @@ window.onload = function startMain(){
     
     var html = board.innerHTML;
     board.innerHTML = replaceIcon(html);
-    dynamicCellWidth();
-    dynamicSpecialRuleHeight(board)
+	
+	setTimeout(() => {dynamicCellWidth()}, 200);
+    
+    
+	dynamicSpecialRuleHeight(board)
     
     // I moved this to the end so that the image could rescale to the special box
     addImages(board)
+
+
 }
 function dynamicSpecialRuleHeight(board){
     const specialRules = board.querySelectorAll('special-rules-container')[0]
@@ -1059,17 +1064,38 @@ function dynamicCellWidth() {
     
     // Presence node subtext (for longer descriptions, allows flowing over into neighbors.
     var subtext = document.getElementsByTagName("subtext");
+	var presence_nodes = document.getElementsByTagName("presence-node");
+	let adjustment_flag = 0
+	let default_row_height = 53;
+	let row_max_height = default_row_height;
+	let first_row_max = default_row_height;
+	let height_adjust = 0;
     for(i = 0; i < subtext.length; i++){
-        
-        var textHeight = subtext[i].clientHeight;
-        
+        if(presence_nodes[i].className == 'first' && i!=0){
+			height_adjust += row_max_height;
+			first_row_max = row_max_height;
+			row_max_height=default_row_height;
+		}
+		
+        var textHeight = subtext[i].offsetHeight;
         //This solution is really jank, but it works for now
         if (textHeight > 60){
-            subtext[i].style.width = "148px";
-            subtext[i].style.position = "absolute";
-            subtext[i].style.transform = "translateX(-14px)";
+			subtext[i].className = "adjust-subtext";
+			textHeight = subtext[i].offsetHeight;
+			adjustment_flag = 1
         }
+
+		row_max_height = textHeight > row_max_height ? textHeight : row_max_height;
+
     }
+	height_adjust += row_max_height - 2*default_row_height;
+
+	if(adjustment_flag){
+		subtext[0].style.height = first_row_max+"px"
+	}
+	var presence_table = document.getElementById("presence-table");
+
+	presence_table.style.height = (presence_table.offsetHeight + height_adjust)+"px";
     
 }
 

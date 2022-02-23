@@ -13,9 +13,9 @@ presence-tracks {
   padding-bottom: 30px;
   
   background-image: url('../../images/board/Presence_Without_Text.png');
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: bottom left;
+  background-position: top left;
 }
 
 presence-tracks table {	
@@ -45,6 +45,12 @@ subtext {
   font-style: italic;
   text-align: center;
   display: table-row;
+}
+
+.adjust-subtext {
+    width: 166px;
+    position: absolute;
+    transform: translateX(-18px);
 }
 
 presence-node ring-icon {
@@ -100,10 +106,10 @@ card-icon.small {
 .move-presence-2.small,
 .move-presence-3.small,
 .move-presence-4.small {
-    margin-left: -15px;
+    margin-left: -8px;
     margin-right: 0px;
-    margin-top: -21px;
-    width: 80px;
+    margin-top: -6px;
+    width: 75px;
     z-index: 2;
 }
 
