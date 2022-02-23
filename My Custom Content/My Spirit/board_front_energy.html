@@ -5,6 +5,7 @@
     <link href="../../_global/css/board_front.css" rel="stylesheet" />
     <script type="text/javascript" src="../../_global/js/general.js"></script>
     <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 
 <body>
@@ -47,13 +48,13 @@
 		  </sub-growth>
 		  <sub-growth title="and one of:">
 			<growth-group values="gain-energy(2);gain-energy(2,sun);gain-energy(sacred-site);gain-energy(2,text,your custom text here)"></growth-group>
-			<growth-group values="gain-energy(text)"></growth-group>
+			<growth-group values="gain-energy(text,k)"></growth-group>
 		  </sub-growth>
 		</growth>
 
 		<presence-tracks>
-		  <energy-track banner="example2.png" banner-v-scale="50%" values="1,2+moon,earth,3,forget-power-card,gain-card-pay-2,isolate"></energy-track>
-		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,star,2,isolate,markerplus,fire+markerplus,5+reclaim-one,fire+reclaim-one"></card-play-track>
+		  <energy-track banner="example2.png" banner-v-scale="50%" values="1,2+moon,star,forget-power-card,custom(Your custom effect),custom(Your custom effect and icon and even more text here;sacred-site),move-presence(3)"></energy-track>
+		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,gain-card-pay-2,star,custom(Your custom effect),custom(Your custom effect and icon;sacred-site),move-presence(1),move-presence(1)+air,3+air+move-presence(1)"></card-play-track>
 		</presence-tracks>
 
 		<!-- INNATE POWERS  
