@@ -345,7 +345,11 @@ function parseGrowthTags(){
 										and_flag = 1;
                                         break;
                                     case 'no-blight':
-                                        presenceText += i == 1 ? " Land without " : " and no ";
+										if(i == 1){
+											presenceText += " Land without "
+										}else{
+											presenceText += operator == ' and ' ? " and no " : " or no ";
+										}
                                         presenceText += "Blight";
                                         break;
                                     case 'beast':
