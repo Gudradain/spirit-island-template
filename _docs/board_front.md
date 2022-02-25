@@ -63,11 +63,16 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 ||Gain Energy per Element plus Flat Energy|gain-energy(x,y)|Gain x Energy plus 1 Energy per Element y|Wildfire: gain-energy(2,fire)|
 ||Gain Energy per Custom Item|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
 ||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be a !!!.||
+||Gain Energy per Card Play|energy-per-play|Gain 1 Energy per Card Play.|As seen on Trickster|
 |Gain Power Card|Gain a Power Card|gain-power-card|||
+|Repeating Growth Options|Repeat Growth Options|^x|Added to other growth options. x is the number of repeats. As seen on Fractured Days|gain-power-card^2; gain-energy(2)^3|
 |Discard 2 Cards|Discard 2 Power Cards|discard-cards|As seen on Downpour||
 |Gain Card Play|Gain 1 Card Play|gain-card-play|||
 ||Gain Card Plays|gain-card-play(x)|Gain x card plays||
 |Forget Power Card|Forget a Power Card|forget-power-card|||
+|Add Tokens|Add One Token|add-token(x,y)|At range x add token type y|add-token(2,beast)|
+||Add Multiple Token of One Type|add-token(x,y, z)|Add z tokens of y type at range x|add-token(3,wilds,2)|
+||Add Tokens of Different Types|add-token(x,y,z,...,and/or)|At range x, add a tokens of type y, z, and/or more. The last parameter must be 'or' or 'and'.|add-token(3,wilds,beasts,disease,and); add-token(3,strife,badlands,or);|
 |Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
 |Ignore Range |Ignore Range this Turn|ignore-range|Ignore Range this turn (as seen on Finder)||
 |Isolate|Isolate one of your Lands|isolate|||
