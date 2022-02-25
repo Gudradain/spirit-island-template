@@ -4,8 +4,12 @@ The fastest way to get started is to start from the example template in the fold
 
 ### General Icons
 General Images: Images for invaders, elements, dahan, etc in a board can be called by enclosing its name with "{}". For example, {dahan} or {fire}. Here is a list of what is available:
-- Elements (fire, water, earth, air, plant, animal, sun, moon, any, star (think the element icon on starlight))  
-- Invaders (explorer, town, city)  
+- Elements (fire, water, earth, air, plant, animal, sun, moon)
+	- any: the Any element icon
+	- star: the Element icon (from Starlight)
+	- markerplus, markerminus: the Prepare Element Marker and Discard Element Marker (from Shifting Memory)
+- Invaders (explorer, town, city)
+- Presence (presence, sacred-site)  
 - Island symbols (blight, dahan, fear, disease, wilds, beast, strife, badlands)  
 - Land symbols (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)
 - Targeting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)
@@ -96,9 +100,9 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 	  - Example: *\<energy-track banner="example2.png" banner-v-scale="50%" values="1,isolate,2,text(custom text here),3,gain-card-pay-2,4+reclaim-one"\>\</energy-track\>*
     - **card-play-track**: The entire Card Play Track
       - card-play-track values: The actual values that will be used to create the Card Play Track.  See 'Supported Presence Track Options'
-		- banner: Artwork behind the presence track can be added with the banner="example.png". The artwork should be in the same folder as the html
-	    - banner-v-scale: Allows you to stretch your banner artwork vertically
-		- Example: *\<card-play-track banner="example2.png" banner-v-scale="50%" values="1,star,gain-card-pay-2,isolate,markerplus,fire+markerplus,5+reclaim-one,fire+reclaim-one"\>\</card-play-track\>
+	  - banner: Artwork behind the presence track can be added with the banner="example.png". The artwork should be in the same folder as the html
+	  - banner-v-scale: Allows you to stretch your banner artwork vertically
+	  - Example: *\<card-play-track banner="example2.png" banner-v-scale="50%" values="1,star,gain-card-pay-2,isolate,markerplus,fire+markerplus,5+reclaim-one,fire+reclaim-one"\>\</card-play-track\>
     - **table**: For Serpent/Finder style boards. An html table that allows more flexible positioning of nodes. Individual presence track options are specified within the `<td>` table cells. The available options are exactly the same as described for the energy and card-play tracks above, with the exception that integer values must be prefixed with with 'card' or 'energy'. For example 'card1' means 1 card play, 'energy2' means 2 energy, etc.
 
 #### Supported Presence Track Options
