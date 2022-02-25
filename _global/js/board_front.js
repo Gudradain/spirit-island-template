@@ -792,7 +792,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     var custom_node = matches[1].split(";");
 					var custom_text = custom_node[0];
 					if(custom_node[1]){
-						inner = "{"+custom_node[1]+"}";
+						inner = "<icon class='"+custom_node[1]+" custom-presence-track-icon'></icon>";
 					}else{
 						inner = "<" + nodeClass + "-icon><value>!!!</value></" + nodeClass + "-icon>";
 					}
