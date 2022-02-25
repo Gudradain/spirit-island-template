@@ -143,8 +143,9 @@ function parseGrowthTags(){
 		}
 		
         const growthClass = childElement.getAttribute("values");
-
+		console.log(growthClass)
         const classPieces = growthClass.split(';');
+		console.log(classPieces)
         const openTag = headerIndex !== undefined
             ? `<growth-cell header="${headerIndex}">`
             : "<growth-cell>"
@@ -152,10 +153,20 @@ function parseGrowthTags(){
 		const terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
 					
         for (j = 0; j < classPieces.length; j++) {
-
+			//Find if a growth effect is repeated (Fractured Days)
+			repeatOpen = ""
+			repeatClose = ""
+			if(classPieces[j].split("^")[1]){
+				console.log("repeat detected")
+				const repeat = classPieces[j].split("^")[1];
+				repeatOpen = "<repeat-growth><value>"+repeat+"</value></repeat-growth>"
+				repeatClose = ""
+			}
+			
             //Find a parenthesis and split out the string before it
-            const growthItem = classPieces[j].split("(")[0];
-
+			const growthItem = classPieces[j].split("(")[0].split("^")[0];
+			console.log("growth item: "+growthItem)
+			
             switch (growthItem) {
 				// Simple growth items are handled in the 'Default' case. See function IconName.
 				// Only growth items with options are handled here.
@@ -173,7 +184,7 @@ function parseGrowthTags(){
 							isolateIcons += "{range-" + isolateRange + "}";
 							isolateText = "Isolate a Land";
 						}
-						newGrowthCellHTML += `${openTag}` + isolateReqOpen + isolateIcons + isolateReqClose + `<growth-text>`+isolateText+`</growth-text>${closeTag}`;
+						newGrowthCellHTML += `${openTag}${repeatOpen}` + isolateReqOpen + isolateIcons + isolateReqClose + `<growth-text>`+isolateText+`</growth-text>${repeatClose}${closeTag}`;
                         break;
 				}
                 case 'gain-energy': {
@@ -224,7 +235,7 @@ function parseGrowthTags(){
 							energyGrowthText = "Gain 1 Energy per " + Capitalise(scaling)
 						}
                     }
-					newGrowthCellHTML += `${openTag}` + energyManyIconOpen + energyGrowthIcons + energyManyIconClose + "<growth-text>" + energyGrowthText +"</growth-text>"+ `${closeTag}`
+					newGrowthCellHTML += `${openTag}${repeatOpen}` + energyManyIconOpen + energyGrowthIcons + energyManyIconClose + "<growth-text>" + energyGrowthText +"</growth-text>"+ `${repeatClose}${closeTag}`
 					break;
 				}
 				case 'add-presence': {
@@ -377,7 +388,7 @@ function parseGrowthTags(){
                         presenceIcon += "</presence-req>";
 					}
 
-                    newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence" + presenceText + `</growth-text>${closeTag}`
+                    newGrowthCellHTML += `${openTag}${repeatOpen}` + presenceReqOpen + "+{presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence" + presenceText + `</growth-text>${repeatClose}${closeTag}`
                     break;
                 }
                 case 'push':
@@ -389,7 +400,7 @@ function parseGrowthTags(){
 						: 'into'
 					
 					let moveText = ""
-					let moveIcons = `${openTag}`
+					let moveIcons = `${openTag}${repeatOpen}`
 					let moveTarget = matches[1];
 					let moveOptions = matches[1].split(",");
 					let moveRange = moveOptions[1];
@@ -439,22 +450,22 @@ function parseGrowthTags(){
 									moveText += " of your Lands with " + Capitalise(moveCondition)
 									moveIcons += "<push-gather><icon class='" + growthItem + "-" + preposition + "'><icon class='" + moveTarget + "'></icon><icon class='" + preposition + " " + moveCondition + "'></icon></icon></push-gather>"
 							}
-							moveText += `</growth-text>${closeTag}`
+							moveText += `</growth-text>${repeatClose}${closeTag}`
 						}else{
 						// Gather/Push at range
 							moveIcons += "<push-gather-range-req><icon class='" + growthItem + "'><icon class='" + moveTarget + "'></icon></icon>"+"{range-" + moveRange + "}</push-gather-range-req>"
-							moveText += "<growth-text>"+Capitalise(growthItem)+" up to 1 " + Capitalise(moveTarget)+" " + preposition + ` a Land</growth-text>${closeTag}`
+							moveText += "<growth-text>"+Capitalise(growthItem)+" up to 1 " + Capitalise(moveTarget)+" " + preposition + ` a Land</growth-text>${repeatClose}${closeTag}`
 						}
 					}else{
 						moveIcons += "<push-gather><icon class='" + growthItem + "'><icon class='" + moveTarget + "'></icon></icon></push-gather>"
-						moveText += "<growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(moveTarget)+" " + preposition + ` 1 of your Lands</growth-text>${closeTag}`
+						moveText += "<growth-text>"+Capitalise(growthItem)+" 1 " + Capitalise(moveTarget)+" " + preposition + ` 1 of your Lands</growth-text>${repeatClose}${closeTag}`
 					}
 					newGrowthCellHTML += moveIcons + moveText;
 					break;
 				}
                 case 'presence-no-range': {
 					//This is potentially redundant.
-					newGrowthCellHTML += `${openTag}<custom-presence-no-range>+{presence}</custom-presence-no-range><growth-text>Add a Presence to any Land</growth-text>${closeTag}`
+					newGrowthCellHTML += `${openTag}${repeatOpen}<custom-presence-no-range>+{presence}</custom-presence-no-range><growth-text>Add a Presence to any Land</growth-text>${repeatClose}${closeTag}`
 					break;
 				}
                 case 'move-presence': {        
@@ -462,7 +473,7 @@ function parseGrowthTags(){
 					const matches = regExp.exec(classPieces[j]);
 
 					const moveRange = matches[1];
-					newGrowthCellHTML += `${openTag}<custom-presence>{presence}{move-range-` + moveRange + `}</custom-presence><growth-text>Move a Presence</growth-text>${closeTag}`
+					newGrowthCellHTML += `${openTag}${repeatOpen}<custom-presence>{presence}{move-range-` + moveRange + `}</custom-presence><growth-text>Move a Presence</growth-text>${repeatClose}${closeTag}`
 
 					break;
 				}
@@ -482,7 +493,7 @@ function parseGrowthTags(){
 							if (elementOptions.at(-1) === 'or' || elementOptions.at(-1) === 'and'){}
 					
 							//Icons
-							newGrowthCellHTML += `${openTag}<gain class='or'>`
+							newGrowthCellHTML += `${openTag}${repeatOpen}<gain class='or'>`
 							for (var i = 0; i < elementOptions.length; i++) {
 								newGrowthCellHTML += "<icon class='orelement " + elementOptions[i] + "'></icon>";
 								if (i < elementOptions.length - 1) {
@@ -499,7 +510,7 @@ function parseGrowthTags(){
 									newGrowthCellHTML += " or ";
 								}
 							}
-							newGrowthCellHTML += `</growth-text>${closeTag}`;
+							newGrowthCellHTML += `</growth-text>${repeatClose}${closeTag}`;
 								
 						} else { 
 							// Gain multiple of the same element or gain multiple different elements (all of them, not or)
@@ -535,18 +546,17 @@ function parseGrowthTags(){
 								let cur_element = elementOptions.at(-1) === 'and'
 									? elementOptions[i]
 									: elementOptions[0]
-								console.log(cur_element)
 								elementIcons += "<icon-multi-element><icon class='"+cur_element+"'"+element_loc+"></icon></icon-multi-element>"
 							}
 							elementIcons += "<icon style='width:0px;height:99px'></icon>"; // This is a filler icon to make sure the spacing is right. Any idea for a better solution?
 							
-							newGrowthCellHTML += `${openTag}<gain>` + elementIcons + "</gain><growth-text>Gain "+elementText+`</growth-text>${closeTag}`;
+							newGrowthCellHTML += `${openTag}${repeatOpen}<gain>` + elementIcons + "</gain><growth-text>Gain "+elementText+`</growth-text>${repeatClose}${closeTag}`;
 						}
 								
 					} else {
 						let elementText = ""
 						elementText = gainedElement==='star' ? 'Element' : Capitalise(gainedElement)
-						newGrowthCellHTML += `${openTag}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + elementText + `</growth-text>${closeTag}`
+						newGrowthCellHTML += `${openTag}${repeatOpen}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + elementText + `</growth-text>${repeatClose}${closeTag}`
 					}
 					break;
 				}
@@ -560,7 +570,7 @@ function parseGrowthTags(){
 					}else{
 						customIcon = "<div class='custom-scaling'>!!!</div>";
 					}
-					newGrowthCellHTML += `${openTag}<custom-growth-icon>`  + customIcon + `</custom-growth-icon><growth-text>`+customText+`</growth-text>${closeTag}`;
+					newGrowthCellHTML += `${openTag}${repeatOpen}<custom-growth-icon>`  + customIcon + `</custom-growth-icon><growth-text>`+customText+`</growth-text>${repeatClose}${closeTag}`;
 					break;
 				}
 				case 'fear': {
@@ -610,7 +620,7 @@ function parseGrowthTags(){
 							fearGrowthText = "Generate 1 Fear per " + Capitalise(scaling)
 						}
                     }
-					newGrowthCellHTML += `${openTag}` + fearManyIconOpen + fearGrowthIcons + fearManyIconClose + "<growth-text>" + fearGrowthText +"</growth-text>"+ `${closeTag}`
+					newGrowthCellHTML += `${openTag}${repeatOpen}` + fearManyIconOpen + fearGrowthIcons + fearManyIconClose + "<growth-text>" + fearGrowthText +"</growth-text>"+ `${repeatClose}${closeTag}`
 					break;
 				}
 				case 'gain-card-play': {
@@ -619,14 +629,58 @@ function parseGrowthTags(){
 					if(matches){
 						let cardplayOptions = matches[1].split(",");
 						num_card_plays = cardplayOptions[0];
-						newGrowthCellHTML += `${openTag}<card-play-num><value>` + num_card_plays + "</value></card-play-num><growth-text> Gain "+num_card_plays+" Card Plays"+`</growth-text>${closeTag}`
+						newGrowthCellHTML += `${openTag}${repeatOpen}<card-play-num><value>` + num_card_plays + "</value></card-play-num><growth-text> Gain "+num_card_plays+" Card Plays"+`</growth-text>${repeatClose}${closeTag}`
 					}else{
-						newGrowthCellHTML += `${openTag}{`+growthItem+`}<growth-text>`+IconName(growthItem)+`</growth-text>${closeTag}`
+						newGrowthCellHTML += `${openTag}${repeatOpen}{`+growthItem+`}<growth-text>`+IconName(growthItem)+`</growth-text>${repeatClose}${closeTag}`
 					}
 					break;
 				}
+				case 'add-token': {
+					const matches = regExp.exec(classPieces[j]);
+					let tokenOptions = matches[1].split(",");
+					let range = tokenOptions[0];
+					let tokenRange = "{range-" + range + "}"
+					let token = tokenOptions[1];
+					let tokenNum = tokenOptions[2];
+					let tokenReqOpen = "<custom-icon>";
+					let tokenReqClose = "</custom-icon>";
+					let tokenText = ""
+					let tokenIcons = ""
+					if(!tokenNum){
+						tokenIcons = "+<icon class='"+token+" token'></icon>"
+						tokenText = "Add a " + Capitalise(token);
+					}else if(!isNaN(tokenNum)){
+						// multiple of the same token
+						tokenIcons += "+"
+						if (tokenNum>3){
+							tokenIcons += tokenNum+"<icon class='"+token+" token'></icon>";
+						}else{
+							for (var i = 0; i < tokenNum; i++) {
+								tokenIcons += "<icon class='"+token+" token'></icon>"
+							}
+						}
+						tokenText = "Add "+tokenNum+" " + Capitalise(token);
+					}else{
+						// two or more different tokens
+						operator = tokenOptions.at(-1);
+						tokenIcons += "+<icon class='"+token+" token'></icon>";
+						tokenText += "Add a " + Capitalise(token);
+						if (operator=='and' || operator=='or'){
+							for (var i = 2; i < tokenOptions.length-1; i++) {
+								tokenIcons += operator=='or' ? "/" : "";
+								tokenIcons += "<icon class='"+tokenOptions[i]+" token'></icon>"
+								tokenText += i==tokenOptions.length-2 ? " "+operator+" " : ", ";
+								tokenText += Capitalise(tokenOptions[i]);
+							}
+						}else{
+							tokenText = "MUST use AND or OR"
+						}
+					}
+					newGrowthCellHTML += `${openTag}${repeatOpen}`+ tokenReqOpen + tokenIcons + tokenRange + tokenReqClose + "<growth-text>" + tokenText +`</growth-text>${repeatClose}${closeTag}`
+					break;
+				}
 				default:
-					newGrowthCellHTML += `${openTag}{`+growthItem+`}<growth-text>`+IconName(growthItem)+`</growth-text>${closeTag}`
+					newGrowthCellHTML += `${openTag}${repeatOpen}{`+growthItem+`}<growth-text>`+IconName(growthItem)+`</growth-text>${repeatClose}${closeTag}`
 
             }
         }
@@ -674,7 +728,6 @@ function parseCardPlayTrackTags(){
     
     var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
     var cardPlayOptions = cardPlayValues.split(",");
-	console.log("cardPlayOptions: "+cardPlayOptions)
     var cardPlayBanner = document.getElementsByTagName("card-play-track")[0].getAttribute("banner");
     var cardPlayBannerScale = document.getElementsByTagName("card-play-track")[0].getAttribute("banner-v-scale");
     if(!cardPlayBannerScale){
@@ -768,11 +821,9 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
     } else {
         //It is either a single element or a mix of elements/numbers
         var splitOptions = nodeText.split("+");
-		console.log("nodetext:"+nodeText)
         if(splitOptions.length == 1){
             //It's just a single item
             var option = splitOptions[0].split("(")[0];
-			console.log(splitOptions[0]+" > "+option + " > " + splitOptions)
             switch(option){
 				case 'push':
                     var matches = regExp.exec(splitOptions[0]);
@@ -782,7 +833,6 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     break;    
                 case 'gather':
                     var matches = regExp.exec(splitOptions[0]);
-					console.log(matches)
                     var moveTarget = matches[1];
                     inner = "<icon class='gather'><icon class='"+moveTarget+"'></icon></icon>";
                     subText = "Gather 1 "+Capitalise(moveTarget) + " into 1 of your Lands";
@@ -808,11 +858,9 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 					var matches = regExp.exec(splitOptions[0]);
 					cardplay_text = splitOptions[0]
 					cardplay_icon = splitOptions[0]
-					console.log(matches)
 					if(matches){
 						var cardplay_node = matches[1].split(";");
 						var cardplay_text = cardplay_node[0];
-						console.log("!!! "+matches+ " " +cardplay_node + " " +cardplay_text)
 						inner = "<icon class='"+option+" deep-layers'><icon class='"+cardplay_node[0]+"'></icon></icon>";
 					}else{
 						inner = "<icon class='"+cardplay_text+"'></icon>";
@@ -859,10 +907,8 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                 } else if(splitOptions[i].startsWith("reclaim")){
                     trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+" small-reclaim'"+track_icon_loc+"></icon></icon-multi-element>"
                 } else if(splitOptions[i].startsWith("move-presence")){
-					console.log("check here " + splitOptions[i])
 					var matches = regExp.exec(splitOptions[i]);
                     var moveRange = matches[1];
-					console.log(moveRange)
                     trackIcons += "<icon-multi-element><icon class='move-presence-"+moveRange+" small'"+track_icon_loc+"'></icon></icon-multi-element>"
 				} else {
                     trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+"'"+track_icon_loc+"></icon></icon-multi-element>"
@@ -880,11 +926,9 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 }
 
 function IconName(str){
-	console.log(str)
 	num = str.split("(")[1];
 	str = str.split("(")[0];
 	
-	console.log(">"+str+" "+num)
 	switch(str){
 
 		case 'gain-power-card':
@@ -924,10 +968,10 @@ function IconName(str){
 			subText = "Element"
 			break;
 		case 'markerplus':
-			subText = "Gain 1 Element Marker";
+			subText = "Prepare 1 Element Marker";
 			break;
 		case 'markerminus':
-			subText = "Pay 1 Element Marker";
+			subText = "Discard 1 Element Marker";
 			break;
 		case 'isolate':
 			subText = "Isolate 1 of your Lands";
@@ -1156,16 +1200,6 @@ function parseInnatePower(innatePowerHTML){
     var targetValue = innatePowerHTML.getAttribute("target");
     currentPowerHTML += `<innate-info-target>${replaceIcon(targetValue)}</innate-info-target></innate-info></info-container>`;
     
-    /*console.log(targetValue);
-    var specialLandsList = ["any", "coastal", "invaders", "inland"];
-
-    if(specialLandsList.includes(targetValue.toLowerCase())){
-        targetValue = targetValue.toUpperCase();
-        currentPowerHTML += "<innate-info-target>"+targetValue+"</innate-info-target></innate-info></info-container>";
-    } else {
-        currentPowerHTML += "<innate-info-target>{"+targetValue+"}</innate-info-target></innate-info></info-container>";
-    }*/
-
     currentPowerHTML += "<description-container>";
     
     var noteValue = innatePowerHTML.getAttribute("note");

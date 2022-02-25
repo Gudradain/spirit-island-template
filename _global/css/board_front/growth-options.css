@@ -105,6 +105,27 @@ growth-cell-double {
   flex-direction: row;
 }
 
+repeat-growth {
+    background-image: url('../../images/board/NewIcons/Growth Multiply Blank.png');
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: -30px;
+    left: 5px;
+	background-repeat: no-repeat;
+    background-size: contain;
+}
+
+repeat-growth value{
+  font-family: 'Gobold Extra2';
+    font-size: 18pt;
+    display: inline-block;
+    margin-top: 4px;
+    margin-left: 10px;
+    color: #52301e;
+  
+}
+
 growth-cell icon.discard-cards {
   margin-bottom: 7px;
 }
@@ -171,7 +192,7 @@ fear-per value{
 }
 
 gain-per-fear ring-icon{
-    background-image: url(../../images/board/CardPlayRing.png);
+    background-image: url('../../images/board/CardPlayRing.png');
     background-repeat: no-repeat;
     background-size: contain;
     display: inline-block;
@@ -317,6 +338,14 @@ custom-icon {
     margin-bottom: 0px;
 }
 
+custom-icon .token {
+    width: 40px;
+    height: 35px;
+    margin-bottom: -3px;
+    margin-top: 31px;
+    margin-left: 0px;
+}
+
 custom-icon icon.isolate{
     width: 50px;
     margin-bottom: -20px;
@@ -369,6 +398,13 @@ growth-cell icon.gain-power-card {
 
 growth-cell icon.forget-power-card {
   margin-bottom: 7px;
+}
+
+growth-cell icon.energy-per-play {
+    margin-bottom: 0px;
+    margin-top: -20px;
+    width: 100px;
+    height: 110px;
 }
 
 growth-cell icon.gather-arrow {

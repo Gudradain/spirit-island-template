@@ -401,6 +401,13 @@ icon.forget-power-card {
   width:90px;
 }
 
+icon.energy-per-play {
+  background-image: url('../../images/board/NewIcons/Energy Gain 1 Per Cardplay.png');
+  display: block;
+  height: 90px;
+  width:90px;
+}
+
 icon.gain-card-pay-2 {
     background-image: url('../../images/board/NewIcons/Card Gain 1 Energy Pay 2.png');
 	display: inline-block;
