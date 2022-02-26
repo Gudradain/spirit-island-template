@@ -8,11 +8,11 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 	- any: the Any element icon
 	- star: the Element icon (from Starlight)
 	- markerplus, markerminus: the Prepare Element Marker and Discard Element Marker (from Shifting Memory)
-- Invaders (explorer, town, city)
+- Invaders (explorer, town, city)  
 - Presence (presence, sacred-site)  
 - Island symbols (blight, dahan, fear, disease, wilds, beast, strife, badlands)  
-- Land symbols (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)
-- Targeting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)
+- Land symbols (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)  
+- Targeting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)  
 
 ### Spirit Name & Board
 - board: Represents the whole board.
@@ -87,6 +87,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 ||Gain Fear per Element plus Flat Fear|fear(x,y)|Gain x Fear plus 1 Fear per Element y||
 ||Gain Fear per Custom Item|fear(text,*your_text_here*)|Gain 1 Fear per condition of your choosing. Icon will be a !!!.||
 ||Gain Fear per Custom Item Plus Flat Fear|fear(x,text,*your_text_here*)|Gain x Fear plus 1 Fear per condition of your choosing. Icon will be a !!!.||
+|Damage|Damage at Range|damage(x,y)|At range x, deal y Damage|Starlight: damage(0,2)|
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
 ||Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc)||
 
