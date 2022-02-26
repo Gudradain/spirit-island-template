@@ -571,7 +571,28 @@ add-presence-req {
   margin-top: 0px;
 }
 
+growth-damage {
+    background-image: url('../../images/board/NewIcons/Damage Blank.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    font-size: 20pt;
+    font-weight: bold;
+    display: block;
+    margin-top: -11px;
+    width: auto;
+    height: 80px;
+    margin-bottom: 1px;
+    margin-right: 0px;
+}
 
+growth-damage value {
+  font-family: 'Gobold Extra2';
+    font-size: 22pt;
+    display: inline-block;
+    margin-top: 36px;
+    margin-left: 0px;
+}
 
 gain-per {
     background-image: url('../../images/board/AddEnergyBlank.png');

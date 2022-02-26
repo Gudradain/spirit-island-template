@@ -187,7 +187,19 @@ function parseGrowthTags(){
 						newGrowthCellHTML += `${openTag}${repeatOpen}` + isolateReqOpen + isolateIcons + isolateReqClose + `<growth-text>`+isolateText+`</growth-text>${repeatClose}${closeTag}`;
                         break;
 				}
-                case 'gain-energy': {
+                case 'damage': {
+					const matches = regExp.exec(classPieces[j]);
+					let damageOptions = matches[1].split(",");
+					let range = damageOptions[0];
+					let damage = damageOptions[1];
+                    let damageManyIconOpen = "" 
+					let damageManyIconClose = ""
+					damageGrowthIcons = "<growth-damage><value>" + damage + "</value></growth-damage>"
+					damageGrowthText = "Deal "+damage+" Damage at Range " + range
+					newGrowthCellHTML += `${openTag}${repeatOpen}` + "<custom-icon><growth-damage><value>" + damage + "</value></growth-damage>"+ "{range-" + range + "}</custom-icon>" + `<growth-text>`+damageGrowthText+`</growth-text>${repeatClose}${closeTag}`;
+					break;
+				}
+				case 'gain-energy': {
 					const matches = regExp.exec(classPieces[j]);
 
 					const gainEnergyBy = matches[1];
