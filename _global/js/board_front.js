@@ -1155,7 +1155,7 @@ function parseInnatePowers(){
     for(i = 0; i < innateHTML.length; i++){
         fullHTML += parseInnatePower(innateHTML[i]);
     }
-    document.getElementsByTagName("innate-powers")[0].innerHTML = '<section-title>Innnate Powers</section-title><innate-power-container>'+fullHTML+'</innate-power-container>';
+    document.getElementsByTagName("innate-powers")[0].innerHTML = '<section-title>Innate Powers</section-title><innate-power-container>'+fullHTML+'</innate-power-container>';
 }
 
 function parseInnatePower(innatePowerHTML){

@@ -2,6 +2,12 @@
   font-family: 'Lato SemiBold';
   src: url(../fonts/lato/Lato-Semibold.ttf);
 }
+
+@font-face{
+  font-family: 'Mouse Memoirs';
+  src: url(../fonts/Mouse_Memoirs/MouseMemoirs-Regular.ttf);
+}
+
 @font-face{
   font-family: 'Lato SemiBold';
   src: url(../fonts/lato/Lato-SemiboldItalic.ttf);

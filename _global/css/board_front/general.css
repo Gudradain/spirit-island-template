@@ -59,7 +59,7 @@ spirit-name {
   height: 0px;
   width: 666.25px;
   font-size:40px;
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
   text-transform: uppercase;
   color: white;
   text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
@@ -130,7 +130,8 @@ none{
 
 section-title {
   display: block;
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
+  text-transform: uppercase;
   font-size: 25pt;
   padding-top: 10px;
 }

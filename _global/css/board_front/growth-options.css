@@ -24,7 +24,8 @@ growth sub-section-title {
   position: absolute;
 
   display: flex;
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
+  text-transform: uppercase;
   font-size: 18pt;
   font-weight: bold;
 }

@@ -61,7 +61,7 @@ info-title {
   display: flex;
   align-items: center;
   color: white;
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
   text-transform: uppercase;
   font-size: 14pt;
   letter-spacing: 1.25pt;
@@ -75,7 +75,7 @@ innate-info {
   top: 358px;
   width: 463.25px;
   display: flex;
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
   text-transform: uppercase;
 }
 
