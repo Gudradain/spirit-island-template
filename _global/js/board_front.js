@@ -1053,13 +1053,13 @@ function IconName(str){
 			subText = "Gain a Card Play"
 			break;
 		case 'reclaim-all':
-			subText = "Reclaim All"
+			subText = "Reclaim Cards"
 			break;
 		case 'reclaim-one':
 			subText = "Reclaim One";
 			break;
 		case 'reclaim':
-			subText = "Reclaim All";
+			subText = "Reclaim Cards";
 			break;
 		case 'forget-power-card':
 			subText = "Forget Power Card";
@@ -1265,9 +1265,8 @@ function dynamicCellWidth() {
     }
 	height_adjust += row_max_height - 2*default_row_height;
 
-	if(adjustment_flag){
-		subtext[0].style.height = first_row_max+"px"
-	}
+	subtext[0].style.height = first_row_max+"px"
+
 	var presence_table = document.getElementById("presence-table");
 
 	presence_table.style.height = (presence_table.offsetHeight + height_adjust)+"px";

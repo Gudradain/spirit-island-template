@@ -32,10 +32,10 @@ growth sub-section-title {
 
 growth .tint{
     width: 80%;
-    height: 110%;
+    height: 100%;
     opacity: 0.2;
     position: absolute;
-    top: -20%;
+    top: -12%;
     left: 10%;
 }
 
@@ -72,6 +72,7 @@ growth-table {
 
 sub-section-title+growth-table{
   margin-top:60px ;
+  margin-top: 45px;
 }
 
 growth-border {

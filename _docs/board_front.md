@@ -32,7 +32,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 - growth title: "Growth (PICK ONE)" or "Growth (PICK TWO)" or just "Growth" if you are using subgroups
 - growth sub-group: Groupings of growth options (as seen on Lure)
 	- title: instructions for how to pick among the subgroup (ie. "Pick one of:")
-	- bordered: adds the double border that sepaarates subgroups (ie. leave it off for the last subgroup)
+	- bordered: adds the double border that separates subgroups (ie. leave it off for the last subgroup)
 	- Example: *\<sub-growth title="pick one of:" bordered\>*
 - growth-group: Each individual section in the Growth section (within the subgroup, if you are using subgroups)
   - growth-group cost: The cost associated with this group (as seen on Keeper).

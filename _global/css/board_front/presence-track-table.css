@@ -41,7 +41,7 @@ presence-node {
 
 subtext {
   font-family: 'Lato SemiBold';
-  font-size: 16pt;
+  font-size: 15pt;
   font-style: italic;
   text-align: center;
   display: table-row;
@@ -76,7 +76,7 @@ presence-node icon.reclaim-one {
   background-image: url('../../images/board/Reclaimone-white.png');
   display: block;
   height: 90px;
-  width:90px;	
+  width:75px;
 }
 
 presence-node card-icon {

@@ -12,7 +12,7 @@ special-rules-container {
   flex-direction: column;
   font-family: 'JosefinSans-Regular';
   padding-left:15px;
-  padding-right:15px;
+  padding-right:0px;
   z-index: -1;
 }
 
@@ -46,7 +46,7 @@ special-rule icon.any, special-rule icon.moon, special-rule icon.sun{
 }
 
 special-rule icon.town, special-rule icon.blight, special-rule icon.dahan,
-special-rule icon.presence, special-rule icon.wilds, special-rule icon.beast,
+special-rule icon.presence, special-rule icon.wilds, special-rule icon.beasts,
 special-rule icon.disease, special-rule icon.strife, special-rule icon.explorer, 
 special-rule icon.badlands, special-rule icon.fear, special-rule icon.range-plus-1,
 special-rule icon.fast, special-rule icon.slow {
