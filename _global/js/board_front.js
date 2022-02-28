@@ -143,9 +143,7 @@ function parseGrowthTags(){
 		}
 		
         const growthClass = childElement.getAttribute("values");
-		console.log(growthClass)
         const classPieces = growthClass.split(';');
-		console.log(classPieces)
         const openTag = headerIndex !== undefined
             ? `<growth-cell header="${headerIndex}">`
             : "<growth-cell>"
@@ -170,6 +168,35 @@ function parseGrowthTags(){
             switch (growthItem) {
 				// Simple growth items are handled in the 'Default' case. See function IconName.
 				// Only growth items with options are handled here.
+				case 'reclaim': {
+					const matches = regExp.exec(classPieces[j])
+					let reclaimIcon = growthItem+"-all";
+					let reclaimText = IconName(growthItem+"-all");
+					if (matches){
+						let reclaimOptions = matches[1].split(",");
+						let reclaimType = reclaimOptions[0];
+						let reclaimCustomText = reclaimOptions[1];
+						switch(reclaimType)
+						{
+							case 'one':
+								reclaimIcon = growthItem+"-"+reclaimType
+								reclaimText = IconName(growthItem+"-"+reclaimType)
+								break;
+							case 'none':
+								reclaimIcon = growthItem+"-"+reclaimType
+								reclaimText = IconName(growthItem+"-"+reclaimType)
+								break;
+							case 'custom':
+								reclaimIcon = growthItem+"-"+reclaimType
+								reclaimText = "Reclaim " + reclaimCustomText
+								break;
+							default:
+								reclaimText = "TEXT NOT RECOGNIZED - use 'all','one',or 'custom'";
+						}
+					}
+					newGrowthCellHTML += `${openTag}${repeatOpen}{`+reclaimIcon+`}<growth-text>`+reclaimText+`</growth-text>${repeatClose}${closeTag}`
+					break;
+				}
 				case 'isolate': {
                         const matches = regExp.exec(classPieces[j])
 						let isolateIcons = "{isolate}"
@@ -635,6 +662,39 @@ function parseGrowthTags(){
 					newGrowthCellHTML += `${openTag}${repeatOpen}` + fearManyIconOpen + fearGrowthIcons + fearManyIconClose + "<growth-text>" + fearGrowthText +"</growth-text>"+ `${repeatClose}${closeTag}`
 					break;
 				}
+				case 'gain-range': {
+					const matches = regExp.exec(classPieces[j]);
+					let rangeOptions = matches[1].split(",");
+					let range = rangeOptions[0];
+					let type = rangeOptions[1];
+					let gainRangeText = ""
+					if (type) {
+						switch (type) {
+							case 'powers':
+							case 'power':
+								gainRangeText = "Your Powers gain +"+range+" Range this turn"
+								break;
+							case 'power cards':
+								gainRangeText = "Your Power Cards gain +"+range+" Range this turn"
+								break;
+							case 'everything':
+								gainRangeText = "+"+range+" Range on everything this turn"
+								break;
+							case 'innate':
+							case 'innate power':
+							case 'innate powers':
+								gainRangeText = "Your Innate Powers gain +"+range+" Range this turn"
+								break;
+							default:
+								gainRangeText = "Your Powers gain +"+range+" Range this turn"
+						}
+					} else {
+						gainRangeText = "Your Powers gain +"+range+" Range this turn"
+					}
+					newGrowthCellHTML += `${openTag}${repeatOpen}{gain-range-` + range +`}<growth-text>`+gainRangeText+`</growth-text>${repeatClose}${closeTag}`;
+
+					break;
+				}
 				case 'gain-card-play': {
 					const matches = regExp.exec(classPieces[j]);
 					
@@ -820,7 +880,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
         subText = 'Card Plays';
     }
 
-    
+    addIconShadow = false;
     if(!isNaN(nodeText)){
         //The value is only a number
         addEnergyRing = false;
@@ -828,11 +888,22 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
             presenceNode.classList.add("first");
         } else {
             subText = nodeText;
+			if(isNaN(nodeText[0])){
+				subText += " Energy";
+			}
         }
         inner = "<" + nodeClass + "-icon><value>" + nodeText + "</value></" + nodeClass + "-icon>";
     } else {
         //It is either a single element or a mix of elements/numbers
         var splitOptions = nodeText.split("+");
+		
+		//This code allows user to include +energy in addition to just energy
+		plus_check = splitOptions.indexOf("");
+		if(plus_check!=-1){
+			splitOptions.splice(plus_check,1)
+			splitOptions[plus_check]="+"+splitOptions[plus_check]
+		}
+		
         if(splitOptions.length == 1){
             //It's just a single item
             var option = splitOptions[0].split("(")[0];
@@ -863,17 +934,27 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 				case 'move-presence':
                     var matches = regExp.exec(splitOptions[0]);
                     var moveRange = matches[1];
-                    inner = "{move-presence-"+moveRange+"}";
+                    inner = "<icon class='move-presence-"+moveRange+"'></icon>";
                     subText = "Move a Presence "+moveRange;
+					addEnergyRing = false;
+					addIconShadow = true;
+                    break;
+				case 'gain-range':
+                    var matches = regExp.exec(splitOptions[0]);
+                    var gainRange = matches[1];
+					var custom_node = matches[1].split(";");
+                    inner = "<icon class='gain-range-"+custom_node[0]+"'></icon>";
+                    subText = IconName(splitOptions[0]);
+					
+					addEnergyRing = false;
+					addIconShadow = true;
                     break;
 				case 'gain-card-play':
 					var matches = regExp.exec(splitOptions[0]);
 					cardplay_text = splitOptions[0]
-					cardplay_icon = splitOptions[0]
 					if(matches){
-						var cardplay_node = matches[1].split(";");
-						var cardplay_text = cardplay_node[0];
-						inner = "<icon class='"+option+" deep-layers'><icon class='"+cardplay_node[0]+"'></icon></icon>";
+						var cardplay_text = matches[1].split(";");
+						inner = "<icon class='"+option+" deep-layers'><icon class='"+cardplay_text+"'></icon></icon>";
 					}else{
 						inner = "<icon class='"+cardplay_text+"'></icon>";
 					}
@@ -902,11 +983,11 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
             }
         
             numLocs = splitOptions.length;
-            let rad_size = 20 + 1*numLocs; // this expands slightly as more icons are used
+            let rad_size = 22 + 1*numLocs; // this expands slightly as more icons are used
             var trackIcons = ""
             for (var i = 0; i < numLocs; i++) {
                 pos_angle = i * 2*Math.PI / numLocs - (Math.PI)*(1-(1/6));
-                x_loc = rad_size * Math.cos(pos_angle) - 33;
+                x_loc = rad_size * Math.cos(pos_angle) - 31;
                 y_loc = rad_size * Math.sin(pos_angle) - 25;
                 let track_icon_loc = "style='transform: translateY("+y_loc+"px) translateX("+x_loc+"px)'";
 
@@ -921,7 +1002,16 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                 } else if(splitOptions[i].startsWith("move-presence")){
 					var matches = regExp.exec(splitOptions[i]);
                     var moveRange = matches[1];
-                    trackIcons += "<icon-multi-element><icon class='move-presence-"+moveRange+" small'"+track_icon_loc+"'></icon></icon-multi-element>"
+                    trackIcons += "<icon-multi-element><icon-shadow class = 'small'"+track_icon_loc+"><icon class='move-presence-"+moveRange+" small'></icon></icon-shadow></icon-multi-element>"
+					addEnergyRing = false;
+					addIconShadow = false;
+				} else if(splitOptions[i].startsWith("gain-range")){
+					var matches = regExp.exec(splitOptions[i]);
+                    var gainRange = matches[1];
+					gainRange = gainRange.split(";")[0];
+                    trackIcons += "<icon-multi-element><icon-shadow class = 'small'"+track_icon_loc+"><icon class='gain-range-"+gainRange+" small'></icon></icon-shadow></icon-multi-element>"
+					addEnergyRing = false;
+					addIconShadow = false;
 				} else {
                     trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+"'"+track_icon_loc+"></icon></icon-multi-element>"
                 }
@@ -931,6 +1021,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
     }
         
     if(addEnergyRing){ inner = "<energy-icon>"+inner+"</energy-icon>"; }
+	if(addIconShadow){ inner = "<icon-shadow>"+inner+"</icon-shadow>"; }
     ring.innerHTML = inner;
     presenceNode.innerHTML += "<subtext>" + subText + "</subtext>";
     
@@ -938,9 +1029,21 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 }
 
 function IconName(str){
-	num = str.split("(")[1];
+	var regExp = /\(([^)]+)\)/;
+	const matches = regExp.exec(str);
+	num = ""
+	txt = ""
+	if(matches){
+		options = matches[1].split(";");
+		num = options[0];
+		txt = options[1];
+	}
 	str = str.split("(")[0];
-	
+	if(!isNaN(str) && isNaN(str[0])){
+		num = str[1];
+		str = "increase-energy";
+	}
+
 	switch(str){
 
 		case 'gain-power-card':
@@ -954,6 +1057,9 @@ function IconName(str){
 			break;
 		case 'reclaim-one':
 			subText = "Reclaim One";
+			break;
+		case 'reclaim':
+			subText = "Reclaim All";
 			break;
 		case 'forget-power-card':
 			subText = "Forget Power Card";
@@ -991,8 +1097,17 @@ function IconName(str){
 		case 'reclaim-none':
 			subText = "Reclaim None"
 			break;
+		case 'increase-energy':
+			subText = "+"+num+" Energy"
+			break;
 		case 'move-presence':
 			subText = "Move Presence " + num[0];
+			break;
+		case 'gain-range':
+			subText = "+" + num[0]+ " Range";
+			if (typeof(txt)!="undefined") {
+				subText += " on " + txt;
+				}
 			break;
 		case 'inland':
 		case 'coastal':

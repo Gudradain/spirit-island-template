@@ -58,7 +58,7 @@ icon.presence {
 }
 
 icon.backslash {
-    background-image: url(../../images/board/backslash.png);
+    background-image: url('../../images/board/backslash.png');
     background-size: cover;
     width: 8px;
     height: 28px;
@@ -146,6 +146,25 @@ icon.range-any {
   background-image: url('../../images/board/presence_range_any.png');
   display: inline-block;
   width:0px;
+}
+
+icon.gain-range-1,
+icon.gain-range-2,
+icon.gain-range-3 {
+    width: 100px;
+    height: 102px;
+}
+
+icon.gain-range-1 {
+	background-image: url('../../images/board/NewIcons/Range Gain 1.png')
+}
+
+icon.gain-range-2 {
+	background-image: url('../../images/board/NewIcons/Range Gain 2.png')
+}
+
+icon.gain-range-3 {
+	background-image: url('../../images/board/NewIcons/Range Gain 3.png')
 }
 
 icon.sacred-site {
@@ -245,44 +264,32 @@ icon.player-spirit{
   height: 30px;
 }
 
-icon.move-presence-1 {
-  background-image: url('../../images/board/move_presence_1.png');
+icon.move-presence-1,
+icon.move-presence-2,
+icon.move-presence-3,
+icon.move-presence-4 {
   display: block;
   height: 75px;
   width: 130px;
-  margin-top: 20px;
+  margin-top: 0px;
   margin-left: -3px;
   margin-bottom: 8px;
+}
+
+icon.move-presence-1 {
+  background-image: url('../../images/board/move_presence_1.png');
 }
 
 icon.move-presence-2 {
   background-image: url('../../images/board/move_presence_2.png');
-  display: block;
-  height: 75px;
-  width: 130px;
-  margin-top: 20px;
-  margin-left: -3px;
-  margin-bottom: 8px;
 }
 
 icon.move-presence-3 {
   background-image: url('../../images/board/move_presence_3.png');
-  display: block;
-  height: 75px;
-  width: 130px;
-  margin-top: 20px;
-  margin-left: -3px;
-  margin-bottom: 8px;
 }
 
 icon.move-presence-4 {
   background-image: url('../../images/board/move_presence_4.png');
-  display: block;
-  height: 75px;
-  width: 130px;
-  margin-top: 20px;
-  margin-left: -3px;
-  margin-bottom: 8px;
 }
 
 icon.blight {
@@ -368,6 +375,13 @@ icon.reclaim-one {
 
 icon.reclaim-none {
   background-image: url('../../images/board/Reclaimnone.png');
+  display: block;
+  height: 90px;
+  width:90px;
+}
+
+icon.reclaim-custom {
+  background-image: url('../../images/board/Reclaimspecial.png');
   display: block;
   height: 90px;
   width:90px;
