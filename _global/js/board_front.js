@@ -1158,18 +1158,31 @@ function dynamicCellWidth() {
     for (const borderWidth of growthBorders.map(x => x.getAttribute('double') === undefined ? 7 : 11)) {
         borderPixels += borderWidth
     }
-
+	console.log("border px: "+borderPixels)
     const growthTable = document.getElementsByTagName("growth-table")[0];
     const growthTableStyle = window.getComputedStyle(growthTable);
     const growthTableWidth = growthTableStyle.getPropertyValue('width');
-
     const remainingCellWidth = (parseInt(growthTableWidth.replace(/px/, "")) - borderPixels) + "px";
-    const equalCellWidth = (parseFloat(remainingCellWidth.replace(/px/, "")) / growthCellCount) + "px";
-
+	
+	const largeCellScale = 1.2;
+	
+	let averageWidth = 0;
+	let widthArray = [];
     for (i = 0; i < growthCells.length; i++){
-        growthCells[i].style.width = equalCellWidth;
+		averageWidth += growthCells[i].offsetWidth;
+		widthArray[i] = growthCells[i].offsetWidth;
     }
-
+	averageWidth = averageWidth/growthCells.length;
+	let largeCellFinder = widthArray.map(x => x > averageWidth*1.35)
+	const largeCell = largeCellFinder.filter(Boolean).length
+	const smallCell = largeCellFinder.length - largeCell
+	weightedSmallCellWidth = (parseFloat(remainingCellWidth.replace(/px/, "")) / (smallCell + largeCellScale*largeCell))
+	weightedLargeCellWidth = weightedSmallCellWidth*largeCellScale;
+	for (i = 0; i < growthCells.length; i++){
+		growthCells[i].style.width = largeCellFinder[i]==true ? weightedLargeCellWidth+"px" : weightedSmallCellWidth+"px";
+    }
+	
+	
     const headerWith = {}
     const headerAdditionalWidth = {}
     let maxIndex = undefined
@@ -1241,7 +1254,7 @@ function dynamicCellWidth() {
     var subtext = document.getElementsByTagName("subtext");
 	var presence_nodes = document.getElementsByTagName("presence-node");
 	let adjustment_flag = 0
-	let default_row_height = 53;
+	let default_row_height = 50;
 	let row_max_height = default_row_height;
 	let first_row_max = default_row_height;
 	let height_adjust = 0;
@@ -1254,7 +1267,7 @@ function dynamicCellWidth() {
 		
         var textHeight = subtext[i].offsetHeight;
         //This solution is really jank, but it works for now
-        if (textHeight > 60){
+        if (textHeight > 55){
 			subtext[i].className = "adjust-subtext";
 			textHeight = subtext[i].offsetHeight;
 			adjustment_flag = 1
@@ -1263,8 +1276,9 @@ function dynamicCellWidth() {
 		row_max_height = textHeight > row_max_height ? textHeight : row_max_height;
 
     }
+	console.log(row_max_height)
 	height_adjust += row_max_height - 2*default_row_height;
-
+	console.log(height_adjust)
 	subtext[0].style.height = first_row_max+"px"
 
 	var presence_table = document.getElementById("presence-table");

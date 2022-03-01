@@ -224,9 +224,9 @@ note icon.presence{
 .description icon.dahan {
     width: 27px;
     height: 27px;
-    margin-bottom: -3px;
-    margin-top: -3px;
-    margin-left: 1px;
+    margin-bottom: -5px;
+    margin-top: -10px;
+    margin-left: -2px;
     margin-right: 0px;
     background-position: bottom;
 }
@@ -242,6 +242,14 @@ note icon.presence{
     height: 30px;
     margin-left: 0px;
 	margin-top:-20px;
+}
+
+.description icon.gain-range-1, .description icon.gain-range-2, .description icon.gain-range-3 {
+    width: 45px;
+    height: 40px;
+    margin-left: 0px;
+    margin-top: -20px;
+    margin-bottom: -9px;
 }
 
 note icon.city{

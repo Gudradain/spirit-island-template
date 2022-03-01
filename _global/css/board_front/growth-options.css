@@ -32,7 +32,7 @@ growth sub-section-title {
 
 growth .tint{
     width: 80%;
-    height: 100%;
+    height: 110%;
     opacity: 0.2;
     position: absolute;
     top: -12%;
@@ -60,7 +60,7 @@ growth sub-section-line {
 
 growth-table {
   display: inline-flex;
-  width: 1081px;
+  width: 1100px;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -83,8 +83,8 @@ growth-border {
   width: 7px;
   height: 125px;
   margin-top: -30px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 growth-border[double] {
@@ -278,11 +278,16 @@ presence-req icon.presence, presence-req icon.wilds, presence-req icon.beasts,
 presence-req icon.disease, presence-req icon.strife, presence-req icon.explorer, 
 presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus-1{
 	display: inline-block;
-	height: 40px;
-	width: 40px;
+	height: 37px;
+	width: 37px;
     margin-left: auto;
     margin-right: auto;
 	margin-top: 0px;
+}
+
+presence-req icon.town {
+	height: 37px;
+	width: 27px;
 }
 
 presence-req icon.presence {
@@ -292,7 +297,8 @@ presence-req icon.presence {
 }
 
 presence-req icon.blight {
-	height: 35px;
+    width: 32px;
+    background-position: bottom;
 }
 
 presence-req icon.invaders {
