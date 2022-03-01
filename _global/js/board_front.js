@@ -45,7 +45,7 @@ function dynamicSpecialRuleHeight(board){
 function addImages(board) {
 
     const spiritImage = board.getAttribute('spirit-image');
-
+	const artistCredit = document.getElementsByTagName('artist-name');
     const spiritBorder = board.getAttribute('spirit-border');
     
     const imageSize = board.getAttribute('spirit-image-scale');
@@ -65,7 +65,15 @@ function addImages(board) {
     if(spiritImage){
         //Image now scales to fill gap. 'imageSize' allows the user to specify what % of the gap to cover
         board.innerHTML = `<div class="spirit-image" style="background-image: url(${spiritImage}); background-size: auto ${imageSize}; height:calc(100% - ${height}); width:1700px;" ></div>` + board.innerHTML
+		artistCredit[0].style.display = "block";
+		console.log(artistCredit)
     }
+	
+	//Add Meeple
+	const spiritName = document.getElementsByTagName('spirit-name');
+	spiritName[0].outerHTML += "<custom-meeple></custom-meeple>";
+	console.log(spiritName)
+	
 }
 
 function parseGrowthTags(){
