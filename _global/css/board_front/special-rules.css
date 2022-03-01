@@ -12,7 +12,7 @@ special-rules-container {
   flex-direction: column;
   font-family: 'JosefinSans-Regular';
   padding-left:15px;
-  padding-right:0px;
+  padding-right:6px;
   z-index: -1;
 }
 
@@ -51,7 +51,15 @@ special-rule icon.disease, special-rule icon.strife, special-rule icon.explorer,
 special-rule icon.badlands, special-rule icon.fear, special-rule icon.range-plus-1,
 special-rule icon.fast, special-rule icon.slow {
     width:30px;
-    height:30px
+    height:30px;
+}
+
+special-rule icon.gain-range-1, special-rule icon.gain-range-2, special-rule icon.gain-range-3{
+    width: 43px;
+    height: 40px;
+    margin-bottom: -13px;
+    margin-left: -2px;
+    margin-right: -2px;
 }
 
 special-rule icon.fast, special-rule icon.slow {
@@ -84,6 +92,15 @@ special-rule dahan {
   width: 25px;
   margin-left: 0px;
   margin-top: -10px;
+}
+
+special-rule icon.sun,special-rule icon.earth, special-rule icon.plant, special-rule icon.fire, 
+special-rule icon.air, special-rule icon.moon, special-rule icon.animal, special-rule icon.water {
+    width: 35px;
+    height: 35px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: -8px;
 }
 
 special-rule icon.sun {

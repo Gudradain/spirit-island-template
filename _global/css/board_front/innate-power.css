@@ -201,11 +201,17 @@ note icon.town, note icon.blight, note icon.dahan,
 note icon.presence, note icon.wilds, note icon.beasts,
 note icon.disease, note icon.strife, note icon.explorer, 
 note icon.badlands, note icon.fear, note icon.range-plus-1,
+note icon.range-plus-2, note icon.range-plus-3,
 note icon.destroyed-presence{
     width: 24px;
     height: 26px;
     margin-bottom: -6px;
     background-position: bottom;
+}
+
+note icon.presence{
+    margin-bottom: -2px;
+    margin-top: -12px;
 }
 
 .description icon.badlands,
@@ -214,7 +220,8 @@ note icon.destroyed-presence{
 .description icon.wilds,
 .description icon.strife,
 .description icon.blight,
-.description icon.town {
+.description icon.town,
+.description icon.dahan {
     width: 27px;
     height: 27px;
     margin-bottom: -3px;
@@ -229,6 +236,13 @@ note icon.destroyed-presence{
     width: 33px;
 }
 
+.description icon.range-0, .description icon.range-1, .description icon.range-2, 
+.description icon.range-3, .description icon.range-4 {
+    width: 45px;
+    height: 30px;
+    margin-left: 0px;
+	margin-top:-20px;
+}
 
 note icon.city{
     width: 32px;
@@ -333,7 +347,7 @@ threshold icon {
 }
 
 threshold icon.wilds, threshold icon.disease, threshold icon.strife,
-threshold icon.badlands, threshold icon.blight {
+threshold icon.badlands, threshold icon.blight, threshold icon.destroyed-presence {
     width: 45px;
     height: 45px;
     margin-bottom: -9px;

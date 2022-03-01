@@ -115,32 +115,14 @@ icon.range-0, icon.range-1, icon.range-2, icon.range-3, icon.range-4, icon.range
   height: 45px;
   width: 130px;
   margin-top: 0px;
+  display: inline-block;
 }
 
-icon.range-0 {
-  background-image: url('../../images/board/presence_range_0.png');
-  display: block;
-}
-
-icon.range-1 {
-  background-image: url('../../images/board/presence_range_1.png');
-  display: block;
-}
-
-icon.range-2 {
-  background-image: url('../../images/board/presence_range_2.png');
-  display: block;
-}
-
-icon.range-3 {
-  background-image: url('../../images/board/presence_range_3.png');
-  display: block;
-}
-
-icon.range-4 {
-  background-image: url('../../images/board/presence_range_4.png');
-  display: block;
-}
+icon.range-0 { background-image: url('../../images/board/presence_range_0.png'); }
+icon.range-1 { background-image: url('../../images/board/presence_range_1.png'); }
+icon.range-2 { background-image: url('../../images/board/presence_range_2.png'); }
+icon.range-3 { background-image: url('../../images/board/presence_range_3.png'); }
+icon.range-4 { background-image: url('../../images/board/presence_range_4.png'); }
 
 icon.range-any {
   background-image: url('../../images/board/presence_range_any.png');
@@ -252,11 +234,7 @@ icon.fear {
   margin-right: -5px;
 }
 
-icon.range-0 { background-image: url('../../images/board/presence_range_0.png'); }
-icon.range-1 { background-image: url('../../images/board/presence_range_1.png'); }
-icon.range-2 { background-image: url('../../images/board/presence_range_2.png'); }
-icon.range-3 { background-image: url('../../images/board/presence_range_3.png'); }
-icon.range-4 { background-image: url('../../images/board/presence_range_4.png'); }
+
 
 icon.player-spirit{
   background-image: url('../../images/board/player-spirit.png');
