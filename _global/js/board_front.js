@@ -131,7 +131,6 @@ function parseGrowthTags(){
 
     function writeGrowthNode(childElement, nextElement, headerIndex) {
         const cost = childElement.getAttribute("cost");
-
         if (cost) {
             newGrowthCellHTML += `<growth-cost>-${cost}</growth-cost>`;
         }
@@ -701,7 +700,8 @@ function parseGrowthTags(){
 					if(matches){
 						let cardplayOptions = matches[1].split(",");
 						num_card_plays = cardplayOptions[0];
-						newGrowthCellHTML += `${openTag}${repeatOpen}<card-play-num><value>` + num_card_plays + "</value></card-play-num><growth-text> Gain "+num_card_plays+" Card Plays"+`</growth-text>${repeatClose}${closeTag}`
+						plural = num_card_plays > 1 ? "s" : "";
+						newGrowthCellHTML += `${openTag}${repeatOpen}<card-play-num><value>` + num_card_plays + "</value></card-play-num><growth-text> +"+num_card_plays+" Card Play"+plural+" this turn"+`</growth-text>${repeatClose}${closeTag}`
 					}else{
 						newGrowthCellHTML += `${openTag}${repeatOpen}{`+growthItem+`}<growth-text>`+IconName(growthItem)+`</growth-text>${repeatClose}${closeTag}`
 					}
