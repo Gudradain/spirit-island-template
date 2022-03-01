@@ -7,6 +7,15 @@
 - [Cards](_docs/quick-card.md)
 - [Icons](_docs/icon.md)
 
+### Getting Started
+
+1. Download the ZIP file and extract it on your computer.
+2. Open the folder "spirit-island-template-master". You should see folders such as "_docs", "_examples", "_global", and "My Custom Content". 
+3. Open the 'My Custom Content' folder and then open the folder for spirits, adversary, etc.
+4. Open the examples in a browser to view the stylized content. Open the examples in a text editor to modify.
+     **NOTE:** The folder depth is important. You can create new folders but the .html files must be at the same folder depth (ie. 2 deeper than the root folder).
+5. You can copy the examples again from the "_examples" folder.
+
 ### Fonts
 
 This project uses 3 fonts:
@@ -16,16 +25,7 @@ This project uses 3 fonts:
 - Gobold Extra2: You can download this font [here](https://www.dafont.com/fr/gobold.font).
 - DK Snemand (demo): You can download this font [here](https://www.dafont.com/dk-snemand.font).
 
-Note: Due to licensing, I did not include some of the fonts in the project.
-
-### Getting Started
-
-1. Download the ZIP file and extract it on your computer.
-2. Open the folder "spirit-island-template-master". You should see folders such as "_docs", "_examples", "_global", and "My Custom Content". 
-3. Open the 'My Custom Content' folder and then open the folder for spirits, adversary, etc.
-4. Open the examples in a browser to view the stylized content. Open the examples in a text editor to modify.
-     **NOTE:** The folder depth is important. You can create new folders but the .html files must be at the same folder depth (ie. 2 deeper than the root folder).
-5. You can copy the examples again from the "_examples" folder.
+Note: Due to licensing, some of the fonts in the project are not included.
 
 ### Tips for Maintenance
 
