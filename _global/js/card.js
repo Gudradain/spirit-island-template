@@ -160,9 +160,9 @@ function getRulesNew(quickCard)
   ruleLines = rules.innerHTML.split("\n")
   rulesHTML = "<rules>";
   for (let i = 0; i < ruleLines.length; i++) {
-	  if(ruleLines[i]){
+	  if(ruleLines[i] && ruleLines[i].trim().length){
 		rulesHTML += "<div>"+ruleLines[i]+"</div>"
-	  }else if(i>0){
+	  }else if(i>0 && i<ruleLines.length-1){
 		  rulesHTML += "<br>"
 		  // allows user's line breaks to show up on the card
 	  }
