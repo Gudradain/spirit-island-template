@@ -16,6 +16,11 @@
      **NOTE:** The folder depth is important. You can create new folders but the .html files must be at the same folder depth (ie. 2 deeper than the root folder).
 5. You can copy the examples again from the "_examples" folder.
 
+### Tips for Maintenance
+
+1. Cloning the project with GIT instead of downloading it as a ZIP file make it easier to receive updates later on.
+2. Don't modify the files in the folder "_docs", "_examples" and "_global". Your modifications might be lost when you get the latest version of the project. Instead, create new folders for your creations.
+
 ### Fonts
 
 This project uses 3 fonts:
@@ -25,12 +30,7 @@ This project uses 3 fonts:
 - Gobold Extra2: You can download this font [here](https://www.dafont.com/fr/gobold.font).
 - DK Snemand (demo): You can download this font [here](https://www.dafont.com/dk-snemand.font).
 
-Note: Due to licensing, some of the fonts in the project are not included.
-
-### Tips for Maintenance
-
-1. Cloning the project with GIT instead of downloading it as a ZIP file make it easier to receive updates later on.
-2. Don't modify the files in the folder "_docs", "_examples" and "_global". Your modifications might be lost when you get the latest version of the project. Instead, create new folders for your creations.
+Note: Due to licensing, I did not include some of the fonts in the project.
 
 ### License
 
