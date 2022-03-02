@@ -6,6 +6,7 @@ window.onload = function startMain(){
 	for (i = 0; i < cards.length; ++i) {
 		cards[i].innerHTML = replaceIcon(cards[i].innerHTML);
 	}
+
 }
 
 for(var quickCard of quickCards)
@@ -15,6 +16,10 @@ for(var quickCard of quickCards)
   insertAfter(card, quickCard);
   quickCard.remove();
 }
+
+dynamicSizing()
+
+
 
 function constructCard(data)
 {
@@ -53,8 +58,27 @@ function constructCard(data)
   `;
 
   setThreshold(card);
-
   return card;
+}
+
+function dynamicSizing()
+{
+	//Name
+	nameBlocks = document.querySelectorAll("name");
+	for(let i = 0; i < nameBlocks.length; i++){
+		let nameHeight = nameBlocks[i].offsetHeight;
+		let j = 0
+		while (nameHeight>70){
+			var style = window.getComputedStyle(nameBlocks[i], null).getPropertyValue('font-size');
+			var fontSize = parseFloat(style); 
+			nameBlocks[i].style.fontSize = (fontSize - 2) + 'px';
+			nameHeight = nameBlocks[i].offsetHeight
+			
+			// safety valve
+			j += 1
+			if (j>5){ break;}
+		}
+	}
 }
 
 function setThreshold(card)
@@ -76,12 +100,21 @@ function getThresholdElements(threshold)
   var result = '';
 
   var conditions = threshold.getAttribute('condition');
-  for(var condition of conditions.split(','))
+  var condition = conditions.split(',');
+  for (let i = 0; i < condition.length; i++){
+    var number = condition[i].split('-')[0];
+    var element = condition[i].split('-')[1];
+	result += `${number}<icon class="${element}"></icon>`;
+	if (i < condition.length-1){
+		result += "<div style='width:10px; height:1px; display:inline-block'></div>"
+	}
+  }
+  /* for(var condition of conditions.split(','))
   {
     var number = condition.split('-')[0];
     var element = condition.split('-')[1];
     result += `${number}<icon class="${element}"></icon>`;
-  }
+  } */
 
   return result;
 }
@@ -89,7 +122,6 @@ function getThresholdElements(threshold)
 function getElementHtml(elements)
 {
   var result = '';
-
   for(var element of elements)
   {
     result += `<element class="${element}"></element>`;
@@ -111,14 +143,49 @@ function getData(quickCard)
     targetTitle: quickCard.getAttribute("target-title") || 'TARGET LAND',
     artistName: quickCard.getAttribute("artist-name"),
     printFriendly: quickCard.getAttribute('print-friendly') === 'yes',
-    innerHTML: getRulesHTML(quickCard.innerHTML)
+    innerHTML: getRulesNew(quickCard)
   };
+
 }
 
-function getRulesHTML(html)
+/* function getRulesHTML(html)
 {
   var result = replaceIcon(html);
   return result;
+} */
+
+function getRulesNew(quickCard)
+{
+  var rules = quickCard.querySelectorAll('rules')[0]
+  ruleLines = rules.innerHTML.split("\n")
+  rulesHTML = "<rules>";
+  for (let i = 0; i < ruleLines.length; i++) {
+	  if(ruleLines[i]){
+		rulesHTML += "<div>"+ruleLines[i]+"</div>"
+	  }else if(i>0){
+		  rulesHTML += "<br>"
+		  // allows user's line breaks to show up on the card
+	  }
+  }
+  rulesHTML += "</rules>"
+
+  var threshold = quickCard.querySelectorAll('threshold')[0]
+  console.log("threshold? ="+threshold)
+  console.log(threshold)
+  console.log(quickCard.querySelectorAll('threshold'))
+  thresholdInner = ""
+  if(threshold){
+	  thresholdLines = threshold.innerHTML.split("\n")
+	  console.log(thresholdLines)
+	  for (let i = 0; i < thresholdLines.length; i++) {
+		  if(thresholdLines[i]){
+			thresholdInner += "<div>"+thresholdLines[i]+"</div>"
+		  }
+	  }
+	  threshold.innerHTML = thresholdInner
+	  rulesHTML += threshold.outerHTML
+  }
+  return rulesHTML
 }
 
 function getRangeModel(rangeString)

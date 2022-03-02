@@ -104,7 +104,7 @@ name{
   position:absolute;
   left:135px;
   top:28px;
-  height:62px;
+  height:auto;
   width:310px;
 
   font-size:34px;
@@ -311,11 +311,12 @@ threshold-condition{
 }
 
 threshold-condition icon{
-  width:50px !important;
-  height:50px !important;
-  margin-bottom:-11px;
-  margin-left:-9px;
-  margin-right:-8px;
+    margin-bottom: -2px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: -15px;
+    width: 32px;
+    height: 32px;
 }
 
 artist-name{
@@ -425,6 +426,31 @@ rules icon.sand-wetland
   margin-bottom:-8px;
   margin-left:-4px;
   margin-right:-4px;
+}
+
+threshold icon.sun {background-image: url(../images/board/element_simple_sun.png);}
+threshold icon.earth {background-image: url(../images/board/element_simple_earth.png);}
+threshold icon.plant {background-image: url(../images/board/element_simple_plant.png);}
+threshold icon.fire {background-image: url(../images/board/element_simple_fire.png);}
+threshold icon.air {background-image: url(../images/board/element_simple_air.png);}
+threshold icon.moon {background-image: url(../images/board/element_simple_moon.png);}
+threshold icon.animal {background-image: url(../images/board/element_simple_animal.png);}
+threshold icon.water {background-image: url(../images/board/element_simple_water.png);}
+
+threshold icon.sun,
+threshold icon.moon,
+threshold icon.fire,
+threshold icon.air,
+threshold icon.water,
+threshold icon.earth,
+threshold icon.plant,
+threshold icon.animal,
+threshold icon.any-element{
+  width: 32px;
+  height: 32px;
+  margin-bottom: -3px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 @media print{
