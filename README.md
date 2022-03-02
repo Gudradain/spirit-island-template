@@ -3,7 +3,7 @@
 ### Documentation
 
 - [Adversary](_docs/adversary.md)
-- [Board](_docs/board_front.md)
+- [Spirit Board](_docs/board_front.md)
 - [Cards](_docs/quick-card.md)
 - [Icons](_docs/icon.md)
 
