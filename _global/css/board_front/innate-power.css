@@ -200,6 +200,10 @@ note icon.destroyed-presence{
     background-position: bottom;
 }
 
+note icon.beasts{
+    margin-bottom: -4px;
+}
+
 note icon.presence{
     margin-bottom: -2px;
     margin-top: -12px;
@@ -355,7 +359,8 @@ threshold icon {
 }
 
 threshold icon.wilds, threshold icon.disease, threshold icon.strife,
-threshold icon.badlands, threshold icon.blight, threshold icon.destroyed-presence {
+threshold icon.badlands, threshold icon.blight, threshold icon.destroyed-presence,
+threshold icon.sacred-site {
     width: 45px;
     height: 45px;
     margin-bottom: -9px;
@@ -364,17 +369,10 @@ threshold icon.badlands, threshold icon.blight, threshold icon.destroyed-presenc
 }
 
 threshold icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
-
 threshold icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
-
 threshold icon.plant {background-image: url(../../images/board/element_simple_plant.png);}
-
 threshold icon.fire {background-image: url(../../images/board/element_simple_fire.png);}
-
 threshold icon.air {background-image: url(../../images/board/element_simple_air.png);}
-
 threshold icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
-
 threshold icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
-
 threshold icon.water {background-image: url(../../images/board/element_simple_water.png);}

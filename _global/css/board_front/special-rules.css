@@ -63,8 +63,14 @@ special-rule icon.gain-range-1, special-rule icon.gain-range-2, special-rule ico
 }
 
 special-rule icon.fast, special-rule icon.slow {
-    width:35px;
+    height: 32px;
+    width: 40px;
     margin-bottom: -7px;
+}
+
+special-rule icon.slow {
+	height:32px;
+	width: 40px;
 }
 
 special-rule icon.disease{
@@ -73,7 +79,10 @@ special-rule icon.disease{
 }
 
 special-rule icon.dahan {
-	transform: translateY(2px) translateX(0px);
+    margin-left: -1px;
+    margin-right: -2px;
+    margin-top: -10px;
+    margin-bottom: -5px;
 }
 
 special-rule icon.sacred-site{
@@ -94,6 +103,21 @@ special-rule dahan {
   margin-top: -10px;
 }
 
+special-rule em icon {
+  margin-left: 1px;
+  margin-right: -2px;
+}
+
+special-rule em icon.presence {
+  margin-left: 0px;
+  margin-right: -4px;
+}
+
+special-rule em icon.dahan {
+  margin-left: 1px;
+  margin-right: -4px;
+}
+
 special-rule icon.sun,special-rule icon.earth, special-rule icon.plant, special-rule icon.fire, 
 special-rule icon.air, special-rule icon.moon, special-rule icon.animal, special-rule icon.water {
     width: 35px;
@@ -103,34 +127,12 @@ special-rule icon.air, special-rule icon.moon, special-rule icon.animal, special
     margin-bottom: -8px;
 }
 
-special-rule icon.sun {
-	background-image: url(../../images/board/element_simple_sun.png);
-}
-
-special-rule icon.earth {
-	background-image: url(../../images/board/element_simple_earth.png);	
-}
-
-special-rule icon.plant {
-	background-image: url(../../images/board/element_simple_plant.png);	
-}
-
-special-rule icon.fire {
-	background-image: url(../../images/board/element_simple_fire.png);	
-}
-
-special-rule icon.air {
-	background-image: url(../../images/board/element_simple_air.png);	
-}
-
-special-rule icon.moon {
-	background-image: url(../../images/board/element_simple_moon.png);	
-}
-
-special-rule icon.animal {
-	background-image: url(../../images/board/element_simple_animal.png);	
-}
-
-special-rule icon.water {
-	background-image: url(../../images/board/element_simple_water.png);	
+special-rule icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
+special-rule icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
+special-rule icon.plant {background-image: url(../../images/board/element_simple_plant.png);}
+special-rule icon.fire {background-image: url(../../images/board/element_simple_fire.png);}
+special-rule icon.air {	background-image: url(../../images/board/element_simple_air.png);}
+special-rule icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
+special-rule icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
+special-rule icon.water {background-image: url(../../images/board/element_simple_water.png);
 }
