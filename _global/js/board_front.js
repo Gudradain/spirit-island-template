@@ -1235,26 +1235,30 @@ function dynamicCellWidth() {
     thresholds = document.getElementsByTagName("threshold");
     thresholdsCount = thresholds.length;
     ICONWIDTH = 60;
-
+	let dynamicThresholdWidth = []
+	let outerThresholdWidth = []
     for (i = 0; i < thresholdsCount; i++){
         icon = thresholds[i].getElementsByTagName("icon");
 
         iconCount = icon.length;
 
-        dynamicThresholdWidth = 
-            (iconCount * ICONWIDTH) + (iconCount * 12);
-        formattedWidth = dynamicThresholdWidth + "px";
-        thresholds[i].style.width = formattedWidth;
-        
+        dynamicThresholdWidth = (iconCount * ICONWIDTH) + (iconCount * 12);
+        thresholds[i].style.width = dynamicThresholdWidth + "px";
+		outerThresholdWidth[i] = dynamicThresholdWidth + parseFloat(window.getComputedStyle(thresholds[i]).getPropertyValue('margin-right').replace(/px/, ""))
     }
     var description = document.getElementsByClassName("description");
     for(i = 0; i < description.length; i++){
+        // Scale the text width to the threshold size...
+		description[i].style.paddingLeft = outerThresholdWidth[i]+"px";
         
-        var textHeight = description[i].clientHeight;
+		var textHeight = description[i].clientHeight;
 
-        //Get the icon width and add it to length
         if (textHeight < 40){
             description[i].id = "single-line";
+			// Align-middle the text if its a single line
+		}else if (textHeight > 75){
+			description[i].style.paddingLeft = "0px";
+			// Spill over below the threshold if its greater than three lines
         }
     }
     
