@@ -4,7 +4,7 @@ The fastest way to get started is to start from the examples in the file "_examp
 
 ### Shorthand Syntax for Icons
 
-The card template uses the shorthand syntax for icons. For example, you can use {dahan} for the dahan symbol. See the full list [here](_docs/board_front.md#general-icons).
+The card template uses the shorthand syntax for icons. For example, you can use {dahan} for the dahan symbol. See the full list [here](board_front.md#general-icons).
 
 ### Custom Attributes
 
