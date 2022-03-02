@@ -59,7 +59,7 @@ spirit-name {
   height: 0px;
   width: 666.25px;
   font-size:40px;
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
   text-transform: uppercase;
   color: white;
   text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
@@ -67,6 +67,35 @@ spirit-name {
   text-align: left;
   z-index: 1;
   white-space: normal;
+}
+
+artist-name {
+    position: absolute;
+    left: 22px;
+    top: 1163px;
+    height: 0px;
+    width: 666.25px;
+    font-size: 10px;
+    font-family: 'Lato';
+    color: #d1c5a6;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+    text-align: left;
+    z-index: 1;
+	display: none;
+    white-space: normal;
+}
+
+custom-meeple {
+    background-image: url(../../images/customIcons/Meeple.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    display: block;
+    top: 1135px;
+    left: 1725px;
+    height: 20px;
+    width: 20px;
+    z-index: 4;
 }
 
 .spirit-border {
@@ -92,7 +121,7 @@ spirit-name {
 }
 
 #single-line {
-  padding-top: 9px;
+  padding-top: 12px;
   padding-bottom: 4px;
 }
 
@@ -130,7 +159,8 @@ none{
 
 section-title {
   display: block;
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
+  text-transform: uppercase;
   font-size: 25pt;
   padding-top: 10px;
 }

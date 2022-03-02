@@ -9,7 +9,7 @@
 
 ### Getting Started
 
-1. Download the ZIP file (On GitHub, Code -> Download Zip) and extract it on your computer.
+1. Download the ZIP file (on GitHub.com, Code > Download ZIP) and extract it on your computer.
 2. Open the folder "spirit-island-template-master". You should see folders such as "_docs", "_examples", "_global", and "My Custom Content". 
 3. Open the 'My Custom Content' folder and then open the folder for spirits, adversary, etc.
 4. Open the examples in a browser to view the stylized content. Open the examples in a text editor to modify.

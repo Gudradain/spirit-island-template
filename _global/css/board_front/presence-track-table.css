@@ -41,7 +41,7 @@ presence-node {
 
 subtext {
   font-family: 'Lato SemiBold';
-  font-size: 16pt;
+  font-size: 15pt;
   font-style: italic;
   text-align: center;
   display: table-row;
@@ -76,7 +76,7 @@ presence-node icon.reclaim-one {
   background-image: url('../../images/board/Reclaimone-white.png');
   display: block;
   height: 90px;
-  width:90px;	
+  width:75px;
 }
 
 presence-node card-icon {
@@ -106,9 +106,9 @@ card-icon.small {
 .move-presence-2.small,
 .move-presence-3.small,
 .move-presence-4.small {
-    margin-left: -8px;
+    margin-left: 0px;
     margin-right: 0px;
-    margin-top: -6px;
+    margin-top: 0px;
     width: 75px;
     z-index: 2;
 }
@@ -129,6 +129,43 @@ energy-icon.small {
   width: 80px;
   margin-left: -10px;
   margin-top: -20px;
+}
+
+presence-node icon-shadow {
+  background-image: url('../../images/customIcons/Presence Track Back.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 130px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+icon-shadow.small {
+    height: 94px;
+    width: 94px;
+    margin-left: -20px;
+    margin-top: -16px;
+    z-index: 0;
+    position: absolute;
+}
+
+presence-node icon.gain-range-1,
+presence-node icon.gain-range-2,
+presence-node icon.gain-range-3 {
+  margin-bottom:2px;
+}
+
+.gain-range-1.small,
+.gain-range-2.small,
+.gain-range-3.small,
+.gain-range-4.small {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: -7px;
+    width: 70px;
+    z-index: 2;
 }
 
 presence-node value {
@@ -166,12 +203,18 @@ presence-node icon.gather>icon {
 
 presence-node icon.gain-card-play>icon {
     position: relative;
-    left: -25px;
-    top: -27px;
-    height: 45px;
-    width: 45px;
+    left: -39px;
+    top: -28px;
+    height: 40px;
+    width: 60px;
 }
 
 icon-multi {
     position: absolute;
+}
+
+.custom-presence-track-icon {
+    width: 50px;
+    height: 70px;
+	margin-top: 0px;
 }

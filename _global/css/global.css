@@ -2,6 +2,12 @@
   font-family: 'Lato SemiBold';
   src: url(../fonts/lato/Lato-Semibold.ttf);
 }
+
+@font-face{
+  font-family: 'Mouse Memoirs';
+  src: url(../fonts/Mouse_Memoirs/MouseMemoirs-Regular.ttf);
+}
+
 @font-face{
   font-family: 'Lato SemiBold';
   src: url(../fonts/lato/Lato-SemiboldItalic.ttf);
@@ -39,8 +45,8 @@ icon.spirit{background-image: url('../images/50px-Spiriticon.png'); }
 
 icon.badland{background-image: url('../images/25px-Badlandsicon.png'); }
 icon.badlands{background-image: url('../images/25px-Badlandsicon.png'); }
-icon.beast{background-image: url('../images/25px-Beasticon.png'); }
-icon.beasts{background-image: url('../images/25px-Beasticon.png'); }
+icon.beast{background-image: url('../images/board/beast.png'); }
+icon.beasts{background-image: url('../images/board/beast.png'); }
 icon.disease{background-image: url('../images/25px-Diseaseicon.png'); }
 icon.strife{background-image: url('../images/25px-Strifeicon.png'); }
 icon.wild{background-image: url('../images/25px-Wildicon.png'); }
@@ -49,7 +55,7 @@ icon.wilds{background-image: url('../images/25px-Wildicon.png'); }
 icon.fast{background-image: url('../images/50px-Fasticon.png');}
 icon.slow{background-image: url('../images/50px-Slowicon.png');}
 icon.blight{background-image: url('../images/25px-Blighticon.png');}
-icon.dahan{background-image: url('../images/25px-Dahanicon.png');}
+icon.dahan{background-image: url('../images/board/dahan.png');}
 icon.fear{background-image: url('../images/25px-Fearicon.png');}
 icon.escalation {background-image: url('../images/10px-Stage_II_Escalation.png'); margin-bottom:0px;}
 

@@ -24,7 +24,8 @@ growth sub-section-title {
   position: absolute;
 
   display: flex;
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
+  text-transform: uppercase;
   font-size: 18pt;
   font-weight: bold;
 }
@@ -34,7 +35,7 @@ growth .tint{
     height: 110%;
     opacity: 0.2;
     position: absolute;
-    top: -20%;
+    top: -12%;
     left: 10%;
 }
 
@@ -59,7 +60,7 @@ growth sub-section-line {
 
 growth-table {
   display: inline-flex;
-  width: 1081px;
+  width: 1100px;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -71,6 +72,7 @@ growth-table {
 
 sub-section-title+growth-table{
   margin-top:60px ;
+  margin-top: 45px;
 }
 
 growth-border {
@@ -81,8 +83,8 @@ growth-border {
   width: 7px;
   height: 125px;
   margin-top: -30px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 growth-border[double] {
@@ -103,6 +105,27 @@ growth-cell-double {
   display: flex;
   align-items: center;
   flex-direction: row;
+}
+
+repeat-growth {
+    background-image: url('../../images/board/NewIcons/Growth Multiply Blank.png');
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: -30px;
+    left: 5px;
+	background-repeat: no-repeat;
+    background-size: contain;
+}
+
+repeat-growth value{
+  font-family: 'Gobold Extra2';
+    font-size: 18pt;
+    display: inline-block;
+    margin-top: 4px;
+    margin-left: 10px;
+    color: #52301e;
+  
 }
 
 growth-cell icon.discard-cards {
@@ -171,7 +194,7 @@ fear-per value{
 }
 
 gain-per-fear ring-icon{
-    background-image: url(../../images/board/CardPlayRing.png);
+    background-image: url('../../images/board/CardPlayRing.png');
     background-repeat: no-repeat;
     background-size: contain;
     display: inline-block;
@@ -255,11 +278,16 @@ presence-req icon.presence, presence-req icon.wilds, presence-req icon.beasts,
 presence-req icon.disease, presence-req icon.strife, presence-req icon.explorer, 
 presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus-1{
 	display: inline-block;
-	height: 40px;
-	width: 40px;
+	height: 37px;
+	width: 37px;
     margin-left: auto;
     margin-right: auto;
 	margin-top: 0px;
+}
+
+presence-req icon.town {
+	height: 37px;
+	width: 27px;
 }
 
 presence-req icon.presence {
@@ -269,7 +297,8 @@ presence-req icon.presence {
 }
 
 presence-req icon.blight {
-	height: 35px;
+    width: 32px;
+    background-position: bottom;
 }
 
 presence-req icon.invaders {
@@ -302,6 +331,10 @@ growth-cell icon.reclaim-all {
   margin-bottom: 7px;
 }
 
+growth-cell icon.reclaim-custom {
+  margin-bottom: 7px;
+}
+
 growth-cell icon.isolate {
   width:70px;
   margin-bottom: 7px;
@@ -315,6 +348,14 @@ custom-icon {
     width: auto;
     height: 122px;
     margin-bottom: 0px;
+}
+
+custom-icon .token {
+    width: 40px;
+    height: 35px;
+    margin-bottom: -3px;
+    margin-top: 31px;
+    margin-left: 0px;
 }
 
 custom-icon icon.isolate{
@@ -369,6 +410,13 @@ growth-cell icon.gain-power-card {
 
 growth-cell icon.forget-power-card {
   margin-bottom: 7px;
+}
+
+growth-cell icon.energy-per-play {
+    margin-bottom: 0px;
+    margin-top: -20px;
+    width: 100px;
+    height: 110px;
 }
 
 growth-cell icon.gather-arrow {
@@ -483,21 +531,7 @@ growth-cost::after {
 
 }
 
-.description icon.dahan {
-  height: 25px;
-  width: 25px;
-  margin-bottom: -4px;
-  margin-top: 0px;
-  margin-left: -3px;
-  margin-right: -3px;
-}
 
-.description icon.blight {
-  margin-left: -5px;
-  margin-right: -5px;
-  margin-top: 0px;
-  margin-bottom: -4px;
-}
 
 presence-special-req {
   background-image: url('../../images/board/75px_presence.png');
@@ -535,6 +569,29 @@ add-presence-req {
 }
 
 
+
+growth-damage {
+    background-image: url('../../images/board/NewIcons/Damage Blank.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    font-size: 20pt;
+    font-weight: bold;
+    display: block;
+    margin-top: -11px;
+    width: auto;
+    height: 80px;
+    margin-bottom: 1px;
+    margin-right: 0px;
+}
+
+growth-damage value {
+  font-family: 'Gobold Extra2';
+    font-size: 22pt;
+    display: inline-block;
+    margin-top: 36px;
+    margin-left: 0px;
+}
 
 gain-per {
     background-image: url('../../images/board/AddEnergyBlank.png');

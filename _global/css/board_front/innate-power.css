@@ -50,56 +50,70 @@ innate-power-title {
 info-container {
   width: 463px;
   background-color: rgba(255,255,255,.5);
-  border: 3px solid black;
   position: relative;
   display:block;
+  box-sizing: content-box;
 }
 
 info-title {
   height: 20px;
-  width: 100%;
   display: flex;
   align-items: center;
   color: white;
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
   text-transform: uppercase;
   font-size: 14pt;
   letter-spacing: 1.25pt;
   text-align: center;
   white-space: normal;
   background-color: #7f5623;
+  box-sizing: content-box;
+      border-top: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
 }
 
 innate-info {
-  left: 108px;
-  top: 358px;
-  width: 463.25px;
+  width: 463px;
   display: flex;
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
   text-transform: uppercase;
+    box-sizing: border-box;
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
 }
 
-info-title-speed, innate-info-speed {
+info-title-speed {
   width: 143px;
   padding-bottom: 4px;
 }
 
-info-title-range, innate-info-range {
-  width: 160px;
+innate-info-speed {
+  width: 141px;
+  padding-bottom: 4px;
+  border-right: 2px solid #7f5623;
+}
+
+info-title-range{
+  width: 155px;
   padding-bottom: 4px;
 }
 
+innate-info-range {
+  width: 153px;
+  padding-bottom: 4px;
+  border-right: 2px solid #7f5623;
+}
+
 info-title-target, innate-info-target {
-  width: 160px;
+  width: 165px;
   padding-bottom: 4px;
 }
 
 innate-info-speed, innate-info-range, innate-info-target {
-  height: 50px;
-}
-
-innate-info-speed, innate-info-range{
-  border-right: 2px solid #7f5623;
+  height: 40px;
+  box-sizing: content-box;
 }
 
 innate-info-range, innate-info-target {
@@ -164,9 +178,10 @@ note {
   height: auto;
   width: 487px;
   font-family: 'JosefinSans-Regular';
-  font-size: 15pt;
+  font-size: 17pt;
   margin-bottom:4px;
   margin-top: -4px;
+  line-height: 1;
 }
 
 note icon{
@@ -177,11 +192,77 @@ note icon.town, note icon.blight, note icon.dahan,
 note icon.presence, note icon.wilds, note icon.beasts,
 note icon.disease, note icon.strife, note icon.explorer, 
 note icon.badlands, note icon.fear, note icon.range-plus-1,
+note icon.range-plus-2, note icon.range-plus-3,
 note icon.destroyed-presence{
-    width:24px;
-	height: 20px;
-	margin-bottom: -4px;
-	background-position: bottom;
+    width: 24px;
+    height: 26px;
+    margin-bottom: -6px;
+    background-position: bottom;
+}
+
+note icon.beasts{
+    margin-bottom: -4px;
+}
+
+note icon.presence{
+    margin-bottom: -2px;
+    margin-top: -12px;
+}
+
+.description icon.city {
+    width: 35px;
+    height: 35px;
+    margin-bottom: -10px;
+    margin-left: -2px;
+    margin-right: -2px;
+    margin-top: -10px;
+}
+
+.description icon.badlands,
+.description icon.beasts,
+.description icon.disease,
+.description icon.wilds,
+.description icon.strife,
+.description icon.blight,
+.description icon.town,
+.description icon.dahan {
+    width: 27px;
+    height: 27px;
+    margin-bottom: -5px;
+    margin-top: -10px;
+    margin-left: -2px;
+    margin-right: 0px;
+    background-position: bottom;
+}
+
+.description icon.badlands,
+.description icon.wilds {
+    width: 33px;
+}
+
+.description icon.range-0, .description icon.range-1, .description icon.range-2, 
+.description icon.range-3, .description icon.range-4 {
+    width: 45px;
+    height: 30px;
+    margin-left: 0px;
+	margin-top:-20px;
+}
+
+.description icon.gain-range-1, .description icon.gain-range-2, .description icon.gain-range-3 {
+    width: 45px;
+    height: 40px;
+    margin-left: 0px;
+    margin-top: -20px;
+    margin-bottom: -9px;
+}
+
+note icon.city{
+    width: 32px;
+    height: 35px;
+    margin-bottom: -11px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: -10px;
 }
 
 note icon.destroyed-presence{
@@ -195,7 +276,7 @@ level {
   width: 487px;
   font-family: 'JosefinSans-Regular';
   font-size: 17pt;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   letter-spacing: -0.5px;
 }
 
@@ -204,6 +285,7 @@ threshold {
   font-size: 24pt;
   color: #431E0AFF;
   float: left;
+  margin-right: 12px;
 }
 
 innate-info icon.range-0, innate-info icon.range-1, innate-info icon.range-2, 
@@ -277,7 +359,8 @@ threshold icon {
 }
 
 threshold icon.wilds, threshold icon.disease, threshold icon.strife,
-threshold icon.badlands, threshold icon.blight {
+threshold icon.badlands, threshold icon.blight, threshold icon.destroyed-presence,
+threshold icon.sacred-site {
     width: 45px;
     height: 45px;
     margin-bottom: -9px;
@@ -286,17 +369,10 @@ threshold icon.badlands, threshold icon.blight {
 }
 
 threshold icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
-
 threshold icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
-
 threshold icon.plant {background-image: url(../../images/board/element_simple_plant.png);}
-
 threshold icon.fire {background-image: url(../../images/board/element_simple_fire.png);}
-
 threshold icon.air {background-image: url(../../images/board/element_simple_air.png);}
-
 threshold icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
-
 threshold icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
-
 threshold icon.water {background-image: url(../../images/board/element_simple_water.png);}
