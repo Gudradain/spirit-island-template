@@ -3,7 +3,7 @@
 ### Documentation
 
 - [Adversary](_docs/adversary.md)
-- [Board](_docs/board_front.md)
+- [Spirit Board](_docs/board_front.md)
 - [Cards](_docs/quick-card.md)
 - [Icons](_docs/icon.md)
 
@@ -30,7 +30,7 @@ This project uses 3 fonts:
 - Gobold Extra2: You can download this font [here](https://www.dafont.com/fr/gobold.font).
 - DK Snemand (demo): You can download this font [here](https://www.dafont.com/dk-snemand.font).
 
-Note: Due to licensing, I did not include some of the fonts in the project.
+Note: Due to licensing, some of the fonts are not included in the project.
 
 ### License
 

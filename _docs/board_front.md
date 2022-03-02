@@ -1,4 +1,4 @@
-# Board
+# Spirit Board
 
 The fastest way to get started is to start from the example template in the folder boards/example. Return here for detailed explanations of options for different parts of the board.
 
