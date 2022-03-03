@@ -8,20 +8,17 @@ window.onload = function startMain(){
     }
     parseInnatePowers();
     const board = document.querySelectorAll('board')[0];
-    
     var html = board.innerHTML;
     board.innerHTML = replaceIcon(html);
 	
 	setTimeout(() => {dynamicCellWidth()}, 200);
-    
-    
 	dynamicSpecialRuleHeight(board)
-    
     // I moved this to the end so that the image could rescale to the special box
     addImages(board)
 
 
 }
+
 function dynamicSpecialRuleHeight(board){
     const specialRules = board.querySelectorAll('special-rules-container')[0]
     let height = specialRules.getAttribute('height')
@@ -1230,8 +1227,25 @@ function dynamicCellWidth() {
 
         
     }
-
-
+	// Innate Power Notes (scale font size)
+	//   
+	noteBlocks = document.getElementsByTagName("note");
+	for(let i = 0; i < noteBlocks.length; i++){
+		let noteHeight = noteBlocks[i].offsetHeight;
+		let j = 0
+		while (noteHeight>92){
+			var style = window.getComputedStyle(noteBlocks[i], null).getPropertyValue('font-size');
+			var fontSize = parseFloat(style); 
+			noteBlocks[i].style.fontSize = (fontSize - 1) + 'px';
+			noteHeight = noteBlocks[i].offsetHeight
+			
+			// safety valve
+			j += 1
+			if (j>5){ break;}
+		}
+	}
+	
+	// Innate Power Thresholds
     thresholds = document.getElementsByTagName("threshold");
     thresholdsCount = thresholds.length;
     ICONWIDTH = 60;
@@ -1246,6 +1260,8 @@ function dynamicCellWidth() {
         thresholds[i].style.width = dynamicThresholdWidth + "px";
 		outerThresholdWidth[i] = dynamicThresholdWidth + parseFloat(window.getComputedStyle(thresholds[i]).getPropertyValue('margin-right').replace(/px/, ""))
     }
+	
+	// Innate Power Descriptions
     var description = document.getElementsByClassName("description");
     for(i = 0; i < description.length; i++){
         // Scale the text width to the threshold size...
