@@ -19,7 +19,7 @@
       <section-title>SPECIAL RULES</section-title>
       <special-rules-subtitle>Mountain Home</special-rules-subtitle>
       <special-rule>
-        For each {fire} showing on your {presence} tracks, do 1 Damage.
+        For each {any} showing on your {presence} tracks, do 1 Damage.
       </special-rule>
       <special-rules-subtitle>Collapse in a blast of lava and steam</special-rules-subtitle>
       <special-rule>
@@ -43,18 +43,16 @@
 		-->
 		<growth title="Growth">
 		  <sub-growth title="pick one of:" bordered>
-			<growth-group values="isolate"></growth-group>
+			<growth-group tint="green" values="reclaim-all"></growth-group>
 		  </sub-growth>
 		  <sub-growth title="and one of:">
-			<growth-group values="isolate(2);gather(presence,ocean,each)"></growth-group>
-			<growth-group values="custom([custom]Drown 1 {town} in a Coastal Land,town)"></growth-group>
-			<growth-group values="gain-card-play(3)^2;damage(2,2);custom(Your custom ability text.)^2"></growth-group>
+			<growth-group values="add-token(1,wilds,beasts);add-token(1,wilds,beasts,or);add-token(1,wilds,beasts,and);add-token(1,wilds,beasts,disease,and);add-token(1,wilds,beasts,disease,or)"></growth-group>
 		  </sub-growth>
 		</growth>
 
 		<presence-tracks>
-		  <energy-track values="2,3,gain-card-play(minor),4,gain-card-play(major),6,gain-card-play(isolate)"></energy-track>
-		  <card-play-track values="1,earth,earth,earth+reclaim-one,earth+any,2+earth"></card-play-track>
+		  <energy-track banner="example2.png" banner-v-scale="50%" values="1,2+moon,earth,star,earth+star,fire+fire,fire+water+plant,3+moon+sun"></energy-track>
+		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,star,2+sun,any,3+any,4+water+reclaim-one"></card-play-track>
 		</presence-tracks>
 
 		<!-- INNATE POWERS  

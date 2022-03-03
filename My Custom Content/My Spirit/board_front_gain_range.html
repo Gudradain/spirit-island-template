@@ -14,10 +14,7 @@
     <spirit-name>
       River Surges in Sunlight
     </spirit-name>
-	<artist-name>
-	Artist Credit: 
-	</artist-name>
-	
+
     <special-rules-container>
       <section-title>SPECIAL RULES</section-title>
       <special-rules-subtitle>Rivers Domain</special-rules-subtitle>
@@ -29,13 +26,13 @@
     <right>
 
       <growth title="Growth (Pick One)">
-        <growth-group values="add-presence(3,no-blight,wilds,or);add-presence(3,wilds,no-blight,or);add-presence(1,no-presence);add-presence(3,wetland,no-blight,wilds,and);add-presence(3,wilds,no-blight,and)"></growth-group>
-        <growth-group values="add-presence(2,town,city,disease,or);add-presence(1,token,strife,and)"></growth-group>
+        <growth-group values="gain-range(1);gain-range(2);gain-range(1,innate);gain-range(1,everything);add-presence(3,wilds,no-blight,and)"></growth-group>
+        <growth-group values="add-presence(2,town,city,disease,or)"></growth-group>
     </growth>
 
     <presence-tracks>
-      <energy-track values="1,2,2,3,3,4,5"></energy-track>
-      <card-play-track values="1,2,push(city),3,custom(Destroy all Invaders in one of your lands),4,gain-card-pay-2"></card-play-track>
+      <energy-track values="1,2,2,+1+gain-range(1;everything),3,gain-range(3),5"></energy-track>
+      <card-play-track values="1,2,move-presence(1)+air,3,gain-range(1;something)+air,gain-range(2;everything),gain-card-pay-2"></card-play-track>
     </presence-tracks>
 
     <innate-powers>

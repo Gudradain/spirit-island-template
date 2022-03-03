@@ -14,7 +14,10 @@
     <spirit-name>
       River Surges in Sunlight
     </spirit-name>
-
+	<artist-name>
+	Artist Credit: 
+	</artist-name>
+	
     <special-rules-container>
       <section-title>SPECIAL RULES</section-title>
       <special-rules-subtitle>Mountain Home</special-rules-subtitle>
@@ -43,18 +46,18 @@
 		-->
 		<growth title="Growth">
 		  <sub-growth title="pick one of:" bordered>
-			<growth-group values="isolate"></growth-group>
+			<growth-group tint="green" values="reclaim-all"></growth-group>
+			<growth-group values="reclaim(your Unique Powers);reclaim;reclaim-one;reclaim(one)"></growth-group>
+			<growth-group values="reclaim(custom,your Unique Powers)"></growth-group>
 		  </sub-growth>
 		  <sub-growth title="and one of:">
-			<growth-group values="isolate(2);gather(presence,ocean,each)"></growth-group>
-			<growth-group values="custom([custom]Drown 1 {town} in a Coastal Land,town)"></growth-group>
-			<growth-group values="gain-card-play(3)^2;damage(2,2);custom(Your custom ability text.)^2"></growth-group>
+			<growth-group values="gain-energy(text,k)"></growth-group>
 		  </sub-growth>
 		</growth>
 
 		<presence-tracks>
-		  <energy-track values="2,3,gain-card-play(minor),4,gain-card-play(major),6,gain-card-play(isolate)"></energy-track>
-		  <card-play-track values="1,earth,earth,earth+reclaim-one,earth+any,2+earth"></card-play-track>
+		  <energy-track banner="example2.png" banner-v-scale="50%" values="1,2+moon,move-presence(1),3,move-presence(2)+air,earth+air+fire,4+air+move-presence(3),custom(Your custom effect)"></energy-track>
+		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,gain-card-pay-2,2,custom(Your custom effect),3,custom(Your custom effect and icon;city)"></card-play-track>
 		</presence-tracks>
 
 		<!-- INNATE POWERS  

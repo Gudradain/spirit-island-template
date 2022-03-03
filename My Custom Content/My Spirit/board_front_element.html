@@ -52,8 +52,8 @@
 		</growth>
 
 		<presence-tracks>
-		  <energy-track banner="example2.png" banner-v-scale="50%" values="1,2+moon,earth,3,forget-power-card,gain-card-pay-2,isolate"></energy-track>
-		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,star,earth+earth,2+earth+fire,2+water+reclaim-one"></card-play-track>
+		  <energy-track banner="example2.png" banner-v-scale="50%" values="1,2+moon,earth,star,earth+star,fire+fire,fire+water+plant,3+moon+sun"></energy-track>
+		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,star,2+sun,any,3+any,4+water+reclaim-one"></card-play-track>
 		</presence-tracks>
 
 		<!-- INNATE POWERS  
@@ -89,12 +89,12 @@
           1 Damage per {fire,2} you have.
         </level>
         <level threshold="3-plant,2-blight">
-          Instead, 1 Damage per {fire} you have.
+          Instead, 1 Damage per {fire} you have {range-4}. Instead, 1 Damage per {fire} you have {range-4}.
         </level>
         <level threshold="4-fire,2-disease,2-wilds">
           You may split this Power's damage among any number of lands with {blight} where you have {presence}.
         </level>
-        <level threshold="7-fire,3-strife,1-badlands">
+        <level threshold="7-fire,3-strife,1-sacred-site">
           In {blight} where {presence} you {dahan} have {wilds} and {strife} then {badlands} and {disease}.
         </level>
       </quick-innate-power>
