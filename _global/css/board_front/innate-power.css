@@ -112,7 +112,7 @@ info-title-target, innate-info-target {
 }
 
 innate-info-speed, innate-info-range, innate-info-target {
-  height: 40px;
+  height: 44px;
   box-sizing: content-box;
 }
 
@@ -209,6 +209,10 @@ note icon.presence{
     margin-top: -12px;
 }
 
+div.description {
+	margin-bottom:-5px;
+}
+
 .description icon.city {
     width: 35px;
     height: 35px;
@@ -242,10 +246,11 @@ note icon.presence{
 
 .description icon.range-0, .description icon.range-1, .description icon.range-2, 
 .description icon.range-3, .description icon.range-4 {
-    width: 45px;
+    width: 50px;
     height: 30px;
     margin-left: 0px;
-	margin-top:-20px;
+    margin-top: -20px;
+    margin-bottom: -7px;
 }
 
 .description icon.gain-range-1, .description icon.gain-range-2, .description icon.gain-range-3 {
