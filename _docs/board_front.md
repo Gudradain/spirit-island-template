@@ -123,10 +123,9 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 |Isolate|isolate|Isolate one of your Lands.|Custom cardplay track: values="1,2,isolate,3,3,4,5"|
 |Move a Presence|move-presence(x)|Move a presence x range, can be used in combinations.|Downpour cardplay track: values="1,move-presence(1),water,2,move-presence(1),3"|
 |Pay 2 to Gain Power Card|gain-card-pay-2|Pay 2 Energy to Gain Power Card|Many Minds cardplay track: values="1,2,gain-card-pay-2,3,3,4,5"|
-|Gain Card Play|gain-card-play|Gain A Card Play||
+|Gain Card Play|gain-card-play|Gain an additional card play not in the normal way (think Stone or Finder)|Stone energy track: values="2,3,gain-card-play^minor,4,gain-card-play^minor,6,gain-card-play^minor"|
 |Gain Range|gain-range(x)|Gain +x range||
 ||gain-range(x,y)|Gain +x range on y|range(1,everything)|
-|Gain Card Play|gain-card-play|Gain an additional card play not in the normal way (like Stone or Finder)|Stone energy track: values="2,3,gain-card-play^minor,4,gain-card-play^minor,6,gain-card-play^minor"|
 |Notate with Icon (like Stone)|^x|Puts icon x in top left corner of presence node|Stone: gain-card-play^minor|
 |Forget Power|forget-power-card|Forget a power card. Unlikely to be useful because presence track actions are optional|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
 |Custom|custom(*your_text*)|Add custom text to the presence node. Image will be !!!.|Custom energy track: values="1,2,custom(Draw 1 Minor Power),3,water,4"|
@@ -153,7 +152,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
           - Elements: 1-plant,2-fire
 		  - Icons: 2-wilds
 		  - Costs: cost-2
-		  Example: Volcano: *\<level threshold="3-fire,cost-2"\>* or Many Minds *\<level threshold="1-air,2-animal,2-beasts"\>*
+		  - Example: Volcano: *\<level threshold="3-fire,cost-2"\>* or Many Minds *\<level threshold="1-air,2-animal,2-beasts"\>*
 		- long: if you add 'long' to the level tag, it will allow the description to spill over into the next column (like Volcano)
 		  - Example: *\<level threshold="5-fire,3-air,5-earth,10-destroyed-presence" long\>*
         - The actual text for the level sits within the level tag

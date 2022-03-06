@@ -27,11 +27,12 @@ The quick-card template use a lot of custom attributes, here is a quick summary:
   - target-title: The target header (either TARGET LAND or TARGET. If empty, autoamtically uses TARGET LAND).
   - artist-name: The name of the artist.
   - print-friendly: The only valid value is "yes". It helps to see the elements when you print the cards in black & white.
-  - rules: The effects of your power. You can type whatever you like and use icon shortcuts (like {dahan}).
-  - threshold: Can use a shorthand syntax with the condition attribute.
-    - condition: The threshold condition. It is a list of condition separated by comma. Here are some examples:
-      - "3-animal"
-      - "2-sun,2-water"
-      - "3-air,4-water,3-earth"
+- rules: The effects of your power. You can type whatever you like and use icon shortcuts (like {dahan}).
+  - {or} will create the 'or' split
+- threshold: Can use a shorthand syntax with the condition attribute.
+- condition: The threshold condition. It is a list of condition separated by comma. Here are some examples:
+  - "3-animal"
+  - "2-sun,2-water"
+  - "3-air,4-water,3-earth"
 
 
