@@ -182,6 +182,8 @@ function parseGrowthTags(){
 						let reclaimCustomText = reclaimOptions[1];
 						switch(reclaimType)
 						{
+							case 'all':
+								break;
 							case 'one':
 								reclaimIcon = growthItem+"-"+reclaimType
 								reclaimText = IconName(growthItem+"-"+reclaimType)
@@ -848,7 +850,7 @@ function enhancePresenceTracksTable() {
 
 function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
     var result = '';
-    
+
     //Find values between parenthesis
     var regExp = /\(([^)]+)\)/;    
 
@@ -864,6 +866,14 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
     // Will be populated with the raw HTML that will go inside the ring-icon element.
     var inner = "";
 
+	//Allows adding on icon next to the node using ^ (as with Stone)
+	let addDeepLayers = false;
+	if(nodeText.split("^")[1]){
+		iconDeepLayers = nodeText.split("^")[1]
+		addDeepLayers = true;
+		nodeText = nodeText.split("^")[0]
+	}
+	
     if(trackType == 'dynamic'){
         if(nodeText.startsWith("energy")) {
             nodeText = nodeText.substr(6);
@@ -1029,7 +1039,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 	if(addIconShadow){ inner = "<icon-shadow>"+inner+"</icon-shadow>"; }
     ring.innerHTML = inner;
     presenceNode.innerHTML += "<subtext>" + subText + "</subtext>";
-    
+    if(addDeepLayers){ presenceNode.innerHTML = "<icon class='"+iconDeepLayers+" "+nodeClass+"-deep-layers'></icon>" + presenceNode.innerHTML; }
     return presenceNode.outerHTML;
 }
 
@@ -1150,6 +1160,8 @@ function setNewEnergyCardPlayTracks(energyHTML, cardPlayHTML){
 }
 
 function dynamicCellWidth() {
+
+	// Growth Sizing
     growthCells =  document.getElementsByTagName("growth-cell");
     growthCellCount = growthCells.length;
 
@@ -1227,8 +1239,8 @@ function dynamicCellWidth() {
 
         
     }
+	// Innate Power Sizing
 	// Innate Power Notes (scale font size)
-	//   
 	noteBlocks = document.getElementsByTagName("note");
 	for(let i = 0; i < noteBlocks.length; i++){
 		let noteHeight = noteBlocks[i].offsetHeight;
@@ -1253,11 +1265,16 @@ function dynamicCellWidth() {
 	let outerThresholdWidth = []
     for (i = 0; i < thresholdsCount; i++){
         icon = thresholds[i].getElementsByTagName("icon");
-
         iconCount = icon.length;
-
         dynamicThresholdWidth = (iconCount * ICONWIDTH) + (iconCount * 12);
         thresholds[i].style.width = dynamicThresholdWidth + "px";
+		
+		// Check if the threshold width is overflowing. If so, just let it size itself...
+		var thresholdHeight = thresholds[i].offsetHeight
+		if (thresholdHeight > 60){
+			thresholds[i].style.width = "auto";
+		}
+		
 		outerThresholdWidth[i] = dynamicThresholdWidth + parseFloat(window.getComputedStyle(thresholds[i]).getPropertyValue('margin-right').replace(/px/, ""))
     }
 	
@@ -1266,7 +1283,8 @@ function dynamicCellWidth() {
     for(i = 0; i < description.length; i++){
         // Scale the text width to the threshold size...
 		description[i].style.paddingLeft = outerThresholdWidth[i]+"px";
-        
+        console.log("description="+description[i])
+		console.log(description[i])
 		var textHeight = description[i].clientHeight;
 
         if (textHeight < 40){
@@ -1277,20 +1295,25 @@ function dynamicCellWidth() {
 			// Spill over below the threshold if its greater than three lines
         }
     }
+
     
     // Presence node subtext (for longer descriptions, allows flowing over into neighbors.
     var subtext = document.getElementsByTagName("subtext");
 	var presence_nodes = document.getElementsByTagName("presence-node");
 	let adjustment_flag = 0
-	let default_row_height = 50;
+	let default_row_height = 48;
 	let row_max_height = default_row_height;
 	let first_row_max = default_row_height;
 	let height_adjust = 0;
+	let firstCardPlayIndex = 0;
     for(i = 0; i < subtext.length; i++){
         if(presence_nodes[i].className == 'first' && i!=0){
 			height_adjust += row_max_height;
 			first_row_max = row_max_height;
+			firstCardPlayIndex = i;
+			console.log("first row max: "+row_max_height)
 			row_max_height=default_row_height;
+			
 		}
 		
         var textHeight = subtext[i].offsetHeight;
@@ -1300,15 +1323,17 @@ function dynamicCellWidth() {
 			textHeight = subtext[i].offsetHeight;
 			adjustment_flag = 1
         }
-
+		
 		row_max_height = textHeight > row_max_height ? textHeight : row_max_height;
 
     }
-	console.log(row_max_height)
-	height_adjust += row_max_height - 2*default_row_height;
-	console.log(height_adjust)
-	subtext[0].style.height = first_row_max+"px"
-
+	console.log("second row max"+row_max_height)
+	height_adjust += row_max_height - 1.5*default_row_height;
+	console.log("Presence Table Height Adjustment: "+height_adjust)
+	console.log("First Row Height Adjustment: "+subtext[0].offsetHeight+" > "+first_row_max)
+	subtext[0].style.height = first_row_max+2+"px"
+	subtext[firstCardPlayIndex].style.height = row_max_height+2+"px"
+	
 	var presence_table = document.getElementById("presence-table");
 
 	presence_table.style.height = (presence_table.offsetHeight + height_adjust)+"px";
@@ -1384,20 +1409,34 @@ function parseInnatePower(innatePowerHTML){
     var currentLevels = innatePowerHTML.getElementsByTagName("level");
     for (j = 0; j < currentLevels.length; j++){
         var currentThreshold = currentLevels[j].getAttribute("threshold");
+		let isLong = currentLevels[j].getAttribute("long");
+		if(isLong!=null){
+			isLong = " long"
+		}else{
+			isLong = ""
+		}
+
         var currentThresholdPieces = currentThreshold.split(",");
       
         currentPowerHTML += "<level><threshold>";
         for (k = 0; k < currentThresholdPieces.length; k++){
-            currentThresholdPieces[k] = currentThresholdPieces[k].replace("-","{");
-            currentThresholdPieces[k] += "}";
+			console.log(currentThresholdPieces[k])
+            currentThresholdPieces[k] = currentThresholdPieces[k].replace("-","{"); // here, typically looks something like 3{earth
+			if(currentThresholdPieces[k].split("{")[0]=='cost'){
+				currentThresholdPieces[k]="<cost-threshold>cost<cost-energy><value>-" + currentThresholdPieces[k].split("{")[1] + "</value></cost-energy></cost-threshold>";
+			}else{
+				currentThresholdPieces[k] += "}";
+			}
+			console.log(currentThresholdPieces[k])
             currentPowerHTML += currentThresholdPieces[k];
         }
-        currentPowerHTML += "</threshold><div class='description'>";
+        currentPowerHTML += "</threshold><div class='description"+isLong+"'>";
         var currentDescription = currentLevels[j].innerHTML;
         currentPowerHTML += currentDescription+"</div></level>";
     }
     
     currentPowerHTML+="</description-container></innate-power>";
+	console.log(currentPowerHTML)
     return currentPowerHTML;
 }
 

@@ -29,11 +29,6 @@ div.description range-4 {
     margin-bottom: -7px;
 }
 
-.description icon.explorer {
-    height: 30px;
-	margin-bottom: -6px;
-}
-
 .description icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
 
 .description icon.earth {background-image: url(../../images/board/element_simple_earth.png);}

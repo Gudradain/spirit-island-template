@@ -49,7 +49,8 @@ special-rule icon.town, special-rule icon.blight, special-rule icon.dahan,
 special-rule icon.presence, special-rule icon.wilds, special-rule icon.beasts,
 special-rule icon.disease, special-rule icon.strife, special-rule icon.explorer, 
 special-rule icon.badlands, special-rule icon.fear, special-rule icon.range-plus-1,
-special-rule icon.fast, special-rule icon.slow {
+special-rule icon.range-plus-2, special-rule icon.range-plus-3, special-rule icon.fast, 
+special-rule icon.slow, special-rule icon.minor, special-rule icon.major {
     width:30px;
     height:30px;
 }

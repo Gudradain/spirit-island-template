@@ -126,7 +126,8 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 |Gain Card Play|gain-card-play|Gain A Card Play||
 |Gain Range|gain-range(x)|Gain +x range||
 ||gain-range(x,y)|Gain +x range on y|range(1,everything)|
-||gain-card-play(*minor*)|Can also be major or other icon names (at your own risk)|Stone energy track: values="2,3,gain-card-play(minor),4,gain-card-play(minor),6,gain-card-play(minor)"|
+|Gain Card Play|gain-card-play|Gain an additional card play not in the normal way (like Stone or Finder)|Stone energy track: values="2,3,gain-card-play^minor,4,gain-card-play^minor,6,gain-card-play^minor"|
+|Notate with Icon (like Stone)|^x|Puts icon x in top left corner of presence node|Stone: gain-card-play^minor|
 |Forget Power|forget-power-card|Forget a power card. Unlikely to be useful because presence track actions are optional|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
 |Custom|custom(*your_text*)|Add custom text to the presence node. Image will be !!!.|Custom energy track: values="1,2,custom(Draw 1 Minor Power),3,water,4"|
 ||custom(*your_text*;x)|Add custom text to the presence node. x is the icon (for example, city). Note the semicolon.|Custom energy track: values="1,2,custom(Draw 1 Minor Power;city),3,water,4"|
@@ -148,7 +149,12 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
       - target-title: Either "TARGET" or "TARGET LAND"
       - note: allows adding notes to the top of the innate (See Volcano Looming High or Lure of the Deep Wilderness as an example)
       - level: Contains the information for one level of an Innate Power
-        - threshold: Contains the elemental information for the threshold:
-          - Example: 1-plant,2-fire
+        - threshold: Contains the threshold informatioin. Can include:
+          - Elements: 1-plant,2-fire
+		  - Icons: 2-wilds
+		  - Costs: cost-2
+		  Example: Volcano: *\<level threshold="3-fire,cost-2"\>* or Many Minds *\<level threshold="1-air,2-animal,2-beasts"\>*
+		- long: if you add 'long' to the level tag, it will allow the description to spill over into the next column (like Volcano)
+		  - Example: *\<level threshold="5-fire,3-air,5-earth,10-destroyed-presence" long\>*
         - The actual text for the level sits within the level tag
         - To achieve 'for each element' effects, use the notation {element, #}. For example, Serpent's second innate has "for each {moon,2} {stone,2}" on the second level.
