@@ -362,7 +362,9 @@ function parseGrowthTags(){
                                             ? "<span class='non-icon'>"+presenceReq.toUpperCase()+"</span><icon style='height:50px; width:0px;'></icon>" // This do-nothing Icon just creates 50px of height to make everything line up. Other ideas?
                                             : "<span class='non-icon small'>"+presenceReq.toUpperCase()+"</span><icon style='height:50px; width:0px;'></icon>"
                                         break;
-                                        
+                                    case 'no-own-presence':
+										presenceIcon += "{no-presence}";
+										break;
                                     default:
                                         presenceIcon += "{"+presenceReq+"}";
                                 }
@@ -410,7 +412,15 @@ function parseGrowthTags(){
                                         break;
                                     case 'beast':
                                         presenceTextEnd = "s"
-                                    case 'presence':
+                                    case 'no-own-presence':
+										if(i == 1){
+											presenceText += " Land without "
+										}else{
+											presenceText += operator == ' and ' ? " and no " : " or no ";
+										}
+                                        presenceText += "Your Presence";
+                                        break;
+									case 'presence':
                                         presenceTextLead += presenceTextEnd==="" ? "Your " : "";
                                         //Intentionally do not break.
                                     default:

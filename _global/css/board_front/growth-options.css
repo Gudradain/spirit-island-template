@@ -552,8 +552,17 @@ add-presence-req {
 
 .description icon.presence {
   height: 25px;
-  width: 35px;
+  width: 32px;
   margin-bottom: -8px;
+}
+
+.description icon.sacred-site {
+    height: 30px;
+    width: 50px;
+    margin-bottom: -9px;
+    margin-top: -10px;
+    margin-left: -4px;
+    margin-right: 0px;
 }
 
 .description icon.beasts {

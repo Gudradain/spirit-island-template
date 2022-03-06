@@ -174,8 +174,12 @@ presence-node value {
   display: inline-block;
 }
 
-.small value {
+energy-icon.small value {
   font-size: 28pt;
+}
+
+card-icon.small value {
+  font-size: 35pt;
 }
 
 presence-node icon {

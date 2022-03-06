@@ -9,7 +9,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 	- star: the Element icon (from Starlight)
 	- markerplus, markerminus: the Prepare Element Marker and Discard Element Marker (from Shifting Memory)
 - Invaders (explorer, town, city)  
-- Presence (presence, sacred-site)  
+- Presence (presence, sacred-site, no-presence, no-own-presence)  
 - Island symbols (blight, dahan, fear, disease, wilds, beast, strife, badlands)  
 - Land symbols (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)  
 - Targeting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)  
@@ -49,8 +49,8 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 |Adding Presence|Add Presence at Range|add-presence(x)|Add a Presence up to x Range. *x can be 'any' or 1, 2, 3 or 4*||
 ||Add Presence with Condition|add-presence(x,y)|Add a Presence with y conditions at x Range. y can be terrain types (including dual types), tokens, invaders, invader pieces, dahan, blight, etc.||
 ||Add Presence with Multiple Conditions|add-presence(x,y,z,...,*and/or*)|Add a Presence with multiple conditions y, z, etc at x Range, the last parameter must be 'or' or 'and'.|Sharp Fangs: <br>add-presence(3,jungle,beast,or)<br>Vengeance: <br>add-presence(2,town,city,blight,or)|
-||Add Presence with Custom Text|add-presence(x,text,*your_text_here*)|Add a Presence at x Range. The presence text will read "Add a Presence *your_text_here*". The icon will be **!!!**||
 ||Add Presence and/or Tokens|add-presence(x,token,y,and/or)|Add a Presence and/or a token y (beasts, disease, etc) at x Range.|Many Minds: <br>add-presence(3,token,beast,and)<br>Vengeance: <br>add-presence(1,token,disease,or)|
+||Add Presence with Custom Text|add-presence(x,text,*your_text_here*)|Add a Presence at x Range. The presence text will read "Add a Presence *your_text_here*". The icon will be **!!!**||
 |Gaining Elements|Gain One Element|gain-element(x)|Gain Element x, which can by all the elements or 'any' or 'star'|'star' is the Starlight element icon|
 ||Gain Multiple Elements|gain-element(x,y)|If y is a number, gain y of x Element||
 ||Gain Multiple Elements|gain-element(x,y,z,...)|If y is an element, gain x or y or z Elements|Lure: <br>gain-element(moon,air,plant)|
