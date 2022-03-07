@@ -880,7 +880,8 @@ gain-per-element icon.sun,
 gain-per-element icon.moon,
 gain-per-element icon.sacred-site,
 gain-per-element icon.destroyed-presence,
-gain-per-element icon.explorer, gain-per-element icon.town, gain-per-element icon.city {
+gain-per-element icon.explorer, gain-per-element icon.town, gain-per-element icon.city,
+gain-per-element icon.custom1, gain-per-element icon.custom2, gain-per-element icon.custom3 {
   background-repeat: no-repeat;
   background-size: contain;
   display: block;
@@ -948,7 +949,8 @@ gain-per-fear icon.sun,
 gain-per-fear icon.moon,
 gain-per-fear icon.sacred-site,
 gain-per-fear icon.destroyed-presence,
-gain-per-fear icon.explorer, gain-per-fear icon.town, gain-per-fear icon.city {
+gain-per-fear icon.explorer, gain-per-fear icon.town, gain-per-fear icon.city,
+gain-per-fear icon.custom1, gain-per-faer icon.custom2, gain-per-fear icon.custom3 {
   background-repeat: no-repeat;
   background-size: contain;
   display: block;
