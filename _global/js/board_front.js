@@ -63,6 +63,7 @@ function addImages(board) {
         //Image now scales to fill gap. 'imageSize' allows the user to specify what % of the gap to cover
         board.innerHTML = `<div class="spirit-image" style="background-image: url(${spiritImage}); background-size: auto ${imageSize}; height:calc(100% - ${height}); width:1700px;" ></div>` + board.innerHTML
 		artistCredit[0].style.display = "block";
+		artistCredit[0].innerHTML = "Artist Credit: "+ artistCredit[0].innerHTML
 		console.log(artistCredit)
     }
 	
@@ -257,8 +258,9 @@ function parseGrowthTags(){
 							if (scaling==='text'){
 								//determine some arbitrary scaling rule
 								scaling_text = energyOptions[2] !== undefined ? energyOptions[2] : 'ENTER SCALING TEXT AS THIRD PARAMETER';
-								energyGrowthIcons += "<gain-per-element><ring-icon><div class='custom-scaling'>!!!</div></ring-icon></gain-per-element>";
-								energyGrowthText += scaling_text								
+								let customScalingIcon = energyOptions[3] !== undefined ? ("<icon class='" + energyOptions[3] + "'></icon>") : "<div class='custom-scaling'>!!!</div>"
+								energyGrowthIcons += "<gain-per-element><ring-icon>"+customScalingIcon+"</ring-icon></gain-per-element>";
+								energyGrowthText += scaling_text
 							}else{
 								energyGrowthIcons += "<gain-per-element><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-element>"
 								energyGrowthText += Capitalise(scaling)
@@ -273,7 +275,8 @@ function parseGrowthTags(){
 						if (scaling==='text'){
 							//determine some arbitrary scaling rule
 							scaling_text = energyOptions[1] !== undefined ? energyOptions[1] : 'ENTER SCALING TEXT AS SECOND PARAMETER';
-							energyGrowthIcons += "<gain-per><value>1</value></gain-per><gain-per-element><ring-icon><div class='custom-scaling'>!!!</div></ring-icon></gain-per-element>";
+							let customScalingIcon = energyOptions[2] !== undefined ? ("<icon class='" + energyOptions[2] + "'></icon>") : "<div class='custom-scaling'>!!!</div>"
+							energyGrowthIcons += "<gain-per><value>1</value></gain-per><gain-per-element><ring-icon>"+customScalingIcon+"</ring-icon></gain-per-element>";
 							energyGrowthText = "Gain 1 Energy per " + scaling_text								
 						}else{
 							energyGrowthIcons = "<gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-element>"
