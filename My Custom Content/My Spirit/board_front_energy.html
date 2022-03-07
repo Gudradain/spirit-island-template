@@ -5,7 +5,6 @@
     <link href="../../_global/css/board_front.css" rel="stylesheet" />
     <script type="text/javascript" src="../../_global/js/general.js"></script>
     <script type="text/javascript" src="../../_global/js/board_front.js"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 
 <body>
@@ -50,8 +49,8 @@
 			<growth-group tint="green" values="reclaim-all"></growth-group>
 		  </sub-growth>
 		  <sub-growth title="and one of:">
-			<growth-group values="gain-energy(2);custom(Destroy a town [custom example],town);gain-energy(sacred-site);gain-energy(2,text,your custom text here)"></growth-group>
-			<growth-group values="gain-energy(text,x [custom])"></growth-group>
+			<growth-group values="gain-energy(2);gain-energy(sacred-site);gain-energy(destroyed-presence);gain-energy(2,text,your custom text here,destroyed-presence)"></growth-group>
+			<growth-group values="gain-energy(text,x [custom],city)"></growth-group>
 		  </sub-growth>
 		</growth>
 
