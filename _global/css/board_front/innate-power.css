@@ -2,7 +2,7 @@ innate-powers {
   display: block;
   margin-left: 22px;
   background-image: url('../../images/board/Innate_Without_Text.png');
-  background-position: bottom;
+  background-position: top;
 }
 innate-powers::after {
   content: '';
@@ -391,7 +391,7 @@ cost-threshold  {
 }
 
 cost-energy {
-  background-image: url('../../images/board/NewIcons/Energy Blank.png');
+  background-image: url('../../images/board/NewIcons/Energy Blank Small.png');
     width: 45px;
     height: 45px;
     background-repeat: no-repeat;

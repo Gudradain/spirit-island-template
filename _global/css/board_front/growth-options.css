@@ -71,8 +71,7 @@ growth-table {
 }
 
 sub-section-title+growth-table{
-  margin-top:60px ;
-  margin-top: 45px;
+  margin-top: 55px;
 }
 
 growth-border {
@@ -507,17 +506,17 @@ growth-cell icon.ignore-range {
 growth-cost {
   font-family: 'Gobold Extra2';
   font-size: 16pt;
-  background-image: url('../../images/board/NewIcons/Energy Blank.png');
-  background-repeat: no-repeat;
-  background-size: 110%;
-  margin-right: -50px;
-  background-position: center;
-  height: 50px;
-  width: 50px;
-  top: -45px;
-  position: relative;
-  left: -10px;
-  padding-top: 12px;
+  background-image: url('../../images/board/NewIcons/Energy Blank Small.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-right: -50px;
+    background-position: center;
+    height: 45px;
+    width: 45px;
+    top: -35px;
+    position: relative;
+    left: -6px;
+    padding-top: 9px;
 }
 
 growth-cost::after {
@@ -525,10 +524,9 @@ growth-cost::after {
   font-family: 'Lato SemiBold';
   font-size: 14pt;
   font-style: italic;
-  top: 49px;
   position: absolute;
-  left: 7px;
-
+  left: 3px;
+  top: 44px;
 }
 
 
@@ -948,7 +946,9 @@ gain-per-fear icon.animal,
 gain-per-fear icon.plant,
 gain-per-fear icon.sun,
 gain-per-fear icon.moon,
-gain-per-fear icon.sacred-site {
+gain-per-fear icon.sacred-site,
+gain-per-fear icon.destroyed-presence,
+gain-per-fear icon.explorer, gain-per-fear icon.town, gain-per-fear icon.city {
   background-repeat: no-repeat;
   background-size: contain;
   display: block;
