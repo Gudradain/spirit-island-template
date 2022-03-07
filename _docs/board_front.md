@@ -67,7 +67,9 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 ||Gain Energy per Element|gain-energy(x)|Gain 1 Energy per Element x||
 ||Gain Energy per Element plus Flat Energy|gain-energy(x,y)|Gain x Energy plus 1 Energy per Element y|Wildfire: gain-energy(2,fire)|
 ||Gain Energy per Custom Item|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
+||Gain Energy per Custom Item|gain-energy(text,*your_text_here*,x)|Gain 1 Energy per condition of your choosing. Icon will be x.||
 ||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be a !!!.||
+||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*,y)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be y.||
 ||Gain Energy per Card Play|energy-per-play|Gain 1 Energy per Card Play.|As seen on Trickster|
 |Gain Power Card|Gain a Power Card|gain-power-card|||
 |Repeating Growth Options|Repeat Growth Options|^x|Added to other growth options. x is the number of repeats. As seen on Fractured Days|gain-power-card^2; gain-energy(2)^3|
@@ -88,7 +90,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 |Gaining Fear|Gain Fear|fear(x)|Gain x Fear||
 ||Gain Fear per Element|fear(x)|Gain 1 Fear per Element x||
 ||Gain Fear per Element plus Flat Fear|fear(x,y)|Gain x Fear plus 1 Fear per Element y||
-||Gain Fear per Custom Item|fear(text,*your_text_here*)|Gain 1 Fear per condition of your choosing. Icon will be a !!!.||
+||Gain Fear per Custom Item|fear(text,*your_text_here*)|Gain 1 Fear per condition of your choosing. Icon will be a !!!.|fear(text,for each of your blighted lands)|
 ||Gain Fear per Custom Item Plus Flat Fear|fear(x,text,*your_text_here*)|Gain x Fear plus 1 Fear per condition of your choosing. Icon will be a !!!.||
 |Deal Damage|Damage at Range|damage(x,y)|At range x, deal y Damage|Starlight: damage(0,2)|
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
