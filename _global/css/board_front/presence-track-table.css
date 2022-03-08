@@ -169,7 +169,7 @@ presence-node icon.gain-range-3 {
 }
 
 presence-node value {
-  font-family: 'Gobold Extra2';
+  font-family: 'Gobold Extra2', 'Mouse Memoirs';
   font-size: 36pt;
   display: inline-block;
 }

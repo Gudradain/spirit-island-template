@@ -306,7 +306,7 @@ level {
 }
 
 threshold {
-  font-family: 'Gobold Extra2';
+  font-family: 'Gobold Extra2', 'Mouse Memoirs';
   font-size: 24pt;
   color: #431E0AFF;
   float: left;
@@ -406,7 +406,7 @@ cost-energy {
 }
 
 cost-energy value{
-  font-family: 'Gobold Extra2';
+  font-family: 'Gobold Extra2', 'Mouse Memoirs';
   font-weight: normal;
     font-style: normal;
     color: #431e0a;

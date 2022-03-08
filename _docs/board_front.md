@@ -9,10 +9,15 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 	- star: the Element icon (from Starlight)
 	- markerplus, markerminus: the Prepare Element Marker and Discard Element Marker (from Shifting Memory)
 - Invaders (explorer, town, city)  
-- Presence (presence, sacred-site, no-presence, no-own-presence)  
-- Island symbols (blight, dahan, fear, disease, wilds, beast, strife, badlands)  
-- Land symbols (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)  
-- Targeting symbols (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)  
+- Presence (presence, sacred-site, no-presence, no-own-presence, move-presence)  
+- Island icons (blight, dahan, fear, disease, wilds, beast, strife, badlands)  
+- Land icons (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)  
+- Targeting icons (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)  
+- Custom icons can be added in the \<head\>\<style\> section at the top of the spirit board HTML
+	 - Save the custom symbol image file in the same folder as the HTML
+	 - Update the custom icon reference with the .png or .jpg of the custom symbol
+	 - Use the icon name 'custom1' (or custom2 or cumstom3) to use your icons
+	 - Example: icon.custom1{background-image: url('demo_custom_icon.png'); }
 
 ### Spirit Name & Board
 - board: Represents the whole board.

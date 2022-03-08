@@ -118,7 +118,7 @@ repeat-growth {
 }
 
 repeat-growth value{
-  font-family: 'Gobold Extra2';
+  font-family: 'Gobold Extra2', 'Mouse Memoirs';
     font-size: 18pt;
     display: inline-block;
     margin-top: 4px;
@@ -143,7 +143,7 @@ growth-energy {
 }
 
 growth-energy value {
-  font-family: 'Gobold Extra2';
+  font-family: 'Gobold Extra2', 'Mouse Memoirs';
   font-size: 24pt;
   display: inline-block;
   margin-top: 35px;
@@ -162,7 +162,7 @@ growth-fear {
 }
 
 growth-fear value {
-    font-family: 'Gobold Extra2';
+    font-family: 'Gobold Extra2', 'Mouse Memoirs';
     font-size: 20pt;
     display: inline-block;
     margin-top: 48px;
@@ -185,7 +185,7 @@ fear-per {
 }
 
 fear-per value{
-    font-family: 'Gobold Extra2';
+    font-family: 'Gobold Extra2', 'Mouse Memoirs';
     font-size: 14pt;
     display: inline-block;
     margin-top: 33px;
@@ -394,7 +394,7 @@ growth-text icon.explorer{
 }
 
 .non-icon {
-    font-family: 'DK Snemand';
+    font-family: 'DK Snemand', 'Mouse Memoirs';
     font-size: 20pt;
 	font-style: normal;
 }
@@ -504,7 +504,7 @@ growth-cell icon.ignore-range {
 }
 
 growth-cost {
-  font-family: 'Gobold Extra2';
+  font-family: 'Gobold Extra2', 'Mouse Memoirs';
   font-size: 16pt;
   background-image: url('../../images/board/NewIcons/Energy Blank Small.png');
     background-repeat: no-repeat;
@@ -593,7 +593,7 @@ growth-damage {
 }
 
 growth-damage value {
-  font-family: 'Gobold Extra2';
+  font-family: 'Gobold Extra2', 'Mouse Memoirs';
     font-size: 22pt;
     display: inline-block;
     margin-top: 36px;
@@ -616,7 +616,7 @@ gain-per {
 }
 
 gain-per value {
-  font-family: 'Gobold Extra2';
+  font-family: 'Gobold Extra2', 'Mouse Memoirs';
   font-size: 16pt;
   display: inline-block;
   margin-top: 25px;
@@ -639,7 +639,7 @@ card-play-num {
 }
 
 card-play-num value {
-    font-family: 'Gobold Extra2';
+    font-family: 'Gobold Extra2', 'Mouse Memoirs';
     font-size: 24pt;
     display: inline-block;
     margin-top: 32px;
@@ -848,7 +848,7 @@ growth-cell icon.presence{
 }
 
 growth-cell div.custom-scaling{
-    font-family: DK Snemand;
+    font-family: 'DK Snemand', 'Mouse Memoirs';
     font-size: 28pt;
     font-style: normal;
 }

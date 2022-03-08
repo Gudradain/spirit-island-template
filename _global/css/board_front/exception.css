@@ -46,7 +46,7 @@ div.description range-4 {
 .description icon.water {background-image: url(../../images/board/element_simple_water.png);}
 
 .element-for-each {
-	font-family: 'Gobold Extra2';
+	font-family: 'Gobold Extra2', 'Mouse Memoirs';
     font-size: 17pt;
     color: #431E0AFF;	
 	margin-top: -13px;

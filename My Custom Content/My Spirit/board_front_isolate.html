@@ -5,6 +5,13 @@
     <link href="../../_global/css/board_front.css" rel="stylesheet" />
     <script type="text/javascript" src="../../_global/js/general.js"></script>
     <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+	
+	<!-- Custom Icons. Instructions 1) place image in same folder as HTLM 2) replace demo file name with your file name below 3) used custom1, custom2, or custom3 in your HTLM to reference -->
+	<style>
+	icon.custom1{background-image: url('demo_custom_icon.png'); }
+	icon.custom2{background-image: url('filename.png'); }
+	icon.custom3{background-image: url('filename.png'); }
+	</style>
 </head>
 
 <body>
@@ -14,7 +21,10 @@
     <spirit-name>
       River Surges in Sunlight
     </spirit-name>
-
+	<artist-name>
+	
+	</artist-name>
+	
     <special-rules-container>
       <section-title>SPECIAL RULES</section-title>
       <special-rules-subtitle>Mountain Home</special-rules-subtitle>
@@ -23,7 +33,7 @@
       </special-rule>
       <special-rules-subtitle>Collapse in a blast of lava and steam</special-rules-subtitle>
       <special-rule>
-        Push all {beast} and any number of {dahan}.
+        Push all {beast} and any number of {custom1}.
       </special-rule>
       <special-rules-subtitle>volcanic blah blah blah</special-rules-subtitle>
       <special-rule>
@@ -46,14 +56,14 @@
 			<growth-group values="isolate"></growth-group>
 		  </sub-growth>
 		  <sub-growth title="and one of:">
-			<growth-group values="isolate(2);gather(presence,ocean,each)"></growth-group>
-			<growth-group values="custom([custom]Drown 1 {town} in a Coastal Land,town)"></growth-group>
+			<growth-group values="isolate(2);gain-energy(text,spiky vine you have,custom1);gain-energy(text,spiky vine you have,town)"></growth-group>
+			<growth-group values="custom(Destroy 1 {explorer} or add 1 {wilds} in 1 of Your Lands,custom1)"></growth-group>
 			<growth-group values="gain-card-play(3)^2;damage(2,2);custom(Your custom ability text.)^2"></growth-group>
 		  </sub-growth>
 		</growth>
 
 		<presence-tracks>
-		  <energy-track values="2,3,gain-card-play(minor),4,gain-card-play(major),6,gain-card-play(isolate)"></energy-track>
+		  <energy-track values="2,3,gain-card-play(custom1),4,gain-card-play(major),6,gain-card-play(isolate)"></energy-track>
 		  <card-play-track values="1,earth,earth,earth+reclaim-one,earth+any,2+earth"></card-play-track>
 		</presence-tracks>
 
@@ -95,7 +105,7 @@
         <level threshold="4-fire,2-disease,2-wilds">
           You may split this Power's damage among any number of lands with {blight} where you have {presence}.
         </level>
-        <level threshold="7-fire,3-strife,1-badlands">
+        <level threshold="7-fire,3-custom1,1-badlands">
           In {blight} where {presence} you {dahan} have {wilds} and {strife} then {badlands} and {disease}.
         </level>
       </quick-innate-power>
