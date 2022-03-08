@@ -799,7 +799,9 @@ growth-cell gain icon.earth,
 growth-cell gain icon.animal,
 growth-cell gain icon.plant,
 growth-cell gain icon.sun,
-growth-cell gain icon.moon {
+growth-cell gain icon.moon,
+growth-cell gain icon.markerminus,
+growth-cell gain icon.markerplus {
   background-repeat: no-repeat;
   background-size: contain;
   display: inline-block;
@@ -833,7 +835,9 @@ growth-cell icon.earth,
 growth-cell icon.animal,
 growth-cell icon.plant,
 growth-cell icon.sun,
-growth-cell icon.moon {
+growth-cell icon.moon,
+growth-cell icon.markerminus,
+growth-cell icon.markerplus {
   background-repeat: no-repeat;
   background-size: contain;
   display: block;

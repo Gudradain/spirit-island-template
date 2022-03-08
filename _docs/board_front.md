@@ -60,6 +60,9 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 ||Gain Multiple Elements|gain-element(x,y)|If y is a number, gain y of x Element||
 ||Gain Multiple Elements|gain-element(x,y,z,...)|If y is an element, gain x or y or z Elements|Lure: <br>gain-element(moon,air,plant)|
 ||Gain Multiple Elements|gain-element(x,y,z,...,*and*)|Gain elements x, y, and z (or more). The last option must *and*||
+|Preparing/Discarding Element Markers|Prepare One Element Marker|element-marker|Prepare 1 element marker||
+||Prepare Multiple Element Marker|element-marker(x)|Prepare x element markers (x can be more than 2, or negative)|element-marker(2)|
+||Discard Element Markers|element-marker(-x)|x is the number to discard|element-marker(-2)|
 |Pushing|Push from Your Lands|push(x)|Push entity x (dahan, beasts, presence, etc) from 1 of your lands.||
 ||Push from Your Lands|push(x,y)|Push entity x (dahan, beasts, presence, etc) a land at range y.||
 ||Push from Your Lands|push(x,y,z)|Push x from z lands of condition y. y can be terrain types, sacred site, token types, etc. z can be a numeral or 'each' (or another word at your own risk).|Ocean: push(presence,ocean,each)|

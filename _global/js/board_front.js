@@ -13,7 +13,6 @@ window.onload = function startMain(){
 	
 	setTimeout(() => {dynamicCellWidth()}, 200);
 	dynamicSpecialRuleHeight(board)
-    // I moved this to the end so that the image could rescale to the special box
     addImages(board)
 
 
@@ -64,13 +63,11 @@ function addImages(board) {
         board.innerHTML = `<div class="spirit-image" style="background-image: url(${spiritImage}); background-size: auto ${imageSize}; height:calc(100% - ${height}); width:1700px;" ></div>` + board.innerHTML
 		artistCredit[0].style.display = "block";
 		artistCredit[0].innerHTML = "Artist Credit: "+ artistCredit[0].innerHTML
-		console.log(artistCredit)
     }
 	
 	//Add Meeple
 	const spiritName = document.getElementsByTagName('spirit-name');
 	spiritName[0].outerHTML += "<custom-meeple></custom-meeple>";
-	console.log(spiritName)
 	
 }
 
@@ -168,7 +165,6 @@ function parseGrowthTags(){
 			
             //Find a parenthesis and split out the string before it
 			const growthItem = classPieces[j].split("(")[0].split("^")[0];
-			console.log("growth item: "+growthItem)
 			
             switch (growthItem) {
 				// Simple growth items are handled in the 'Default' case. See function IconName.
@@ -561,7 +557,7 @@ function parseGrowthTags(){
 							//Text
 							newGrowthCellHTML += "</gain><growth-text>Gain ";
 							for (var i = 0; i < elementOptions.length; i++) {
-								newGrowthCellHTML += Capitalise(elementOptions[i]);
+								newGrowthCellHTML += IconName(elementOptions[i]);
 								if (i < elementOptions.length-2) {
 									newGrowthCellHTML += ", ";
 								} else if (i == elementOptions.length-2) {
@@ -580,7 +576,7 @@ function parseGrowthTags(){
 								// gain multiple different elements
 								numLocs = elementOptions.length - 1;
 								for (var i = 0; i < numLocs; i++) {
-									elementText += Capitalise(elementOptions[i]);
+									elementText += IconName(elementOptions[i]);
 									if (i < numLocs-2) {
 										elementText += ", ";
 									} else if (i == numLocs-2) {
@@ -590,7 +586,7 @@ function parseGrowthTags(){
 							} else {
 								// gain multiple of the same element
 								numLocs = elementOptions[1];
-								elementText = elementOptions[1] +" "+ Capitalise(elementOptions[0]);
+								elementText = elementOptions[1] +" "+ IconName(elementOptions[0]);
 							}
 							
 							// Icons
@@ -613,7 +609,7 @@ function parseGrowthTags(){
 								
 					} else {
 						let elementText = ""
-						elementText = gainedElement==='star' ? 'Element' : Capitalise(gainedElement)
+						elementText = gainedElement==='star' ? 'Element' : IconName(gainedElement)
 						newGrowthCellHTML += `${openTag}${repeatOpen}<gain>{` + gainedElement + "}</gain><growth-text>Gain " + elementText + `</growth-text>${repeatClose}${closeTag}`
 					}
 					break;
@@ -724,6 +720,34 @@ function parseGrowthTags(){
 						newGrowthCellHTML += `${openTag}${repeatOpen}<card-play-num><value>` + num_card_plays + "</value></card-play-num><growth-text> +"+num_card_plays+" Card Play"+plural+" this turn"+`</growth-text>${repeatClose}${closeTag}`
 					}else{
 						newGrowthCellHTML += `${openTag}${repeatOpen}{`+growthItem+`}<growth-text>`+IconName(growthItem)+`</growth-text>${repeatClose}${closeTag}`
+					}
+					break;
+				}
+				case 'element-marker': {
+					const matches = regExp.exec(classPieces[j]);
+					
+					if(matches){
+						let markerOptions = matches[1].split(",");
+						num_markers = markerOptions[0];
+						marker_type = num_markers > 0 ? 'markerplus' : 'markerminus';
+						marker_verb = num_markers > 0 ? 'Prepare' : 'Discard';
+						num_markers = Math.abs(num_markers)
+						plural = num_markers > 1 ? "s" : "";
+						numLocs = num_markers
+						let rad_size = 20 + 5*(numLocs-2); // this expands slightly as more icons are used
+						var markerIcons = ""
+						for (var i = 0; i < numLocs; i++) {
+							pos_angle = i * 2*Math.PI / numLocs - (Math.PI)*(1-(1/6));
+							x_loc = rad_size * Math.cos(pos_angle) - 30;
+							y_loc = rad_size * Math.sin(pos_angle) - 20;
+							let marker_loc = "style='transform: translateY("+y_loc+"px) translateX("+x_loc+"px)'";
+							markerIcons += "<icon-multi-element><icon class='"+marker_type+"'"+marker_loc+"></icon></icon-multi-element>"
+						}
+						markerIcons += "<icon style='width:0px;height:99px'></icon>"; // This is a filler icon to make sure the spacing is right. Any idea for a better solution?
+						
+						newGrowthCellHTML += `${openTag}${repeatOpen}<gain>` + markerIcons + "</gain><growth-text>"+marker_verb+" "+num_markers+" Element Marker"+plural+`</growth-text>${repeatClose}${closeTag}`;
+					}else{
+						newGrowthCellHTML += `${openTag}${repeatOpen}<gain>{markerplus}</gain><growth-text>Prepare 1 Element Marker</growth-text>${repeatClose}${closeTag}`
 					}
 					break;
 				}
@@ -1188,7 +1212,6 @@ function dynamicCellWidth() {
     for (const borderWidth of growthBorders.map(x => x.getAttribute('double') === undefined ? 7 : 11)) {
         borderPixels += borderWidth
     }
-	console.log("border px: "+borderPixels)
     const growthTable = document.getElementsByTagName("growth-table")[0];
     const growthTableStyle = window.getComputedStyle(growthTable);
     const growthTableWidth = growthTableStyle.getPropertyValue('width');
@@ -1296,8 +1319,6 @@ function dynamicCellWidth() {
     for(i = 0; i < description.length; i++){
         // Scale the text width to the threshold size...
 		description[i].style.paddingLeft = outerThresholdWidth[i]+"px";
-        console.log("description="+description[i])
-		console.log(description[i])
 		var textHeight = description[i].clientHeight;
 
         if (textHeight < 40){
@@ -1324,7 +1345,6 @@ function dynamicCellWidth() {
 			height_adjust += row_max_height;
 			first_row_max = row_max_height;
 			firstCardPlayIndex = i;
-			console.log("first row max: "+row_max_height)
 			row_max_height=default_row_height;
 			
 		}
@@ -1340,10 +1360,7 @@ function dynamicCellWidth() {
 		row_max_height = textHeight > row_max_height ? textHeight : row_max_height;
 
     }
-	console.log("second row max"+row_max_height)
 	height_adjust += row_max_height - 1.5*default_row_height;
-	console.log("Presence Table Height Adjustment: "+height_adjust)
-	console.log("First Row Height Adjustment: "+subtext[0].offsetHeight+" > "+first_row_max)
 	subtext[0].style.height = first_row_max+2+"px"
 	subtext[firstCardPlayIndex].style.height = row_max_height+2+"px"
 	
@@ -1433,14 +1450,12 @@ function parseInnatePower(innatePowerHTML){
       
         currentPowerHTML += "<level><threshold>";
         for (k = 0; k < currentThresholdPieces.length; k++){
-			console.log(currentThresholdPieces[k])
             currentThresholdPieces[k] = currentThresholdPieces[k].replace("-","{"); // here, typically looks something like 3{earth
 			if(currentThresholdPieces[k].split("{")[0]=='cost'){
 				currentThresholdPieces[k]="<cost-threshold>cost<cost-energy><value>-" + currentThresholdPieces[k].split("{")[1] + "</value></cost-energy></cost-threshold>";
 			}else{
 				currentThresholdPieces[k] += "}";
 			}
-			console.log(currentThresholdPieces[k])
             currentPowerHTML += currentThresholdPieces[k];
         }
         currentPowerHTML += "</threshold><div class='description"+isLong+"'>";
@@ -1449,7 +1464,6 @@ function parseInnatePower(innatePowerHTML){
     }
     
     currentPowerHTML+="</description-container></innate-power>";
-	console.log(currentPowerHTML)
     return currentPowerHTML;
 }
 
