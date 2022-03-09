@@ -5,6 +5,18 @@
     <link href="../../_global/css/board_front.css" rel="stylesheet" />
     <script type="text/javascript" src="../../_global/js/general.js"></script>
     <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+	
+<!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+	<style>
+	icon.custom1{background-image: url('demo_custom_icon.png'); }
+	icon.custom2{background-image: url('filename.png'); }
+	icon.custom3{background-image: url('filename.png'); }
+	</style>
+	
 </head>
 
 <body>
@@ -14,7 +26,11 @@
     <spirit-name>
       River Surges in Sunlight
     </spirit-name>
-
+	<artist-name>
+	
+	</artist-name>
+	
+	
     <special-rules-container>
       <section-title>SPECIAL RULES</section-title>
       <special-rules-subtitle>Rivers Domain</special-rules-subtitle>
@@ -26,8 +42,8 @@
     <right>
 
       <growth title="Growth (Pick One)">
-        <growth-group banner="example2.png" banner-v-scale="50%" values="gather(blight);push(dahan)"></growth-group>
-        <growth-group banner="example2.png" banner-v-scale="50%" values="push(city,2);gather(disease,3);gather(beasts,sacred-site);gather(badlands,wilds)"></growth-group>
+        <growth-group banner="example2.png" banner-v-scale="50%" values="gather(blight);gather(disease,3);gather(beasts,sacred-site)"></growth-group>
+        <growth-group banner="example2.png" banner-v-scale="50%" values="gather(presence,sand,each);gather(presence,ocean,1);gather(beasts,mountain-wetland)"></growth-group>
     </growth>
 
     <presence-tracks>

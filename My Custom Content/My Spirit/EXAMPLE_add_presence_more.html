@@ -5,6 +5,18 @@
     <link href="../../_global/css/board_front.css" rel="stylesheet" />
     <script type="text/javascript" src="../../_global/js/general.js"></script>
     <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+	
+<!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+	<style>
+	icon.custom1{background-image: url('demo_custom_icon.png'); }
+	icon.custom2{background-image: url('filename.png'); }
+	icon.custom3{background-image: url('filename.png'); }
+	</style>
+	
 </head>
 
 <body>
@@ -29,8 +41,8 @@
     <right>
 
       <growth title="Growth (Pick One)">
-        <growth-group values="add-presence(3,no-blight,wilds,or);add-presence(3,wilds,no-blight,or);add-presence(1,no-presence);add-presence(3,wetland,no-blight,wilds,and);add-presence(3,wilds,no-blight,and)"></growth-group>
-        <growth-group values="add-presence(2,town,city,disease,or);add-presence(1,token,strife,and)"></growth-group>
+        <growth-group values="add-presence(3,token,beasts,and);add-presence(1,token,disease,or);add-presence(2,text, to a land shown on the Ravage card);add-presence(2,invaders,dahan,or);add-presence(2,coastal);add-presence(4,inland)"></growth-group>
+        <growth-group values="add-presence(2,no-disease,no-blight,and);add-presence(4,no-own-presence)"></growth-group>
     </growth>
 
     <presence-tracks>

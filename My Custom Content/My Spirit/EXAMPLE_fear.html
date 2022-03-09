@@ -5,6 +5,18 @@
     <link href="../../_global/css/board_front.css" rel="stylesheet" />
     <script type="text/javascript" src="../../_global/js/general.js"></script>
     <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+	
+<!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+	<style>
+	icon.custom1{background-image: url('demo_custom_icon.png'); }
+	icon.custom2{background-image: url('filename.png'); }
+	icon.custom3{background-image: url('filename.png'); }
+	</style>
+	
 </head>
 
 <body>
@@ -12,12 +24,12 @@
   <board spirit-image="example1.png" spirit-image-scale="190%"  spirit-border="example2.png">
     
     <spirit-name>
-      River Surges in Sunlight
+      Fear in Growth
     </spirit-name>
 	<artist-name>
-	Artist Credit: 
-	</artist-name>
 	
+	</artist-name>
+
     <special-rules-container>
       <section-title>SPECIAL RULES</section-title>
       <special-rules-subtitle>Mountain Home</special-rules-subtitle>
@@ -45,19 +57,18 @@
 					 </sub-growth>
 		-->
 		<growth title="Growth">
-		  <sub-growth title="pick one of:" bordered>
-			<growth-group tint="green" values="reclaim-all"></growth-group>
-			<growth-group values="reclaim(your Unique Powers);reclaim;reclaim-one;reclaim(one)"></growth-group>
-			<growth-group values="reclaim(custom,your Unique Powers)"></growth-group>
+		  <sub-growth title="always:" bordered>
+			<growth-group tint="purple" values="fear(2)"></growth-group>
 		  </sub-growth>
 		  <sub-growth title="and one of:">
-			<growth-group values="gain-energy(text,k)"></growth-group>
+			<growth-group values="fear(moon);fear(3,air);fear(4,sacred-site)"></growth-group>
+			<growth-group values="fear(text,your custom condition)"></growth-group>
 		  </sub-growth>
 		</growth>
 
 		<presence-tracks>
-		  <energy-track banner="example2.png" banner-v-scale="50%" values="1,2+moon,move-presence(1),3,move-presence(2)+air,earth+air+fire,4+air+move-presence(3),custom(Your custom effect)"></energy-track>
-		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,gain-card-pay-2,2,custom(Your custom effect),3,custom(Your custom effect and icon;city)"></card-play-track>
+		  <energy-track banner="example2.png" banner-v-scale="50%" values="1,2,isolate,custom(Your custom text here),forget-power-card,4"></energy-track>
+		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,2,3,markerplus,fire+markerplus,4+reclaim-one,fire+reclaim-one"></card-play-track>
 		</presence-tracks>
 
 		<!-- INNATE POWERS  
@@ -80,26 +91,7 @@
           Instead, 1 Damage per {fire} you have.
         </level>
         <level threshold="4-fire,2-air">
-          You may split this Power's damage among any number of lands with {blight} where you have {presence}.
-        </level>
-      </quick-innate-power>
-      <quick-innate-power
-      name="explosion2"
-      speed="slow"
-      range="none"
-      target="{blight}/{no-blight}"
-      target-title="TARGET">
-      <level threshold="1-plant">
-          1 Damage per {fire,2} you have.
-        </level>
-        <level threshold="3-plant,2-blight">
-          Instead, 1 Damage per {fire} you have.
-        </level>
-        <level threshold="4-fire,2-disease,2-wilds">
-          You may split this Power's damage among any number of lands with {blight} where you have {presence}.
-        </level>
-        <level threshold="7-fire,3-strife,1-badlands">
-          In {blight} where {presence} you {dahan} have {wilds} and {strife} then {badlands} and {disease}.
+          Notice that with only one innate power, the text can spill over...
         </level>
       </quick-innate-power>
     </innate-powers>
