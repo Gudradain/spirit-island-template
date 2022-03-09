@@ -243,6 +243,11 @@ presence-node>icon.card-deep-layers {
     background-position: right;
 }
 
+icon.push {
+    height: 68px;
+    width: 110px;
+}
+
 icon-multi {
     position: absolute;
 }

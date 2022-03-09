@@ -312,7 +312,7 @@ function parseGrowthTags(){
                         if(presenceOptions[1]=='text'){
                             // User wants a custom text presence addition
                             presenceIcon += "<span style='font-family: DK Snemand; font-size: 24pt; font-style: normal;'>!!!</span>";
-							presenceText += presenceOptions[2];
+							presenceText += " "+presenceOptions[2];
                         } else if (presenceOptions[1]=='token'){
                             // User wants to add a token in growth
                             switch (presenceOptions[3]){
@@ -876,13 +876,21 @@ function enhancePresenceTracksTable() {
     var title = document.createElement("section-title");
     title.innerHTML = "Presence";    
     elmt.insertBefore(title, elmt.firstChild); 
-    
+    console.log('creating dynamic presence tracks...')
     var table = document.getElementById("presence-table");
     for (var i = 0, row; row = table.rows[i]; i++) {
        for (var j = 0, cell; cell = row.cells[j]; j++) {
         cell.innerHTML = getPresenceNodeHtml(cell.firstChild.nodeValue, j == 0, 'dynamic', i == 0);
        }  
     }
+
+	// Add spacing row to the front of the table
+	var firstRow = table.getElementsByTagName("tr")[0];
+	var firstCell = firstRow.getElementsByTagName("td")[0];
+	var spacerRow = document.createElement("td");
+	spacerRow.style.width = "10px";
+	spacerRow.rowSpan = "2";
+	firstRow.insertBefore(spacerRow,firstCell);
 }
 
 function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
@@ -917,6 +925,11 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
             nodeClass = 'energy';
             subText = 'Energy/Turn';
         }
+		else if(nodeText.startsWith("+energy")){
+			nodeText = nodeText.replace('+energy','+');
+            nodeClass = 'energy';
+            subText = 'Energy/Turn';
+		}
         else if(nodeText.startsWith("card")) {
             nodeText = nodeText.substr(4);
             nodeClass = 'card';
@@ -931,7 +944,9 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
         nodeClass = 'card';
         subText = 'Card Plays';
     }
-
+	
+	console.log(nodeText)
+	
     addIconShadow = false;
     if(!isNaN(nodeText)){
         //The value is only a number
@@ -942,6 +957,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
             subText = nodeText;
 			if(isNaN(nodeText[0])){
 				subText += " Energy";
+				nodeClass = 'energy';
 			}
         }
         inner = "<" + nodeClass + "-icon><value>" + nodeText + "</value></" + nodeClass + "-icon>";
@@ -954,6 +970,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 		if(plus_check!=-1){
 			splitOptions.splice(plus_check,1)
 			splitOptions[plus_check]="+"+splitOptions[plus_check]
+			nodeClass = 'energy';
 		}
 		
         if(splitOptions.length == 1){
@@ -963,8 +980,22 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 				case 'push':
                     var matches = regExp.exec(splitOptions[0]);
                     var moveTarget = matches[1];
-                    inner = "<icon class='push'><icon class='"+moveTarget+"'></icon></icon>";
-                    subText = "Push 1 "+Capitalise(moveTarget) + " from 1 of your Lands";
+					let moveIcons = "<div class='push'>"
+					let moveText = "";
+					for (var i = 0; i < moveTarget.split(";").length; i++) { 
+						moveIcons += "{"+moveTarget.split(";")[i]+"}"
+						moveText += Capitalise(moveTarget.split(";")[i]);
+						if (i < moveTarget.split(";").length-1){
+							moveIcons += "{backslash}";
+							moveText += "/";
+							
+						}
+					}
+					moveIcons +="</div>"
+					let preposition = option =='push' ? 'from' : 'into';
+						
+                    inner = "<icon class='push'>"+moveIcons+"</icon>";
+                    subText = Capitalise(option)+" 1 "+ moveText + " "+preposition+" 1 of your Lands";
                     break;    
                 case 'gather':
                     var matches = regExp.exec(splitOptions[0]);

@@ -675,6 +675,11 @@ move {
   text-align: center;
 }
 
+icon.push {
+  height: 62px;
+  width:100px;
+}
+
 push {
   background-image: url('../../images/board/half_arrow_push.png');
   background-repeat: no-repeat;

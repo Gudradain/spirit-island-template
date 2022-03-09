@@ -450,20 +450,45 @@ icon.gather-into > icon {
 icon.push {
   background-image: url('../../images/board/NewIcons/Land Push.png');
   display: inline-block;
-  height: 62px;
-  width:100px;
+  height: 68px;
+  width: 110px;
   margin-bottom: 7px;
+  margin-bottom: 0px;
+  margin-left: 4px;
 }
 
 icon.push > icon {
     position: relative;
-    text-align: unset;
+    text-align: center;
     top: 17px;
     left: 24px;
     width: 25px;
     height: 25px;
     margin: 0px;
     padding: 0px;
+}
+
+icon.push > div.push {
+    position: relative;
+    text-align: center;
+    top: 20px;
+    left: 47%;
+    transform: translateX(-54%);
+}
+
+div.push > icon {
+    width: 25px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+div.push > icon.backslash {
+    width: 10px;
+}
+
+icon.push > icon.backslash {
+    width: 10px;
 }
 
 icon.push-from {
