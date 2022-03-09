@@ -103,7 +103,8 @@ card.slow cost::before{
 name{
   position:absolute;
   left:135px;
-  top:28px;
+  top: 8.5%;
+  transform: translateY(-50%);
   height:auto;
   width:310px;
 
