@@ -832,6 +832,11 @@ growth-cell gain icon.orelement {
   margin-left: -7px;
 }
 
+gain.or {
+	display:flex;
+	flex-direction:row;
+}
+
 growth-cell icon.fire,
 growth-cell icon.any,
 growth-cell icon.water,
