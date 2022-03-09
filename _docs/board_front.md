@@ -65,7 +65,8 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 ||Discard Element Markers|element-marker(-x)|x is the number to discard|element-marker(-2)|
 |Pushing|Push from Your Lands|push(x)|Push entity x (dahan, beasts, presence, etc) from 1 of your lands.||
 ||Push from Your Lands|push(x,y)|Push entity x (dahan, beasts, presence, etc) a land at range y.||
-||Push from Your Lands|push(x,y,z)|Push x from z lands of condition y. y can be terrain types, sacred site, token types, etc. z can be a numeral or 'each' (or another word at your own risk).|Ocean: push(presence,ocean,each)|
+||Push with Conditions|push(x,y)|If y is a condition, push x from 1 of your lands with y condition (sacred site, beasts, etc).||
+||Push from Multiple Lands with Conditions|push(x,y,z)|Push x from z lands of condition y. y can be terrain types, sacred site, token types, etc. z can be a numeral or 'each' (or another word at your own risk).|Ocean: push(presence,ocean,each)|
 |Gathering|Gather into Your Lands|gather(x)|Gather entity x (dahan, beasts, presence, etc) into 1 of your lands.||
 ||Gather at Range|gather(x,y)|If y is a number, gather x into a land at y range.|Many Minds: <br>gather(2,beasts)|
 ||Gather with Conditions|gather(x,y)|If y is a condition, gather x into 1 of your lands with y condition (sacred site, beasts, etc).||
@@ -130,6 +131,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 |Reclaim One|reclaim-one|Reclaim one card, can be used in combinations||
 |Combinations|separate with a '+'|Can include energy, cardplays, markers, move-presence, gain-range, and reclaim one. Can be more than 2 things.|Stone's cardplay track: values="1,earth,earth,earth+reclaim-one,earth+any,2+earth"|
 |Push/Gather|push(x), gather(x)|Push or Gather x from/into one of your Lands. x can be most token/entities (explorer, wilds, presence, etc).|Trickster's cardplay track: values="2,push(dahan),3,3,4,air,5"|
+||push(x;y)|Push x or y from one of your Lands. Could do z but its not recommended|Finder's bottom track push(town;city)|
 |Isolate|isolate|Isolate one of your Lands.|Custom cardplay track: values="1,2,isolate,3,3,4,5"|
 |Move a Presence|move-presence(x)|Move a presence x range, can be used in combinations.|Downpour cardplay track: values="1,move-presence(1),water,2,move-presence(1),3"|
 |Pay 2 to Gain Power Card|gain-card-pay-2|Pay 2 Energy to Gain Power Card|Many Minds cardplay track: values="1,2,gain-card-pay-2,3,3,4,5"|
