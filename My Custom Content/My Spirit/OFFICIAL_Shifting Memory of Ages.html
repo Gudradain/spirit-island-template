@@ -5,7 +5,7 @@
     <link href="../../_global/css/board_front.css" rel="stylesheet" />
     <script type="text/javascript" src="../../_global/js/general.js"></script>
     <script type="text/javascript" src="../../_global/js/board_front.js"></script>
-	
+
 <!-- 	Custom Icons. Instructions 
 				1) place image in same folder as HTLM (this file) 
 				2) replace demo file name with your file name below 
@@ -24,22 +24,24 @@
   <board spirit-image="example1.png" spirit-image-scale="190%"  spirit-border="example2.png">
     
     <spirit-name>
-      LURE OF THE DEEP WILDERNESS
+      Shifting Memory of Ages
     </spirit-name>
 	<artist-name>
 	
 	</artist-name>
-
+	
 
     <special-rules-container>
       <section-title>SPECIAL RULES</section-title>
-      <special-rules-subtitle>HOME OF THE ISLAND'S HEART</special-rules-subtitle>
+      <special-rules-subtitle>LONG AGES OF KNOWLEDGE AND FORGETFULNESS</special-rules-subtitle>
       <special-rule>
-        Your {presence} may only be added/moved to lands that are Inland.
+        When you would Forget a Power Card from your hand, you may instead discard it. (Max. once per Action.)
       </special-rule>
-      <special-rules-subtitle>ENTHRALL THE FOREIGN EXPLORERS</special-rules-subtitle>
+      <special-rules-subtitle>INSIGHTS INTO THE WORLD'S NATURE</special-rules-subtitle>
       <special-rule>
-        For each of your {presence} in a land, ignore up to 2 {explorer} during the Ravage Step and any Ravage Actions.
+        Some of your Actions let you <strong>Prepare</strong> Element Markers, which are kept here until used. Choose the Elements freely. <em>(I.e., you are not limited to Elements you have at the time.)</em>
+<br>
+Each Element Marker spent grants 1 of that Element for a single Action. <em>(E.g., one Power use.)</em>
       </special-rule>
     </special-rules-container>
 
@@ -54,19 +56,15 @@
 					 </sub-growth>
 		-->
 		<growth title="Growth">
-		  <sub-growth title="pick one of:" bordered>
-			<growth-group values="reclaim-all;gain-energy(1)"></growth-group>
-			<growth-group values="add-presence(4,inland)"></growth-group>
-		  </sub-growth>
-		  <sub-growth title="and one of:">
-			<growth-group values="gain-element(moon,air,plant);gain-energy(2)"></growth-group>
-			<growth-group values="gain-power-card"></growth-group>
-		  </sub-growth>
+			<growth-group values="reclaim-all;add-presence(0)"></growth-group>
+			<growth-group values="gain-power-card;add-presence(2)"></growth-group>
+			<growth-group values="add-presence(1);gain-energy(2)"></growth-group>
+			<growth-group values="gain-energy(9)"></growth-group>
 		</growth>
 
 		<presence-tracks>
-		  <energy-track banner="example2.png" banner-v-scale="50%" values="1,2,moon,3+plant,4+air,5+reclaim-one"></energy-track>
-		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,2,animal,3,4,5+reclaim-one"></card-play-track>
+		  <energy-track banner="example2.png" banner-v-scale="50%" values="0,1,2,3+markerplus,4,reclaim-one,5,6+markerplus"></energy-track>
+		  <card-play-track banner="example2.png" banner-v-scale="50%" values="1,2,2,markerminus+markerminus+gain-card-play,3"></card-play-track>
 		</presence-tracks>
 
 		<!-- INNATE POWERS  
@@ -76,43 +74,35 @@
 		-->
     <innate-powers>
       <quick-innate-power
-        name="FORSAKE SOCIETY TO CHASE AFTER DREAMS"
-        speed="slow"
+        name="LEARN THE INVADERS' TACTICS"
+        speed="fast"
         range="1"
         target="invaders"
         target-title="TARGET LAND"
-        note="After this Power replaces pieces with {explorer}: Gather any number of those {explorer} into your lands. If target land has any {town}/{city} remaining, 1 {fear}.">
-        <level threshold="2-moon">
-          Replace 1 {explorer} with 1 {explorer}.
+		>
+        <level threshold="2-earth">
+          Defend 2.
         </level>
-        <level threshold="2-moon,1-air">
-          Instead, replace 1 {town} with 2 {explorer}.
+        <level threshold="1-air,2-earth">
+          Instead, Defend 3.
         </level>
-        <level threshold="3-moon,2-air,1-animal">
-          Instead, replace 1 {city} with 3 {explorer}.
-        </level>
-        <level threshold="4-air">
-          Repeat this Power.
+        <level threshold="2-moon,3-air,4-earth">
+          Instead, Defend 2 per card in the Invader discard pile.
         </level>
       </quick-innate-power>
       <quick-innate-power
-      name="NEVER HEARD FROM AGAIN"
-      speed="slow"
-      range="0"
-      target="inland"
+      name="OBSERVE THE EVER-CHANGING WORLD"
+      speed="fast"
+      range="1"
+      target="any"
       target-title="TARGET LAND"
-	  note="If this Power destroys any {explorer}, 1 {fear}.<br> If this Power destroys 5 or more {explorer}, +1 {fear}.">
-      <level threshold="1-fire,3-plant">
-          Add 1 {badlands}.
+	  >
+      <level threshold="1-moon">
+          Prepare 1 Element Marker.
         </level>
-        <level threshold="2-plant">
-          Destroy up to 2 {explorer} per {badlands}/{beasts}/{disease}/{wilds}.
-        </level>
-        <level threshold="4-plant,1-animal">
-          2 Damage.
-        </level>
-        <level threshold="6-plant">
-          Repeat this Power.
+        <level threshold="2-moon,1-air">
+          Instead, after each of the next three Actions that change which pieces are in target land, Prepare 1 Element Marker.
+<em>(You can stack the markers you intend to take here or on the target land so you don't need to ponder on what to take mid-turn. Any Action can trigger Preparing a marker, not just your own.)</em>
         </level>
       </quick-innate-power>
     </innate-powers>

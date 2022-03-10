@@ -1094,6 +1094,8 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     }
                 } else if(splitOptions[i].startsWith("reclaim")){
                     trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+" small-reclaim'"+track_icon_loc+"></icon></icon-multi-element>"
+                } else if(splitOptions[i].startsWith("gain-card-play")){
+                    trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+" small'"+track_icon_loc+"></icon></icon-multi-element>"
                 } else if(splitOptions[i].startsWith("move-presence")){
 					var matches = regExp.exec(splitOptions[i]);
                     var moveRange = matches[1];

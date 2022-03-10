@@ -118,6 +118,14 @@ card-icon.small {
     z-index: 2;
 }
 
+.gain-card-play.small {
+	height: 80px;
+    width: 80px;
+    margin-left: -7px;
+    margin-right: -5px;
+    margin-top: -14px;
+}
+
 presence-node energy-icon {
   background-image: url('../../images/board/EnergyBlank.png');
   background-repeat: no-repeat;
