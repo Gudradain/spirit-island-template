@@ -120,7 +120,8 @@ special-rule em icon.dahan {
 }
 
 special-rule icon.sun,special-rule icon.earth, special-rule icon.plant, special-rule icon.fire, 
-special-rule icon.air, special-rule icon.moon, special-rule icon.animal, special-rule icon.water {
+special-rule icon.air, special-rule icon.moon, special-rule icon.animal, special-rule icon.water,
+special-rule icon.any, special-rule icon.star, special-rule icon.markerplus, special-rule icon.markerminus {
     width: 35px;
     height: 35px;
     margin-left: 0px;

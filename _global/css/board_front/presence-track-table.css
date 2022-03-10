@@ -31,7 +31,9 @@ presence-tracks table td {
 }
 
 presence-tracks table td[rowspan="2"] {
-  vertical-align: middle;
+  vertical-align: top;
+  top: 110px;
+  position: relative;
 }
 
 presence-node {

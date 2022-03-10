@@ -878,6 +878,8 @@ function enhancePresenceTracksTable() {
     elmt.insertBefore(title, elmt.firstChild); 
     console.log('creating dynamic presence tracks...')
     var table = document.getElementById("presence-table");
+	table.innerHTML = table.innerHTML.replaceAll('middle=""','rowspan="2" class="middle"')
+	console.log(table.innerHTML)
     for (var i = 0, row; row = table.rows[i]; i++) {
        for (var j = 0, cell; cell = row.cells[j]; j++) {
         cell.innerHTML = getPresenceNodeHtml(cell.firstChild.nodeValue, j == 0, 'dynamic', i == 0);
@@ -1394,11 +1396,18 @@ function dynamicCellWidth() {
 	height_adjust += row_max_height - 1.5*default_row_height;
 	subtext[0].style.height = first_row_max+2+"px"
 	subtext[firstCardPlayIndex].style.height = row_max_height+2+"px"
-	
 	var presence_table = document.getElementById("presence-table");
-
 	presence_table.style.height = (presence_table.offsetHeight + height_adjust)+"px";
     
+	// Place middle presence nodes
+	var firstRow = document.getElementsByClassName("first")[0];
+	var firstRowHeight = firstRow.offsetHeight;
+	console.log('offset height = '+firstRowHeight)
+	var middleNodes = document.getElementsByClassName("middle");
+	for(i = 0; i < middleNodes.length; i++){
+		middleNodes[i].style.top = (firstRowHeight/2)+"px";
+		console.log(first_row_max)
+	}
 }
 
 function parseInnatePowers(){
