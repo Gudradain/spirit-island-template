@@ -118,7 +118,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 	  - banner: Artwork behind the presence track can be added with the banner="example.png". The artwork should be in the same folder as the html
 	  - banner-v-scale: Allows you to stretch your banner artwork vertically
 	  - Example: *\<card-play-track banner="example2.png" banner-v-scale="50%" values="1,star,gain-card-pay-2,isolate,markerplus,fire+markerplus,5+reclaim-one,fire+reclaim-one"\>\</card-play-track\>
-    - **table**: For Serpent/Finder style boards. An html table that allows more flexible positioning of nodes. Individual presence track options are specified within the `<td>` table cells. The available options are exactly the same as described for the energy and card-play tracks above, with the exception that integer values must be prefixed with with 'card' or 'energy'. For example 'card1' means 1 card play, 'energy2' means 2 energy, etc.
+    - **special presence track options (Finder/Serpent)**: For Serpent/Finder style boards, refer to examples. An html table that allows more flexible positioning of nodes. Individual presence track options are specified within the `<td>` table cells. Use <td middle> in energy track to mark presence track spots you want to appear in the middle. The available options are exactly the same as described for the energy and card-play tracks above, with the exception that integer values must be prefixed with with 'card' or 'energy'. For example 'card1' means 1 card play, 'energy2' means 2 energy, etc.
 
 #### Supported Presence Track Options
 |Presence Track Effect|Usage|Details|Examples|
