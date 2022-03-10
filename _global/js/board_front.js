@@ -832,7 +832,15 @@ function parseEnergyTrackTags(){
     energyHTML += "<td style='width:10px'></td>"
 
     for(i = 0; i < energyOptions.length; i++){
-        energyHTML += "<td>"+getPresenceNodeHtml(energyOptions[i], i == 0, "energy", true)+"</td>";
+		// option allows for placing presence track icons in the "middle row"
+		let nodeText = energyOptions[i];
+		let isMiddle = '';
+		var regExpOuterParentheses = /\(\s*(.+)\s*\)/;
+		if (nodeText.startsWith("middle")){
+			nodeText = regExpOuterParentheses.exec(nodeText)[1];
+			isMiddle = ' rowspan="2" class="middle"';
+		}
+        energyHTML += "<td"+isMiddle+">"+getPresenceNodeHtml(nodeText, i == 0, "energy", true)+"</td>";
     }
     energyHTML += "</tr>"
     document.getElementsByTagName("energy-track")[0].removeAttribute("values");
@@ -902,7 +910,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
     var regExp = /\(([^)]+)\)/;    
 
     var nodeClass = '';
-
+	
     // Every node will have a presence-node element with
     // a ring-icon element inside, so we can add these now.
     presenceNode = document.createElement("presence-node");    
@@ -1054,18 +1062,20 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
         } else {
             var subText = ""
             
-            //Prepare text. First, check if multiple of the same icon (ie. 2 Water)
-            if (splitOptions.every( (val, i, arr) => val === arr[0] )) {
-                subText = splitOptions.length + " " + Capitalise(splitOptions[0]);
-            } else {
-                for (var i = 0; i < splitOptions.length; i++) {
-					subText += IconName(splitOptions[i]);
-					
-                    if(i < splitOptions.length-1){
-                        subText += ", "
-                    }
-                }
-            }
+			// Find unique names and report multiples
+			const nameCounts = {};
+			splitOptions.forEach(function (x) { nameCounts[x] = (nameCounts[x] || 0) + 1; });
+			let namesList = Object.keys(nameCounts);
+			let countList = Object.values(nameCounts);
+			console.log(namesList)
+			console.log(countList)
+			for (var i = 0; i < namesList.length; i++) {
+				subText += IconName(namesList[i],countList[i]);
+				
+				if(i < namesList.length-1){
+					subText += ", "
+				}
+			}
         
             numLocs = splitOptions.length;
             let rad_size = 22 + 1*numLocs; // this expands slightly as more icons are used
@@ -1113,7 +1123,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
     return presenceNode.outerHTML;
 }
 
-function IconName(str){
+function IconName(str, iconNum = 1){
 	var regExp = /\(([^)]+)\)/;
 	const matches = regExp.exec(str);
 	num = ""
@@ -1128,6 +1138,7 @@ function IconName(str){
 		num = str[1];
 		str = "increase-energy";
 	}
+	let plural = iconNum > 1 ? 's' : '';
 
 	switch(str){
 
@@ -1171,13 +1182,13 @@ function IconName(str){
 			subText = "Element"
 			break;
 		case 'markerplus':
-			subText = "Prepare 1 Element Marker";
+			subText = "Prepare "+iconNum+" Element Marker"+plural;
 			break;
 		case 'markerminus':
-			subText = "Discard 1 Element Marker";
+			subText = "Discard "+iconNum+" Element Marker"+plural;
 			break;
 		case 'isolate':
-			subText = "Isolate 1 of your Lands";
+			subText = "Isolate "+iconNum+" of your Lands";
 			break;
 		case 'reclaim-none':
 			subText = "Reclaim None"
@@ -1200,8 +1211,7 @@ function IconName(str){
 			subText = str.toUpperCase();
 			break;
 		default:
-			subText = Capitalise(str);
-			break;                
+			subText = iconNum > 1 ? iconNum + " " + Capitalise(str) : Capitalise(str);
 	}
 	
 	return subText
@@ -1405,8 +1415,8 @@ function dynamicCellWidth() {
 	console.log('offset height = '+firstRowHeight)
 	var middleNodes = document.getElementsByClassName("middle");
 	for(i = 0; i < middleNodes.length; i++){
-		middleNodes[i].style.top = (firstRowHeight/2)+"px";
-		console.log(first_row_max)
+		let presenceNode = middleNodes[i].getElementsByTagName("presence-node")
+		presenceNode[0].style.top = (firstRowHeight/2)+"px";
 	}
 }
 

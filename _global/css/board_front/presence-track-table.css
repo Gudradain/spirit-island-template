@@ -32,7 +32,10 @@ presence-tracks table td {
 
 presence-tracks table td[rowspan="2"] {
   vertical-align: top;
-  top: 110px;
+  position: relative;
+}
+
+td.middle > presence-node {
   position: relative;
 }
 
@@ -177,7 +180,7 @@ presence-node value {
 }
 
 energy-icon.small value {
-  font-size: 28pt;
+  font-size: 26pt;
 }
 
 card-icon.small value {
