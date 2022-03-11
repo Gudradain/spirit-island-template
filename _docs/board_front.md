@@ -88,13 +88,13 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Repeating Growth Options|Repeat Growth Options|^x|Added to other growth options. x is the number of repeats. As seen on Fractured Days|gain-power-card^2; gain-energy(2)^3|
 |Discarding Cards|Discard 2 Power Cards|discard-cards|As seen on Downpour||
 ||Discard 1 Power Card|discard-card|||
-|Gain Card Play|Gain 1 Card Play|gain-card-play||Volcano, Finder: gain-card-play|
-||Gain Card Plays|gain-card-play(x)|Gain x card plays||
+|Gain Card Play|Gain 1 Card Play|gain-card-play|Gain +1 Card Play|Volcano, Finder: gain-card-play|
+||Gain Card Plays|gain-card-play(x)|Gain +x Card Plays||
 |Forget Power Card|Forget a Power Card|forget-power-card|||
 |Ignore Range |Ignore Range this Turn|ignore-range|Ignore Range this turn (as seen on Finder)||
 |Gain Range |Gain Range this Turn|gain-range(x)|Gain x range for Powers this turn|gain-range(1)|
 ||Gain Range this Turn for...|gain-range(x,y)|Gain x range for y effects (powers, power cards, innate powers, everything) this turn|gain-range(2,powers)|
-|Isolate|Isolate one of your Lands|isolate|||
+|Isolate|Isolate one of your Lands|isolate|Isolate one of your Lands||
 ||Isolate a land at Range|isolate(x)|Isolate a land at x Range||
 |Destroy Presence|Destroy a Presence|destroy-presence|||
 |Gaining Fear|Gain Fear|fear(x)|Gain x Fear||
@@ -122,7 +122,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 	  - Example: *\<card-play-track banner="example2.png" banner-v-scale="50%" values="1,star,gain-card-pay-2,isolate,markerplus,fire+markerplus,5+reclaim-one,fire+reclaim-one"\>\</card-play-track\>
     - **special presence track options (Finder/Serpent)**: For Serpent/Finder style boards, there are two options:
 	  - Wrap your presence node options in middle() to have them appear in the middle of the tracks. Only do this to energy track nodes.
-	    - Example: *\<energy-track values="1,2,middle(earth),3,middle(water+water),move-presence(1),middle(push(town;city)),reclaim-one"\>\</energy-track\>*
+	    - Example: *\<energy-track values="1,fire,any,reclaim-one,_middle(earth)_,6,any,12"\>\</energy-track\>*
 	  - HTML \<presence-table\> as seen in the Finder example board HTML.
 	    - An html table that allows more flexible positioning of nodes. Individual presence track options are specified within the `<td>` table cells. Use <td middle> in energy track to mark presence track spots you want to appear in the middle. The available options are exactly the same as described for the energy and card-play tracks above, with the exception that integer values must be prefixed with with 'card' or 'energy'. For example 'card1' means 1 card play, 'energy2' means 2 energy, etc.
 
