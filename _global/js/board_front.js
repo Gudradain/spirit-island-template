@@ -189,6 +189,10 @@ function parseGrowthTags(){
 								reclaimIcon = growthItem+"-"+reclaimType
 								reclaimText = IconName(growthItem+"-"+reclaimType)
 								break;
+							case 'half':
+								reclaimIcon = growthItem+"-"+reclaimType
+								reclaimText = IconName(growthItem+"-"+reclaimType)
+								break;
 							case 'custom':
 								reclaimIcon = growthItem+"-"+reclaimType
 								reclaimText = "Reclaim " + reclaimCustomText
@@ -523,7 +527,6 @@ function parseGrowthTags(){
 					break;
 				}
                 case 'move-presence': {        
-					//Additional things can be done here based on inputs
 					const matches = regExp.exec(classPieces[j]);
 
 					const moveRange = matches[1];
@@ -1159,11 +1162,23 @@ function IconName(str, iconNum = 1){
 		case 'reclaim':
 			subText = "Reclaim Cards";
 			break;
+		case 'reclaim-half':
+			subText = "Reclaim Half <em>(round up)</em>";
+			break;
 		case 'forget-power-card':
 			subText = "Forget Power Card";
 			break;    
 		case 'discard-cards':
 			subText = "Discard 2 Power Cards"
+			break;
+		case 'discard-2-cards':
+			subText = "Discard 2 Power Cards"
+			break;
+		case 'discard-card':
+			subText = "Discard 1 Power Card"
+			break;
+		case 'discard-1-card':
+			subText = "Discard 1 Power Card"
 			break;
 		case 'destroy-presence':
 			subText = "Destroy 1 of your Presence"
@@ -1479,7 +1494,7 @@ function parseInnatePower(innatePowerHTML){
     
     var noteValue = innatePowerHTML.getAttribute("note");
 
-    //If the note field is blank
+    //If the note field is blank, don't include it
     if(noteValue == null){
         noteValue = "";
     }else{

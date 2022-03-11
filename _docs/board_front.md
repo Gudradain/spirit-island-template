@@ -3,16 +3,18 @@
 The fastest way to get started is to start from the example template in the folder boards/example. Return here for detailed explanations of options for different parts of the board.
 
 ### General Icons
-General Images: Images for invaders, elements, dahan, etc in a board can be called by enclosing its name with "{}". For example, {dahan} or {fire}. Here is a list of what is available:
+Icons for invaders, elements, dahan, etc can be used by enclosing its name with "{}". For example, {dahan} or {fire}. Here is a list of what is available:
 - Elements (fire, water, earth, air, plant, animal, sun, moon)
 	- any: the Any element icon
 	- star: the Element icon (from Starlight)
 	- markerplus, markerminus: the Prepare Element Marker and Discard Element Marker (from Shifting Memory)
 - Invaders (explorer, town, city)  
 - Presence (presence, sacred-site, no-presence, no-own-presence, move-presence)  
-- Island icons (blight, dahan, fear, disease, wilds, beast, strife, badlands)  
+- Island icons (blight, dahan, beasts, wilds, disease, strife, badlands)  
+- Fear icons (fear, terror1, terror2, terror3)
 - Land icons (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)  
 - Targeting icons (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)  
+- Power Card icons (fast, slow, player-spirit, or)
 - Custom icons can be added in the \<head\>\<style\> section at the top of the spirit board HTML
 	 - Save the custom symbol image file in the same folder as the HTML
 	 - Update the custom icon reference with the .png or .jpg of the custom symbol
@@ -48,8 +50,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 #### Supported growth-group values
 |Category|Action|Usage|Details|Examples|
 |------|------|------|------|----|
-|Reclaim|Reclaim All|reclaim-all OR relcaim(all)|||
-||Reclaim One|reclaim-one OR relcaim(one)|||
+|Reclaim|Reclaim All, Reclaim One, Reclaim Half|reclaim-all, reclaim-one, reclaim-half OR relcaim(x)|x can be all, one, half, or custom||
 ||Reclaim Custom|reclaim(custom,*your custom reclaim text*)|Custom reclaim text with a unique icon.|reclaim(custom,your Unique Power Cards)|
 |Adding Presence|Add Presence at Range|add-presence(x)|Add a Presence up to x Range. *x can be 'any' or 1, 2, 3 or 4*||
 ||Add Presence with Condition|add-presence(x,y)|Add a Presence with y conditions at x Range. y can be terrain types (including dual types), tokens, invaders, invader pieces, dahan, blight, etc.||
@@ -80,16 +81,16 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 ||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be a !!!.||
 ||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*,y)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be y.||
 ||Gain Energy per Card Play|energy-per-play|Gain 1 Energy per Card Play.|As seen on Trickster|
-|Gain Power Card|Gain a Power Card|gain-power-card|||
-|Repeating Growth Options|Repeat Growth Options|^x|Added to other growth options. x is the number of repeats. As seen on Fractured Days|gain-power-card^2; gain-energy(2)^3|
-|Discard 2 Cards|Discard 2 Power Cards|discard-cards|As seen on Downpour||
-|Gain Card Play|Gain 1 Card Play|gain-card-play|||
-||Gain Card Plays|gain-card-play(x)|Gain x card plays||
-|Forget Power Card|Forget a Power Card|forget-power-card|||
 |Add Tokens|Add One Token|add-token(x,y)|At range x add token type y|add-token(2,beast)|
 ||Add Multiple Token of One Type|add-token(x,y, z)|Add z tokens of y type at range x|add-token(3,wilds,2)|
 ||Add Tokens of Different Types|add-token(x,y,z,...,and/or)|At range x, add a tokens of type y, z, and/or more. The last parameter must be 'or' or 'and'.|add-token(3,wilds,beasts,disease,and); add-token(3,strife,badlands,or);|
-|Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
+|Gain Power Card|Gain a Power Card|gain-power-card|||
+|Repeating Growth Options|Repeat Growth Options|^x|Added to other growth options. x is the number of repeats. As seen on Fractured Days|gain-power-card^2; gain-energy(2)^3|
+|Discarding Cards|Discard 2 Power Cards|discard-cards|As seen on Downpour||
+||Discard 1 Power Card|discard-card|||
+|Gain Card Play|Gain 1 Card Play|gain-card-play||Volcano, Finder: gain-card-play|
+||Gain Card Plays|gain-card-play(x)|Gain x card plays||
+|Forget Power Card|Forget a Power Card|forget-power-card|||
 |Ignore Range |Ignore Range this Turn|ignore-range|Ignore Range this turn (as seen on Finder)||
 |Gain Range |Gain Range this Turn|gain-range(x)|Gain x range for Powers this turn|gain-range(1)|
 ||Gain Range this Turn for...|gain-range(x,y)|Gain x range for y effects (powers, power cards, innate powers, everything) this turn|gain-range(2,powers)|
@@ -102,6 +103,7 @@ General Images: Images for invaders, elements, dahan, etc in a board can be call
 ||Gain Fear per Custom Item|fear(text,*your_text_here*)|Gain 1 Fear per condition of your choosing. Icon will be a !!!.|fear(text,for each of your blighted lands)|
 ||Gain Fear per Custom Item Plus Flat Fear|fear(x,text,*your_text_here*)|Gain x Fear plus 1 Fear per condition of your choosing. Icon will be a !!!.||
 |Deal Damage|Damage at Range|damage(x,y)|At range x, deal y Damage|Starlight: damage(0,2)|
+|Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
 ||Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc)||
 
