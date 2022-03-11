@@ -21,12 +21,17 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 	 - Use the icon name 'custom1' (or custom2 or custom3) to use your icons
 	 - Example: icon.custom1{background-image: url('demo_custom_icon.png'); }
 
+.Toggle Me
+[%collapsible%open]
+====
+This content is hidden when the "Toggle Me" label is clicked.
 ### Spirit Name & Board
 - board: Represents the whole board.
 - spirit-name: The name of the Spirit.
 - spirit-image: The main Spirit image. The image should be in the same folder as the html.
 	- spirit-image-scale: Used to scale the main spirit image
 - spirit-border: The image that sits underneath the Spirit name. The image should be in the same folder as the html.
+====
 
 ### Special Rules
 - special-rules-container: The container for the Special Rules
@@ -143,7 +148,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Pay 2 to Gain Power Card|gain-card-pay-2|Pay 2 Energy to Gain Power Card|Many Minds cardplay track: values="1,2,gain-card-pay-2,3,3,4,5"|
 |Gain Card Play|gain-card-play|Gain an additional card play not in the normal way (think Stone or Finder)|Stone energy track: values="2,3,gain-card-play^minor,4,gain-card-play^minor,6,gain-card-play^minor"|
 |Gain Range|gain-range(x)|Gain +x range||
-||gain-range(x,y)|Gain +x range on y|range(1,everything)|
+||gain-range(x,y)|Gain +x range on "y"|range(1,everything)|
 |Add Token|token(x)|Adds 1 token x to 1 of your lands||
 |Notate with Icon (like Stone)|^x|Puts icon x in top left corner of presence node|Stone top row: values="2,3,gain-card-play^minor,4,gain-card-play^minor,6,gain-card-play^minor"|
 |Forget Power|forget-power-card|Forget a power card. Unlikely to be useful because presence track actions are optional|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
