@@ -106,6 +106,12 @@ growth-cell-double {
   flex-direction: row;
 }
 
+growth-cell icon {
+  margin-bottom: 7px;
+  height: 90px;
+}
+
+/* Repeating Growth Options (Fractured Days) */
 repeat-growth {
     background-image: url('../../images/board/NewIcons/Growth Multiply Blank.png');
     position: absolute;
@@ -127,10 +133,7 @@ repeat-growth value{
   
 }
 
-growth-cell icon.discard-cards {
-  margin-bottom: 7px;
-}
-
+/* Gaining Flat Energy */
 growth-energy {
   background-image: url('../../images/board/AddEnergyBlank.png');
   background-repeat: no-repeat;
@@ -150,62 +153,7 @@ growth-energy value {
   margin-left: 25px;
 }
 
-growth-fear {
-  background-image: url('../../images/board/fear.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display: block;
-    height: 110px;
-    width: 80px;
-    margin-top: -20px;
-}
-
-growth-fear value {
-    font-family: 'Gobold Extra2', 'Mouse Memoirs';
-    font-size: 20pt;
-    display: inline-block;
-    margin-top: 48px;
-    margin-left: 0px;
-}
-
-fear-per {
-    background-image: url('../../images/board/fear.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    height: 75px;
-    width: 53px;
-    display: block;
-    z-index: 1;
-    position: relative;
-    margin-left: 0px;
-    margin-bottom: 50px;
-    margin-top: -35px;
-}
-
-fear-per value{
-    font-family: 'Gobold Extra2', 'Mouse Memoirs';
-    font-size: 14pt;
-    display: inline-block;
-    margin-top: 33px;
-    margin-left: 0px;
-}
-
-gain-per-fear ring-icon{
-    background-image: url('../../images/board/CardPlayRing.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    display: inline-block;
-    height: 70px;
-    width: 70px;
-    z-index: 2;
-    margin-left: -32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/* Complex add presence options */
 custom-presence-req {
     font-size: 20pt;
     font-weight: bold;
@@ -339,6 +287,40 @@ growth-cell icon.isolate {
   margin-bottom: 7px;
 }
 
+growth-cell icon.gain-power-card {
+  margin-bottom: 7px;
+}
+
+growth-cell icon.forget-power-card {
+  margin-bottom: 7px;
+}
+
+growth-cell icon.energy-per-play {
+    margin-bottom: 0px;
+    margin-top: -20px;
+    width: 100px;
+    height: 110px;
+}
+
+growth-cell icon.destroyed-presence, growth-cell icon.destroy-presence {
+  margin-bottom: 7px;
+  height:90px;
+  width:100px;
+}
+
+growth-cell icon.reclaim-one {
+  margin-bottom: 7px;
+}
+
+growth-cell icon.reclaim-none {
+  margin-bottom: 7px;
+}
+
+growth-cell icon.ignore-range {
+  margin-left: 20px;
+  margin-bottom: 7px;
+}
+
 custom-icon {
     font-size: 20pt;
     font-weight: bold;
@@ -403,21 +385,6 @@ growth-text icon.explorer{
     font-size: 14pt;
 }
 
-growth-cell icon.gain-power-card {
-  margin-bottom: 7px;
-}
-
-growth-cell icon.forget-power-card {
-  margin-bottom: 7px;
-}
-
-growth-cell icon.energy-per-play {
-    margin-bottom: 0px;
-    margin-top: -20px;
-    width: 100px;
-    height: 110px;
-}
-
 growth-cell icon.gather-arrow {
   margin-bottom: 7px;
   background-image: url('../../images/board/half_arrow_gather.png');
@@ -440,12 +407,6 @@ growth-cell icon.push-arrow {
   height: 17px;
   margin-left: 45px;
   margin-top: -34px;
-}
-
-growth-cell icon.destroyed-presence, growth-cell icon.destroy-presence {
-  margin-bottom: 7px;
-  height:90px;
-  width:100px;
 }
 
 growth-cell icon.gain-card-play {
@@ -490,19 +451,6 @@ growth-cell icon.gather-into>icon.explorer {
     margin-bottom: -6px;
 }
 
-growth-cell icon.reclaim-one {
-  margin-bottom: 7px;
-}
-
-growth-cell icon.reclaim-none {
-  margin-bottom: 7px;
-}
-
-growth-cell icon.ignore-range {
-  margin-left: 20px;
-  margin-bottom: 7px;
-}
-
 growth-cost {
   font-family: 'Gobold Extra2', 'Mouse Memoirs';
   font-size: 16pt;
@@ -529,8 +477,6 @@ growth-cost::after {
   top: 44px;
 }
 
-
-
 presence-special-req {
   background-image: url('../../images/board/75px_presence.png');
   background-repeat: no-repeat;
@@ -548,35 +494,7 @@ add-presence-req {
   font-size: 18pt;
 }
 
-.description icon.presence {
-  height: 25px;
-  width: 32px;
-  margin-bottom: -8px;
-}
-
-.description icon.sacred-site {
-    height: 30px;
-    width: 50px;
-    margin-bottom: -9px;
-    margin-top: -10px;
-    margin-left: -4px;
-    margin-right: 0px;
-}
-
-.description icon.beasts {
-  background-image: url('../../images/board/beast.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  display: inline-block;
-  height: 25px;
-  width: 25px;
-  margin-bottom: -4px;
-  margin-top: 0px;
-}
-
-
-
+/* Deal Damage in Growth */
 growth-damage {
     background-image: url('../../images/board/NewIcons/Damage Blank.png');
     background-repeat: no-repeat;
@@ -600,28 +518,7 @@ growth-damage value {
     margin-left: 0px;
 }
 
-gain-per {
-    background-image: url('../../images/board/AddEnergyBlank.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    height: 75px;
-    width: 75px;
-    display: block;
-    z-index: 1;
-    position: relative;
-    margin-left: -27px;
-    margin-bottom: 50px;
-    margin-top: -35px;
-}
 
-gain-per value {
-  font-family: 'Gobold Extra2', 'Mouse Memoirs';
-  font-size: 16pt;
-  display: inline-block;
-  margin-top: 25px;
-  margin-left: 11px;
-}
 
 card-play-num {
     background-image: url('../../images/board/NewIcons/Cardplay Gain Blank.png');
@@ -796,6 +693,7 @@ push-gather-range-req {
     display: block;
 }
 
+/* Element Icons */
 growth-cell gain icon.fire,
 growth-cell gain icon.any,
 growth-cell gain icon.water,
@@ -805,6 +703,7 @@ growth-cell gain icon.animal,
 growth-cell gain icon.plant,
 growth-cell gain icon.sun,
 growth-cell gain icon.moon,
+growth-cell gain icon.star,
 growth-cell gain icon.markerminus,
 growth-cell gain icon.markerplus {
   background-repeat: no-repeat;
@@ -813,15 +712,17 @@ growth-cell gain icon.markerplus {
   height: 60px;
   width: 60px;
   margin-top: 21px;
+  margin-bottom: 7px;
 }
 
 growth-cell gain icon.star {
     background-repeat: no-repeat;
     background-size: contain;
     display: inline-block;
-    height: 82px;
-    width: 82px;
-    margin-top: 10px;
+    height: 87px;
+    width: 87px;
+    margin-top: -3px;
+    margin-bottom: 7px;
 }
 
 /* Enables growth option - OR multiple different elements */
@@ -837,26 +738,6 @@ gain.or {
 	flex-direction:row;
 }
 
-growth-cell icon.fire,
-growth-cell icon.any,
-growth-cell icon.water,
-growth-cell icon.air,
-growth-cell icon.earth,
-growth-cell icon.animal,
-growth-cell icon.plant,
-growth-cell icon.sun,
-growth-cell icon.moon,
-growth-cell icon.markerminus,
-growth-cell icon.markerplus {
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: block;
-  height: 60px;
-  margin-left: 0px;
-  margin-top: -73px;
-  margin-bottom: 7px;
-}
-
 growth-cell icon.presence{
   margin-left: 5px;
 }
@@ -867,10 +748,44 @@ growth-cell div.custom-scaling{
     font-style: normal;
 }
 
+gain {
+	height: 90px;
+}
+
 /* Enables growth option - 2 of same element */
 icon-multi-element icon, icon-multi-element energy-icon,icon-multi-element card-icon {
   display: inline-block;
   position: absolute;
+}
+
+icon-multi-element icon.star{
+    width: 80px;
+    margin-top: -10px;
+    margin-left: -5px;
+}
+
+/* Gaining Energy per Element/Icon */
+gain-per {
+    background-image: url('../../images/board/AddEnergyBlank.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 75px;
+    width: 75px;
+    display: block;
+    z-index: 1;
+    position: relative;
+    margin-left: -27px;
+    margin-bottom: 50px;
+    margin-top: -35px;
+}
+
+gain-per value {
+  font-family: 'Gobold Extra2', 'Mouse Memoirs';
+  font-size: 16pt;
+  display: inline-block;
+  margin-top: 25px;
+  margin-left: 11px;
 }
 
 gain-per-element icon{
@@ -915,6 +830,7 @@ gain-per-element icon.air {background-image: url(../../images/board/element_simp
 gain-per-element icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
 gain-per-element icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
 gain-per-element icon.water {background-image: url(../../images/board/element_simple_water.png);}
+gain-per-element icon.any {background-image: url(../../images/board/element_simple_any.png);}
 
 gain-per-element ring-icon{
     background-image: url(../../images/board/CardPlayRing.png);
@@ -930,6 +846,7 @@ gain-per-element ring-icon{
     justify-content: center;
 }
 
+/* Totally Custom Growth Options (Icon, text, etc) */
 custom-growth-icon {
     font-size: 20pt;
     font-weight: bold;
@@ -937,8 +854,11 @@ custom-growth-icon {
     margin-bottom: 0px;
     width: auto;
     height: 90px;
-    display: block;
+    display: inline-flex;
+    flex-direction: column-reverse;
+    justify-content: space-around;
 }
+
 
 custom-growth-icon icon.explorer {
     width: 50px;
@@ -946,10 +866,69 @@ custom-growth-icon icon.explorer {
 	margin-top: 0px;
 }
 
-.custom-growth-icon {
-    width: 50px;
+icon.custom-growth-icon {
+    width: 60px;
     height: 70px;
 	margin-top: 0px;
+    margin-bottom: 7px;
+	background-position: bottom;
+}
+
+/* Gaining Fear */
+growth-fear {
+  background-image: url('../../images/board/fear.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: block;
+    height: 110px;
+    width: 80px;
+    margin-top: -20px;
+}
+
+growth-fear value {
+    font-family: 'Gobold Extra2', 'Mouse Memoirs';
+    font-size: 20pt;
+    display: inline-block;
+    margin-top: 48px;
+    margin-left: 0px;
+}
+
+fear-per {
+    background-image: url('../../images/board/fear.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 75px;
+    width: 53px;
+    display: block;
+    z-index: 1;
+    position: relative;
+    margin-left: 0px;
+    margin-bottom: 50px;
+    margin-top: -35px;
+}
+
+fear-per value{
+    font-family: 'Gobold Extra2', 'Mouse Memoirs';
+    font-size: 14pt;
+    display: inline-block;
+    margin-top: 33px;
+    margin-left: 0px;
+}
+
+gain-per-fear ring-icon{
+    background-image: url('../../images/board/CardPlayRing.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+    z-index: 2;
+    margin-left: -32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 gain-per-fear icon.fire,
