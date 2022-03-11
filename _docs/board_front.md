@@ -50,7 +50,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 		
 #### Supported growth-group values
 <details>
-  <summary>#### Supported growth-group values</summary>
+  <summary>Supported growth-group values</summary>
 
 |Category|Action|Usage|Details|Examples|
 |------|------|------|------|----|
