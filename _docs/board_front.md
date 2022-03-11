@@ -122,7 +122,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 	  - Example: *\<card-play-track banner="example2.png" banner-v-scale="50%" values="1,star,gain-card-pay-2,isolate,markerplus,fire+markerplus,5+reclaim-one,fire+reclaim-one"\>\</card-play-track\>
     - **special presence track options (Finder/Serpent)**: For Serpent/Finder style boards, there are two options:
 	  - Wrap your presence node options in middle() to have them appear in the middle of the tracks. Only do this to energy track nodes.
-	    - Example: *\<energy-track values="1,fire,any,reclaim-one,_middle(earth)_,6,any,12"\>\</energy-track\>*
+	    - Example: *\<energy-track values="1,fire,any,reclaim-one,***middle(earth)***,6,any,12"\>\</energy-track\>*
 	  - HTML \<presence-table\> as seen in the Finder example board HTML.
 	    - An html table that allows more flexible positioning of nodes. Individual presence track options are specified within the `<td>` table cells. Use <td middle> in energy track to mark presence track spots you want to appear in the middle. The available options are exactly the same as described for the energy and card-play tracks above, with the exception that integer values must be prefixed with with 'card' or 'energy'. For example 'card1' means 1 card play, 'energy2' means 2 energy, etc.
 
@@ -133,7 +133,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 ||For Energy, +1,-2,+3 etc.|Will modify energy gain instead of flat energy gain (think Finder)|Finder 'top row' values="0,sun,2+water,+2,+1+any"|
 |Elements|sun,moon,fire,air,water,earth,plant,animal|Can be used in combinations|Thunderspeaker energy track: values="1,air,2,fire,sun,3"|
 ||any, star|'any' is any element, 'star' is the Element icon from Starlight||
-|Element Markers|markerplus, markerminus|Gain or pay element markers|Shifting Memory energy track: values="0,1,2,3+markerplus,4,reclaim-one,5,6+markerplus"|
+|Element Markers|markerplus, markerminus|Gain or pay element markers|Shifting Memory energy track: values="0,1,2,3+markerplus,4,reclaim-one,5,6+markerplus"<br>Shifting Memory energy track: values="1,2,2,markerminus+markerminus+gain-card-play,3"|
 |Reclaim One|reclaim-one|Reclaim one card, can be used in combinations||
 |Combinations|separate with a '+'|Can include energy, cardplays, markers, move-presence, gain-range, and reclaim one. Can be more than 2 things.|Stone's cardplay track: values="1,earth,earth,earth+reclaim-one,earth+any,2+earth"|
 |Push/Gather|push(x), gather(x)|Push or Gather x from/into one of your Lands. x can be most token/entities (explorer, wilds, presence, etc).|Trickster's cardplay track: values="2,push(dahan),3,3,4,air,5"|
@@ -144,7 +144,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Gain Card Play|gain-card-play|Gain an additional card play not in the normal way (think Stone or Finder)|Stone energy track: values="2,3,gain-card-play^minor,4,gain-card-play^minor,6,gain-card-play^minor"|
 |Gain Range|gain-range(x)|Gain +x range||
 ||gain-range(x,y)|Gain +x range on y|range(1,everything)|
-|Notate with Icon (like Stone)|^x|Puts icon x in top left corner of presence node|Stone: gain-card-play^minor|
+|Notate with Icon (like Stone)|^x|Puts icon x in top left corner of presence node|Stone top row: values="2,3,gain-card-play^minor,4,gain-card-play^minor,6,gain-card-play^minor"|
 |Forget Power|forget-power-card|Forget a power card. Unlikely to be useful because presence track actions are optional|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
 |Custom|custom(*your_text*)|Add custom text to the presence node. Image will be !!!.|Custom energy track: values="1,2,custom(Draw 1 Minor Power),3,water,4"|
 ||custom(*your_text*;x)|Add custom text to the presence node. x is the icon (for example, city). Note the semicolon.|Custom energy track: values="1,2,custom(Draw 1 Minor Power;city),3,water,4"|
@@ -172,6 +172,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 		  - Costs: cost-2
 		  - Example: Volcano: *\<level threshold="3-fire,cost-2"\>* or Many Minds *\<level threshold="1-air,2-animal,2-beasts"\>*
 		- long: if you add 'long' to the level tag, it will allow the description to spill over into the next column (like Volcano)
-		  - Example: *\<level threshold="5-fire,3-air,5-earth,10-destroyed-presence" long\>*
-        - The actual text for the level sits within the level tag
+		  - Example: *\<level threshold="5-fire,3-air,5-earth,10-destroyed-presence" ***long***\>*
+        - The actual text for the level sits between the level tag
+		  - Example: River's first level innate: \<level threshold="1-sun,2-water"\>Push 1 {explorer} \/ {town} \/ {dahan}.\<\/level\>
         - To achieve 'for each element' effects, use the notation {element, #}. For example, Serpent's second innate has "for each {moon,2} {stone,2}" on the second level.
