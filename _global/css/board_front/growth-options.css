@@ -164,14 +164,31 @@ custom-presence-req {
     display: block;
 }
 
-custom-presence {
+custom-presence, custom-presence-or {
   font-size: 20pt;
   font-weight: bold;
   display: block;
   margin-top: 5px;
   width: auto;
   height: 110px;
-  margin-bottom: -24px;
+  margin-bottom: -30px;
+  margin-top: 11px;
+}
+
+custom-presence-or icon.backslash {
+    width: 8px;
+    height: 25px;
+    margin-bottom: -3px;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: -1px;
+}
+
+custom-presence-or icon, custom-presence-or icon.wilds, custom-presence-or icon.disease, custom-presence-or icon.strife, custom-presence-or icon.beasts{
+    margin-bottom: -5px;
+    width: 33px;
+    height: 34px;
+    margin-left: -4px;
 }
 
 custom-presence-no-range {
@@ -180,8 +197,8 @@ custom-presence-no-range {
   display: block;
   width: auto;
   height: 110px;
-  margin-bottom: -60px;
-  margin-top: 41px;
+  margin-bottom: -43px;
+  margin-top: 24px;
 }
 
 custom-presence-no-range icon.range-any {
@@ -230,9 +247,10 @@ presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus
     margin-left: auto;
     margin-right: auto;
 	margin-top: 0px;
+	margin-bottom: -10px;
 }
 
-presence-req icon.town {
+presence-req icon.town, presence-req icon.disease {
 	height: 37px;
 	width: 27px;
 }
@@ -244,14 +262,25 @@ presence-req icon.presence {
 }
 
 presence-req icon.blight {
-    width: 32px;
-    background-position: bottom;
+    width: 30px;
 }
 
 presence-req icon.invaders {
 	width: 70px;
 	height: 25px;
 	margin-top: 22px;
+}
+
+presence-req icon.sand, presence-req icon.wetland, presence-req icon.jungle, presence-req icon.mountain, 
+presence-req icon.jungle-wetland, presence-req icon.jungle-sand, presence-req icon.sand-wetland, 
+presence-req icon.mountain-sand, presence-req icon.mountain-wetland, presence-req icon.mountain-jungle,
+presence-req icon.wetland-jungle, presence-req icon.sand-jungle, presence-req icon.wetland-sand, 
+presence-req icon.sand-mountain, presence-req icon.wetland-mountain, presence-req icon.jungle-mountain {
+    width: 37px;
+    margin-top: -1px;
+    margin-bottom: -12px;
+    margin-right: -3px;
+    margin-left: -3px;
 }
 
 presence-req icon.jungle-wetland, presence-req icon.jungle-sand, presence-req icon.sand-wetland, 
@@ -261,6 +290,8 @@ presence-req icon.sand-mountain, presence-req icon.wetland-mountain, presence-re
 	width: 80px;
 	transform: translateY(0px) translateX(6px);
 }
+
+
 
 presence-req {
   font-family: 'Lato SemiBold';
@@ -373,6 +404,18 @@ growth-text icon.explorer{
 	font-size: 20pt;
     font-weight: bold;
     font-style: normal;
+}
+
+plus-text {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 20pt;
+    font-weight: bold;
+    font-style: normal;
+}
+
+plus-text::after {
+	content: "+";
+
 }
 
 .non-icon {

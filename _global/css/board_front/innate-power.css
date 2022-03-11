@@ -205,6 +205,11 @@ note icon.destroyed-presence{
 }
 
 note icon.beasts{
+    width: 28px;
+}
+
+
+note icon.beasts{
     margin-bottom: -4px;
 }
 
@@ -239,7 +244,7 @@ div.description {
     height: 27px;
     margin-bottom: -5px;
     margin-top: -10px;
-    margin-left: -2px;
+    margin-left: 0px;
     margin-right: 0px;
     background-position: bottom;
 }
@@ -252,6 +257,7 @@ div.description {
 .description icon.badlands,
 .description icon.wilds {
     width: 33px;
+	margin-left: -2px;
 }
 
 .description icon.range-0, .description icon.range-1, .description icon.range-2, 
@@ -304,18 +310,6 @@ div.description {
     margin-top: -10px;
     margin-left: -4px;
     margin-right: 0px;
-}
-
-.description icon.beasts {
-  background-image: url('../../images/board/beast.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  display: inline-block;
-  height: 25px;
-  width: 25px;
-  margin-bottom: -4px;
-  margin-top: 0px;
 }
 
 

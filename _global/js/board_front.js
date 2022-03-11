@@ -328,8 +328,9 @@ function parseGrowthTags(){
                                         break;
                                     case 'or':
                                         //add presence or token
-                                        presenceIcon += "<span class='plus-text'>or </span>";
-                                        presenceIcon += "{"+presenceOptions[2]+"}";
+										presenceReqOpen = "<custom-presence-or>";
+										presenceReqClose = "</custom-presence-or>";
+                                        presenceIcon = "{backslash}{"+presenceOptions[2]+"}";
                                         presenceText += " or a " + Capitalise(presenceOptions[2]);
                                     case 'instead':
                                         //no option to add presence, just token
@@ -362,8 +363,8 @@ function parseGrowthTags(){
                                     case 'coastal':
                                     case 'invaders':
                                         presenceIcon += presenceOptions.length < 3
-                                            ? "<span class='non-icon'>"+presenceReq.toUpperCase()+"</span><icon style='height:50px; width:0px;'></icon>" // This do-nothing Icon just creates 50px of height to make everything line up. Other ideas?
-                                            : "<span class='non-icon small'>"+presenceReq.toUpperCase()+"</span><icon style='height:50px; width:0px;'></icon>"
+                                            ? "<span class='non-icon'>"+presenceReq.toUpperCase()+"</span>" // This do-nothing Icon just creates 50px of height to make everything line up. Other ideas?
+                                            : "<span class='non-icon small'>"+presenceReq.toUpperCase()+"</span>"
                                         break;
                                     case 'no-own-presence':
 										presenceIcon += "{no-presence}";
