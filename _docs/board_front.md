@@ -50,7 +50,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 		
 #### Supported growth-group values
 <details>
-  <summary>Supported growth-group values</summary>
+  <summary>CLICK HERE for Supported Growth Options</summary>
 
 |Category|Action|Usage|Details|Examples|
 |------|------|------|------|----|
@@ -133,6 +133,9 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 	    - An html table that allows more flexible positioning of nodes. Individual presence track options are specified within the `<td>` table cells. Use <td middle> in energy track to mark presence track spots you want to appear in the middle. The available options are exactly the same as described for the energy and card-play tracks above, with the exception that integer values must be prefixed with with 'card' or 'energy'. For example 'card1' means 1 card play, 'energy2' means 2 energy, etc.
 
 #### Supported Presence Track Options
+<details>
+  <summary>CLICK HERE for Supported Growth Options</summary>
+
 |Presence Track Effect|Usage|Details|Examples|
 |------|------|------|----|
 |Energy/Turn or Card Plays|Integer 1,2,3,4,5,6,7 etc.|Number will become Energy/Turn in energy track and Card Plays in the card play track|River cardplay track: values="1,2,2,3,reclaim-one,4,5"|
@@ -155,6 +158,8 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Forget Power|forget-power-card|Forget a power card. Unlikely to be useful because presence track actions are optional|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
 |Custom|custom(*your_text*)|Add custom text to the presence node. Image will be !!!.|Custom energy track: values="1,2,custom(Draw 1 Minor Power),3,water,4"|
 ||custom(*your_text*;x)|Add custom text to the presence node. x is the icon (for example, city). Note the semicolon.|Custom energy track: values="1,2,custom(Draw 1 Minor Power;city),3,water,4"|
+
+</details>
 
 ### Innate Powers
   - **innate-powers**: The container for the Innate Powers
