@@ -18,7 +18,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 - Custom icons can be added in the \<head\>\<style\> section at the top of the spirit board HTML
 	 - Save the custom symbol image file in the same folder as the HTML
 	 - Update the custom icon reference with the .png or .jpg of the custom symbol
-	 - Use the icon name 'custom1' (or custom2 or cumstom3) to use your icons
+	 - Use the icon name 'custom1' (or custom2 or custom3) to use your icons
 	 - Example: icon.custom1{background-image: url('demo_custom_icon.png'); }
 
 ### Spirit Name & Board
