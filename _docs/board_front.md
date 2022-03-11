@@ -21,17 +21,13 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 	 - Use the icon name 'custom1' (or custom2 or custom3) to use your icons
 	 - Example: icon.custom1{background-image: url('demo_custom_icon.png'); }
 
-.Toggle Me
-[%collapsible%open]
-====
-This content is hidden when the "Toggle Me" label is clicked.
+
 ### Spirit Name & Board
 - board: Represents the whole board.
 - spirit-name: The name of the Spirit.
 - spirit-image: The main Spirit image. The image should be in the same folder as the html.
 	- spirit-image-scale: Used to scale the main spirit image
 - spirit-border: The image that sits underneath the Spirit name. The image should be in the same folder as the html.
-====
 
 ### Special Rules
 - special-rules-container: The container for the Special Rules
@@ -53,6 +49,9 @@ This content is hidden when the "Toggle Me" label is clicked.
 	- Example: *\<growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"\>\<\/growth-group\>*
 		
 #### Supported growth-group values
+<details>
+  <summary>Click to expand!</summary>
+
 |Category|Action|Usage|Details|Examples|
 |------|------|------|------|----|
 |Reclaim|Reclaim All, Reclaim One, Reclaim Half|reclaim-all, reclaim-one, reclaim-half OR relcaim(x)|x can be all, one, half, or custom||
@@ -111,6 +110,8 @@ This content is hidden when the "Toggle Me" label is clicked.
 |Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
 ||Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc)||
+
+</details>
 
 ### Presence Tracks
   - **presence-tracks**: The container for the Presence Tracks.
