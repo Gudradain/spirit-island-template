@@ -63,6 +63,25 @@ special-rule icon.gain-range-1, special-rule icon.gain-range-2, special-rule ico
     margin-right: -2px;
 }
 
+special-rule range-plus-1, 
+div.description range-1, 
+special-rule range-plus-2, 
+div.description range-2, 
+special-rule range-plus-3, 
+div.description range-3, 
+special-rule range-plus-4, 
+div.description range-4 {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 45px;
+  height: 40px;
+  margin-bottom: -20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: -10px;
+}
+
 special-rule icon.fast, special-rule icon.slow {
     height: 32px;
     width: 40px;
@@ -136,5 +155,5 @@ special-rule icon.fire {background-image: url(../../images/board/element_simple_
 special-rule icon.air {	background-image: url(../../images/board/element_simple_air.png);}
 special-rule icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
 special-rule icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
-special-rule icon.water {background-image: url(../../images/board/element_simple_water.png);
-}
+special-rule icon.water {background-image: url(../../images/board/element_simple_water.png);}
+special-rule icon.any {background-image: url(../../images/board/element_simple_any.png);}

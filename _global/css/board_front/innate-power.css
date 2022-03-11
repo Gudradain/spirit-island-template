@@ -271,6 +271,66 @@ div.description {
     margin-bottom: -9px;
 }
 
+.description icon.sun, .description icon.earth, .description icon.plant, 
+.description icon.fire, .description icon.air, .description icon.moon, 
+.description icon.animal, .description icon.water {
+    width: 45px;
+    height: 30px;
+    margin-left: -9px;
+    margin-right: -10px;
+    margin-bottom: -7px;
+}
+
+.description icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
+.description icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
+.description icon.plant {background-image: url(../../images/board/element_simple_plant.png);}
+.description icon.fire {background-image: url(../../images/board/element_simple_fire.png);}
+.description icon.air {background-image: url(../../images/board/element_simple_air.png);}
+.description icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
+.description icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
+.description icon.water {background-image: url(../../images/board/element_simple_water.png);}
+.description icon.any {background-image: url(../../images/board/element_simple_any.png);}
+
+.description icon.presence {
+  height: 25px;
+  width: 32px;
+  margin-bottom: -8px;
+}
+
+.description icon.sacred-site {
+    height: 30px;
+    width: 50px;
+    margin-bottom: -9px;
+    margin-top: -10px;
+    margin-left: -4px;
+    margin-right: 0px;
+}
+
+.description icon.beasts {
+  background-image: url('../../images/board/beast.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  margin-bottom: -4px;
+  margin-top: 0px;
+}
+
+
+.element-for-each {
+	font-family: 'Gobold Extra2', 'Mouse Memoirs';
+    font-size: 17pt;
+    color: #431E0AFF;	
+	margin-top: -13px;
+	margin-right:0px;
+	margin-left: -1px;
+	width:15px;
+	display: inline-block;
+	transform: translate(0px, 3px);
+}
+
 note icon.city{
     width: 32px;
     height: 35px;
@@ -442,6 +502,7 @@ threshold icon.air {background-image: url(../../images/board/element_simple_air.
 threshold icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
 threshold icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
 threshold icon.water {background-image: url(../../images/board/element_simple_water.png);}
+threshold icon.any {background-image: url(../../images/board/element_simple_any.png);}
 
 note icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
 note icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
@@ -451,3 +512,4 @@ note icon.air {background-image: url(../../images/board/element_simple_air.png);
 note icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
 note icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
 note icon.water {background-image: url(../../images/board/element_simple_water.png);}
+note icon.any {background-image: url(../../images/board/element_simple_any.png);}

@@ -38,8 +38,15 @@ icon.star{
     width: 110px;
     height: 110px;}
 
-icon.discard-cards {
+icon.discard-cards, icon.discard-2-cards {
   background-image: url('../../images/board/discard_power_cards.png');
+  display: block;
+  height: 90px;
+  width:90px;
+}
+
+icon.discard-card, icon.discard-1-card {
+  background-image: url('../../images/board/NewIcons/Card Discard 1.png');
   display: block;
   height: 90px;
   width:90px;
@@ -134,7 +141,6 @@ icon.gain-range-1,
 icon.gain-range-2,
 icon.gain-range-3 {
     width: 100px;
-    height: 102px;
 }
 
 icon.gain-range-1 {
@@ -223,6 +229,15 @@ icon.badlands {
   margin-bottom: -8px;
   margin-left: -3px;
   margin-right: -4px;
+}
+
+icon.resilience {
+  background-image: url('../../images/board/NewIcons/Resilience.png');
+  width: 30px;
+  height: 30px;
+  margin-bottom: -8px;
+  margin-left: -3px;
+  margin-right: -3px;
 }
 
 icon.fear {
@@ -363,6 +378,13 @@ icon.reclaim-custom {
   display: block;
   height: 90px;
   width:90px;
+}
+
+icon.reclaim-half {
+  background-image: url('../../images/board/Reclaimhalf.png');
+  display: block;
+  height: 90px;
+  width: 90px;
 }
 
 icon.gain-card-play {
