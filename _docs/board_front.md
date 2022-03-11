@@ -174,5 +174,6 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 		- long: if you add 'long' to the level tag, it will allow the description to spill over into the next column (like Volcano)
 		  - Example: *\<level threshold="5-fire,3-air,5-earth,10-destroyed-presence" ***long***\>*
         - The actual text for the level sits between the level tag
-		  - Example: River's first level innate: \<level threshold="1-sun,2-water"\>Push 1 {explorer} \/ {town} \/ {dahan}.\<\/level\>
-        - To achieve 'for each element' effects, use the notation {element, #}. For example, Serpent's second innate has "for each {moon,2} {stone,2}" on the second level.
+		  - Example: River's first level innate: *\<level threshold="1-sun,2-water"\>Push 1 {explorer} \/ {town}.\<\/level\>*
+        - To achieve 'for each element' effects, use the notation {element, #}.
+		  - Example: Serpent's Second Innate, Second Level: *\<level threshold="2-moon,2-earth"\>For each ***{moon,2} {earth,2}***, 2 {fear} and push 1 {town}.\<\/level\>*

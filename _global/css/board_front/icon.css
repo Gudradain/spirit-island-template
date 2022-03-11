@@ -429,6 +429,13 @@ icon.gain-card-pay-2 {
 	width: 92px;
 }
 
+icon.days-never-were {
+	background-image: url('../../images/board/NewIcons/Card Days That Never Were Gain 1.png');
+	display: inline-block;
+	height: 130px;
+	width: 92px;
+}
+
 icon.gather {
   background-image: url('../../images/board/NewIcons/Land Gather.png');
   display: inline-block;
