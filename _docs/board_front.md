@@ -50,7 +50,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 		
 #### Supported growth-group values
 <details>
-  <summary>CLICK HERE for Supported Growth Options</summary>
+  <summary>Expand for Supported Growth Options</summary>
 
 |Category|Action|Usage|Details|Examples|
 |------|------|------|------|----|
@@ -134,7 +134,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 
 #### Supported Presence Track Options
 <details>
-  <summary>CLICK HERE for Supported Growth Options</summary>
+  <summary>Expand for Supported Presence Track Options</summary>
 
 |Presence Track Effect|Usage|Details|Examples|
 |------|------|------|----|
