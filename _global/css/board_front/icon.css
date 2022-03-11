@@ -436,6 +436,42 @@ icon.days-never-were {
 	width: 92px;
 }
 
+icon.your-land {
+  background-image: url('../../images/board/NewIcons/Land.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+    height: 67px;
+    width: 105px;
+    margin-right: 0px;
+    margin-bottom: -6px;
+}
+
+icon.your-land>icon {
+    position: relative;
+    text-align: unset;
+    top: 17px;
+    left: 29px;
+    width: 30px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+icon.your-land>icon.misc-plus {
+    left: 27px;
+    width: 14px;
+}
+
+icon.misc-plus {
+  background-image: url('../../images/board/NewIcons/Misc Gain.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 30px;
+  height: 25px;
+}
+
 icon.gather {
   background-image: url('../../images/board/NewIcons/Land Gather.png');
   display: inline-block;

@@ -1017,6 +1017,12 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     inner = "<icon class='gather'><icon class='"+moveTarget+"'></icon></icon>";
                     subText = "Gather 1 "+Capitalise(moveTarget) + " into 1 of your Lands";
                     break;
+				case 'token':
+					var matches = regExp.exec(splitOptions[0]);
+                    var tokenAdd = matches[1];
+				    inner = "<icon class='your-land'>{misc-plus}<icon class='"+tokenAdd+"'></icon></icon>";
+                    subText = "Add 1 "+Capitalise(tokenAdd) + " to 1 of your Lands";
+                    break;
 				case 'custom':
                     var matches = regExp.exec(splitOptions[0]);
                     var custom_node = matches[1].split(";");
@@ -1025,6 +1031,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 						inner = "<icon class='"+custom_node[1]+" custom-presence-track-icon'></icon>";
 					}else{
 						inner = "<" + nodeClass + "-icon><value>!!!</value></" + nodeClass + "-icon>";
+						addEnergyRing = false;
 					}
 					subText = custom_text
 					break;
