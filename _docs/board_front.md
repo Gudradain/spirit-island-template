@@ -158,6 +158,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Forget Power|forget-power-card|Forget a power card. Unlikely to be useful because presence track actions are optional|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
 |Custom|custom(*your_text*)|Add custom text to the presence node. Image will be !!!.|Custom energy track: values="1,2,custom(Draw 1 Minor Power),3,water,4"|
 ||custom(*your_text*;x)|Add custom text to the presence node. x is the icon (for example, city). Note the semicolon.|Custom energy track: values="1,2,custom(Draw 1 Minor Power;city),3,water,4"|
+|Or Growth Options|Allows pair of two growth options|or(x,y)|x and y are growth options (like the ones above)|Fractured Days's growth: or(gain-1-time^2,gain-card-play(2))|
 
 </details>
 
