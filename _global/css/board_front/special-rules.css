@@ -36,6 +36,7 @@ special-rule {
   letter-spacing: -0.5px;
   word-spacing: 0px;
   line-height: 29px;
+  padding-bottom: 6px;
 }
 
 special-rule icon.fire, special-rule icon.earth, special-rule icon.plant,

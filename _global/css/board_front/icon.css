@@ -32,6 +32,7 @@ icon.ocean { background-image: url('../../images/board/ocean.png'); }
 
 icon.markerplus { background-image: url('../../images/board/NewIcons/Element Marker Gain 1.png'); }
 icon.markerminus { background-image: url('../../images/board/NewIcons/Element Marker Pay 1.png'); }
+icon.markerquestion { background-image: url('../../images/customIcons/marker-question.png'); }
 
 icon.star{
     background-image: url('../../images/board/NewIcons/Element Star.png');
@@ -432,8 +433,6 @@ icon.gain-card-pay-2 {
 icon.days-never-were {
 	background-image: url('../../images/board/NewIcons/Card Days That Never Were Gain 1.png');
 	display: inline-block;
-	height: 130px;
-	width: 92px;
 }
 
 icon.your-land {

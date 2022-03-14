@@ -67,7 +67,7 @@ card.slow info-speed
 }
 
 cost{
-  font-family:'Gobold Extra2', 'Mouse Memoirs';
+  font-family:'Gobold Extra2', 'Noto Sans';
   font-size:34px;
   color:white;
   text-align: center;
@@ -307,7 +307,7 @@ threshold{
 threshold-condition{
   display:block;
   font-size:27px;
-  font-family:'Gobold Extra2', 'Mouse Memoirs';
+  font-family:'Gobold Extra2', 'Noto Sans';
   margin-bottom:10px;
 }
 

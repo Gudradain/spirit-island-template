@@ -183,7 +183,7 @@ presence-node icon.gain-range-3 {
 }
 
 presence-node value {
-  font-family: 'Gobold Extra2', 'Mouse Memoirs';
+  font-family: 'Gobold Extra2', 'Noto Sans';
   font-size: 36pt;
   display: inline-block;
 }
@@ -235,26 +235,27 @@ presence-node>icon.deep-layers {
     width: 60px;
 }
 
-presence-node>icon.energy-deep-layers {
+presence-node>icon.energy-deep-layers,
+presence-node>icon.card-deep-layers {
     position: relative;
-    left: -30px;
-    top: -4px;
-    height: 40px;
+    height: 35px;
     width: 60px;
     float: left;
+    background-position: center;
+}
+
+presence-node>icon.energy-deep-layers {
+    left: -44px;
+    top: -4px;
     margin-bottom: -90px;
-    background-position: right;
+    transform: translateX(50%);
 }
 
 presence-node>icon.card-deep-layers {
-    position: relative;
-    left: -30px;
+    left: -45px;
     top: -4px;
-    height: 40px;
-    width: 60px;
-    float: left;
     margin-bottom: -90px;
-    background-position: right;
+    transform: translateX(50%);
 }
 
 icon.push {

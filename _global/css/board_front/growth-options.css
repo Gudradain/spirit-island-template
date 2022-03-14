@@ -124,7 +124,7 @@ repeat-growth {
 }
 
 repeat-growth value{
-  font-family: 'Gobold Extra2', 'Mouse Memoirs';
+  font-family: 'Gobold Extra2', 'Noto Sans';
     font-size: 18pt;
     display: inline-block;
     margin-top: 4px;
@@ -146,7 +146,7 @@ growth-energy {
 }
 
 growth-energy value {
-  font-family: 'Gobold Extra2', 'Mouse Memoirs';
+  font-family: 'Gobold Extra2', 'Noto Sans';
   font-size: 24pt;
   display: inline-block;
   margin-top: 35px;
@@ -495,7 +495,7 @@ growth-cell icon.gather-into>icon.explorer {
 }
 
 growth-cost {
-  font-family: 'Gobold Extra2', 'Mouse Memoirs';
+  font-family: 'Gobold Extra2', 'Noto Sans';
   font-size: 16pt;
   background-image: url('../../images/board/NewIcons/Energy Blank Small.png');
     background-repeat: no-repeat;
@@ -554,7 +554,7 @@ growth-damage {
 }
 
 growth-damage value {
-  font-family: 'Gobold Extra2', 'Mouse Memoirs';
+  font-family: 'Gobold Extra2', 'Noto Sans';
     font-size: 22pt;
     display: inline-block;
     margin-top: 36px;
@@ -579,7 +579,7 @@ card-play-num {
 }
 
 card-play-num value {
-    font-family: 'Gobold Extra2', 'Mouse Memoirs';
+    font-family: 'Gobold Extra2', 'Noto Sans';
     font-size: 24pt;
     display: inline-block;
     margin-top: 32px;
@@ -824,7 +824,7 @@ gain-per {
 }
 
 gain-per value {
-  font-family: 'Gobold Extra2', 'Mouse Memoirs';
+  font-family: 'Gobold Extra2', 'Noto Sans';
   font-size: 16pt;
   display: inline-block;
   margin-top: 25px;
@@ -832,13 +832,13 @@ gain-per value {
 }
 
 gain-per-element icon{
-    height: 60px;
-    width: 60px;
-    z-index: 1;
-    position: relative;
-    margin-left: -15px;
-    margin-bottom: 50px;
-    margin-top: -35px;
+  height: 50px;
+  width: 50px;
+  z-index: 1;
+  position: relative;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 gain-per-element icon.fire,
@@ -860,9 +860,6 @@ gain-per-element icon.custom1, gain-per-element icon.custom2, gain-per-element i
   height: 60px;
   width: 50px;
   z-index: 0;
-  margin-left: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
 }
 
 gain-per-element icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
@@ -930,7 +927,7 @@ growth-fear {
 }
 
 growth-fear value {
-    font-family: 'Gobold Extra2', 'Mouse Memoirs';
+    font-family: 'Gobold Extra2', 'Noto Sans';
     font-size: 20pt;
     display: inline-block;
     margin-top: 48px;
@@ -953,7 +950,7 @@ fear-per {
 }
 
 fear-per value{
-    font-family: 'Gobold Extra2', 'Mouse Memoirs';
+    font-family: 'Gobold Extra2', 'Noto Sans';
     font-size: 14pt;
     display: inline-block;
     margin-top: 33px;

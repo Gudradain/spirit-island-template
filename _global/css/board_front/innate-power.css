@@ -314,7 +314,7 @@ div.description {
 
 
 .element-for-each {
-	font-family: 'Gobold Extra2', 'Mouse Memoirs';
+	font-family: 'Gobold Extra2', 'Noto Sans';
     font-size: 17pt;
     color: #431E0AFF;	
 	margin-top: -13px;
@@ -360,7 +360,7 @@ level {
 }
 
 threshold {
-  font-family: 'Gobold Extra2', 'Mouse Memoirs';
+  font-family: 'Gobold Extra2', 'Noto Sans';
   font-size: 24pt;
   color: #431E0AFF;
   float: left;
@@ -461,7 +461,7 @@ cost-energy {
 }
 
 cost-energy value{
-  font-family: 'Gobold Extra2', 'Mouse Memoirs';
+  font-family: 'Gobold Extra2', 'Noto Sans';
   font-weight: normal;
     font-style: normal;
     color: #431e0a;
