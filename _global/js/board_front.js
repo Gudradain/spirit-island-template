@@ -191,7 +191,8 @@ function parseGrowthTags(){
 			}
 			
 			// Establish Growth HTML Openers and Closers
-			let growthOpen = `${openTag}${repeatOpen}`;
+			// let growthOpen = `${openTag}${repeatOpen}`;
+			let growthOpen = `${openTag}`;
 			let growthTextOpen = "<growth-text>"+repeatText;
 			let growthTextClose = "</growth-text>"+repeatClose+`${closeTag}`;
 			
@@ -562,7 +563,7 @@ function parseGrowthTags(){
                 case 'move-presence': {        
 					const matches = regExp.exec(classPieces[j]);
 					const moveRange = matches[1];
-					growthIcons = "<custom-presence>{presence}{move-range-" + moveRange + "}</custom-presence>"
+					growthIcons = "<custom-icon2>{presence}{move-range-" + moveRange + "}</custom-icon2>"
 					growthText = "Move a Presence"
 					break;
 				}
@@ -847,10 +848,9 @@ function parseGrowthTags(){
 
             }
 			
-			// growthIcons =
-			// growthText = 
-			
-			
+			if (repeatText){
+				growthIcons = '<repeat-wrapper>' + repeatOpen + growthIcons+'</repeat-wrapper>';
+			}
 			//Handle Ors
 			if(isOr){
 				// break out the ICON and TEXT
@@ -873,6 +873,7 @@ function parseGrowthTags(){
 				orGrowthOpenHold = ""
 				orGrowthTextOpenHold = ""
 			} else {
+				// Normal growth
 				newGrowthCellHTML += growthOpen + growthIcons + growthTextOpen + growthText + growthTextClose;
 			}
 			
@@ -1384,7 +1385,9 @@ function dynamicCellWidth() {
 		}
 		growthTable.innerHTML=newInnerHTML
 		var newGrowthTable = document.createElement("growth-table");
+		var growthLine = document.createElement("growth-row-line");
 		newGrowthTable.innerHTML=lastGrowth;
+		document.getElementsByTagName("growth")[0].append(growthLine)
 		document.getElementsByTagName("growth")[0].append(newGrowthTable)
 	}
 	
@@ -1441,6 +1444,16 @@ function dynamicCellWidth() {
 				growthCells[j].style.maxWidth = (averageWidth)+"px"
 				growthCells[j].style.minWidth = "100px"
 			}
+		}
+		
+		totalWidth = 0;
+		for (j = 0; j < growthCells.length; j++){
+			totalWidth += growthCells[j].offsetWidth;
+		}
+		if(i>0){
+			growthLines = document.getElementsByTagName("growth-row-line");
+			growthLines[i-1].style.width = totalWidth+"px";
+			console.log('real test here'+growthTable.scrollWidth)
 		}
 	}
 	

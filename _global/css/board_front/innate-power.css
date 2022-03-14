@@ -239,7 +239,9 @@ div.description {
 .description icon.blight,
 .description icon.town,
 .description icon.dahan,
-.description icon.fear {
+.description icon.fear,
+.description icon.slow,
+.description icon.fast {
     width: 27px;
     height: 27px;
     margin-bottom: -5px;
