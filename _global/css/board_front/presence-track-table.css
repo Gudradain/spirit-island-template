@@ -20,7 +20,7 @@ presence-tracks {
 
 presence-tracks table {	
   display: inline-block;
-  height: 340px;
+  height: 273px;
   margin-left: -50px; /* adding a blank row for an image. This gives us some space. */
   border-collapse: collapse;
 }

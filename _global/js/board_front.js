@@ -150,7 +150,6 @@ function parseGrowthTags(){
             : "<growth-cell>"
         const closeTag = tint_text + '</growth-cell>'
 		const terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
-		console.log(classPieces)
 		
 		// Create some tools for 'or' growth options
 		let isOr = false;
@@ -158,6 +157,26 @@ function parseGrowthTags(){
 		let orIconsHold = ""
 		
         for (j = 0; j < classPieces.length; j++) {
+			
+			console.log('start growth item')
+			console.log(classPieces)
+			
+			//Find a parenthesis and split out the string before it
+			let growthItem = classPieces[j].split("(")[0].split("^")[0];
+			console.log(growthItem)
+			
+			// Check for OR
+			var regExpOuterParentheses = /\(\s*(.+)\s*\)/;
+			if(growthItem=='or'){
+				isOr = true;
+				const matches = regExpOuterParentheses.exec(classPieces[j])[1]
+				orGrowthOptions = matches.split(",")
+				classPieces[j]=orGrowthOptions[1]
+				classPieces.splice(j,0,orGrowthOptions[0])
+				console.log(classPieces)
+				growthItem = classPieces[j].split("(")[0].split("^")[0];
+			}
+			
 			//Find if a growth effect is repeated (Fractured Days)
 			repeatOpen = ""
 			repeatClose = ""
@@ -168,7 +187,7 @@ function parseGrowthTags(){
 				repeatOpen = "<repeat-growth><value>"+repeat+"</value></repeat-growth>"
 				repeatClose = ""
 				repeatText = "x"+repeat+": ";
-				console.log(repeatText)
+				console.log('repeat text='+repeatText)
 			}
 			
 			// Establish Growth HTML Openers and Closers
@@ -176,27 +195,7 @@ function parseGrowthTags(){
 			let growthTextOpen = "<growth-text>"+repeatText;
 			let growthTextClose = "</growth-text>"+repeatClose+`${closeTag}`;
 			
-            //Find a parenthesis and split out the string before it
-			let growthItem = classPieces[j].split("(")[0].split("^")[0];
-			console.log(growthItem)
 			
-			// Check for OR
-			var regExpOuterParentheses = /\(\s*(.+)\s*\)/;
-			if(growthItem=='or'){
-				isOr = true;
-				console.log('thats an or')
-				console.log(classPieces[j].split("(")[1])
-				const matches = regExpOuterParentheses.exec(classPieces[j])[1]
-				orGrowthOptions = matches.split(",")
-				console.log(orGrowthOptions)
-				console.log("before"+classPieces)
-				classPieces[j]=orGrowthOptions[0]
-				classPieces.splice(j,0,orGrowthOptions[1])
-				console.log(classPieces)
-				growthItem = classPieces[j].split("(")[0].split("^")[0];
-				console.log(growthItem)
-			}
-				
 			
             switch (growthItem) {
 				// Simple growth items are handled in the 'Default' case. See function IconName.
@@ -550,7 +549,6 @@ function parseGrowthTags(){
 						moveIcons += "<push-gather><icon class='" + growthItem + "'><icon class='" + moveTarget + "'></icon></icon></push-gather>"
 						moveText += Capitalise(growthItem)+" 1 " + Capitalise(moveTarget)+" " + preposition + ` 1 of your Lands`;
 					}
-					newGrowthCellHTML += moveIcons + moveText;
 					growthIcons = moveIcons
 					growthText = moveText
 					break;
@@ -861,14 +859,19 @@ function parseGrowthTags(){
 				orTextHold = growthText
 				console.log('orTextHold='+orTextHold)
 				orIconsHold = growthIcons
+				orGrowthOpenHold = growthOpen
+				orGrowthTextOpenHold = growthTextOpen
 				isOr = false;
 			} else if(orTextHold){
 				console.log('here we go!')
 				growthText = orTextHold +" or "+ growthText
+				console.log(orTextHold +" or "+ growthText)
 				growthIcons = '<growth-cell-double>'+orIconsHold +"or"+ growthIcons+'</growth-cell-double>'
-				newGrowthCellHTML += growthOpen + growthIcons + growthTextOpen + growthText + growthTextClose;
+				newGrowthCellHTML += orGrowthOpenHold + growthIcons + orGrowthTextOpenHold + growthText + growthTextClose;
 				orTextHold = ""
 				orIconsHold = ""
+				orGrowthOpenHold = ""
+				orGrowthTextOpenHold = ""
 			} else {
 				newGrowthCellHTML += growthOpen + growthIcons + growthTextOpen + growthText + growthTextClose;
 			}
@@ -1362,30 +1365,86 @@ function dynamicCellWidth() {
     for (const borderWidth of growthBorders.map(x => x.getAttribute('double') === undefined ? 7 : 11)) {
         borderPixels += borderWidth
     }
-    const growthTable = document.getElementsByTagName("growth-table")[0];
-    const growthTableStyle = window.getComputedStyle(growthTable);
-    const growthTableWidth = growthTableStyle.getPropertyValue('width');
-    const remainingCellWidth = (parseInt(growthTableWidth.replace(/px/, "")) - borderPixels) + "px";
-	
-	const largeCellScale = 1.2;
-	
-	let averageWidth = 0;
-	let widthArray = [];
+    let growthTable = document.getElementsByTagName("growth-table")[0];
+	let totalWidth = 0;
     for (i = 0; i < growthCells.length; i++){
-		averageWidth += growthCells[i].offsetWidth;
-		widthArray[i] = growthCells[i].offsetWidth;
+		totalWidth += growthCells[i].offsetWidth;
     }
-	averageWidth = averageWidth/growthCells.length;
-	let largeCellFinder = widthArray.map(x => x > averageWidth*1.35)
-	const largeCell = largeCellFinder.filter(Boolean).length
-	const smallCell = largeCellFinder.length - largeCell
-	weightedSmallCellWidth = (parseFloat(remainingCellWidth.replace(/px/, "")) / (smallCell + largeCellScale*largeCell))
-	weightedLargeCellWidth = weightedSmallCellWidth*largeCellScale;
-	for (i = 0; i < growthCells.length; i++){
-		growthCells[i].style.width = largeCellFinder[i]==true ? weightedLargeCellWidth+"px" : weightedSmallCellWidth+"px";
-    }
+
+	// First, identify if a new row is needed
+	if(totalWidth > 1200){
+		growthTableText = growthTable.innerHTML;
+		growthGroups = growthTableText.split("<growth-border></growth-border>")
+		lastGrowth = growthGroups.at(-1)
+		let newInnerHTML = ''
+		newInnerHTML+=growthGroups[0]
+		for (i = 1; i < growthGroups.length-1; i++){
+			newInnerHTML+="<growth-border></growth-border>"
+			newInnerHTML+=growthGroups[i]
+		}
+		growthTable.innerHTML=newInnerHTML
+		var newGrowthTable = document.createElement("growth-table");
+		newGrowthTable.innerHTML=lastGrowth;
+		document.getElementsByTagName("growth")[0].append(newGrowthTable)
+	}
 	
+	//Iterate through growth table(s)
+	const largeCellScale = 1.4;
+	const extraLargeCellScale = 1.6;
+	const growthTables = document.getElementsByTagName("growth-table");
+	console.log('growth tables')
+	console.log(growthTables)
+	let tightFlag = false; // flag for tightening presence tracks later
+	for (i = 0; i < growthTables.length; i++){
+		growthTable = growthTables[i];
+		if(growthTables.length>1){
+			growthTable.style.marginTop = '10px';
+			tightFlag = true;
+		}
+		const growthCells = document.getElementsByTagName("growth-table")[i].getElementsByTagName("growth-cell");
+		const growthTableStyle = window.getComputedStyle(growthTable);
+		const growthTableWidth = growthTableStyle.getPropertyValue('width');
+		const remainingCellWidth = (parseInt(growthTableWidth.replace(/px/, "")) - borderPixels) + "px";
+		let widthArray = [];
+		totalWidth = 0;
+		for (j = 0; j < growthCells.length; j++){
+			totalWidth += growthCells[j].offsetWidth;
+			widthArray[j] = growthCells[j].offsetWidth;
+		}
+		averageWidth = totalWidth/growthCells.length;
+		console.log("total width = "+totalWidth+" growthtablewidth= "+growthTableWidth)
+		if (totalWidth > 1000 || i==0){
+			let smallCellFinder = widthArray.map(x => x <= averageWidth*1.35)
+			let largeCellFinder = widthArray.map(x => x > averageWidth*1.35)
+			let extraLargeCellFinder = widthArray.map(x => x > averageWidth*2)
+			largeCellFinder = largeCellFinder.map((x,index) => x&&!extraLargeCellFinder[index])
+			const largeCell = largeCellFinder.filter(Boolean).length
+			const smallCell = smallCellFinder.filter(Boolean).length
+			const extraLargeCell = extraLargeCellFinder.filter(Boolean).length
+			weightedSmallCellWidth = (parseFloat(remainingCellWidth.replace(/px/, "")) / (smallCell + largeCellScale*largeCell+extraLargeCellScale*extraLargeCell))
+			weightedLargeCellWidth = weightedSmallCellWidth*largeCellScale;
+			weightedExtraLargeCellWidth = weightedSmallCellWidth*extraLargeCellScale;
+			for (j = 0; j < growthCells.length; j++){
+				if(extraLargeCellFinder[j]){
+					growthCells[j].style.width = weightedExtraLargeCellWidth+"px"
+				}else if(largeCellFinder[j]){
+					growthCells[j].style.width = weightedLargeCellWidth+"px"
+				}else{
+					growthCells[j].style.width = weightedSmallCellWidth+"px"
+				}
+				
+			}
+		} else if(i>0) {
+			growthTable.style.maxWidth = (growthCells.length *averageWidth)+"px"
+			growthTable.style.justifyContent = 'flex-start'
+			for (j = 0; j < growthCells.length; j++){
+				growthCells[j].style.maxWidth = (averageWidth)+"px"
+				growthCells[j].style.minWidth = "100px"
+			}
+		}
+	}
 	
+	growthTable = document.getElementsByTagName("growth-table")[0];
     const headerWith = {}
     const headerAdditionalWidth = {}
     let maxIndex = undefined
@@ -1422,9 +1481,8 @@ function dynamicCellWidth() {
         subGrowthTitle[i].style.left = `${position}px`
         subGrowthTitle[i].style.width = `${headerWith[i]}px`
         position += headerWith[i] + headerAdditionalWidth[i]
-
-        
     }
+	
 	// Innate Power Sizing
 	// Innate Power Notes (scale font size)
 	noteBlocks = document.getElementsByTagName("note");
@@ -1485,9 +1543,12 @@ function dynamicCellWidth() {
     var subtext = document.getElementsByTagName("subtext");
 	var presence_nodes = document.getElementsByTagName("presence-node");
 	let adjustment_flag = 0
-	let default_row_height = 48;
+	let default_row_height = 48*(3/4)
+	console.log(default_row_height)
+	if(tightFlag){default_row_height = 0};
+	console.log(default_row_height)
 	let row_max_height = default_row_height;
-	let first_row_max = default_row_height;
+	let first_row_max = 0;
 	let height_adjust = 0;
 	let firstCardPlayIndex = 0;
     for(i = 0; i < subtext.length; i++){
@@ -1510,7 +1571,7 @@ function dynamicCellWidth() {
 		row_max_height = textHeight > row_max_height ? textHeight : row_max_height;
 
     }
-	height_adjust += row_max_height - 1.5*default_row_height;
+	height_adjust += row_max_height;
 	subtext[0].style.height = first_row_max+2+"px"
 	subtext[firstCardPlayIndex].style.height = row_max_height+2+"px"
 	var presence_table = document.getElementById("presence-table");
