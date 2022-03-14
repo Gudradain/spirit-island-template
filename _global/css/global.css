@@ -9,6 +9,11 @@
 }
 
 @font-face{
+  font-family: 'Noto Sans';
+  src: url(../fonts/Noto_Sans/NotoSans-Bold.ttf);
+}
+
+@font-face{
   font-family: 'Lato SemiBold';
   src: url(../fonts/lato/Lato-SemiboldItalic.ttf);
   font-style: italic;
