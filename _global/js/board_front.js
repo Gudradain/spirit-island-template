@@ -151,6 +151,12 @@ function parseGrowthTags(){
         const closeTag = tint_text + '</growth-cell>'
 		const terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
 		console.log(classPieces)
+		
+		// Create some tools for 'or' growth options
+		let isOr = false;
+		let orTextHold = ""
+		let orIconsHold = ""
+		
         for (j = 0; j < classPieces.length; j++) {
 			//Find if a growth effect is repeated (Fractured Days)
 			repeatOpen = ""
@@ -165,20 +171,30 @@ function parseGrowthTags(){
 				console.log(repeatText)
 			}
 			
-			//
+			// Establish Growth HTML Openers and Closers
 			let growthOpen = `${openTag}${repeatOpen}`;
 			let growthTextOpen = "<growth-text>"+repeatText;
 			let growthTextClose = "</growth-text>"+repeatClose+`${closeTag}`;
 			
             //Find a parenthesis and split out the string before it
-			const growthItem = classPieces[j].split("(")[0].split("^")[0];
+			let growthItem = classPieces[j].split("(")[0].split("^")[0];
 			console.log(growthItem)
+			
+			// Check for OR
 			var regExpOuterParentheses = /\(\s*(.+)\s*\)/;
 			if(growthItem=='or'){
+				isOr = true;
 				console.log('thats an or')
 				console.log(classPieces[j].split("(")[1])
-				const orGrowthOptions = regExpOuterParentheses.exec(classPieces[j])
-				console.log(matches)
+				const matches = regExpOuterParentheses.exec(classPieces[j])[1]
+				orGrowthOptions = matches.split(",")
+				console.log(orGrowthOptions)
+				console.log("before"+classPieces)
+				classPieces[j]=orGrowthOptions[0]
+				classPieces.splice(j,0,orGrowthOptions[1])
+				console.log(classPieces)
+				growthItem = classPieces[j].split("(")[0].split("^")[0];
+				console.log(growthItem)
 			}
 				
 			
@@ -217,7 +233,8 @@ function parseGrowthTags(){
 								reclaimText = "TEXT NOT RECOGNIZED - use 'all','one',or 'custom'";
 						}
 					}
-					newGrowthCellHTML += growthOpen+"{"+reclaimIcon+"}"+growthTextOpen + reclaimText + growthTextClose
+					growthIcons = "{"+reclaimIcon+"}"
+					growthText = reclaimText
 					break;
 				}
 				case 'isolate': {
@@ -234,7 +251,8 @@ function parseGrowthTags(){
 							isolateIcons += "{range-" + isolateRange + "}";
 							isolateText = "Isolate a Land";
 						}
-						newGrowthCellHTML += growthOpen + isolateReqOpen + isolateIcons + isolateReqClose + growthTextOpen +isolateText + growthTextClose;
+						growthIcons = isolateReqOpen + isolateIcons + isolateReqClose
+						growthText = isolateText
                         break;
 				}
                 case 'damage': {
@@ -242,11 +260,8 @@ function parseGrowthTags(){
 					let damageOptions = matches[1].split(",");
 					let range = damageOptions[0];
 					let damage = damageOptions[1];
-                    let damageManyIconOpen = "" 
-					let damageManyIconClose = ""
-					damageGrowthIcons = "<growth-damage><value>" + damage + "</value></growth-damage>"
-					damageGrowthText = "Deal "+damage+" Damage at Range " + range
-					newGrowthCellHTML += growthOpen + "<custom-icon><growth-damage><value>" + damage + "</value></growth-damage>"+ "{range-" + range + "}</custom-icon>" + growthTextOpen + damageGrowthText + growthTextClose;
+					growthIcons = "<custom-icon><growth-damage><value>" + damage + "</value></growth-damage>"+ "{range-" + range + "}</custom-icon>"
+					growthText = "Deal "+damage+" Damage at Range " + range
 					break;
 				}
 				case 'gain-energy': {
@@ -299,7 +314,8 @@ function parseGrowthTags(){
 							energyGrowthText = "Gain 1 Energy per " + Capitalise(scaling)
 						}
                     }
-					newGrowthCellHTML += growthOpen + energyManyIconOpen + energyGrowthIcons + energyManyIconClose + growthTextOpen + energyGrowthText + growthTextClose
+					growthIcons = energyManyIconOpen + energyGrowthIcons + energyManyIconClose
+					growthText = energyGrowthText
 					break;
 				}
 				case 'add-presence': {
@@ -462,8 +478,8 @@ function parseGrowthTags(){
                         }
                         presenceIcon += "</presence-req>";
 					}
-
-                    newGrowthCellHTML += growthOpen + presenceReqOpen + "+{presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose + growthTextOpen +"Add a Presence" + presenceText + growthTextClose;
+					growthIcons = presenceReqOpen + "+{presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose
+					growthText = "Add a Presence" + presenceText
                     break;
                 }
                 case 'push':
@@ -475,7 +491,7 @@ function parseGrowthTags(){
 						: 'into'
 					
 					let moveText = ""
-					let moveIcons = growthOpen
+					let moveIcons = ""
 					let moveTarget = matches[1];
 					let moveOptions = matches[1].split(",");
 					let moveRange = moveOptions[1];
@@ -495,7 +511,7 @@ function parseGrowthTags(){
 							// Gather/Push into/from a sacred site, land with token, or terrain
 							
 							// Text
-							moveText += growthTextOpen+Capitalise(growthItem)+" 1 " + Capitalise(moveTarget) +" "+ preposition + " " + moveNum;
+							moveText += Capitalise(growthItem)+" 1 " + Capitalise(moveTarget) +" "+ preposition + " " + moveNum;
 							switch (moveCondition){
 								case 'sacred-site':
 									moveText += " of your Sacred Sites"
@@ -525,30 +541,31 @@ function parseGrowthTags(){
 									moveText += " of your Lands with " + Capitalise(moveCondition)
 									moveIcons += "<push-gather><icon class='" + growthItem + "-" + preposition + "'><icon class='" + moveTarget + "'></icon><icon class='" + preposition + " " + moveCondition + "'></icon></icon></push-gather>"
 							}
-							moveText += growthTextClose;
 						}else{
 						// Gather/Push at range
 							moveIcons += "<push-gather-range-req><icon class='" + growthItem + "'><icon class='" + moveTarget + "'></icon></icon>"+"{range-" + moveRange + "}</push-gather-range-req>"
-							moveText += growthTextOpen+Capitalise(growthItem)+" up to 1 " + Capitalise(moveTarget)+" " + preposition + " a Land"+growthTextClose
+							moveText += Capitalise(growthItem)+" up to 1 " + Capitalise(moveTarget)+" " + preposition + " a Land"
 						}
 					}else{
 						moveIcons += "<push-gather><icon class='" + growthItem + "'><icon class='" + moveTarget + "'></icon></icon></push-gather>"
-						moveText += growthTextOpen+Capitalise(growthItem)+" 1 " + Capitalise(moveTarget)+" " + preposition + ` 1 of your Lands`+growthTextClose;
+						moveText += Capitalise(growthItem)+" 1 " + Capitalise(moveTarget)+" " + preposition + ` 1 of your Lands`;
 					}
 					newGrowthCellHTML += moveIcons + moveText;
+					growthIcons = moveIcons
+					growthText = moveText
 					break;
 				}
                 case 'presence-no-range': {
 					//This is potentially redundant.
-					newGrowthCellHTML += growthOpen+"<custom-presence-no-range>+{presence}</custom-presence-no-range>"+growthTextOpen+"Add a Presence to any Land"+growthTextClose;
+					growthIcons = "<custom-presence-no-range>+{presence}</custom-presence-no-range>"
+					growthText = "Add a Presence to any Land"
 					break;
 				}
                 case 'move-presence': {        
 					const matches = regExp.exec(classPieces[j]);
-
 					const moveRange = matches[1];
-					newGrowthCellHTML += growthOpen+"<custom-presence>{presence}{move-range-" + moveRange + "}</custom-presence>"+growthTextOpen+"Move a Presence"+growthTextClose
-
+					growthIcons = "<custom-presence>{presence}{move-range-" + moveRange + "}</custom-presence>"
+					growthText = "Move a Presence"
 					break;
 				}
                 case 'gain-element': {
@@ -567,24 +584,26 @@ function parseGrowthTags(){
 							if (elementOptions.at(-1) === 'or' || elementOptions.at(-1) === 'and'){}
 					
 							//Icons
-							newGrowthCellHTML += growthOpen + "<gain class='or'>"
+							elementIcons = "<gain class='or'>"
 							for (var i = 0; i < elementOptions.length; i++) {
-								newGrowthCellHTML += "<icon class='orelement " + elementOptions[i] + "'></icon>";
+								elementIcons += "<icon class='orelement " + elementOptions[i] + "'></icon>";
 								if (i < elementOptions.length - 1) {
-									newGrowthCellHTML += "{backslash}";
+									elementIcons += "{backslash}";
 								}
 							}
+							elementIcons += "</gain>"
 							//Text
-							newGrowthCellHTML += "</gain>"+growthTextOpen+"Gain ";
+							elementText = "Gain ";
 							for (var i = 0; i < elementOptions.length; i++) {
-								newGrowthCellHTML += IconName(elementOptions[i]);
+								elementText += IconName(elementOptions[i]);
 								if (i < elementOptions.length-2) {
-									newGrowthCellHTML += ", ";
+									elementText += ", ";
 								} else if (i == elementOptions.length-2) {
-									newGrowthCellHTML += " or ";
+									elementText += " or ";
 								}
 							}
-							newGrowthCellHTML += growthTextClose;
+							growthIcons = elementIcons
+							growthText = elementText
 								
 						} else { 
 							// Gain multiple of the same element or gain multiple different elements (all of them, not or)
@@ -624,13 +643,13 @@ function parseGrowthTags(){
 							}
 							elementIcons += "<icon style='width:0px;height:99px'></icon>"; // This is a filler icon to make sure the spacing is right. Any idea for a better solution?
 							
-							newGrowthCellHTML += growthOpen+"<gain>" + elementIcons + "</gain>"+growthTextOpen+"Gain "+elementText+growthTextClose;
+							growthIcons = "<gain>" + elementIcons + "</gain>"
+							growthText = "Gain "+elementText
 						}
 								
 					} else {
-						let elementText = ""
-						elementText = gainedElement==='star' ? 'Element' : IconName(gainedElement)
-						newGrowthCellHTML += growthOpen+"<gain>{" + gainedElement + "}</gain>"+growthTextOpen+"Gain " + elementText + growthTextClose
+						growthIcons = "<gain>{" + gainedElement + "}</gain>"
+						growthText = "Gain " + IconName(gainedElement)
 					}
 					break;
 				}
@@ -644,7 +663,8 @@ function parseGrowthTags(){
 					}else{
 						customIcon = "<div class='custom-scaling'>!!!</div>";
 					}
-					newGrowthCellHTML += growthOpen+"<custom-growth-icon>" + customIcon + "</custom-growth-icon>"+growthTextOpen+customText+growthTextClose;
+					growthIcons = "<custom-growth-icon>" + customIcon + "</custom-growth-icon>"
+					growthText = customText
 					break;
 				}
 				case 'fear': {
@@ -696,7 +716,8 @@ function parseGrowthTags(){
 							fearGrowthText = "Generate 1 Fear per " + Capitalise(scaling)
 						}
                     }
-					newGrowthCellHTML += growthOpen + fearManyIconOpen + fearGrowthIcons + fearManyIconClose + growthTextOpen + fearGrowthText +growthTextClose;
+					growthIcons = fearManyIconOpen + fearGrowthIcons + fearManyIconClose
+					growthText = fearGrowthText
 					break;
 				}
 				case 'gain-range': {
@@ -728,20 +749,21 @@ function parseGrowthTags(){
 					} else {
 						gainRangeText = "Your Powers gain +"+range+" Range this turn"
 					}
-					newGrowthCellHTML += growthOpen+"{gain-range-" + range +"}"+growthTextOpen+gainRangeText+growthTextClose;
-
+					growthIcons = "{gain-range-" + range +"}"
+					growthText = gainRangeText
 					break;
 				}
 				case 'gain-card-play': {
 					const matches = regExp.exec(classPieces[j]);
+					growthIcons = "{"+growthItem+"}"
+					growthText = IconName(growthItem)
 					
 					if(matches){
 						let cardplayOptions = matches[1].split(",");
 						num_card_plays = cardplayOptions[0];
 						plural = num_card_plays > 1 ? "s" : "";
-						newGrowthCellHTML += growthOpen + "<card-play-num><value>" + num_card_plays + "</value></card-play-num>"+growthTextOpen+" +"+num_card_plays+" Card Play"+plural+" this turn"+growthTextClose;
-					}else{
-						newGrowthCellHTML += growthOpen+"{"+growthItem+"}" + growthTextOpen + IconName(growthItem) + growthTextClose;
+						growthIcons = "<card-play-num><value>" + num_card_plays + "</value></card-play-num>"
+						growthText = " +"+num_card_plays+" Card Play"+plural+" this turn"
 					}
 					break;
 				}
@@ -767,9 +789,11 @@ function parseGrowthTags(){
 						}
 						markerIcons += "<icon style='width:0px;height:99px'></icon>"; // This is a filler icon to make sure the spacing is right. Any idea for a better solution?
 						
-						newGrowthCellHTML += growthOpen+"<gain>" + markerIcons + "</gain>"+growthTextOpen+marker_verb+" "+num_markers+" Element Marker"+plural+growthTextClose;
+						growthIcons = "<gain>" + markerIcons + "</gain>";
+						growthText = marker_verb+" "+num_markers+" Element Marker"+plural;
 					}else{
-						newGrowthCellHTML += growthOpen+"<gain>{markerplus}</gain>"+growthTextOpen+"Prepare 1 Element Marker"+growthTextClose;
+						growthIcons = "<gain>{markerplus}</gain>"
+						growthText = "Prepare 1 Element Marker"
 					}
 					break;
 				}
@@ -814,13 +838,41 @@ function parseGrowthTags(){
 							tokenText = "MUST use AND or OR"
 						}
 					}
-					newGrowthCellHTML += growthOpen+ tokenReqOpen + tokenIcons + tokenRange + tokenReqClose + growthTextOpen + tokenText +growthTextClose;
+					growthIcons = tokenReqOpen + tokenIcons + tokenRange + tokenReqClose;
+					growthText = tokenText
 					break;
 				}
-				default:
-					newGrowthCellHTML += growthOpen+"{"+growthItem+"}" + growthTextOpen + IconName(growthItem)+growthTextClose;
+				default: {
+					growthIcons = "{"+growthItem+"}"
+					growthText = IconName(growthItem)
+				}
 
             }
+			
+			// growthIcons =
+			// growthText = 
+			
+			
+			//Handle Ors
+			if(isOr){
+				// break out the ICON and TEXT
+				// Save it for next time
+				// Append it
+				orTextHold = growthText
+				console.log('orTextHold='+orTextHold)
+				orIconsHold = growthIcons
+				isOr = false;
+			} else if(orTextHold){
+				console.log('here we go!')
+				growthText = orTextHold +" or "+ growthText
+				growthIcons = '<growth-cell-double>'+orIconsHold +"or"+ growthIcons+'</growth-cell-double>'
+				newGrowthCellHTML += growthOpen + growthIcons + growthTextOpen + growthText + growthTextClose;
+				orTextHold = ""
+				orIconsHold = ""
+			} else {
+				newGrowthCellHTML += growthOpen + growthIcons + growthTextOpen + growthText + growthTextClose;
+			}
+			
         }
 
         if (nextElement && nextElement.nodeName.toLowerCase() == 'growth-group') {
@@ -1206,6 +1258,15 @@ function IconName(str, iconNum = 1){
 		case 'discard-1-card':
 			subText = "Discard 1 Power Card"
 			break;
+		case 'gain-1-time':
+			subText = "Gain 1 Time"
+			break;
+		case 'gain-2-time':
+			subText = "Gain 2 Time"
+			break;
+		case 'days-never-were':
+			subText = "Gain Power Card from Days That Never Were"
+			break;
 		case 'destroy-presence':
 			subText = "Destroy 1 of your Presence"
 			break;
@@ -1241,6 +1302,9 @@ function IconName(str, iconNum = 1){
 			break;
 		case 'move-presence':
 			subText = "Move Presence " + num[0];
+			break;
+		case 'star':
+			subText = "Element";
 			break;
 		case 'gain-range':
 			subText = "+" + num[0]+ " Range";

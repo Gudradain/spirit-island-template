@@ -104,6 +104,10 @@ growth-cell-double {
   display: flex;
   align-items: center;
   flex-direction: row;
+  font-family: 'Lato SemiBold';
+    font-size: 14pt;
+    font-style: italic;
+    text-align: center;
 }
 
 growth-cell icon {
@@ -127,6 +131,7 @@ repeat-growth value{
   font-family: 'Gobold Extra2', 'Noto Sans';
     font-size: 18pt;
     display: inline-block;
+	font-style: normal;
     margin-top: 4px;
     margin-left: 10px;
     color: #52301e;
@@ -148,6 +153,7 @@ growth-energy {
 growth-energy value {
   font-family: 'Gobold Extra2', 'Noto Sans';
   font-size: 24pt;
+  font-style: normal;
   display: inline-block;
   margin-top: 35px;
   margin-left: 25px;
@@ -559,6 +565,7 @@ growth-damage value {
     display: inline-block;
     margin-top: 36px;
     margin-left: 0px;
+	font-style: normal;
 }
 
 
@@ -581,6 +588,7 @@ card-play-num {
 card-play-num value {
     font-family: 'Gobold Extra2', 'Noto Sans';
     font-size: 24pt;
+	font-style: normal;
     display: inline-block;
     margin-top: 32px;
     margin-left: 0px;
@@ -826,6 +834,7 @@ gain-per {
 gain-per value {
   font-family: 'Gobold Extra2', 'Noto Sans';
   font-size: 16pt;
+  font-style: normal;
   display: inline-block;
   margin-top: 25px;
   margin-left: 11px;
@@ -930,6 +939,7 @@ growth-fear value {
     font-family: 'Gobold Extra2', 'Noto Sans';
     font-size: 20pt;
     display: inline-block;
+    font-style: normal;
     margin-top: 48px;
     margin-left: 0px;
 }
@@ -953,6 +963,7 @@ fear-per value{
     font-family: 'Gobold Extra2', 'Noto Sans';
     font-size: 14pt;
     display: inline-block;
+    font-style: normal;
     margin-top: 33px;
     margin-left: 0px;
 }

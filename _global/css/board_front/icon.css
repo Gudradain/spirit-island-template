@@ -360,32 +360,31 @@ icon.major {
     width: 45px;
 }
 
-icon.reclaim-one {
-  background-image: url('../../images/board/Reclaimone.png');
+icon.reclaim-all, icon.reclaim-one, icon.reclaim-none, 
+icon.reclaim-custom, icon.reclaim-half {
   display: block;
   height: 90px;
-  width:90px;
+  width:70px;
+}
+
+icon.reclaim-all {
+  background-image: url('../../images/board/Reclaimall.png');
+}
+
+icon.reclaim-one {
+  background-image: url('../../images/board/Reclaimone.png');
 }
 
 icon.reclaim-none {
   background-image: url('../../images/board/Reclaimnone.png');
-  display: block;
-  height: 90px;
-  width:90px;
 }
 
 icon.reclaim-custom {
   background-image: url('../../images/board/Reclaimspecial.png');
-  display: block;
-  height: 90px;
-  width:90px;
 }
 
 icon.reclaim-half {
   background-image: url('../../images/board/Reclaimhalf.png');
-  display: block;
-  height: 90px;
-  width: 90px;
 }
 
 icon.gain-card-play {
@@ -433,6 +432,8 @@ icon.gain-card-pay-2 {
 icon.days-never-were {
 	background-image: url('../../images/board/NewIcons/Card Days That Never Were Gain 1.png');
 	display: inline-block;
+	height: 90px;
+  width:90px;
 }
 
 icon.your-land {
@@ -574,16 +575,19 @@ icon.push-from > icon {
     padding: 0px;
 }
 
-icon.reclaim-all {
-  background-image: url('../../images/board/Reclaimall.png');
-  display: block;
-  height: 90px;
-  width:90px;
-}
-
 icon.make-fast {
   background-image: url('../../images/board/fast_power.png');
   display: block;
   height: 90px;
   width:90px;
 }
+
+icon.gain-1-time, icon.gain-2-time {
+  display: block;
+    height: 100px;
+    width: 100px;
+    margin-top: -17px;
+}
+icon.gain-1-time { background-image: url('../../images/board/NewIcons/Time Gain 1.png')}
+icon.gain-2-time { background-image: url('../../images/board/NewIcons/Time Gain 2.png')}
+
