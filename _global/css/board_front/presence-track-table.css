@@ -6,7 +6,8 @@ presence-tracks section-title {
 
 presence-tracks {
   display: block;
-  top: 300px;
+  position:relative;
+  z-index:2;
   margin-left: 10px;
   
   padding-left: 50px;
@@ -83,6 +84,12 @@ presence-node icon.reclaim-one {
   height: 90px;
   width:75px;
 }
+
+presence-node icon.star {
+  width: 80px;
+  height: 80px;
+}
+
 
 presence-node card-icon {
   background-image: url('../../images/board/CardPlayBlank.png');

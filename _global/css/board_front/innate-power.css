@@ -1,8 +1,11 @@
 innate-powers {
   display: block;
+  position: relative;
   margin-left: 22px;
   background-image: url('../../images/board/Innate_Without_Text.png');
   background-position: top;
+  z-index:1;
+  margin-top: -1px;
 }
 innate-powers::after {
   content: '';
@@ -506,6 +509,15 @@ threshold icon.moon {background-image: url(../../images/board/element_simple_moo
 threshold icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
 threshold icon.water {background-image: url(../../images/board/element_simple_water.png);}
 threshold icon.any {background-image: url(../../images/board/element_simple_any.png);}
+
+threshold icon.star {
+    width: 53px;
+    height: 53px;
+    margin-bottom: -9px;
+    margin-top: -9px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
 
 threshold-or {
 	font-family: 'DK Snemand', 'Mouse Memoirs';
