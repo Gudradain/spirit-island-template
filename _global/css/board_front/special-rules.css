@@ -56,6 +56,15 @@ special-rule icon.slow, special-rule icon.minor, special-rule icon.major {
     height:30px;
 }
 
+special-rule icon.range-1, special-rule icon.range-2, special-rule icon.range-3 {
+    width: 63px;
+    height: 39px;
+    margin-bottom: -13px;
+    margin-top: -20px;
+    margin-left: -2px;
+    margin-right: -2px;
+}
+
 special-rule icon.gain-range-1, special-rule icon.gain-range-2, special-rule icon.gain-range-3{
     width: 43px;
     height: 40px;
