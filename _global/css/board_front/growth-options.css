@@ -115,6 +115,18 @@ growth-cell icon {
   height: 90px;
 }
 
+plus-presence {
+	display: block;
+}
+
+custom-presence-or plus-presence {
+	display: inline-block;
+}
+
+custom-presence-no-range plus-presence {
+	display: inline-block;
+}
+
 /* Repeating Growth Options (Fractured Days) */
 repeat-growth {
     background-image: url('../../images/board/NewIcons/Growth Multiply Blank.png');
@@ -382,7 +394,7 @@ custom-icon icon.isolate{
 }
 
 custom-icon2 {
-	display:flex
+	display:flex;
 	flex-direction: column;
     align-items: center;
 }
@@ -521,8 +533,11 @@ growth-cost {
     width: 45px;
     top: -35px;
     position: relative;
-    left: -6px;
+    margin-right: -10px;
+    margin-left: -10px;
     padding-top: 9px;
+    float: left;
+    transform: translateX(75%);
 }
 
 growth-cost::after {
