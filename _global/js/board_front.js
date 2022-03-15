@@ -7,6 +7,8 @@ window.onload = function startMain(){
         setNewEnergyCardPlayTracks(parseEnergyTrackTags(), parseCardPlayTrackTags());
     }
     parseInnatePowers();
+	parseSpecialRules();
+
     const board = document.querySelectorAll('board')[0];
     var html = board.innerHTML;
     board.innerHTML = replaceIcon(html);
@@ -158,12 +160,9 @@ function parseGrowthTags(){
 		
         for (j = 0; j < classPieces.length; j++) {
 			
-			console.log('start growth item')
-			console.log(classPieces)
 			
 			//Find a parenthesis and split out the string before it
 			let growthItem = classPieces[j].split("(")[0].split("^")[0];
-			console.log(growthItem)
 			
 			// Check for OR
 			var regExpOuterParentheses = /\(\s*(.+)\s*\)/;
@@ -173,7 +172,6 @@ function parseGrowthTags(){
 				orGrowthOptions = matches.split(",")
 				classPieces[j]=orGrowthOptions[1]
 				classPieces.splice(j,0,orGrowthOptions[0])
-				console.log(classPieces)
 				growthItem = classPieces[j].split("(")[0].split("^")[0];
 			}
 			
@@ -187,7 +185,6 @@ function parseGrowthTags(){
 				repeatOpen = "<repeat-growth><value>"+repeat+"</value></repeat-growth>"
 				repeatClose = ""
 				repeatText = "x"+repeat+": ";
-				console.log('repeat text='+repeatText)
 			}
 			
 			// Establish Growth HTML Openers and Closers
@@ -857,15 +854,12 @@ function parseGrowthTags(){
 				// Save it for next time
 				// Append it
 				orTextHold = growthText
-				console.log('orTextHold='+orTextHold)
 				orIconsHold = growthIcons
 				orGrowthOpenHold = growthOpen
 				orGrowthTextOpenHold = growthTextOpen
 				isOr = false;
 			} else if(orTextHold){
-				console.log('here we go!')
 				growthText = orTextHold +" or "+ growthText
-				console.log(orTextHold +" or "+ growthText)
 				growthIcons = '<growth-cell-double>'+orIconsHold +"or"+ growthIcons+'</growth-cell-double>'
 				newGrowthCellHTML += orGrowthOpenHold + growthIcons + orGrowthTextOpenHold + growthText + growthTextClose;
 				orTextHold = ""
@@ -1032,6 +1026,11 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
         nodeClass = 'card';
         subText = 'Card Plays';
     }
+	else if(trackType == 'special'){
+        nodeClass = 'special-ring';
+        subText = '';
+		addEnergyRing = false;
+    }
 	
 	console.log(nodeText)
 	
@@ -1039,7 +1038,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
     if(!isNaN(nodeText)){
         //The value is only a number
         addEnergyRing = false;
-        if(first === true){
+        if(first === true && trackType != 'special'){
             presenceNode.classList.add("first");
         } else {
             subText = nodeText;
@@ -1152,8 +1151,6 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 			splitOptions.forEach(function (x) { nameCounts[x] = (nameCounts[x] || 0) + 1; });
 			let namesList = Object.keys(nameCounts);
 			let countList = Object.values(nameCounts);
-			console.log(namesList)
-			console.log(countList)
 			for (var i = 0; i < namesList.length; i++) {
 				subText += IconName(namesList[i],countList[i]);
 				
@@ -1415,7 +1412,6 @@ function dynamicCellWidth() {
 			widthArray[j] = growthCells[j].offsetWidth;
 		}
 		averageWidth = totalWidth/growthCells.length;
-		console.log("total width = "+totalWidth+" growthtablewidth= "+growthTableWidth)
 		if (totalWidth > 1000 || i==0){
 			let smallCellFinder = widthArray.map(x => x <= averageWidth*1.35)
 			let largeCellFinder = widthArray.map(x => x > averageWidth*1.35)
@@ -1453,7 +1449,6 @@ function dynamicCellWidth() {
 		if(i>0){
 			growthLines = document.getElementsByTagName("growth-row-line");
 			growthLines[i-1].style.width = totalWidth+"px";
-			console.log('real test here'+growthTable.scrollWidth)
 		}
 	}
 	
@@ -1553,13 +1548,12 @@ function dynamicCellWidth() {
 
     
     // Presence node subtext (for longer descriptions, allows flowing over into neighbors.
-    var subtext = document.getElementsByTagName("subtext");
-	var presence_nodes = document.getElementsByTagName("presence-node");
+    var presenceTrack = document.getElementsByTagName("presence-tracks")[0];
+	var subtext = presenceTrack.getElementsByTagName("subtext");
+	var presence_nodes = presenceTrack.getElementsByTagName("presence-node");
 	let adjustment_flag = 0
 	let default_row_height = 48*(3/4)
-	console.log(default_row_height)
 	if(tightFlag){default_row_height = 0};
-	console.log(default_row_height)
 	let row_max_height = default_row_height;
 	let first_row_max = 0;
 	let height_adjust = 0;
@@ -1591,10 +1585,9 @@ function dynamicCellWidth() {
 	presence_table.style.height = (presence_table.offsetHeight + height_adjust)+"px";
     
 	// Place middle presence nodes
-	var firstRow = document.getElementsByClassName("first")[0];
+	var firstRow = presenceTrack.getElementsByClassName("first")[0];
 	var firstRowHeight = firstRow.offsetHeight;
-	console.log('offset height = '+firstRowHeight)
-	var middleNodes = document.getElementsByClassName("middle");
+	var middleNodes = presenceTrack.getElementsByClassName("middle");
 	for(i = 0; i < middleNodes.length; i++){
 		let presenceNode = middleNodes[i].getElementsByTagName("presence-node")
 		presenceNode[0].style.top = (firstRowHeight/2)+"px";
@@ -1670,8 +1663,6 @@ function parseInnatePower(innatePowerHTML){
     var currentLevels = innatePowerHTML.getElementsByTagName("level");
     for (j = 0; j < currentLevels.length; j++){
         var currentThreshold = currentLevels[j].getAttribute("threshold");
-		console.log('---------')
-		console.log(currentThreshold)
 		
 		let isLong = currentLevels[j].getAttribute("long");
 		if(isLong!=null){
@@ -1685,7 +1676,7 @@ function parseInnatePower(innatePowerHTML){
 		var elementPieces = []
 		var numeralPieces = []
 		for (k = 0; k < currentThresholdPieces.length; k++){
-			elementPieces[k]=currentThresholdPieces[k].split('-')[1]
+			elementPieces[k]=currentThresholdPieces[k].substring(currentThresholdPieces[k].indexOf('-')+1)
 			numeralPieces[k]=currentThresholdPieces[k].split('-')[0]
 		}
 		
@@ -1719,3 +1710,31 @@ function parseInnatePower(innatePowerHTML){
     return currentPowerHTML;
 }
 
+function parseSpecialRules(){
+	
+	var specialRules = document.getElementsByTagName("special-rules-container")[0];
+	console.log(specialRules)
+	console.log('special rules')
+    var specialTrack = document.getElementsByTagName("special-rules-track")[0];
+	if(specialTrack){
+		var specialValues = specialTrack.getAttribute("values");
+		var specialOptions = specialValues.split(",");
+		var specialHTML = "";
+		
+		for(i = 0; i < specialOptions.length; i++){
+			let nodeText = specialOptions[i];
+			specialHTML += "<td>"+getPresenceNodeHtml(nodeText, i == 0, "special", true)+"</td>";
+		}
+		specialHTML += "</tr>"
+		document.getElementsByTagName("special-rules-track")[0].removeAttribute("values");
+		specialTrack.innerHTML = specialHTML;
+		console.log(specialTrack)
+		var subtextList = specialTrack.getElementsByTagName("subtext");
+		console.log(subtextList)
+		for (var i = subtextList.length - 1; i >= 0; --i) {
+		  subtextList[i].remove();
+		}
+	}
+	
+	// <special-rules-track values="2,3,4"></special-rules-track>
+}

@@ -150,12 +150,21 @@ special-rule em icon.dahan {
 
 special-rule icon.sun,special-rule icon.earth, special-rule icon.plant, special-rule icon.fire, 
 special-rule icon.air, special-rule icon.moon, special-rule icon.animal, special-rule icon.water,
-special-rule icon.any, special-rule icon.star, special-rule icon.markerplus, special-rule icon.markerminus {
+special-rule icon.any, special-rule icon.markerplus, special-rule icon.markerminus {
     width: 35px;
     height: 35px;
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: -8px;
+}
+
+special-rule icon.star {
+    width: 41px;
+    height: 41px;
+    margin-left: -3px;
+    margin-right: -3px;
+    margin-bottom: -11px;
+	margin-top: -10px;
 }
 
 special-rule icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
@@ -167,3 +176,36 @@ special-rule icon.moon {background-image: url(../../images/board/element_simple_
 special-rule icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
 special-rule icon.water {background-image: url(../../images/board/element_simple_water.png);}
 special-rule icon.any {background-image: url(../../images/board/element_simple_any.png);}
+
+icon.presence-ring {
+  background-image: url('../../images/board/CardPlayRing.png');
+  height: 130px;
+    width: 130px;
+}
+special-rules-track{
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+presence-node special-ring-icon {
+  background-image: url('../../images/board/50px_presence_transparent.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 54px;
+  width: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+special-rules-track icon.sun { background-image: url('../../images/board/Sun.png'); }
+special-rules-track icon.moon { background-image: url('../../images/board/Moon.png'); }
+special-rules-track icon.fire { background-image: url('../../images/board/Fire.png'); }
+special-rules-track icon.air { background-image: url('../../images/board/Air.png'); }
+special-rules-track icon.plant { background-image: url('../../images/board/Plant.png'); }
+special-rules-track icon.water { background-image: url('../../images/board/Water.png'); }
+special-rules-track icon.earth { background-image: url('../../images/board/Earth.png'); }
+special-rules-track icon.animal { background-image: url('../../images/board/Animal.png'); }
+special-rules-track icon.star{ background-image: url('../../images/board/NewIcons/Element Star.png'); }
+special-rules-track icon.any { background-image: url('../../images/board/Any.png'); }
