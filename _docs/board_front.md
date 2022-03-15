@@ -117,6 +117,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
 ||Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc)||
+|Or Growth Options|Allows pair of two growth options|or(x,y)|x and y are growth options (like the ones above)|Fractured Days's growth: or(gain-1-time^2,gain-card-play(2))|
 
 </details>
 
@@ -165,7 +166,6 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Forget Power|forget-power-card|Forget a power card. Unlikely to be useful because presence track actions are optional|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
 |Custom|custom(*your_text*)|Add custom text to the presence node. Image will be !!!.|Custom energy track: values="1,2,custom(Draw 1 Minor Power),3,water,4"|
 ||custom(*your_text*;x)|Add custom text to the presence node. x is the icon (for example, city). Note the semicolon.|Custom energy track: values="1,2,custom(Draw 1 Minor Power;city),3,water,4"|
-|Or Growth Options|Allows pair of two growth options|or(x,y)|x and y are growth options (like the ones above)|Fractured Days's growth: or(gain-1-time^2,gain-card-play(2))|
 
 </details>
 
@@ -190,7 +190,9 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
           - Elements: 1-plant,2-fire
 		  - Icons: 2-wilds
 		  - Costs: cost-2
-		  - Example: Volcano: *\<level threshold="3-fire,cost-2"\>* or Many Minds *\<level threshold="1-air,2-animal,2-beasts"\>*
+		    - Example: Volcano: *\<level threshold="3-fire,cost-2"\>* or Many Minds *\<level threshold="1-air,2-animal,2-beasts"\>*
+		  - Or: or
+		    - Example: Trickster: *\<level threshold="3-sun,OR,3-fire"\>*
 		- long: if you add 'long' to the level tag, it will allow the description to spill over into the next column (like Volcano)
 		  - Example: *\<level threshold="5-fire,3-air,5-earth,10-destroyed-presence" ***long***\>*
         - The actual text for the level sits between the level tag
