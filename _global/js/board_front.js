@@ -478,7 +478,7 @@ function parseGrowthTags(){
                         }
                         presenceIcon += "</presence-req>";
 					}
-					growthIcons = presenceReqOpen + "+{presence}" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose
+					growthIcons = presenceReqOpen + "<plus-presence>+{presence}</plus-presence>" + presenceIcon + "{range-" + presenceRange + "}" + presenceReqClose
 					growthText = "Add a Presence" + presenceText
                     break;
                 }
@@ -1670,22 +1670,43 @@ function parseInnatePower(innatePowerHTML){
     var currentLevels = innatePowerHTML.getElementsByTagName("level");
     for (j = 0; j < currentLevels.length; j++){
         var currentThreshold = currentLevels[j].getAttribute("threshold");
+		console.log('---------')
+		console.log(currentThreshold)
+		
 		let isLong = currentLevels[j].getAttribute("long");
 		if(isLong!=null){
 			isLong = " long"
 		}else{
 			isLong = ""
 		}
-
-        var currentThresholdPieces = currentThreshold.split(",");
-      
+		
+		// Break the cost into a numeral and element piece (then do error handling to allow switching the order)
+		var currentThresholdPieces = currentThreshold.split(",");
+		var elementPieces = []
+		var numeralPieces = []
+		for (k = 0; k < currentThresholdPieces.length; k++){
+			elementPieces[k]=currentThresholdPieces[k].split('-')[1]
+			numeralPieces[k]=currentThresholdPieces[k].split('-')[0]
+		}
+		
         currentPowerHTML += "<level><threshold>";
         for (k = 0; k < currentThresholdPieces.length; k++){
-            currentThresholdPieces[k] = currentThresholdPieces[k].replace("-","{"); // here, typically looks something like 3{earth
-			if(currentThresholdPieces[k].split("{")[0]=='cost'){
-				currentThresholdPieces[k]="<cost-threshold>cost<cost-energy><value>-" + currentThresholdPieces[k].split("{")[1] + "</value></cost-energy></cost-threshold>";
+			var currentNumeral = 0;
+			var currentElement = '';
+			if(isNaN(numeralPieces[k])){
+				currentNumeral = elementPieces[k];
+				currentElement = numeralPieces[k];
 			}else{
-				currentThresholdPieces[k] += "}";
+				currentElement = elementPieces[k];
+				currentNumeral = numeralPieces[k];
+			}
+			
+			if(currentElement.toUpperCase()=='OR'){
+				currentThresholdPieces[k]='<threshold-or>or</threshold-or>'
+			}else if(currentElement.toUpperCase()=='COST'){
+				currentThresholdPieces[k]="<cost-threshold>Cost<cost-energy><value>-" + currentNumeral + "</value></cost-energy></cost-threshold>";
+			}else{
+				currentThresholdPieces[k]=currentNumeral+"{"+currentElement+"}";
 			}
             currentPowerHTML += currentThresholdPieces[k];
         }

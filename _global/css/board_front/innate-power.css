@@ -251,6 +251,12 @@ div.description {
     background-position: bottom;
 }
 
+.description icon.slow,
+.description icon.fast {
+    width: 35px;
+    height: 35px;
+}
+
 .description icon.explorer {
     height: 30px;
 	margin-bottom: -6px;
@@ -500,6 +506,21 @@ threshold icon.moon {background-image: url(../../images/board/element_simple_moo
 threshold icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
 threshold icon.water {background-image: url(../../images/board/element_simple_water.png);}
 threshold icon.any {background-image: url(../../images/board/element_simple_any.png);}
+
+threshold-or {
+	font-family: 'DK Snemand', 'Mouse Memoirs';
+	text-transform: uppercase;
+	font-size: 18pt;
+	display: inline-block;
+    position: relative;
+    top: -8px;
+    left: -26px;
+    height: 15px;
+    width: 1px;
+    margin-bottom: 8px;
+    margin-top: -28px;
+	margin-left: 26px;
+}
 
 note icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
 note icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
