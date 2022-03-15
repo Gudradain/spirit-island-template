@@ -33,7 +33,14 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 - special-rules-container: The container for the Special Rules
 	- section-title: The section title "Special Rules". Typically this isn't changed.
 	- special-rules-subtitle: The name of the Special Rule. You may have multiple special rules.
-	- special-rule: The rule itself.
+	- special-rule: The rule itself. Most icons will work here.
+<details>
+  <summary>Advanced Special Rule Options</summary>
+
+- Serpent style presence nodes in the special rule
+	- Example: *\<special-rules-track values="5,7,8,10,11,12,13"\>\<\/special-rules-track\>*
+
+</details>
 
 ### Growth
 - growth: The container for the Growth Options
