@@ -15,10 +15,17 @@
 
 @font-face{
   font-family: 'Lato SemiBold';
-  src: url(../fonts/lato/Lato-SemiboldItalic.ttf);
+  src: url(../fonts/lato/Lato-BoldItalic.ttf);
   font-style: italic;
 }
 
+@font-face {
+    font-family: 'JosefinSans';
+    src: url(../fonts/josefin-sans/JosefinSans-BoldItalic.ttf) format("truetype");
+	font-weight: bold;
+	font-style: italic;
+	letter-spacing: -0.5px;
+}
 
 icon{
   display:inline-block;

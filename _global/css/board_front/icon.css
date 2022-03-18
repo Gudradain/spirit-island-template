@@ -524,6 +524,12 @@ div.push > icon {
     padding: 0px;
 }
 
+div.push > icon.explorer {
+    margin-top: -5px;
+    width: 28px;
+    height: 30px;
+}
+
 div.push > icon.backslash {
     width: 10px;
 }
