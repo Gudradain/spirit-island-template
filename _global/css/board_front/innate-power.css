@@ -43,11 +43,13 @@ innate-power:only-child note {
 
 innate-power-title {
   width: 420px;
-  font-family: 'JosefinSans-Regular';
+  font-family: 'JosefinSans';
   font-weight: bold;
   font-style: italic;
   font-size: 14pt;
   text-transform: uppercase;
+  letter-spacing: -0.5px;
+  word-spacing: 0.5px;
 }
 
 info-container {
@@ -186,7 +188,7 @@ note {
   width: 487px;
   font-family: 'JosefinSans-Regular';
   font-size: 17pt;
-  margin-bottom:6px;
+  margin-bottom:8px;
   margin-top: -4px;
   line-height: 1;
 }
@@ -203,12 +205,13 @@ note icon.range-plus-2, note icon.range-plus-3,
 note icon.destroyed-presence{
     width: 24px;
     height: 26px;
-    margin-bottom: -6px;
+    margin-bottom: -4px;
     background-position: bottom;
 }
 
 note icon.beasts{
     width: 28px;
+	margin-bottom: -6px;
 }
 
 
@@ -217,8 +220,9 @@ note icon.beasts{
 }
 
 note icon.presence{
-    margin-bottom: -2px;
+    margin-bottom: -1px;
     margin-top: -12px;
+	width: 26px;
 }
 
 div.description {
@@ -375,7 +379,7 @@ threshold {
   font-size: 24pt;
   color: #431E0AFF;
   float: left;
-  margin-right: 12px;
+  margin-right: 6px;
 }
 
 innate-info icon.range-0, innate-info icon.range-1, innate-info icon.range-2, 
