@@ -384,6 +384,13 @@ icon.presence{
   height:20px;
 }
 
+rules icon.sacred-site{
+    width: 39px;
+    height: 37px;
+    margin-top: -12px;
+    margin-bottom: -12px;
+}
+
 icon.sun,
 icon.moon,
 icon.fire,
@@ -429,6 +436,32 @@ rules icon.sand-wetland
   margin-right:-4px;
 }
 
+rules icon.sun {background-image: url(../images/board/element_simple_sun.png);}
+rules icon.earth {background-image: url(../images/board/element_simple_earth.png);}
+rules icon.plant {background-image: url(../images/board/element_simple_plant.png);}
+rules icon.fire {background-image: url(../images/board/element_simple_fire.png);}
+rules icon.air {background-image: url(../images/board/element_simple_air.png);}
+rules icon.moon {background-image: url(../images/board/element_simple_moon.png);}
+rules icon.animal {background-image: url(../images/board/element_simple_animal.png);}
+rules icon.water {background-image: url(../images/board/element_simple_water.png);}
+rules icon.any {background-image: url(../images/board/element_simple_any.png);}
+
+rules icon.sun,
+rules icon.moon,
+rules icon.fire,
+rules icon.air,
+rules icon.water,
+rules icon.earth,
+rules icon.plant,
+rules icon.animal,
+rules icon.any{
+    width: 28px;
+    height: 28px;
+  margin-bottom: -3px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 threshold icon.sun {background-image: url(../images/board/element_simple_sun.png);}
 threshold icon.earth {background-image: url(../images/board/element_simple_earth.png);}
 threshold icon.plant {background-image: url(../images/board/element_simple_plant.png);}
@@ -437,6 +470,7 @@ threshold icon.air {background-image: url(../images/board/element_simple_air.png
 threshold icon.moon {background-image: url(../images/board/element_simple_moon.png);}
 threshold icon.animal {background-image: url(../images/board/element_simple_animal.png);}
 threshold icon.water {background-image: url(../images/board/element_simple_water.png);}
+threshold icon.any {background-image: url(../images/board/element_simple_any.png);}
 
 threshold icon.sun,
 threshold icon.moon,
@@ -446,7 +480,7 @@ threshold icon.water,
 threshold icon.earth,
 threshold icon.plant,
 threshold icon.animal,
-threshold icon.any-element{
+threshold icon.any{
   width: 32px;
   height: 32px;
   margin-bottom: -3px;
