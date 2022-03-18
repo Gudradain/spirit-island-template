@@ -157,6 +157,8 @@ function parseGrowthTags(){
 		let isOr = false;
 		let orTextHold = ""
 		let orIconsHold = ""
+		let orGrowthOpenHold = ""
+		let orGrowthTextOpenHold = ""
 		
         for (j = 0; j < classPieces.length; j++) {
 			
@@ -166,12 +168,20 @@ function parseGrowthTags(){
 			
 			// Check for OR
 			var regExpOuterParentheses = /\(\s*(.+)\s*\)/;
+			var regExpCommaNoParentheses = /,(?![^(]*\))/;
+			console.log('j='+j)
+			console.log(classPieces)
+			console.log('growth item= '+growthItem)
+			console.log(classPieces[j])
 			if(growthItem=='or'){
 				isOr = true;
-				const matches = regExpOuterParentheses.exec(classPieces[j])[1]
-				orGrowthOptions = matches.split(",")
+				let matches = regExpOuterParentheses.exec(classPieces[j])[1]
+				orGrowthOptions = matches.split(regExpCommaNoParentheses)
+				// orGrowthOptions = matches.split(",")
 				classPieces[j]=orGrowthOptions[1]
 				classPieces.splice(j,0,orGrowthOptions[0])
+				console.log(classPieces)
+				console.log(j)
 				growthItem = classPieces[j].split("(")[0].split("^")[0];
 			}
 			
@@ -853,14 +863,16 @@ function parseGrowthTags(){
 				// break out the ICON and TEXT
 				// Save it for next time
 				// Append it
-				orTextHold = growthText
-				orIconsHold = growthIcons
+				orTextHold += growthText + " or "
+				orIconsHold += growthIcons +"or"
 				orGrowthOpenHold = growthOpen
-				orGrowthTextOpenHold = growthTextOpen
+				orGrowthTextOpenHold = orGrowthTextOpenHold=="" ? growthTextOpen : orGrowthTextOpenHold
+				console.log(orGrowthTextOpenHold)
 				isOr = false;
+				console.log(orTextHold)
 			} else if(orTextHold){
-				growthText = orTextHold +" or "+ growthText
-				growthIcons = '<growth-cell-double>'+orIconsHold +"or"+ growthIcons+'</growth-cell-double>'
+				growthText = orTextHold + growthText
+				growthIcons = '<growth-cell-double>'+orIconsHold+ growthIcons+'</growth-cell-double>'
 				newGrowthCellHTML += orGrowthOpenHold + growthIcons + orGrowthTextOpenHold + growthText + growthTextClose;
 				orTextHold = ""
 				orIconsHold = ""
@@ -959,7 +971,7 @@ function enhancePresenceTracksTable() {
     console.log('creating dynamic presence tracks...')
     var table = document.getElementById("presence-table");
 	table.innerHTML = table.innerHTML.replaceAll('middle=""','rowspan="2" class="middle"')
-	console.log(table.innerHTML)
+
     for (var i = 0, row; row = table.rows[i]; i++) {
        for (var j = 0, cell; cell = row.cells[j]; j++) {
         cell.innerHTML = getPresenceNodeHtml(cell.firstChild.nodeValue, j == 0, 'dynamic', i == 0);
@@ -1032,7 +1044,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 		addEnergyRing = false;
     }
 	
-	console.log(nodeText)
+	
 	
     addIconShadow = false;
     if(!isNaN(nodeText)){
@@ -1369,8 +1381,16 @@ function dynamicCellWidth() {
 		totalWidth += growthCells[i].offsetWidth;
     }
 
-	// First, identify if a new row is needed
-	if(totalWidth > 1200){
+	let growthTexts = document.getElementsByTagName("growth-text");
+	let tallGrowthText = false
+	console.log(growthTexts)
+	for(i = 0; i < growthTexts.length; i++){
+		tallGrowthText = growthTexts[i].offsetHeight > 95 ? true : tallGrowthText;
+		console.log(growthTexts[i].offsetHeight)
+    }
+	console.log(tallGrowthText)
+
+	if(totalWidth > 1200 || tallGrowthText){
 		growthTableText = growthTable.innerHTML;
 		growthGroups = growthTableText.split("<growth-border></growth-border>")
 		lastGrowth = growthGroups.at(-1)
@@ -1390,10 +1410,9 @@ function dynamicCellWidth() {
 	
 	//Iterate through growth table(s)
 	const largeCellScale = 1.4;
-	const extraLargeCellScale = 1.6;
+	const extraLargeCellScale = 2.3;
 	const growthTables = document.getElementsByTagName("growth-table");
-	console.log('growth tables')
-	console.log(growthTables)
+	
 	let tightFlag = false; // flag for tightening presence tracks later
 	for (i = 0; i < growthTables.length; i++){
 		growthTable = growthTables[i];
@@ -1603,6 +1622,25 @@ function parseInnatePowers(){
         fullHTML += parseInnatePower(innateHTML[i]);
     }
     document.getElementsByTagName("innate-powers")[0].innerHTML = '<section-title>Innate Powers</section-title><innate-power-container>'+fullHTML+'</innate-power-container>';
+	
+	//Enable custom spacing
+	var levelList = document.getElementsByClassName('description')
+	
+	  for (let j = 0; j < levelList.length; j++) {
+		  ruleLines = levelList[j].innerHTML.split("\n")
+		  rulesHTML = "";
+		  for (let i = 0; i < ruleLines.length; i++) {
+			  rulesText = ruleLines[i];
+			  rulesText=rulesText.replaceAll('\t','')
+			  if(rulesText && rulesText.trim().length){
+				rulesHTML += "<div>"+ruleLines[i]+"</div>"
+			  }else if(i>0 && i<ruleLines.length-1){
+				  rulesHTML += "<br>"
+				  // allows user's line breaks to show up on the card
+			  }
+		  }
+		  levelList[j].innerHTML = rulesHTML
+	  }
 }
 
 function parseInnatePower(innatePowerHTML){
@@ -1713,8 +1751,8 @@ function parseInnatePower(innatePowerHTML){
 function parseSpecialRules(){
 	
 	var specialRules = document.getElementsByTagName("special-rules-container")[0];
-	console.log(specialRules)
-	console.log('special rules')
+	
+	// Enable snake-like presence track in special rules
     var specialTrack = document.getElementsByTagName("special-rules-track")[0];
 	if(specialTrack){
 		var specialValues = specialTrack.getAttribute("values");
@@ -1728,13 +1766,26 @@ function parseSpecialRules(){
 		specialHTML += "</tr>"
 		document.getElementsByTagName("special-rules-track")[0].removeAttribute("values");
 		specialTrack.innerHTML = specialHTML;
-		console.log(specialTrack)
 		var subtextList = specialTrack.getElementsByTagName("subtext");
-		console.log(subtextList)
 		for (var i = subtextList.length - 1; i >= 0; --i) {
 		  subtextList[i].remove();
 		}
 	}
 	
+	// Enable user's own line breaks to show up in code
+	  var specialRuleList = specialRules.getElementsByTagName('special-rule')
+	  for (let j = 0; j < specialRuleList.length; j++) {
+		  ruleLines = specialRuleList[j].innerHTML.split("\n")
+		  rulesHTML = "";
+		  for (let i = 0; i < ruleLines.length; i++) {
+			  if(ruleLines[i] && ruleLines[i].trim().length){
+				rulesHTML += "<div>"+ruleLines[i]+"</div>"
+			  }else if(i>0 && i<ruleLines.length-1){
+				  rulesHTML += "<br>"
+				  // allows user's line breaks to show up on the card
+			  }
+		  }
+		  specialRuleList[j].innerHTML = rulesHTML
+	  }
 	// <special-rules-track values="2,3,4"></special-rules-track>
 }
