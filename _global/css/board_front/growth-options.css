@@ -21,8 +21,7 @@ sub-growth {
 }
 
 growth sub-section-title {
-  top: 17px;
-  margin-top: 14px;
+  margin-top: -4px;
   position: absolute;
 
   display: flex;

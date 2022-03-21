@@ -152,6 +152,7 @@ function parseGrowthTags(){
             : "<growth-cell>"
         const closeTag = tint_text + '</growth-cell>'
 		const terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
+		const elementNames = new Set(['sun', 'moon', 'fire', 'air', 'plant','water','earth','animal'])
 		
 		// Create some tools for 'or' growth options
 		let isOr = false;
@@ -292,7 +293,7 @@ function parseGrowthTags(){
 							// Flat energy + scaling
 							scaling = energyOptions[1];
 							energyGrowthIcons += "<gain-per><value>1</value></gain-per>"
-							energyGrowthText = "Gain "+flatEnergy+" Energy and +1 Energy per "
+							energyGrowthText = "Gain "+flatEnergy+" Energy and +1 more per "
 							if (scaling==='text'){
 								//determine some arbitrary scaling rule
 								scaling_text = energyOptions[2] !== undefined ? energyOptions[2] : 'ENTER SCALING TEXT AS THIRD PARAMETER';
@@ -302,6 +303,7 @@ function parseGrowthTags(){
 							}else{
 								energyGrowthIcons += "<gain-per-element><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-element>"
 								energyGrowthText += Capitalise(scaling)
+								energyGrowthText += elementNames.has(scaling) ? ' Showing' : '';
 							}
 						}else{
 							// Flat energy
