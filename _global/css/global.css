@@ -9,9 +9,22 @@
 }
 
 @font-face{
+  font-family: 'Noto Sans';
+  src: url(../fonts/Noto_Sans/NotoSans-Bold.ttf);
+}
+
+@font-face{
   font-family: 'Lato SemiBold';
-  src: url(../fonts/lato/Lato-SemiboldItalic.ttf);
+  src: url(../fonts/lato/Lato-BoldItalic.ttf);
   font-style: italic;
+}
+
+@font-face {
+    font-family: 'JosefinSans';
+    src: url(../fonts/josefin-sans/JosefinSans-BoldItalic.ttf) format("truetype");
+	font-weight: bold;
+	font-style: italic;
+	letter-spacing: -0.5px;
 }
 
 icon{
@@ -96,9 +109,9 @@ icon.mountain-sand{background-image: url('../images/50px-mountain-sand.png'); }
 icon.mountain-wetland{background-image: url('../images/50px-mountain-wetland.png'); }
 icon.sand-wetland{background-image: url('../images/50px-sand-wetland.png'); }
 
-icon.terror-1{background-image: url('../images/terror-1.png'); padding: 5px; margin-bottom: -8px; }
-icon.terror-2{background-image: url('../images/terror-2.png'); padding: 5px; margin-bottom: -8px; }
-icon.terror-3{background-image: url('../images/terror-3.png'); padding: 5px; margin-bottom: -8px; }
+icon.terror-1{background-image: url('../images/board/NewIcons/TerrorLevel1.png'); width:50px; padding: 5px; margin-bottom: -8px; }
+icon.terror-2{background-image: url('../images/board/NewIcons/TerrorLevel1.png'); width:50px; padding: 5px; margin-bottom: -8px; }
+icon.terror-3{background-image: url('../images/board/NewIcons/TerrorLevel1.png'); width:50px; padding: 5px; margin-bottom: -8px; }
 
 range{
   width:50px;

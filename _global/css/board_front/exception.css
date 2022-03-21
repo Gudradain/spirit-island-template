@@ -1,63 +1,7 @@
-special-rule range-plus-1, 
-div.description range-1, 
-special-rule range-plus-2, 
-div.description range-2, 
-special-rule range-plus-3, 
-div.description range-3, 
-special-rule range-plus-4, 
-div.description range-4 {
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: inline-block;
-  width: 45px;
-  height: 40px;
-  margin-bottom: -20px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: -10px;
-}
 
 
 
-.description icon.sun, .description icon.earth, .description icon.plant, 
-.description icon.fire, .description icon.air, .description icon.moon, 
-.description icon.animal, .description icon.water {
-    width: 45px;
-    height: 30px;
-    margin-left: -9px;
-    margin-right: -10px;
-    margin-bottom: -7px;
-}
 
-.description icon.explorer {
-    height: 30px;
-	margin-bottom: -6px;
-}
 
-.description icon.sun {background-image: url(../../images/board/element_simple_sun.png);}
 
-.description icon.earth {background-image: url(../../images/board/element_simple_earth.png);}
 
-.description icon.plant {background-image: url(../../images/board/element_simple_plant.png);}
-
-.description icon.fire {background-image: url(../../images/board/element_simple_fire.png);}
-
-.description icon.air {background-image: url(../../images/board/element_simple_air.png);}
-
-.description icon.moon {background-image: url(../../images/board/element_simple_moon.png);}
-
-.description icon.animal {background-image: url(../../images/board/element_simple_animal.png);}
-
-.description icon.water {background-image: url(../../images/board/element_simple_water.png);}
-
-.element-for-each {
-	font-family: 'Gobold Extra2';
-    font-size: 17pt;
-    color: #431E0AFF;	
-	margin-top: -13px;
-	margin-right:0px;
-	margin-left: -1px;
-	width:15px;
-	display: inline-block;
-	transform: translate(0px, 3px);
-}

@@ -9,15 +9,21 @@ icon{
   margin-bottom: -4px;
 }
 
-icon.any { background-image: url('../../images/board/Any.png'); }
-icon.fire { background-image: url('../../images/board/Fire.png'); }
-icon.water { background-image: url('../../images/board/Water.png'); }
-icon.moon { background-image: url('../../images/board/Moon.png'); }
-icon.air { background-image: url('../../images/board/Air.png'); }
-icon.animal { background-image: url('../../images/board/Animal.png'); }
-icon.plant { background-image: url('../../images/board/Plant.png'); }
 icon.sun { background-image: url('../../images/board/Sun.png'); }
+icon.moon { background-image: url('../../images/board/Moon.png'); }
+icon.fire { background-image: url('../../images/board/Fire.png'); }
+icon.air { background-image: url('../../images/board/Air.png'); }
+icon.plant { background-image: url('../../images/board/Plant.png'); }
+icon.water { background-image: url('../../images/board/Water.png'); }
 icon.earth { background-image: url('../../images/board/Earth.png'); }
+icon.animal { background-image: url('../../images/board/Animal.png'); }
+icon.star{ background-image: url('../../images/board/NewIcons/Element Star.png'); }
+icon.any { background-image: url('../../images/board/Any.png'); }
+
+icon.markerplus { background-image: url('../../images/board/NewIcons/Element Marker Gain 1.png'); }
+icon.markerminus { background-image: url('../../images/board/NewIcons/Element Marker Pay 1.png'); }
+icon.markerquestion { background-image: url('../../images/customIcons/marker-question.png'); }
+
 icon.jungle-wetland, icon.wetland-jungle { background-image: url('../../images/board/junglewetland.png'); }
 icon.jungle-sand, icon.sand-jungle { background-image: url('../../images/board/junglesand.png'); }
 icon.sand-wetland, icon.wetland-sand { background-image: url('../../images/board/sandwetland.png'); }
@@ -30,16 +36,31 @@ icon.jungle { background-image: url('../../images/board/jungle.png'); }
 icon.wetland { background-image: url('../../images/board/wetland.png'); }
 icon.ocean { background-image: url('../../images/board/ocean.png'); }
 
-icon.markerplus { background-image: url('../../images/board/NewIcons/Element Marker Gain 1.png'); }
-icon.markerminus { background-image: url('../../images/board/NewIcons/Element Marker Pay 1.png'); }
+icon.range-0 { background-image: url('../../images/board/presence_range_0.png'); }
+icon.range-1 { background-image: url('../../images/board/presence_range_1.png'); }
+icon.range-2 { background-image: url('../../images/board/presence_range_2.png'); }
+icon.range-3 { background-image: url('../../images/board/presence_range_3.png'); }
+icon.range-4 { background-image: url('../../images/board/presence_range_4.png'); }
+icon.gain-range-1 { background-image: url('../../images/board/NewIcons/Range Gain 1.png'); }
+icon.gain-range-2 { background-image: url('../../images/board/NewIcons/Range Gain 2.png'); }
+icon.gain-range-3 { background-image: url('../../images/board/NewIcons/Range Gain 3.png'); }
 
-icon.star{
-    background-image: url('../../images/board/NewIcons/Element Star.png');
-    width: 110px;
-    height: 110px;}
+icon.sands-presence { background-image: url('../../images/board/sands-presence.png'); }
+icon.mountain-presence { background-image: url('../../images/board/mountain-presence.png'); }
+icon.wetland-presence { background-image: url('../../images/board/wetland-presence.png'); }
+icon.jungle-presence { background-image: url('../../images/board/jungle-presence.png'); }
 
-icon.discard-cards {
+icon.dahan { background-image: url('../../images/board/dahan.png'); }
+
+icon.discard-cards, icon.discard-2-cards {
   background-image: url('../../images/board/discard_power_cards.png');
+  display: block;
+  height: 90px;
+  width:90px;
+}
+
+icon.discard-card, icon.discard-1-card {
+  background-image: url('../../images/board/NewIcons/Card Discard 1.png');
   display: block;
   height: 90px;
   width:90px;
@@ -118,12 +139,6 @@ icon.range-0, icon.range-1, icon.range-2, icon.range-3, icon.range-4, icon.range
   display: inline-block;
 }
 
-icon.range-0 { background-image: url('../../images/board/presence_range_0.png'); }
-icon.range-1 { background-image: url('../../images/board/presence_range_1.png'); }
-icon.range-2 { background-image: url('../../images/board/presence_range_2.png'); }
-icon.range-3 { background-image: url('../../images/board/presence_range_3.png'); }
-icon.range-4 { background-image: url('../../images/board/presence_range_4.png'); }
-
 icon.range-any {
   background-image: url('../../images/board/presence_range_any.png');
   display: inline-block;
@@ -134,30 +149,16 @@ icon.gain-range-1,
 icon.gain-range-2,
 icon.gain-range-3 {
     width: 100px;
-    height: 102px;
 }
 
-icon.gain-range-1 {
-	background-image: url('../../images/board/NewIcons/Range Gain 1.png')
-}
 
-icon.gain-range-2 {
-	background-image: url('../../images/board/NewIcons/Range Gain 2.png')
-}
-
-icon.gain-range-3 {
-	background-image: url('../../images/board/NewIcons/Range Gain 3.png')
-}
 
 icon.sacred-site {
   width: 50px;
 }
 
 icon.presence { background-image: url('../../images/board/50px_presence.png'); }
-icon.sands-presence { background-image: url('../../images/board/sands-presence.png'); }
-icon.mountain-presence { background-image: url('../../images/board/mountain-presence.png'); }
-icon.wetland-presence { background-image: url('../../images/board/wetland-presence.png'); }
-icon.jungle-presence { background-image: url('../../images/board/jungle-presence.png'); }
+
 
 icon.presence {
   width: 35px;
@@ -185,9 +186,7 @@ icon.explorer {
   margin-right: -5px;
 }
 
-icon.dahan {
-  background-image: url('../../images/board/dahan.png');
-}
+
 
 icon.disease {
   background-image: url('../../images/board/75px_disease.png');
@@ -216,13 +215,15 @@ icon.wilds {
   margin-right: -3px;
 }
 
-icon.badlands {
-  background-image: url('../../images/board/48px_badlands.png');
+icon.badlands { background-image: url('../../images/board/48px_badlands.png'); }
+
+icon.resilience {
+  background-image: url('../../images/board/NewIcons/Resilience.png');
   width: 30px;
   height: 30px;
   margin-bottom: -8px;
   margin-left: -3px;
-  margin-right: -4px;
+  margin-right: -3px;
 }
 
 icon.fear {
@@ -233,8 +234,6 @@ icon.fear {
   margin-left: -5px;
   margin-right: -5px;
 }
-
-
 
 icon.player-spirit{
   background-image: url('../../images/board/player-spirit.png');
@@ -254,20 +253,13 @@ icon.move-presence-4 {
   margin-bottom: 8px;
 }
 
-icon.move-presence-1 {
-  background-image: url('../../images/board/move_presence_1.png');
-}
+icon.move-presence-1 { background-image: url('../../images/board/move_presence_1.png'); }
+icon.move-presence-2 { background-image: url('../../images/board/move_presence_2.png'); }
+icon.move-presence-3 { background-image: url('../../images/board/move_presence_3.png'); }
+icon.move-presence-4 { background-image: url('../../images/board/move_presence_4.png'); }
 
-icon.move-presence-2 {
-  background-image: url('../../images/board/move_presence_2.png');
-}
-
-icon.move-presence-3 {
-  background-image: url('../../images/board/move_presence_3.png');
-}
-
-icon.move-presence-4 {
-  background-image: url('../../images/board/move_presence_4.png');
+icon.presence-ring {
+  background-image: url('../../images/board/CardPlayRing.png');
 }
 
 icon.blight {
@@ -344,25 +336,31 @@ icon.major {
     width: 45px;
 }
 
-icon.reclaim-one {
-  background-image: url('../../images/board/Reclaimone.png');
+icon.reclaim-all, icon.reclaim-one, icon.reclaim-none, 
+icon.reclaim-custom, icon.reclaim-half {
   display: block;
   height: 90px;
-  width:90px;
+  width:70px;
+}
+
+icon.reclaim-all {
+  background-image: url('../../images/board/Reclaimall.png');
+}
+
+icon.reclaim-one {
+  background-image: url('../../images/board/Reclaimone.png');
 }
 
 icon.reclaim-none {
   background-image: url('../../images/board/Reclaimnone.png');
-  display: block;
-  height: 90px;
-  width:90px;
 }
 
 icon.reclaim-custom {
   background-image: url('../../images/board/Reclaimspecial.png');
-  display: block;
-  height: 90px;
-  width:90px;
+}
+
+icon.reclaim-half {
+  background-image: url('../../images/board/Reclaimhalf.png');
 }
 
 icon.gain-card-play {
@@ -405,6 +403,49 @@ icon.gain-card-pay-2 {
 	display: inline-block;
 	height: 130px;
 	width: 92px;
+}
+
+icon.days-never-were {
+	background-image: url('../../images/board/NewIcons/Card Days That Never Were Gain 1.png');
+	display: inline-block;
+	height: 90px;
+  width:90px;
+}
+
+icon.your-land {
+  background-image: url('../../images/board/NewIcons/Land.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+    height: 67px;
+    width: 105px;
+    margin-right: 0px;
+    margin-bottom: -6px;
+}
+
+icon.your-land>icon {
+    position: relative;
+    text-align: unset;
+    top: 17px;
+    left: 29px;
+    width: 30px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+icon.your-land>icon.misc-plus {
+    left: 27px;
+    width: 14px;
+}
+
+icon.misc-plus {
+  background-image: url('../../images/board/NewIcons/Misc Gain.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 30px;
+  height: 25px;
 }
 
 icon.gather {
@@ -450,20 +491,51 @@ icon.gather-into > icon {
 icon.push {
   background-image: url('../../images/board/NewIcons/Land Push.png');
   display: inline-block;
-  height: 62px;
-  width:100px;
+  height: 68px;
+  width: 110px;
   margin-bottom: 7px;
+  margin-bottom: 0px;
+  margin-left: 4px;
 }
 
 icon.push > icon {
     position: relative;
-    text-align: unset;
+    text-align: center;
     top: 17px;
     left: 24px;
     width: 25px;
     height: 25px;
     margin: 0px;
     padding: 0px;
+}
+
+icon.push > div.push {
+    position: relative;
+    text-align: center;
+    top: 20px;
+    left: 47%;
+    transform: translateX(-54%);
+}
+
+div.push > icon {
+    width: 25px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+div.push > icon.explorer {
+    margin-top: -5px;
+    width: 28px;
+    height: 30px;
+}
+
+div.push > icon.backslash {
+    width: 10px;
+}
+
+icon.push > icon.backslash {
+    width: 10px;
 }
 
 icon.push-from {
@@ -485,16 +557,19 @@ icon.push-from > icon {
     padding: 0px;
 }
 
-icon.reclaim-all {
-  background-image: url('../../images/board/Reclaimall.png');
-  display: block;
-  height: 90px;
-  width:90px;
-}
-
 icon.make-fast {
   background-image: url('../../images/board/fast_power.png');
   display: block;
   height: 90px;
   width:90px;
 }
+
+icon.gain-1-time, icon.gain-2-time {
+  display: block;
+    height: 100px;
+    width: 100px;
+    margin-top: -17px;
+}
+icon.gain-1-time { background-image: url('../../images/board/NewIcons/Time Gain 1.png')}
+icon.gain-2-time { background-image: url('../../images/board/NewIcons/Time Gain 2.png')}
+

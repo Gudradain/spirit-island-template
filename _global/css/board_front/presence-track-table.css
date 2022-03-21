@@ -6,21 +6,22 @@ presence-tracks section-title {
 
 presence-tracks {
   display: block;
-  top: 300px;
+  position:relative;
+  z-index:2;
   margin-left: 10px;
   
   padding-left: 50px;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
   
   background-image: url('../../images/board/Presence_Without_Text.png');
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: top left;
 }
 
 presence-tracks table {	
   display: inline-block;
-  height: 340px;
+  height: 273px;
   margin-left: -50px; /* adding a blank row for an image. This gives us some space. */
   border-collapse: collapse;
 }
@@ -31,7 +32,12 @@ presence-tracks table td {
 }
 
 presence-tracks table td[rowspan="2"] {
-  vertical-align: middle;
+  vertical-align: top;
+  position: relative;
+}
+
+td.middle > presence-node {
+  position: relative;
 }
 
 presence-node {
@@ -79,6 +85,12 @@ presence-node icon.reclaim-one {
   width:75px;
 }
 
+presence-node icon.star {
+  width: 80px;
+  height: 80px;
+}
+
+
 presence-node card-icon {
   background-image: url('../../images/board/CardPlayBlank.png');
   background-repeat: no-repeat;
@@ -111,6 +123,14 @@ card-icon.small {
     margin-top: 0px;
     width: 75px;
     z-index: 2;
+}
+
+.gain-card-play.small {
+	height: 80px;
+    width: 80px;
+    margin-left: -7px;
+    margin-right: -5px;
+    margin-top: -14px;
 }
 
 presence-node energy-icon {
@@ -155,6 +175,7 @@ presence-node icon.gain-range-1,
 presence-node icon.gain-range-2,
 presence-node icon.gain-range-3 {
   margin-bottom:2px;
+  height: 78px;
 }
 
 .gain-range-1.small,
@@ -169,13 +190,17 @@ presence-node icon.gain-range-3 {
 }
 
 presence-node value {
-  font-family: 'Gobold Extra2';
+  font-family: 'Gobold Extra2', 'Noto Sans';
   font-size: 36pt;
   display: inline-block;
 }
 
-.small value {
-  font-size: 28pt;
+energy-icon.small value {
+  font-size: 26pt;
+}
+
+card-icon.small value {
+  font-size: 35pt;
 }
 
 presence-node icon {
@@ -209,6 +234,42 @@ presence-node icon.gain-card-play>icon {
     width: 60px;
 }
 
+presence-node>icon.deep-layers {
+    position: relative;
+    left: -22px;
+    top: -135px;
+    height: 40px;
+    width: 60px;
+}
+
+presence-node>icon.energy-deep-layers,
+presence-node>icon.card-deep-layers {
+    position: relative;
+    height: 35px;
+    width: 60px;
+    float: left;
+    background-position: center;
+}
+
+presence-node>icon.energy-deep-layers {
+    left: -44px;
+    top: -4px;
+    margin-bottom: -90px;
+    transform: translateX(50%);
+}
+
+presence-node>icon.card-deep-layers {
+    left: -45px;
+    top: -4px;
+    margin-bottom: -90px;
+    transform: translateX(50%);
+}
+
+icon.push {
+    height: 68px;
+    width: 110px;
+}
+
 icon-multi {
     position: absolute;
 }
@@ -218,3 +279,13 @@ icon-multi {
     height: 70px;
 	margin-top: 0px;
 }
+
+icon.card-deep-layers.sun {background-image: url(../../images/board/element_simple_sun.png);}
+icon.card-deep-layers.earth {background-image: url(../../images/board/element_simple_earth.png);}
+icon.card-deep-layers.plant {background-image: url(../../images/board/element_simple_plant.png);}
+icon.card-deep-layers.fire {background-image: url(../../images/board/element_simple_fire.png);}
+icon.card-deep-layers.air {background-image: url(../../images/board/element_simple_air.png);}
+icon.card-deep-layers.moon {background-image: url(../../images/board/element_simple_moon.png);}
+icon.card-deep-layers.animal {background-image: url(../../images/board/element_simple_animal.png);}
+icon.card-deep-layers.water {background-image: url(../../images/board/element_simple_water.png);}
+icon.card-deep-layers.any {background-image: url(../../images/board/element_simple_any.png);}
