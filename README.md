@@ -25,11 +25,16 @@
 
 This project uses:
 
-- JosefinSans-Regular (for innate power names & text): This font is bundled in the project and uses the Open Font License.
-- Lato Semibold Italic (for growth & presence track labels): This font is bundled in the project and uses the Open Font License.
-- Mouse Memoirs (for headers and spirit name): This font is bundled in the project and uses the Open Font License.
-- DK Snemand Demo (alternate for headers and spirit name): You can download this font [here](https://www.dafont.com/dk-snemand.font).
-- Gobold Extra2 (for energy  icon and card plays text): You can download this font [here](https://www.dafont.com/fr/gobold.font).
+- JosefinSans-Regular: This font is bundled in the project and uses the Open Font License.
+	- Used for: Special Rule and Innate Power names and rules text
+- Lato Semibold Italic: This font is bundled in the project and uses the Open Font License.
+	- Used for: Growth & Presence Track labels
+- Mouse Memoirs: This font is bundled in the project and uses the Open Font License.
+	- Used for: Headings and Spirit Name. Recommend using DK Snemand instead but this font is packaged with the template.
+- DK Snemand Demo: Not included. You can download this font [here](https://www.dafont.com/dk-snemand.font).
+	- Used for: Headings and Spirit Name.
+- Gobold Extra2: Not included. You can download this font [here](https://www.dafont.com/fr/gobold.font).
+	- Used for: Energy Icons and Card Play text
 
 Note: Due to licensing, some of the fonts are not included in the project.
 

@@ -73,7 +73,7 @@ lore-description{
     left: 883px;
     top: 120px;
     width: 780px;
-    height: 310px;
+    height: 320px;
     font-family: 'Calibri';
     font-size: 25px;
     font-weight: bold;
@@ -86,22 +86,24 @@ second-section-container{
     top: 465px;
 }
 
+third-section-container{
+    position: absolute;
+    left: 900px;
+    top: 800px;
+}
+
 setup{
 
 }
 
-play-style-title, complexity-title, complexity-value, div.summary-of-powers-title{
+setup-title, play-style-title, complexity-title, complexity-value, div.summary-of-powers-title{
     font-family: 'DK Snemand';
     text-transform: uppercase;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: bold;
 }
 
 setup-title {
-    font-size:33px;
-    text-align:left;
-    font-family: "DK Snemand";
-    padding-left:15px;
     margin-top:80px;
 }
 
@@ -110,6 +112,8 @@ setup-description{
     font-size: 25px;
     font-weight: bold;
     display: block;
+    margin-bottom: 10px;
+
 }
 
 setup-description icon.fire, setup-description icon.earth, setup-description icon.animal, 
@@ -158,7 +162,7 @@ complexity-title{
 }
 
 summary-of-powers{
-    bottom: -270px;
+    bottom: -190px;
     position: absolute;
 }
 
