@@ -38,6 +38,7 @@ board {
     width: 100%;
     height: 100%;
     border-radius: 15.1px;
+	overflow: hidden;
 }
 
 board.round-border {
@@ -62,9 +63,8 @@ spirit-name {
 .spirit-image {
     position: absolute;
     left: 0px;
-    top: 82.8px;
-    width: 842px;
-    height: 1086px;
+    top: 0px;
+    width: 100%;
     z-index: -1;
 }
 
@@ -101,6 +101,10 @@ setup-title, play-style-title, complexity-title, complexity-value, div.summary-o
     text-transform: uppercase;
     font-size: 32px;
     font-weight: bold;
+}
+
+complexity-title, div.summary-of-powers-title {
+	font-size: 28px;
 }
 
 setup-title {
@@ -144,17 +148,34 @@ complexity {
     margin-top: 25px;
     margin-bottom: 10px;
     padding-bottom: 2px;
-    border-top: solid black;
-    border-bottom: solid black;
     width: 800px;
 }
 
+complexity::before,complexity::after {
+    background-image: url(../images/board/growth_underline.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 850px;
+    height: 7px;
+    margin-top: 2px;
+    margin-left: -50px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+    content: '';
+    display: block;
+}
+
+
 complexity-value{
     color: white;
-    background-color: darkred;
+    background-image:  url('../images/customIcons/Complexity_Bar_Image.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
     padding-bottom:5px;
     padding-left:20px;
     display:inline-block;
+	text-align: center;
 }
 
 complexity-title{
@@ -170,10 +191,11 @@ div.summary-of-powers-title{
     display: block;
     text-align: center;
     vertical-align: bottom;
-    width:195px;
-    padding-left:40px;
-    padding-right:10px;
-    padding-top:60px;
+    width: 124px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 60px;
+    margin-bottom: -20px;
 }
 
 .powers-summary{
@@ -194,33 +216,36 @@ tr.power-bar td{
 }
 
 tr.power-bar td div{
-    height: 140px;
+    height: 115px;
 }
 
 .offense, .control, .fear, 
 .defense, .utility{
     width: 60px;
-    margin-left: 30px;
+    margin-left: 27px;
+	background-repeat: no-repeat;
+	background-size: cover;
+
 }
 
 .offense{
-    background-color:#4b7364;
+    background-image: url('../images/customIcons/Offense_Bar.png');
 }
 
 .control{
-    background-color:#45653c;
+    background-image: url('../images/customIcons/Control_Bar_Image.png');
 }
 
 .fear{
-    background-color:#524556;
+    background-image: url('../images/customIcons/Fear_Bar_Image.png');
 }
 
 .defense {
-    background-color:#a8653a;
+    background-image: url('../images/customIcons/Defense_Bar_Image.png');
 }
 
 .utility{
-    background-color:#51473d;
+    background-image: url('../images/customIcons/Utility_Bar_Image.png');
 }
 
 icon.fire {
