@@ -113,6 +113,21 @@ icon.terror-1{background-image: url('../images/board/NewIcons/TerrorLevel1.png')
 icon.terror-2{background-image: url('../images/board/NewIcons/TerrorLevel1.png'); width:50px; padding: 5px; margin-bottom: -8px; }
 icon.terror-3{background-image: url('../images/board/NewIcons/TerrorLevel1.png'); width:50px; padding: 5px; margin-bottom: -8px; }
 
+icon.markerplus { background-image: url('../images/board/NewIcons/Element Marker Gain 1.png'); }
+icon.markerminus { background-image: url('../images/board/NewIcons/Element Marker Pay 1.png'); }
+icon.markerquestion { background-image: url('../images/customIcons/marker-question.png'); }
+
+icon.range-0 { background-image: url('../images/board/presence_range_0.png'); }
+icon.range-1 { background-image: url('../images/board/presence_range_1.png'); }
+icon.range-2 { background-image: url('../images/board/presence_range_2.png'); }
+icon.range-3 { background-image: url('../images/board/presence_range_3.png'); }
+icon.range-4 { background-image: url('../images/board/presence_range_4.png'); }
+icon.gain-range-1 { background-image: url('../images/board/NewIcons/Range Gain 1.png'); }
+icon.gain-range-2 { background-image: url('../images/board/NewIcons/Range Gain 2.png'); }
+icon.gain-range-3 { background-image: url('../images/board/NewIcons/Range Gain 3.png'); }
+
+icon.destroyed-presence, icon.destroy-presence { background-image: url('../images/board/NewIcons/Misc Presence Destroy.png');}
+
 range{
   width:50px;
   height:32px;

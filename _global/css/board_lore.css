@@ -50,7 +50,7 @@ spirit-name {
     left: 33%;
     top: 6px;
     height: 22.67px;
-    width: 666.25px;
+    width: 900px;
     font-size: 40pt;
     font-family: 'DK Snemand';
     text-transform: uppercase;
@@ -103,7 +103,7 @@ setup-title, play-style-title, complexity-title, complexity-value, div.summary-o
     font-weight: bold;
 }
 
-complexity-title, div.summary-of-powers-title {
+complexity-title, complexity-value, div.summary-of-powers-title {
 	font-size: 28px;
 }
 
@@ -111,16 +111,18 @@ setup-title {
     margin-top:80px;
 }
 
-setup-description{
-    font-family: 'Calibri';
+setup-description, play-style-description{
+    font-family: 'JosefinSans-Regular';
     font-size: 25px;
-    font-weight: bold;
     display: block;
-    margin-bottom: 10px;
-
+	margin-top: 6px;
 }
 
-setup-description icon.fire, setup-description icon.earth, setup-description icon.animal, 
+setup-description{
+    margin-bottom: 10px;
+}
+
+setup-description icon, setup-description icon.fire, setup-description icon.earth, setup-description icon.animal, 
 setup-description icon.water, setup-description icon.air, setup-description icon.sun, 
 setup-description icon.plant, setup-description icon.moon, setup-description icon.any{
     width: 35px;
@@ -128,18 +130,14 @@ setup-description icon.plant, setup-description icon.moon, setup-description ico
     margin-bottom: -9px;
     margin-left: -5px;
     margin-right: 0px;
+	margin-top: -10px;
 }
 
 play-style{
 
 }
 
-play-style-description{
-    font-family: 'Calibri';
-    font-size: 25px;
-    font-weight: bold;
-    display: block;
-}
+
 
 complexity {
     display: block;
@@ -156,14 +154,15 @@ complexity::before,complexity::after {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
-    width: 820px;
-    height: 7px;
+    width: 800px;
+    height: 5px;
     margin-top: 2px;
-    margin-left: -50px;
+    margin-left: -10px;
     margin-right: 5px;
     margin-bottom: 2px;
     content: '';
     display: block;
+	filter: brightness(0.4);
 }
 
 
@@ -176,6 +175,7 @@ complexity-value{
     padding-left:20px;
     display:inline-block;
 	text-align: center;
+	letter-spacing: 1px;
 }
 
 complexity-title{
@@ -228,25 +228,11 @@ tr.power-bar td div{
 
 }
 
-.offense{
-    background-image: url('../images/customIcons/Offense_Bar.png');
-}
-
-.control{
-    background-image: url('../images/customIcons/Control_Bar_Image.png');
-}
-
-.fear{
-    background-image: url('../images/customIcons/Fear_Bar_Image.png');
-}
-
-.defense {
-    background-image: url('../images/customIcons/Defense_Bar_Image.png');
-}
-
-.utility{
-    background-image: url('../images/customIcons/Utility_Bar_Image.png');
-}
+.offense{    background-image: url('../images/customIcons/Offense_Bar.png');}
+.control{    background-image: url('../images/customIcons/Control_Bar_Image.png');}
+.fear{    background-image: url('../images/customIcons/Fear_Bar_Image.png');}
+.defense {    background-image: url('../images/customIcons/Defense_Bar_Image.png');}
+.utility{    background-image: url('../images/customIcons/Utility_Bar_Image.png');}
 
 td.power-divider {
 	background-image: url(../images/board/Growthborder.png);
@@ -255,6 +241,7 @@ td.power-divider {
 	background-position:center;
 	margin-left:-10px;
 	margin-right:-10px;
+	filter: brightness(0.4);
 }
 
 .uses-icon {
@@ -262,6 +249,7 @@ td.power-divider {
 	margin-bottom: 30px;
 }
 
+/* Icon Stuff */
 icon {
 	display: block;
 	width: 70px;
@@ -359,3 +347,17 @@ icon.presence {
     width: 38px;
     margin-bottom: -7px;
 }
+
+icon.strife {background-image: url('../images/board/75px_strife.png');}
+icon.disease { background-image: url('../images/board/75px_disease.png');}
+icon.wilds { background-image: url('../images/board/wilds.png');}
+icon.badlands { background-image: url('../images/board/48px_badlands.png'); }
+icon.resilience { background-image: url('../images/board/NewIcons/Resilience.png');}
+icon.fear {
+    background-image: url('../images/board/fear.png');
+	margin:auto;
+	margin-top: 25px;
+    margin-bottom: 30px;
+	background-size: contain;
+	}
+icon.blight { background-image: url('../images/board/75px_blight.png');}

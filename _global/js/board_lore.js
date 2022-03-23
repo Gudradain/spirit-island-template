@@ -100,11 +100,11 @@ function createPowerProperties(){
 	var defenseValue = defenseTag.getAttribute("value");
 	var utilityValue = utilityTag.getAttribute("value");
 
-    offenseTag.style.height = (offenseValue * 14) + 'px';
-    controlTag.style.height = (controlValue * 14) + 'px';
-    fearTag.style.height = (fearValue * 14) + 'px';
-    defenseTag.style.height = (defenseValue * 14) + 'px';
-    utilityTag.style.height = (utilityValue * 14) + 'px';
+    offenseTag.style.height = (offenseValue * 15) + 'px';
+    controlTag.style.height = (controlValue * 15) + 'px';
+    fearTag.style.height = (fearValue * 15) + 'px';
+    defenseTag.style.height = (defenseValue * 15) + 'px';
+    utilityTag.style.height = (utilityValue * 15) + 'px';
 	
 	uses = document.getElementsByTagName("summary-of-powers")[0].getAttribute("uses");
 	if(uses){
