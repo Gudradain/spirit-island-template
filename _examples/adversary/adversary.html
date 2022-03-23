@@ -6,89 +6,76 @@
   <script type="text/javascript" src="../../_global/js/adversary.js"></script>
 </head>
 <body>
-  <adversary>
-    <adversary-title>THE KINGDOM OF EXAMPLE</adversary-title>
-    <img class="flag" src="flag.png" />
-    <adversary-base-dif>BASE DIFFICULTY 1</adversary-base-dif>
-    <top-info>
-      <loss-condition>
-        <section-title>Additional Loss Condition</section-title>
-        <div>
-          <strong>Big enough:</strong> Before Setup, return all but 4 <icon class="city"></icon> per player to the box. 
-          Invaders win if you ever cannot place a <icon class="city"></icon>.
-        </div>
-      </loss-condition>
-      <escalation>
-        <section-title>Escalation <icon class="escalation"></icon></section-title>
-        <div>
-          <strong>Fast expansion:</strong> On each land you explored this turn, add 1
+
+  <quick-adversary
+    name="THE KINGDOM OF EXAMPLE"
+    base-difficulty="1"
+    flag-image="flag.png"
+	>
+	<loss-condition
+	name="Big enough"
+	rules="Before Setup, return all but 4 {city} per player to the box. 
+          Invaders win if you ever cannot place a {city}."
+	></loss-condition>
+
+	<escalation-effect
+	name="Fast expansion"
+	rules="On each land you explored this turn, add 1
           {town} if there is no
-          {town}/<icon class="city"></icon>
-          on this land.
-        </div>
-      </escalation>
-    </top-info>
-    <adversary-levels>
-      <header>
-        <div>Level</div>
-        <div>Fear Cards</div>
-        <div>Game Effects <span class="cumulative">(cumulative)</span></div>
-      </header>
-      <level>
-        <div>1<span class="level-difficulty">(2)</span></div>
-        <div>10 (3/4/3)</div>
-        <div>
-          <strong>Overcrowded:</strong> When you would build a <icon class="city"></icon>
-          in a land which already contains a <icon class="city"></icon>, 
-          instead add a <icon class="blight"></icon> 
-          and build in an adjacent even if there is no Invaders. This <icon class="blight"></icon> does not cause cascades.<br />
-          <level-info>(This effect may trigger itself.)</level-info>
-        </div>
-      </level>
-      <line></line>
-      <level>
-        <div>2<span class="level-difficulty">(2)</span></div>
-        <div>11 (4/4/3)</div>
-        <div>
-          <strong>Economic boom:</strong> During Setup, on each board add 1 <icon class="town"></icon>
-            to land #2 and 1 <icon class="town"></icon> to land #3.
-        </div>
-      </level>
-      <line></line>
-      <level>
-        <div>3<span class="level-difficulty">(2)</span></div>
-        <div>13 (4/5/4)</div>
-        <div><strong>High Immigration (full):</strong> Put the"High Immigration" tile on the Invader board, to the left of"Ravage". The Invaders take this Build action each Invader phase before Ravaging. Cards slide left from Ravage to it, and from it to the discard pile. The extra Build tile remains out the entire game.</div>
-      </level>
-      <line></line>
-      <level>
-        <div>4<span class="level-difficulty">(2)</span></div>
-        <div>14 (4/5/5)</div>
-        <div>
-          <strong>Shopping Mall:</strong> You cannot destroy or drown <icon class="city"></icon> 
+          {town}/{city}
+          on this land."
+	></escalation-effect>
+
+	<level-1
+	difficulty="2"
+	fear-cards="3,4,3"
+	name="Overcrowded"
+	rules="When you would build a {city}
+          in a land which already contains a {city}, 
+          instead add a {blight} 
+          and build in an adjacent even if there is no Invaders. This {blight} does not cause cascades.<br />
+          <level-info>(This effect may trigger itself.)</level-info>"
+	></level-1>
+
+	<level-2
+	difficulty="3"
+	fear-cards="3,4,4"
+	name="Economic boom"
+	rules="During Setup, on each board add 1 {town}
+            to land #2 and 1 {town} to land #3."
+	></level-2>
+
+	<level-3
+	difficulty="5"
+	fear-cards="4/5/4"
+	name="High Immigration (full)"
+	rules="Put the 'High Immigration' tile on the Invader board, to the left of 'Ravage'. The Invaders take this Build action each Invader phase before Ravaging. Cards slide left from Ravage to it, and from it to the discard pile. The extra Build tile remains out the entire game."
+	></level-3>
+	
+	<level-4
+	difficulty="6"
+	fear-cards="4,5,5"
+	name="Shopping Mall"
+	rules="You cannot destroy or drown {city} 
           unless it is the last remaining Invader in the land. Replace and remove works as usual.<br />
-          <level-info>(This includes destroy by damage but you can still do partial damage.)</level-info>
-        </div>
-      </level>
-      <line></line>
-      <level>
-        <div>5<span class="level-difficulty">(2)</span></div>
-        <div>13 (4/5/4)</div>
-        <div>
-          <strong>Independent Resolve:</strong> During Setup, add an additional <icon class="fear"></icon> to the Fear Pool per player in the game. During any Invader Phase where you resolve no Fear Cards, perform the Build from High Immigration twice.<br />
-          <level-info>(This has no effect if no card is on the extra Build slot.)</level-info>
-        </div>
-      </level>
-      <line></line>
-      <level>
-        <div>6<span class="level-difficulty">(2)</span></div>
-        <div>14 (4/5/5)</div>
-        <div>
-          <strong>Renovation:</strong> <icon class="city"></icon> have +1 health.
-        </div>
-      </level>
-    </adversary-levels>
-  </adversary>
-  
+          <level-info>(This includes destroy by damage but you can still do partial damage.)</level-info>"
+	></level-4>
+	
+	<level-5
+	difficulty="8"
+	fear-cards="4/5/4"
+	name="Independent Resolve"
+	rules="During Setup, add an additional {fear} to the Fear Pool per player in the game. During any Invader Phase where you resolve no Fear Cards, perform the Build from High Immigration twice.<br />
+          (This has no effect if no card is on the extra Build slot.)"
+	></level-5>
+	
+	<level-6
+	difficulty="10"
+	fear-cards="4,4,5"
+	name="Renovation"
+	rules="{city} have +1 health."
+	></level-6>
+  </quick-adversary>
+
 </body>
 </html>
