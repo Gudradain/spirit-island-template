@@ -156,7 +156,7 @@ complexity::before,complexity::after {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
-    width: 850px;
+    width: 820px;
     height: 7px;
     margin-top: 2px;
     margin-left: -50px;
@@ -247,6 +247,28 @@ tr.power-bar td div{
 .utility{
     background-image: url('../images/customIcons/Utility_Bar_Image.png');
 }
+
+td.power-divider {
+	background-image: url(../images/board/Growthborder.png);
+	background-repeat: no-repeat;
+	width:5px;
+	background-position:center;
+	margin-left:-10px;
+	margin-right:-10px;
+}
+
+.uses-icon {
+	margin-top:25px;
+	margin-bottom: 30px;
+}
+
+icon {
+	display: block;
+	width: 70px;
+	height: 70px;
+	margin: auto;
+}
+
 
 icon.fire {
     background-image: url('../images/board/Fire.png');

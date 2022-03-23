@@ -105,6 +105,36 @@ function createPowerProperties(){
     fearTag.style.height = (fearValue * 14) + 'px';
     defenseTag.style.height = (defenseValue * 14) + 'px';
     utilityTag.style.height = (utilityValue * 14) + 'px';
+	
+	uses = document.getElementsByTagName("summary-of-powers")[0].getAttribute("uses");
+	if(uses){
+		table = document.getElementsByClassName("powers-summary")[0];
+		rowElements = table.getElementsByTagName("td")
+		for(let i = 0; i < rowElements.length; i++){ 
+			rowElements[i].style.width = 90 + "px";
+		}
+		offenseTag.style.marginLeft = 14 + 'px';
+		controlTag.style.marginLeft = 14 + 'px';
+		fearTag.style.marginLeft = 14 + 'px';
+		defenseTag.style.marginLeft = 14 + 'px';
+		utilityTag.style.marginLeft = 14 + 'px';
+		table = document.getElementsByClassName("powers-summary")[0]
+		table.paddingRight = 15+'px'
+		topRow = table.getElementsByTagName("tr")[0];
+		lineCol = document.createElement('td');
+		lineCol.className = "power-divider"
+		lineCol.style.width = "10px"
+		usesCol = document.createElement('td');
+		usesCol.rowSpan = "2"
+		usesCol.className = "uses-icon"
+		usesCol.style.width = "140px"
+		usesIcon = document.createElement('icon');
+		usesIcon.className = uses+' uses-icon';
+		usesCol.append('USES')
+		usesCol.append(usesIcon)
+		topRow.append(lineCol)
+		topRow.append(usesCol)
+	}
 }
 
 function dynamicSizing(el, maxSize=el.offsetHeight)
