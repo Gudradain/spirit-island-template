@@ -128,10 +128,16 @@ function createPowerProperties(){
 		usesCol.rowSpan = "2"
 		usesCol.className = "uses-icon"
 		usesCol.style.width = "140px"
-		usesIcon = document.createElement('icon');
-		usesIcon.className = uses+' uses-icon';
 		usesCol.append('USES')
-		usesCol.append(usesIcon)
+		usesList = uses.split(',')
+		console.log(usesList)
+		iconHolder = document.createElement('uses-icon-holder');
+		for(let i = 0; i < usesList.length; i++){ 
+			usesIcon = document.createElement('icon');
+			usesIcon.className = usesList[i]+' uses-icon';
+			iconHolder.append(usesIcon)
+		}
+		usesCol.append(iconHolder)
 		topRow.append(lineCol)
 		topRow.append(usesCol)
 	}

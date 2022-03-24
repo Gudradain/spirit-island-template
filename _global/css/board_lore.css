@@ -116,6 +116,7 @@ setup-description, play-style-description{
     font-size: 25px;
     display: block;
 	margin-top: 6px;
+	letter-spacing: -0.5px;
 }
 
 setup-description{
@@ -171,11 +172,13 @@ complexity-value{
     background-image:  url('../images/customIcons/Complexity_Bar_Image.png');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-    padding-bottom:5px;
+    padding-bottom:15px;
+	padding-top: 10px;
     padding-left:20px;
     display:inline-block;
-	text-align: center;
+	text-align: left;
 	letter-spacing: 1px;
+	
 }
 
 complexity-title{
@@ -245,8 +248,15 @@ td.power-divider {
 }
 
 .uses-icon {
-	margin-top:25px;
-	margin-bottom: 30px;
+
+}
+
+uses-icon-holder {
+	display: inline-flex;
+	width:142px;
+	height: 140px;
+	flex-wrap: wrap;
+	flex-direction: column;
 }
 
 /* Icon Stuff */
@@ -344,7 +354,7 @@ icon.presence {
     background-size: contain;
     background-position: center;
     height: 30px;
-    width: 38px;
+    width: 30px;
     margin-bottom: -7px;
 }
 
@@ -361,3 +371,13 @@ icon.fear {
 	background-size: contain;
 	}
 icon.blight { background-image: url('../images/board/75px_blight.png');}
+
+second-section-container icon.sun {background-image: url(../images/board/element_simple_sun.png);}
+second-section-container icon.earth {background-image: url(../images/board/element_simple_earth.png);}
+second-section-container icon.plant {background-image: url(../images/board/element_simple_plant.png);}
+second-section-container icon.fire {background-image: url(../images/board/element_simple_fire.png);}
+second-section-container icon.air {background-image: url(../images/board/element_simple_air.png);}
+second-section-container icon.moon {background-image: url(../images/board/element_simple_moon.png);}
+second-section-container icon.animal {background-image: url(../images/board/element_simple_animal.png);}
+second-section-container icon.water {background-image: url(../images/board/element_simple_water.png);}
+second-section-container icon.any {background-image: url(../images/board/element_simple_any.png);}
