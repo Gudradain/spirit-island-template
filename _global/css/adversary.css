@@ -101,7 +101,7 @@ section-title{
 
 loss-condition{
   margin-right:5px;
-  flex:1 0 220px;
+  flex:1 0 215px;
 }
 
 escalation{
@@ -114,7 +114,7 @@ adversary-levels{
   position:absolute;
   left:35px;
   top:157px;
-  height:350px;
+  height:360px;
   width:726px;
 
   font-family: 'JosefinSans-Regular';
@@ -203,7 +203,7 @@ icon{
   height:17px;
   width:17px;
   margin-bottom:-3px;
-  margin-top:-3px;
+  margin-top:-4px;
 }
 
 adversary-levels icon{
@@ -223,10 +223,12 @@ icon.escalation{
   margin-bottom:-2px;
   margin-top:-10px;
   background-image: url('../images/25px-Stage_II_Escalation.png');
+  margin-left: 5px;
 }
 
 icon.presence{
   background-image: url('../images/board/50px_presence.png');
+  margin-bottom: -5px;
 }
 
 adversary-levels icon.city{
@@ -237,4 +239,9 @@ adversary-levels icon.city{
 icon.town{
   height:15px;
   width:15px;
+}
+
+icon.range-1, icon.range-2, icon.range-3 {
+  height:15px;
+  width:28px;
 }

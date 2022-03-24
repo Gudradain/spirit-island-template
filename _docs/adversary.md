@@ -1,6 +1,6 @@
 # Adversary
 
-The fastest way to get started is to start from the example template in the folder adversary/example.
+The fastest way to get started is to start from the example template in the folder adversary/example. The adversary quick template should be fairly self explanatory. Icon shortcuts (such as {dahan} or {presence}) are available for use. See [here](board_front.md#general-icons) for details.
 
 ### Custom HTML Tag
 

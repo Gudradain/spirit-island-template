@@ -10,7 +10,7 @@ window.onload = function startMain(){
 	
 	var html = document.querySelectorAll('adversary')[0].innerHTML;
     document.querySelectorAll('adversary')[0].innerHTML = replaceIcon(html);
-	dynamicSizing(document.querySelectorAll('top-info')[0])
+	dynamicSizing(document.querySelectorAll('top-info')[0],55)
 }
 
 function buildAdversary(quickAdversary) {
@@ -84,24 +84,6 @@ function buildLevel(quickLevel){
         </div>
       </level>`
 return levelHTML
-}
-
-function getData(quickAdversary)
-{
-  return {
-    speed: quickCard.getAttribute("speed"),
-    cost: quickCard.getAttribute("cost"),
-    name: quickCard.getAttribute("name"),
-    image: quickCard.getAttribute("image"),
-    elements: (quickCard.getAttribute("elements") || '').split(','),
-    range: getRangeModel(quickCard.getAttribute("range")),
-    target: getTargetModel(quickCard.getAttribute("target")),
-    targetTitle: quickCard.getAttribute("target-title") || 'TARGET LAND',
-    artistName: quickCard.getAttribute("artist-name"),
-    printFriendly: quickCard.getAttribute('print-friendly') === 'yes',
-    innerHTML: getRulesNew(quickCard)
-  };
-
 }
 
 function dynamicSizing(el, maxSize=el.offsetHeight)
