@@ -10,6 +10,7 @@ window.onload = function startMain(){
 	
 	var html = document.querySelectorAll('adversary')[0].innerHTML;
     document.querySelectorAll('adversary')[0].innerHTML = replaceIcon(html);
+	dynamicSizing(document.querySelectorAll('top-info')[0])
 }
 
 function buildAdversary(quickAdversary) {
@@ -65,8 +66,6 @@ html = `
 }
 
 function buildLevel(quickLevel){
-	console.log(quickLevel)
-	
 	fearCards = quickLevel.getAttribute('fear-cards')
 	fearCardList = fearCards.split(",");
 	if(!fearCardList[1]){
@@ -76,9 +75,7 @@ function buildLevel(quickLevel){
 	for (var i = 0; i < fearCardList.length; i++) {
 	  fearCardNum += parseInt(fearCardList[i]);
 	}
-	console.log(fearCards)
 	fearCards=fearCardList.join('/')
-	console.log(fearCards)
     levelHTML =`<level>
         <div>${quickLevel.tagName.at(-1)}<span class="level-difficulty">(${quickLevel.getAttribute('difficulty')})</span></div>
         <div>${fearCardNum} (${fearCards})</div>
@@ -86,7 +83,6 @@ function buildLevel(quickLevel){
           <strong>${quickLevel.getAttribute('name')}:</strong> ${quickLevel.getAttribute('rules')}
         </div>
       </level>`
-	console.log(levelHTML)
 return levelHTML
 }
 
@@ -106,4 +102,32 @@ function getData(quickAdversary)
     innerHTML: getRulesNew(quickCard)
   };
 
+}
+
+function dynamicSizing(el, maxSize=el.offsetHeight)
+{
+	console.log('resizing text for ' + el.tagName)
+	let j = 0
+	while (checkOverflow(el)){
+		var style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+		var fontSize = parseFloat(style); 
+		el.style.fontSize = (fontSize - 1) + 'px';
+
+		// safety valve
+		j += 1
+		if (j>8){ 
+			console.log('safety')
+			break;
+		}
+	}
+}
+
+function checkOverflow(el) {
+    let curOverflow = el.style.overflow
+    if (!curOverflow || curOverflow === "visible") {
+        el.style.overflow = "hidden"
+    }
+    let isOverflowing = el.clientWidth < el.scrollWidth || el.clientHeight < el.scrollHeight
+    el.style.overflow = curOverflow
+    return isOverflowing
 }
