@@ -139,7 +139,7 @@ function createPowerProperties(){
 
 function dynamicSizing(el, maxSize=el.offsetHeight)
 {
-	
+	console.log('resizing text for ' + el.tagName)
 	let j = 0
 	while (checkOverflow(el)){
 		var style = window.getComputedStyle(el, null).getPropertyValue('font-size');
