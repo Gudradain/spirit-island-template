@@ -1205,6 +1205,10 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     trackIcons += "<icon-multi-element><icon-shadow class = 'small'"+track_icon_loc+"><icon class='gain-range-"+gainRange+" small'></icon></icon-shadow></icon-multi-element>"
 					addEnergyRing = false;
 					addIconShadow = false;
+				} else if(splitOptions[i].startsWith("custom")){
+					var matches = regExp.exec(splitOptions[i]);
+                    var custom = matches[1].split(";")[1];
+					trackIcons += "<icon-multi-element><icon class='"+custom+" small'"+track_icon_loc+"></icon></icon-multi-element>"
 				} else {
                     trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+"'"+track_icon_loc+"></icon></icon-multi-element>"
                 }
@@ -1222,12 +1226,15 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 }
 
 function IconName(str, iconNum = 1){
+	console.log(str)
 	var regExp = /\(([^)]+)\)/;
 	const matches = regExp.exec(str);
 	num = ""
 	txt = ""
 	if(matches){
+		console.log(matches)
 		options = matches[1].split(";");
+		console.log(options)
 		num = options[0];
 		txt = options[1];
 	}
@@ -1237,7 +1244,7 @@ function IconName(str, iconNum = 1){
 		str = "increase-energy";
 	}
 	let plural = iconNum > 1 ? 's' : '';
-
+	console.log(str)
 	switch(str){
 
 		case 'gain-power-card':
@@ -1320,6 +1327,9 @@ function IconName(str, iconNum = 1){
 			break;
 		case 'star':
 			subText = "Element";
+			break;
+		case 'custom':
+			subText = num;
 			break;
 		case 'gain-range':
 			subText = "+" + num[0]+ " Range";
