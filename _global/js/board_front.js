@@ -57,7 +57,13 @@ function addImages(board) {
     
     if(spiritBorder){
         const specialRules = board.querySelectorAll('special-rules-container')[0]
-        specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder});" ></div>` + specialRules.innerHTML
+		const spiritBorderSize = board.getAttribute('spirit-border-scale');
+		if(spiritBorderSize){
+			borderHeight = spiritBorderSize;
+			specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder}); background-size: 705px ${borderHeight};" ></div>` + specialRules.innerHTML
+		}else{
+			specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder});" ></div>` + specialRules.innerHTML
+		}
     }
     if(spiritImage){
         //Image now scales to fill gap. 'imageSize' allows the user to specify what % of the gap to cover
@@ -148,9 +154,9 @@ function parseGrowthTags(){
         const growthClass = childElement.getAttribute("values");
         const classPieces = growthClass.split(';');
         const openTag = headerIndex !== undefined
-            ? `<growth-cell header="${headerIndex}">`
-            : "<growth-cell>"
-        const closeTag = tint_text + '</growth-cell>'
+            ? `<growth-cell header="${headerIndex}">` + tint_text
+            : "<growth-cell>" + tint_text
+        const closeTag = '</growth-cell>'
 		const terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
 		const elementNames = new Set(['sun', 'moon', 'fire', 'air', 'plant','water','earth','animal'])
 		

@@ -4,6 +4,10 @@ window.onload = function startMain(){
     adjustComplexityValue();
     createPowerProperties();
 	
+	setTimeout(() => {resize()}, 200);
+}
+
+function resize() {
 	dynamicSizing(document.querySelectorAll('lore-description')[0]);
 	dynamicSizing(document.querySelectorAll('setup-description')[0]);
 	dynamicSizing(document.querySelectorAll('play-style-description')[0]);
