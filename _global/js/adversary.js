@@ -10,6 +10,10 @@ window.onload = function startMain(){
 	
 	var html = document.querySelectorAll('adversary')[0].innerHTML;
     document.querySelectorAll('adversary')[0].innerHTML = replaceIcon(html);
+	setTimeout(() => {resize()}, 200);
+}
+
+function resize(){
 	dynamicSizing(document.querySelectorAll('top-info')[0],55)
 }
 
@@ -43,7 +47,7 @@ html = `
     </top-info>
     <adversary-levels>
       <header>
-        <div>Level</div>
+        <header-level>Level<br>(Difficulty)</header-level>
         <div>Fear Cards</div>
         <div>Game Effects <span class="cumulative">(cumulative)</span></div>
       </header>`;
@@ -77,7 +81,7 @@ function buildLevel(quickLevel){
 	}
 	fearCards=fearCardList.join('/')
     levelHTML =`<level>
-        <div>${quickLevel.tagName.at(-1)}<span class="level-difficulty">(${quickLevel.getAttribute('difficulty')})</span></div>
+        <div>${quickLevel.tagName.at(-1)}<level-difficulty class="level-difficulty">(${quickLevel.getAttribute('difficulty')})</level-difficulty></div>
         <div>${fearCardNum} (${fearCards})</div>
         <div>
           <strong>${quickLevel.getAttribute('name')}:</strong> ${quickLevel.getAttribute('rules')}

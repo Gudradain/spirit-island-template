@@ -27,11 +27,9 @@ adversary{
   background-image: url(../images/adversary-frame.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  width:575px;
-  height:384px;
   width:800px;
   height:534px;
-
+  border-radius: 15.1px;
   position:relative;
 }
 
@@ -41,7 +39,7 @@ adversary-title{
   left:0px;
   top:16px;
   height:44px;
-  width:600px;
+  width:603px;
   
   text-align:center;
   line-height: 36px;
@@ -53,10 +51,10 @@ adversary-title{
 .flag{
   display:block;
   position:absolute;
-  left:602px;
-  top:30px;
-  height:99px;
-  width:140px;
+  left: 604px;
+  top: 28px;
+  height: 100px;
+  width: 143px;
 }
 
 adversary-base-dif{
@@ -78,7 +76,7 @@ top-info{
   display:block;
   position:absolute;
   left:35px;
-  top:77px;
+  top:76px;
   height:78px;
   width:566px;
 
@@ -107,6 +105,14 @@ loss-condition{
 escalation{
   margin-right:5px;
   flex:1 0 220px;
+}
+
+header-level{
+	margin-bottom: -15px;
+    margin-left: 0px;
+    text-align: center;
+	    display: flex;
+    justify-content: center;
 }
 
 adversary-levels{
@@ -141,18 +147,21 @@ adversary-levels header{
 }
 
 adversary-levels header div:not(:last-child){
-  padding-right:20px;
+
 }
 
 adversary-levels header div:nth-child(1),
+adversary-levels header header-level:nth-child(1),
 adversary-levels level div:nth-child(1){
   flex:0 0 50px;
+  width: 50px;
 }
 
 adversary-levels header div:nth-child(2),
 adversary-levels level div:nth-child(2){
   white-space: nowrap;
   flex:0 0 90px;
+   text-align:center;
 }
 
 adversary-levels header div:nth-child(3),
@@ -173,7 +182,6 @@ adversary-levels level div:first-child{
 }
 
 adversary-levels level div:nth-child(2){
-  padding-left:7px;
 }
 
 adversary-levels level div:last-child{
@@ -195,8 +203,15 @@ level-info{
   color:rgb(100, 100, 100);
 }
 
-.level-difficulty{
+div.level-difficulty{
   font-size:8px;
+}
+
+level-difficulty{
+    font-size: 9px;
+    position: relative;
+    top: 2px;
+    font-family: 'Lato SemiBold';
 }
 
 icon{
