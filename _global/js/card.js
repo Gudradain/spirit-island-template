@@ -17,7 +17,8 @@ for(var quickCard of quickCards)
   quickCard.remove();
 }
 
-dynamicSizing()
+setTimeout(() => {resize()}, 200);
+
 
 
 
@@ -61,23 +62,18 @@ function constructCard(data)
   return card;
 }
 
-function dynamicSizing()
+function resize()
 {
 	//Name
 	nameBlocks = document.querySelectorAll("name");
 	for(let i = 0; i < nameBlocks.length; i++){
-		let nameHeight = nameBlocks[i].offsetHeight;
-		let j = 0
-		while (nameHeight>70){
-			var style = window.getComputedStyle(nameBlocks[i], null).getPropertyValue('font-size');
-			var fontSize = parseFloat(style); 
-			nameBlocks[i].style.fontSize = (fontSize - 2) + 'px';
-			nameHeight = nameBlocks[i].offsetHeight
-			
-			// safety valve
-			j += 1
-			if (j>5){ break;}
-		}
+		dynamicSizing(nameBlocks[i])
+	}
+	
+	//Rules
+	rulesBlocks = document.querySelectorAll("rules");
+	for(let i = 0; i < rulesBlocks.length; i++){
+		dynamicSizing(rulesBlocks[i])
 	}
 }
 
@@ -216,3 +212,37 @@ function insertAfter(newNode, referenceNode){
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
+function dynamicSizing(el, maxSize=el.offsetHeight)
+{
+	console.log('resizing text for ' + el.tagName)
+	let j = 0
+	while (checkOverflow(el,maxSize)){
+		var style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+		var line = window.getComputedStyle(el, null).getPropertyValue('line-height');
+		var fontSize = parseFloat(style);
+		var lineHeight = parseFloat(line);
+		el.style.fontSize = (fontSize - 1) + 'px';
+		el.style.lineHeight = (lineHeight - 1) + 'px';
+		// safety valve
+		j += 1
+		if (j>10){ 
+			console.log('safety')
+			break;
+		}
+	}
+}
+
+function checkOverflow(el, maxSize=el.clientHeight) {
+    let curOverflow = el.style.overflow
+    if (!curOverflow || curOverflow === "visible") {
+        el.style.overflow = "auto"
+    }
+    let isOverflowing = maxSize < el.scrollHeight
+    el.style.overflow = curOverflow
+	console.log('el.clientHeight='+el.clientHeight)
+	console.log('el.scrollHeight='+el.scrollHeight)
+	console.log('isOverflowing?='+isOverflowing)
+	
+    return isOverflowing
+
+}

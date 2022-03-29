@@ -105,7 +105,7 @@ name{
   left:135px;
   top: 8.5%;
   transform: translateY(-50%);
-  height:auto;
+  height: 72px;
   width:310px;
 
   font-size:34px;
@@ -119,8 +119,6 @@ name{
   justify-content: center;
   text-align:center;
   white-space: normal;
-  
-  /*border:1px solid yellow;*/
 }
 
 element{
@@ -178,7 +176,6 @@ element.animal{
   left:108px;
   top:97px;
   width:352px;
-  height:260px;
   border-top-left-radius: 10px;
 }
 
@@ -254,6 +251,7 @@ rules-container{
   font-family: 'JosefinSans-Regular';
   font-size: 22px;
   line-height: 30px;
+  letter-spacing: -0.5px;
 }
 
 rules-container::after {
@@ -275,7 +273,7 @@ rules{
   padding-top:6px;
   padding-left:15px;
   padding-right:15px;
-  
+  height:241px;
   display:flex;
   flex-direction:column;
   align-items: center;
@@ -339,12 +337,12 @@ or{
   mix-blend-mode: multiply;
 
   display: block;
-  height:40px;
+  height:35px;
   width:320px;
   background-repeat: no-repeat;
   background-position:center;
   margin-top:5px;
-  margin-bottom:10px;
+  margin-bottom:5px;
 }
 
 icon{
