@@ -57,7 +57,13 @@ function addImages(board) {
     
     if(spiritBorder){
         const specialRules = board.querySelectorAll('special-rules-container')[0]
-        specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder});" ></div>` + specialRules.innerHTML
+		const spiritBorderSize = board.getAttribute('spirit-border-scale');
+		if(spiritBorderSize){
+			borderHeight = spiritBorderSize;
+			specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder}); background-size: 705px ${borderHeight};" ></div>` + specialRules.innerHTML
+		}else{
+			specialRules.innerHTML = `<div class="spirit-border" style="background-image: url(${spiritBorder});" ></div>` + specialRules.innerHTML
+		}
     }
     if(spiritImage){
         //Image now scales to fill gap. 'imageSize' allows the user to specify what % of the gap to cover
@@ -148,10 +154,11 @@ function parseGrowthTags(){
         const growthClass = childElement.getAttribute("values");
         const classPieces = growthClass.split(';');
         const openTag = headerIndex !== undefined
-            ? `<growth-cell header="${headerIndex}">`
-            : "<growth-cell>"
-        const closeTag = tint_text + '</growth-cell>'
+            ? `<growth-cell header="${headerIndex}">` + tint_text
+            : "<growth-cell>" + tint_text
+        const closeTag = '</growth-cell>'
 		const terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
+		const elementNames = new Set(['sun', 'moon', 'fire', 'air', 'plant','water','earth','animal'])
 		
 		// Create some tools for 'or' growth options
 		let isOr = false;
@@ -292,7 +299,7 @@ function parseGrowthTags(){
 							// Flat energy + scaling
 							scaling = energyOptions[1];
 							energyGrowthIcons += "<gain-per><value>1</value></gain-per>"
-							energyGrowthText = "Gain "+flatEnergy+" Energy and +1 Energy per "
+							energyGrowthText = "Gain "+flatEnergy+" Energy and +1 more per "
 							if (scaling==='text'){
 								//determine some arbitrary scaling rule
 								scaling_text = energyOptions[2] !== undefined ? energyOptions[2] : 'ENTER SCALING TEXT AS THIRD PARAMETER';
@@ -302,6 +309,7 @@ function parseGrowthTags(){
 							}else{
 								energyGrowthIcons += "<gain-per-element><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-element>"
 								energyGrowthText += Capitalise(scaling)
+								energyGrowthText += elementNames.has(scaling) ? ' Showing' : '';
 							}
 						}else{
 							// Flat energy
@@ -1203,6 +1211,10 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     trackIcons += "<icon-multi-element><icon-shadow class = 'small'"+track_icon_loc+"><icon class='gain-range-"+gainRange+" small'></icon></icon-shadow></icon-multi-element>"
 					addEnergyRing = false;
 					addIconShadow = false;
+				} else if(splitOptions[i].startsWith("custom")){
+					var matches = regExp.exec(splitOptions[i]);
+                    var custom = matches[1].split(";")[1];
+					trackIcons += "<icon-multi-element><icon class='"+custom+" small'"+track_icon_loc+"></icon></icon-multi-element>"
 				} else {
                     trackIcons += "<icon-multi-element><icon class='"+splitOptions[i]+"'"+track_icon_loc+"></icon></icon-multi-element>"
                 }
@@ -1220,12 +1232,15 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 }
 
 function IconName(str, iconNum = 1){
+	console.log(str)
 	var regExp = /\(([^)]+)\)/;
 	const matches = regExp.exec(str);
 	num = ""
 	txt = ""
 	if(matches){
+		console.log(matches)
 		options = matches[1].split(";");
+		console.log(options)
 		num = options[0];
 		txt = options[1];
 	}
@@ -1235,7 +1250,7 @@ function IconName(str, iconNum = 1){
 		str = "increase-energy";
 	}
 	let plural = iconNum > 1 ? 's' : '';
-
+	console.log(str)
 	switch(str){
 
 		case 'gain-power-card':
@@ -1318,6 +1333,9 @@ function IconName(str, iconNum = 1){
 			break;
 		case 'star':
 			subText = "Element";
+			break;
+		case 'custom':
+			subText = num;
 			break;
 		case 'gain-range':
 			subText = "+" + num[0]+ " Range";

@@ -108,7 +108,7 @@ custom-meeple {
   z-index: 1;
   background-repeat: no-repeat;
   background-position: left center;
-  /* background-color: teal; */
+  background-size: 705px 13%;
 }
 
 .spirit-image {

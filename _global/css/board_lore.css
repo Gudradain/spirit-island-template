@@ -38,6 +38,7 @@ board {
     width: 100%;
     height: 100%;
     border-radius: 15.1px;
+	overflow: hidden;
 }
 
 board.round-border {
@@ -49,9 +50,9 @@ spirit-name {
     left: 33%;
     top: 6px;
     height: 22.67px;
-    width: 666.25px;
+    width: 900px;
     font-size: 40pt;
-    font-family: 'DK Snemand';
+    font-family: 'DK Snemand', 'Mouse Memoirs';
     text-transform: uppercase;
     vertical-align: middle;
     text-align: left;
@@ -62,9 +63,8 @@ spirit-name {
 .spirit-image {
     position: absolute;
     left: 0px;
-    top: 82.8px;
-    width: 842px;
-    height: 1086px;
+    top: 0px;
+    width: 100%;
     z-index: -1;
 }
 
@@ -73,7 +73,7 @@ lore-description{
     left: 883px;
     top: 120px;
     width: 780px;
-    height: 310px;
+    height: 320px;
     font-family: 'Calibri';
     font-size: 25px;
     font-weight: bold;
@@ -86,33 +86,45 @@ second-section-container{
     top: 465px;
 }
 
+third-section-container{
+    position: absolute;
+    left: 900px;
+    top: 800px;
+}
+
 setup{
 
 }
 
-play-style-title, complexity-title, complexity-value, div.summary-of-powers-title{
-    font-family: 'DK Snemand';
+setup-title, play-style-title, complexity-title, complexity-value, div.summary-of-powers-title{
+    font-family: 'DK Snemand', 'Mouse Memoirs';
     text-transform: uppercase;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: bold;
+}
+
+complexity-title, complexity-value, div.summary-of-powers-title {
+	font-size: 28px;
 }
 
 setup-title {
-    font-size:33px;
-    text-align:left;
-    font-family: "DK Snemand";
-    padding-left:15px;
     margin-top:80px;
 }
 
-setup-description{
-    font-family: 'Calibri';
+setup-description, play-style-description{
+    font-family: 'JosefinSans-Regular';
     font-size: 25px;
-    font-weight: bold;
     display: block;
+	margin-top: 6px;
+	letter-spacing: -0.5px;
+	width: 800px;
 }
 
-setup-description icon.fire, setup-description icon.earth, setup-description icon.animal, 
+setup-description{
+    margin-bottom: 10px;
+}
+
+setup-description icon, setup-description icon.fire, setup-description icon.earth, setup-description icon.animal, 
 setup-description icon.water, setup-description icon.air, setup-description icon.sun, 
 setup-description icon.plant, setup-description icon.moon, setup-description icon.any{
     width: 35px;
@@ -120,18 +132,14 @@ setup-description icon.plant, setup-description icon.moon, setup-description ico
     margin-bottom: -9px;
     margin-left: -5px;
     margin-right: 0px;
+	margin-top: -10px;
 }
 
 play-style{
 
 }
 
-play-style-description{
-    font-family: 'Calibri';
-    font-size: 25px;
-    font-weight: bold;
-    display: block;
-}
+
 
 complexity {
     display: block;
@@ -140,17 +148,38 @@ complexity {
     margin-top: 25px;
     margin-bottom: 10px;
     padding-bottom: 2px;
-    border-top: solid black;
-    border-bottom: solid black;
     width: 800px;
 }
 
+complexity::before,complexity::after {
+    background-image: url(../images/board/growth_underline.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 800px;
+    height: 5px;
+    margin-top: 2px;
+    margin-left: -10px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+    content: '';
+    display: block;
+	filter: brightness(0.4);
+}
+
+
 complexity-value{
     color: white;
-    background-color: darkred;
-    padding-bottom:5px;
+    background-image:  url('../images/customIcons/Complexity_Bar_Image.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+    padding-bottom:15px;
+	padding-top: 10px;
     padding-left:20px;
     display:inline-block;
+	text-align: left;
+	letter-spacing: 1px;
+	
 }
 
 complexity-title{
@@ -158,7 +187,7 @@ complexity-title{
 }
 
 summary-of-powers{
-    bottom: -270px;
+    bottom: -190px;
     position: absolute;
 }
 
@@ -166,10 +195,11 @@ div.summary-of-powers-title{
     display: block;
     text-align: center;
     vertical-align: bottom;
-    width:195px;
-    padding-left:40px;
-    padding-right:10px;
-    padding-top:60px;
+    width: 124px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 60px;
+    margin-bottom: -20px;
 }
 
 .powers-summary{
@@ -178,7 +208,7 @@ div.summary-of-powers-title{
 
 .powers-summary tbody tr td {
     width:120px;
-    font-family: 'DK Snemand';
+    font-family: 'DK Snemand', 'Mouse Memoirs';
     text-transform: uppercase;
     font-size: 25px;
     font-weight: bold;
@@ -190,34 +220,54 @@ tr.power-bar td{
 }
 
 tr.power-bar td div{
-    height: 140px;
+    height: 115px;
 }
 
 .offense, .control, .fear, 
 .defense, .utility{
     width: 60px;
-    margin-left: 30px;
+    margin-left: 27px;
+	background-repeat: no-repeat;
+	background-size: cover;
+
 }
 
-.offense{
-    background-color:#4b7364;
+.offense{    background-image: url('../images/customIcons/Offense_Bar.png');}
+.control{    background-image: url('../images/customIcons/Control_Bar_Image.png');}
+.fear{    background-image: url('../images/customIcons/Fear_Bar_Image.png');}
+.defense {    background-image: url('../images/customIcons/Defense_Bar_Image.png');}
+.utility{    background-image: url('../images/customIcons/Utility_Bar_Image.png');}
+
+td.power-divider {
+	background-image: url(../images/board/Growthborder.png);
+	background-repeat: no-repeat;
+	width:5px;
+	background-position:center;
+	margin-left:-10px;
+	margin-right:-10px;
+	filter: brightness(0.4);
 }
 
-.control{
-    background-color:#45653c;
+.uses-icon {
+
 }
 
-.fear{
-    background-color:#524556;
+uses-icon-holder {
+	display: inline-flex;
+	width:142px;
+	height: 140px;
+	flex-wrap: wrap;
+	flex-direction: column;
 }
 
-.defense {
-    background-color:#a8653a;
+/* Icon Stuff */
+icon {
+	display: block;
+	width: 70px;
+	height: 70px;
+	margin: auto;
 }
 
-.utility{
-    background-color:#51473d;
-}
 
 icon.fire {
     background-image: url('../images/board/Fire.png');
@@ -305,6 +355,30 @@ icon.presence {
     background-size: contain;
     background-position: center;
     height: 30px;
-    width: 38px;
+    width: 30px;
     margin-bottom: -7px;
 }
+
+icon.strife {background-image: url('../images/board/75px_strife.png');}
+icon.disease { background-image: url('../images/board/75px_disease.png');}
+icon.wilds { background-image: url('../images/board/wilds.png');}
+icon.badlands { background-image: url('../images/board/48px_badlands.png'); }
+icon.resilience { background-image: url('../images/board/NewIcons/Resilience.png');}
+icon.fear {
+    background-image: url('../images/board/fear.png');
+	margin:auto;
+	margin-top: 25px;
+    margin-bottom: 30px;
+	background-size: contain;
+	}
+icon.blight { background-image: url('../images/board/75px_blight.png');}
+
+second-section-container icon.sun {background-image: url(../images/board/element_simple_sun.png);}
+second-section-container icon.earth {background-image: url(../images/board/element_simple_earth.png);}
+second-section-container icon.plant {background-image: url(../images/board/element_simple_plant.png);}
+second-section-container icon.fire {background-image: url(../images/board/element_simple_fire.png);}
+second-section-container icon.air {background-image: url(../images/board/element_simple_air.png);}
+second-section-container icon.moon {background-image: url(../images/board/element_simple_moon.png);}
+second-section-container icon.animal {background-image: url(../images/board/element_simple_animal.png);}
+second-section-container icon.water {background-image: url(../images/board/element_simple_water.png);}
+second-section-container icon.any {background-image: url(../images/board/element_simple_any.png);}
