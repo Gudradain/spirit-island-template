@@ -190,7 +190,7 @@ info-title{
   align-items: center;
 
   color:white;
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
   text-transform: uppercase;
   letter-spacing:1.5px;
   text-align:center;
@@ -207,7 +207,7 @@ info{
 
   display:flex;
 
-  font-family: 'DK Snemand';
+  font-family: 'DK Snemand', 'Mouse Memoirs';
   text-transform: uppercase;
   mix-blend-mode: multiply;
   background-image: url('../images/target-background.png');
