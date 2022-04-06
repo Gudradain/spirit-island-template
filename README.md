@@ -4,7 +4,7 @@
 
 - [Adversary](_docs/adversary.md)
 - [Spirit Board](_docs/board_front.md)
-- [Cards](_docs/quick-card.md)
+- [Cards](_docs/card.md)
 - [Icons](_docs/icon.md)
 
 ### Getting Started
