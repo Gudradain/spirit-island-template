@@ -84,13 +84,13 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 ||Gather with Conditions|gather(x,y)|If y is a condition, gather x into 1 of your lands with y condition (sacred site, beasts, etc).||
 ||Gather into Multiple Lands with Conditions|gather(x,y,z)|Gather x into z lands of y condition. z can be a number or 'each'|Ocean: gather(presence,ocean,each)|
 |Move Presence|Move Presence|move-presence(x)|Move a Presence up to x Range||
-|Gaining Energy|Gain Energy|gain-energy(x)|Gain x Energy||
-||Gain Energy per Element|gain-energy(x)|Gain 1 Energy per Element x||
+|Gaining Energy|Gain Energy|gain-energy(x)|Gain x Energy|gain-energy(2)|
+||Gain Energy per Element|gain-energy(x)|Gain 1 Energy per Entity x (such as Elements, Sacred Sites, etc)|gain-energy(water)|
 ||Gain Energy per Element plus Flat Energy|gain-energy(x,y)|Gain x Energy plus 1 Energy per Element y|Wildfire: gain-energy(2,fire)|
 ||Gain Energy per Custom Item|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
-||Gain Energy per Custom Item|gain-energy(text,*your_text_here*,x)|Gain 1 Energy per condition of your choosing. Icon will be x.||
+||Gain Energy per Custom Item w/ Icon|gain-energy(text,*your_text_here*,x)|Gain 1 Energy per condition of your choosing. Icon will be x.||
 ||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be a !!!.||
-||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*,y)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be y.||
+||Gain Energy per Custom w/ Icon Item Plus Flat Energy|gain-energy(x,text,*your_text_here*,y)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be y.||
 ||Gain Energy per Card Play|energy-per-play|Gain 1 Energy per Card Play.|As seen on Trickster|
 |Add Tokens|Add One Token|add-token(x,y)|At range x add token type y|add-token(2,beast)|
 ||Add Multiple Token of One Type|add-token(x,y, z)|Add z tokens of y type at range x|add-token(3,wilds,2)|
@@ -179,7 +179,6 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
         - For range, use an icon (if needed) + an integer separated by a comma. Examples:
           - 0
           - 1
-          - presence,1
           - sacred-site,2
           - wetland-presence,1
       - target: The target of the innate. It accepts html code. Refer to the [card template](_docs/card.md) for the syntax. The icon that you type in here can use the shorthand syntax.

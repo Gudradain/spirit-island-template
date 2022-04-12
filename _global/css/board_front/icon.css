@@ -235,7 +235,7 @@ icon.fear {
   margin-right: -5px;
 }
 
-icon.player-spirit{
+icon.player-spirit, icon.player, icon.spirit{
   background-image: url('../../images/board/player-spirit.png');
   width: 30px;
   height: 30px;
@@ -286,7 +286,7 @@ icon.city {
   height:50px;
 }
 
-icon.sand, icon.wetland, icon.jungle, icon.mountain, 
+/* icon.sand, icon.wetland, icon.jungle, icon.mountain, 
 icon.jungle-wetland, icon.jungle-sand, icon.sand-wetland, 
 icon.mountain-sand, icon.mountain-wetland, icon.mountain-jungle,
 icon.wetland-jungle, icon.sand-jungle, icon.wetland-sand, 
@@ -297,7 +297,7 @@ icon.sand-mountain, icon.wetland-mountain, icon.jungle-mountain {
     margin-top: 7px;
     margin-bottom: -5px;
     margin-left: 39px;
-}
+} */
 
 icon.ocean {
     display: block;
