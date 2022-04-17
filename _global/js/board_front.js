@@ -291,44 +291,51 @@ function parseGrowthTags(){
 					}
 					let energyGrowthIcons = ""
 					let energyGrowthText = ""
-					if (!isNaN(energyOptions[0])) {
-                        //Gain Energy has a number first
-						let flatEnergy = energyOptions[0];
+					let x_is_num = !isNaN(energyOptions[0]);
+					let x_is_zero = (energyOptions[0]==0);
+					let x_is_text = energyOptions[0]=='text';
+					let x_is_icon = !(x_is_num  || x_is_text);
+					let x_is_flat = x_is_num && !x_is_zero;
+					let y_is_text = energyOptions[1]!==undefined ? energyOptions[1]=='text' : false;
+					let has_custom_text = (x_is_text || y_is_text);
+					let custom_text = ""
+					if(has_custom_text){custom_text += y_is_text ? energyOptions[2]:energyOptions[1]}
+
+					
+					shift = 0;
+					shift += (x_is_num) ? 1 : 0;
+					shift += (has_custom_text) ? 2 : 0;
+					let flatEnergy = energyOptions[0];
+					let scaling_entity = energyOptions[shift];
+					let scaling_value = energyOptions[shift+1]!==undefined ? energyOptions[shift+1] : 1;
+					if (!isNaN(scaling_entity)){
+						scaling_value=scaling_entity;
+						scaling_entity = undefined;
+					}
+					var customScalingIcon = (scaling_entity !== undefined) ? ("<icon class='" + scaling_entity + "'></icon>") : "<div class='custom-scaling'>!!!</div>"
+					
+					// Flat Energy
+					if(x_is_flat){
 						energyGrowthIcons = "<growth-energy><value>" + flatEnergy + "</value></growth-energy>"
-						if (energyOptions.length>1){
-							// Flat energy + scaling
-							scaling = energyOptions[1];
-							energyGrowthIcons += "<gain-per><value>1</value></gain-per>"
-							energyGrowthText = "Gain "+flatEnergy+" Energy and +1 more per "
-							if (scaling==='text'){
-								//determine some arbitrary scaling rule
-								scaling_text = energyOptions[2] !== undefined ? energyOptions[2] : 'ENTER SCALING TEXT AS THIRD PARAMETER';
-								let customScalingIcon = energyOptions[3] !== undefined ? ("<icon class='" + energyOptions[3] + "'></icon>") : "<div class='custom-scaling'>!!!</div>"
-								energyGrowthIcons += "<gain-per-element><ring-icon>"+customScalingIcon+"</ring-icon></gain-per-element>";
-								energyGrowthText += scaling_text
-							}else{
-								energyGrowthIcons += "<gain-per-element><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-element>"
-								energyGrowthText += Capitalise(scaling)
-								energyGrowthText += elementNames.has(scaling) ? ' Showing' : '';
-							}
+						if(scaling_entity){
+							energyGrowthText = "Gain "+flatEnergy+" Energy"
 						}else{
-							// Flat energy
-							energyGrowthText = "Gain Energy"								
+							energyGrowthText = "Gain Energy"
 						}
-                    } else {
-                        // Scaling
-						scaling = energyOptions[0];						
-						if (scaling==='text'){
-							//determine some arbitrary scaling rule
-							scaling_text = energyOptions[1] !== undefined ? energyOptions[1] : 'ENTER SCALING TEXT AS SECOND PARAMETER';
-							let customScalingIcon = energyOptions[2] !== undefined ? ("<icon class='" + energyOptions[2] + "'></icon>") : "<div class='custom-scaling'>!!!</div>"
-							energyGrowthIcons += "<gain-per><value>1</value></gain-per><gain-per-element><ring-icon>"+customScalingIcon+"</ring-icon></gain-per-element>";
-							energyGrowthText = "Gain 1 Energy per " + scaling_text								
+					}
+					
+					// Scaling Energy
+					if(scaling_entity || has_custom_text){
+						energyGrowthIcons += "<gain-per><value>"+scaling_value+"</value></gain-per>"
+						energyGrowthIcons += "<gain-per-element><ring-icon>"+customScalingIcon+"</ring-icon></gain-per-element>";
+						if(x_is_flat){
+							energyGrowthText += " and +"+scaling_value+" more per "
 						}else{
-							energyGrowthIcons = "<gain-per><value>1</value></gain-per><gain-per-element><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-element>"
-							energyGrowthText = "Gain 1 Energy per " + Capitalise(scaling)
+							energyGrowthText += "Gain "+scaling_value+" Energy per "
 						}
-                    }
+						energyGrowthText += has_custom_text ? custom_text : Capitalise(scaling_entity);
+						energyGrowthText += elementNames.has(scaling_entity) ? ' Showing' : '';
+					}
 					growthIcons = energyManyIconOpen + energyGrowthIcons + energyManyIconClose
 					growthText = energyGrowthText
 					break;
@@ -1232,15 +1239,12 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 }
 
 function IconName(str, iconNum = 1){
-	console.log(str)
 	var regExp = /\(([^)]+)\)/;
 	const matches = regExp.exec(str);
 	num = ""
 	txt = ""
 	if(matches){
-		console.log(matches)
 		options = matches[1].split(";");
-		console.log(options)
 		num = options[0];
 		txt = options[1];
 	}

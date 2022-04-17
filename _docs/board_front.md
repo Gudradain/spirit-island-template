@@ -85,8 +85,9 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 ||Gather into Multiple Lands with Conditions|gather(x,y,z)|Gather x into z lands of y condition. z can be a number or 'each'|Ocean: gather(presence,ocean,each)|
 |Move Presence|Move Presence|move-presence(x)|Move a Presence up to x Range||
 |Gaining Energy|Gain Energy|gain-energy(x)|Gain x Energy|gain-energy(2)|
-||Gain Energy per Element|gain-energy(x)|Gain 1 Energy per Entity x (such as Elements, Sacred Sites, etc)|gain-energy(water)|
-||Gain Energy per Element plus Flat Energy|gain-energy(x,y)|Gain x Energy plus 1 Energy per Element y|Wildfire: gain-energy(2,fire)|
+||Gain Energy per Thing|gain-energy(x)|Gain 1 Energy per Thing x (such as Elements, Sacred Sites, etc)|gain-energy(water)|
+||Gain Energy per Thing plus Flat Energy|gain-energy(x,y)|Gain x Energy plus 1 Energy per Thing y|Wildfire: gain-energy(2,fire)|
+||Gain Multiple Energy per Thing plus Flat Energy|gain-energy(x,y,z)|Gain x Energy plus z Energy per Thing y||
 ||Gain Energy per Custom Item|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
 ||Gain Energy per Custom Item w/ Icon|gain-energy(text,*your_text_here*,x)|Gain 1 Energy per condition of your choosing. Icon will be x.||
 ||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be a !!!.||

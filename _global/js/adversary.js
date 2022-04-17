@@ -39,7 +39,7 @@ html = `
         </div>
       </loss-condition>
       <escalation>
-        <section-title>Escalation<icon class="escalation"></icon></section-title>
+        <section-title>Escalation <icon class="escalation"></icon></section-title>
         <div>
           <strong>${escalation.getAttribute('name')}:</strong> ${escalation.getAttribute('rules')}
         </div>
