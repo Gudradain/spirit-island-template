@@ -88,10 +88,11 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 ||Gain Energy per Thing|gain-energy(x)|Gain 1 Energy per Thing x (such as Elements, Sacred Sites, etc)|gain-energy(water)|
 ||Gain Energy per Thing plus Flat Energy|gain-energy(x,y)|Gain x Energy plus 1 Energy per Thing y|Wildfire: gain-energy(2,fire)|
 ||Gain Multiple Energy per Thing plus Flat Energy|gain-energy(x,y,z)|Gain x Energy plus z Energy per Thing y||
-||Gain Energy per Custom Item|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
-||Gain Energy per Custom Item w/ Icon|gain-energy(text,*your_text_here*,x)|Gain 1 Energy per condition of your choosing. Icon will be x.||
 ||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be a !!!.||
 ||Gain Energy per Custom w/ Icon Item Plus Flat Energy|gain-energy(x,text,*your_text_here*,y)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be y.||
+||Gain Energy per Custom Item|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
+||Gain Energy per Custom Item w/ Icon|gain-energy(text,*your_text_here*,y)|If y is Entity, gain 1 Energy per Entity w/ your custom text. If y is number, gain y Energy per !!! w/ your custom text.||
+||Gain Multiple Energy per Custom Item w/ Icon|gain-energy(text,*your_text_here*,y,z)|Gain z Energy per Entity y of your choosing.||
 ||Gain Energy per Card Play|energy-per-play|Gain 1 Energy per Card Play.|As seen on Trickster|
 |Add Tokens|Add One Token|add-token(x,y)|At range x add token type y|add-token(2,beast)|
 ||Add Multiple Token of One Type|add-token(x,y, z)|Add z tokens of y type at range x|add-token(3,wilds,2)|
@@ -119,7 +120,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
 ||Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc)||
 |Or Growth Options|Allows pair of two growth options|or(x,y)|x and y are growth options (like the ones above)|Fractured Days's growth: or(gain-1-time^2,gain-card-play(2))|
-
+|Presence Track Node|Puts the growth option in a presence track ring|presence-node(x)|x is a growth option (like the ones above)|presence-node(reclaim-one)|
 </details>
 
 ### Presence Tracks

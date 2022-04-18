@@ -162,6 +162,7 @@ function parseGrowthTags(){
 		
 		// Create some tools for 'or' growth options
 		let isOr = false;
+		let isPresenceNode = false;
 		let orTextHold = ""
 		let orIconsHold = ""
 		let orGrowthOpenHold = ""
@@ -191,6 +192,16 @@ function parseGrowthTags(){
 				console.log(j)
 				growthItem = classPieces[j].split("(")[0].split("^")[0];
 			}
+			
+			if(growthItem=='presence-node'){
+				let matches = regExpOuterParentheses.exec(classPieces[j])[1]
+				console.log(matches)
+				isPresenceNode = true;
+				classPieces[j]=matches
+				growthItem = classPieces[j].split("(")[0].split("^")[0];
+			}
+			
+			console.log('growth item= '+growthItem)
 			
 			//Find if a growth effect is repeated (Fractured Days)
 			repeatOpen = ""
@@ -294,13 +305,11 @@ function parseGrowthTags(){
 					let x_is_num = !isNaN(energyOptions[0]);
 					let x_is_zero = (energyOptions[0]==0);
 					let x_is_text = energyOptions[0]=='text';
-					let x_is_icon = !(x_is_num  || x_is_text);
 					let x_is_flat = x_is_num && !x_is_zero;
 					let y_is_text = energyOptions[1]!==undefined ? energyOptions[1]=='text' : false;
 					let has_custom_text = (x_is_text || y_is_text);
 					let custom_text = ""
 					if(has_custom_text){custom_text += y_is_text ? energyOptions[2]:energyOptions[1]}
-
 					
 					shift = 0;
 					shift += (x_is_num) ? 1 : 0;
@@ -690,6 +699,65 @@ function parseGrowthTags(){
 				}
 				case 'fear': {
 					const matches = regExp.exec(classPieces[j]);
+					const gainFearBy = matches[1];
+					let fearOptions = matches[1].split(",");
+                    let fearManyIconOpen = "" 
+					let fearManyIconClose = ""
+					if (isNaN(fearOptions[0]) || fearOptions.length!=1) {
+							fearManyIconOpen = "<growth-cell-double>"
+							fearManyIconClose = "</growth-cell-double>"
+					}
+					let fearGrowthIcons = ""
+					let fearGrowthText = ""
+					let x_is_num = !isNaN(fearOptions[0]);
+					let x_is_zero = (fearOptions[0]==0);
+					let x_is_text = fearOptions[0]=='text';
+					let x_is_flat = x_is_num && !x_is_zero;
+					let y_is_text = fearOptions[1]!==undefined ? fearOptions[1]=='text' : false;
+					let has_custom_text = (x_is_text || y_is_text);
+					let custom_text = ""
+					if(has_custom_text){custom_text += y_is_text ? fearOptions[2]:fearOptions[1]}
+					
+					shift = 0;
+					shift += (x_is_num) ? 1 : 0;
+					shift += (has_custom_text) ? 2 : 0;
+					let flatFear = fearOptions[0];
+					let scaling_entity = fearOptions[shift];
+					let scaling_value = fearOptions[shift+1]!==undefined ? fearOptions[shift+1] : 1;
+					if (!isNaN(scaling_entity)){
+						scaling_value=scaling_entity;
+						scaling_entity = undefined;
+					}
+					var customScalingIcon = (scaling_entity !== undefined) ? ("<icon class='" + scaling_entity + "'></icon>") : "<div class='custom-scaling'>!!!</div>"
+					
+					// Flat Fear
+					if(x_is_flat){
+						fearGrowthIcons = "<growth-fear><value>" + flatFear + "</value></growth-fear>"
+						if(scaling_entity){
+							fearGrowthText = "Generate "+flatFear+" Fear"
+						}else{
+							fearGrowthText = "Generate Fear"
+						}
+					}
+					
+					// Scaling Fear
+					if(scaling_entity || has_custom_text){
+						fearGrowthIcons += "<fear-per><value>"+scaling_value+"</value></fear-per>"
+						fearGrowthIcons += "<gain-per-fear><ring-icon>"+customScalingIcon+"</ring-icon></gain-per-fear>";
+						if(x_is_flat){
+							fearGrowthText += " and +"+scaling_value+" more per "
+						}else{
+							fearGrowthText += "Generate "+scaling_value+" Fear per "
+						}
+						fearGrowthText += has_custom_text ? custom_text : Capitalise(scaling_entity);
+						fearGrowthText += elementNames.has(scaling_entity) ? ' Showing' : '';
+					}
+					growthIcons = fearManyIconOpen + fearGrowthIcons + fearManyIconClose
+					growthText = fearGrowthText
+					break;
+				}
+/* 				case 'fear': {
+					const matches = regExp.exec(classPieces[j]);
 
 					let fearOptions = matches[1].split(",");
                     let fearManyIconOpen = "" 
@@ -740,7 +808,7 @@ function parseGrowthTags(){
 					growthIcons = fearManyIconOpen + fearGrowthIcons + fearManyIconClose
 					growthText = fearGrowthText
 					break;
-				}
+				} */
 				case 'gain-range': {
 					const matches = regExp.exec(classPieces[j]);
 					let rangeOptions = matches[1].split(",");
@@ -873,6 +941,11 @@ function parseGrowthTags(){
 			if (repeatText){
 				growthIcons = '<repeat-wrapper>' + repeatOpen + growthIcons+'</repeat-wrapper>';
 			}
+			if(isPresenceNode){
+				growthIcons = '<presence-node class="growth"><ring-icon>' + growthIcons+'</ring-icon></presence-node>';
+				isPresenceNode = false;
+			}
+			
 			//Handle Ors
 			if(isOr){
 				// break out the ICON and TEXT

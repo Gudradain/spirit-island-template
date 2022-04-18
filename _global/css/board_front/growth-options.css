@@ -117,6 +117,10 @@ growth-cell icon {
   height: 90px;
 }
 
+presence-node.growth {
+  margin-top: -39px;
+}
+
 plus-presence {
 	display: block;
 }
