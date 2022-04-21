@@ -188,14 +188,14 @@ icon.explorer {
 
 
 
-icon.disease {
+/* icon.disease {
   background-image: url('../../images/board/75px_disease.png');
   width: 30px;
   height: 30px;
   margin-bottom: -8px;
   margin-left: -5px;
   margin-right: 0px;
-}
+} */
 
 icon.strife {
   background-image: url('../../images/board/75px_strife.png');
@@ -206,14 +206,14 @@ icon.strife {
   margin-right: 0px;
 }
 
-icon.wilds {
+/* icon.wilds {
   background-image: url('../../images/board/wilds.png');
   width: 30px;
   height: 30px;
   margin-bottom: -8px;
   margin-left: -3px;
   margin-right: -3px;
-}
+} */
 
 icon.badlands { background-image: url('../../images/board/48px_badlands.png'); }
 

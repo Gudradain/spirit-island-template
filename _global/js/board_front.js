@@ -663,9 +663,12 @@ function parseGrowthTags(){
 							var elementIcons = ""
 							for (var i = 0; i < numLocs; i++) {
 								pos_angle = i * 2*Math.PI / numLocs - (Math.PI)*(1-(1/6));
-								x_loc = rad_size * Math.cos(pos_angle) - 30;
+								x_loc = 1.3*rad_size * Math.cos(pos_angle) - 30;
 								y_loc = rad_size * Math.sin(pos_angle) - 20;
-								let element_loc = "style='transform: translateY("+y_loc+"px) translateX("+x_loc+"px)'";
+								theta = -Math.PI/12
+								x_loc_prime = Math.cos(theta)*x_loc + Math.sin(theta)*y_loc
+								y_loc_prime = -Math.sin(theta)*x_loc + Math.cos(theta)*y_loc
+								let element_loc = "style='transform: translateY("+y_loc_prime+"px) translateX("+x_loc_prime+"px)'";
 								let cur_element = elementOptions.at(-1) === 'and'
 									? elementOptions[i]
 									: elementOptions[0]
@@ -1197,6 +1200,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     subText = "Add 1 "+Capitalise(tokenAdd) + " to 1 of your Lands";
                     break;
 				case 'custom':
+					console.log(splitOptions[0])
                     var matches = regExp.exec(splitOptions[0]);
                     var custom_node = matches[1].split(";");
 					var custom_text = custom_node[0];
@@ -1794,6 +1798,7 @@ function parseInnatePower(innatePowerHTML){
 
     //Innate Power Levels and Thresholds
     var currentLevels = innatePowerHTML.getElementsByTagName("level");
+	var regExp = /\(([^)]+)\)/;
     for (j = 0; j < currentLevels.length; j++){
         var currentThreshold = currentLevels[j].getAttribute("threshold");
 		
@@ -1827,8 +1832,14 @@ function parseInnatePower(innatePowerHTML){
 			
 			if(currentElement.toUpperCase()=='OR'){
 				currentThresholdPieces[k]='<threshold-or>or</threshold-or>'
-			}else if(currentElement.toUpperCase()=='COST'){
-				currentThresholdPieces[k]="<cost-threshold>Cost<cost-energy><value>-" + currentNumeral + "</value></cost-energy></cost-threshold>";
+			}else if(currentElement.toUpperCase().startsWith('COST')){
+				if(currentElement.split('(')[1]){
+					customCost = regExp.exec(currentElement)[1];
+					console.log(customCost)
+					currentThresholdPieces[k]="<cost-threshold>Cost<icon class='"+customCost+" cost-custom'><value>-" + currentNumeral + "</value></icon></cost-threshold>";
+				}else{
+					currentThresholdPieces[k]="<cost-threshold>Cost<cost-energy><value>-" + currentNumeral + "</value></cost-energy></cost-threshold>";
+				}
 			}else{
 				currentThresholdPieces[k]=currentNumeral+"{"+currentElement+"}";
 			}
