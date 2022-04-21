@@ -191,8 +191,8 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
           - Elements: 1-plant,2-fire
 		  - Icons: 2-wilds
 		  - Costs: cost-2
-		    - Example: [Volcano](../My Custom Content/My Spirit/OFFICIAL_Volcano Looming High.html): *\<level threshold="3-fire,cost-2"\>* or Many Minds *\<level threshold="1-air,2-animal,2-beasts"\>*
-		  - Cost (custom icon): cost(custom1)
+		    - Example: Volcano: *\<level threshold="3-fire,cost-2"\>* or Many Minds: *\<level threshold="1-air,2-animal,2-beasts"\>*
+		  - Cost (custom icon): cost(custom1)<- that could be any icon.
 			- Example: Spreading Rot: *\<level threshold="2-moon,3-water,2-animal,2-cost(custom1)"\>Add 1 {disease}.\<\/level\>*
 		  - Or: or
 		    - Example: Trickster: *\<level threshold="3-sun,OR,3-fire"\>*
