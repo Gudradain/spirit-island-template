@@ -273,7 +273,6 @@ rules{
   padding-top:6px;
   padding-left:15px;
   padding-right:15px;
-  height:241px;
   display:flex;
   flex-direction:column;
   align-items: center;
@@ -287,7 +286,8 @@ rules:last-child{
 
 threshold{
   position: relative;
-  display:block;
+  display:inline-flex;
+  flex-direction: column;
   width:353px;
 
   background-image: url('../images/threshold-back.png');
@@ -295,8 +295,8 @@ threshold{
   background-size: 100%;
 
   bottom:0px;
-  padding-bottom:10px;
-  padding-top:30px;
+  padding-bottom:5px;
+  padding-top:22px;
   overflow: hidden;
   border-bottom-right-radius:5px;
   border-bottom-left-radius:2px;
@@ -306,7 +306,7 @@ threshold-condition{
   display:block;
   font-size:27px;
   font-family:'Gobold Extra2', 'Noto Sans';
-  margin-bottom:10px;
+  margin-bottom:5px;
 }
 
 threshold-condition icon{
@@ -481,7 +481,7 @@ threshold icon.animal,
 threshold icon.any{
   width: 32px;
   height: 32px;
-  margin-bottom: -3px;
+  margin-bottom: -5px;
   margin-left: 0px;
   margin-right: 0px;
 }
