@@ -68,6 +68,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 ||Add Presence with Multiple Conditions|add-presence(x,y,z,...,*and/or*)|Add a Presence with multiple conditions y, z, etc at x Range, the last parameter must be 'or' or 'and'.|Sharp Fangs: <br>add-presence(3,jungle,beast,or)<br>Vengeance: <br>add-presence(2,town,city,blight,or)|
 ||Add Presence and/or Tokens|add-presence(x,token,y,and/or)|Add a Presence and/or a token y (beasts, disease, etc) at x Range.|Many Minds: <br>add-presence(3,token,beast,and)<br>Vengeance: <br>add-presence(1,token,disease,or)|
 ||Add Presence with Custom Text|add-presence(x,text,*your_text_here*)|Add a Presence at x Range. The presence text will read "Add a Presence *your_text_here*". The icon will be **!!!**||
+||Add Presence with Custom Text and Icon(s)|add-presence(x,text,*your_text_here*,y,...)|Add a Presence at x Range. The presence text will read "Add a Presence *your_text_here*". The icon will be y and any number of additional icons||
 |Gaining Elements|Gain One Element|gain-element(x)|Gain Element x, which can by all the elements or 'any' or 'star'|'star' is the Starlight element icon|
 ||Gain Multiple Elements|gain-element(x,y)|If y is a number, gain y of x Element||
 ||Gain Multiple Elements|gain-element(x,y,z,...)|If y is an element, gain x or y or z Elements|Lure: <br>gain-element(moon,air,plant)|
@@ -118,7 +119,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Deal Damage|Damage at Range|damage(x,y)|At range x, deal y Damage|Starlight: damage(0,2)|
 |Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
-||Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc)||
+||Custom Text with Any Icon|custom(*your_text_here*,x,...)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc). Can use more than 1 icon and they will appear in a row.||
 |Or Growth Options|Allows pair of two growth options|or(x,y)|x and y are growth options (like the ones above)|Fractured Days's growth: or(gain-1-time^2,gain-card-play(2))|
 |Presence Track Node|Puts the growth option in a presence track ring|presence-node(x)|x is a growth option (like the ones above)|presence-node(reclaim-one)|
 </details>

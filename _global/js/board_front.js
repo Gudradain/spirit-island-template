@@ -193,6 +193,7 @@ function parseGrowthTags(){
 				growthItem = classPieces[j].split("(")[0].split("^")[0];
 			}
 			
+			// Check for Presence Node in Growth
 			if(growthItem=='presence-node'){
 				let matches = regExpOuterParentheses.exec(classPieces[j])[1]
 				console.log(matches)
@@ -378,8 +379,16 @@ function parseGrowthTags(){
 						
                         if(presenceOptions[1]=='text'){
                             // User wants a custom text presence addition
-                            presenceIcon += "<span style='font-family: DK Snemand; font-size: 24pt; font-style: normal;'>!!!</span>";
-							presenceText += " "+presenceOptions[2];
+                            presenceText += " "+presenceOptions[2];
+							if(presenceOptions[3]){
+								presenceIcon += "<display-custom>"
+								for(i = 3; i < presenceOptions.length; i++){
+									presenceIcon += "<icon class='"+presenceOptions[i]+"'></icon>"
+								}
+								presenceIcon += "</display-custom>"
+							}else{
+								presenceIcon += "<span style='font-family: DK Snemand; font-size: 24pt; font-style: normal;'>!!!</span>";
+							}
                         } else if (presenceOptions[1]=='token'){
                             // User wants to add a token in growth
                             switch (presenceOptions[3]){
@@ -691,8 +700,12 @@ function parseGrowthTags(){
 					let customOptions = matches[1].split(",");
 					customIcon = customOptions[1];
 					customText = customOptions[0];
+					listIcons = ""
 					if (customIcon){
-						customIcon = "<icon class='"+customIcon+" custom-growth-icon'></icon>";
+						for(i = 1; i < customOptions.length; i++){
+							listIcons +="<icon class='"+customOptions[i]+" custom-growth-icon'></icon>";
+						}
+						customIcon = listIcons;
 					}else{
 						customIcon = "<div class='custom-scaling'>!!!</div>";
 					}
