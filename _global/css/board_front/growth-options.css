@@ -428,12 +428,15 @@ growth-text {
 growth-text icon.explorer,
 growth-text icon.town,
 growth-text icon.city,
-growth-text icon.explorer{
-	width:30px;
-	height:20px;
+growth-text icon.wilds,
+growth-text icon.disease,
+growth-text icon.strife,
+growth-text icon.beasts {
+    width: 24px;
+    height: 24px;
     margin-bottom: -3px;
-    margin-left: -9px;
-    margin-right: -5px;
+    margin-left: -4px;
+    margin-right: -4px;
 }
 
 .plus-text {
