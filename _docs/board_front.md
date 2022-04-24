@@ -155,7 +155,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 ||any, star|'any' is any element, 'star' is the Element icon from Starlight||
 |Element Markers|markerplus, markerminus|Gain or pay element markers|Shifting Memory energy track: values="0,1,2,3+markerplus,4,reclaim-one,5,6+markerplus"<br>Shifting Memory energy track: values="1,2,2,markerminus+markerminus+gain-card-play,3"|
 |Reclaim One|reclaim-one|Reclaim one card, can be used in combinations||
-|Combinations|separate with a '+'|Can include energy, cardplays, markers, move-presence, gain-range, and reclaim one. Can be more than 2 things.|Stone's cardplay track: values="1,earth,earth,earth+reclaim-one,earth+any,2+earth"|
+|Combinations|separate with a '+'|Can include energy, cardplays, markers, move-presence, gain-range, reclaim one, and custom. Can be more than 2 things.|Stone's cardplay track: values="1,earth,earth,earth+reclaim-one,earth+any,2+earth"|
 |Push/Gather|push(x), gather(x)|Push or Gather x from/into one of your Lands. x can be most token/entities (explorer, wilds, presence, etc).|Trickster's cardplay track: values="2,push(dahan),3,3,4,air,5"|
 ||push(x;y)|Push x or y from one of your Lands. Could do z but its not recommended|Finder's bottom track push(town;city)|
 |Isolate|isolate|Isolate one of your Lands.|Custom cardplay track: values="1,2,isolate,3,3,4,5"|

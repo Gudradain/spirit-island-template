@@ -173,14 +173,15 @@ function parseGrowthTags(){
 			
 			//Find a parenthesis and split out the string before it
 			let growthItem = classPieces[j].split("(")[0].split("^")[0];
-			
+			console.log("------")
+			console.log("Growth: "+growthItem+", "+j)
+			console.log("Growth Group:")
+			console.log(classPieces)
+			console.log("Option: "+classPieces[j])
 			// Check for OR
 			var regExpOuterParentheses = /\(\s*(.+)\s*\)/;
 			var regExpCommaNoParentheses = /,(?![^(]*\))/;
-			console.log('j='+j)
-			console.log(classPieces)
-			console.log('growth item= '+growthItem)
-			console.log(classPieces[j])
+
 			if(growthItem=='or'){
 				isOr = true;
 				let matches = regExpOuterParentheses.exec(classPieces[j])[1]
@@ -291,10 +292,12 @@ function parseGrowthTags(){
 					break;
 				}
 				case 'gain-energy': {
-					const matches = regExp.exec(classPieces[j]);
-
+					const matches = regExpOuterParentheses.exec(classPieces[j]);
+					console.log("Details on Gain Energy...")
+					console.log(matches)
 					const gainEnergyBy = matches[1];
 					let energyOptions = matches[1].split(",");
+					console.log(energyOptions)
                     let energyManyIconOpen = "" 
 					let energyManyIconClose = ""
 					if (isNaN(energyOptions[0]) || energyOptions.length!=1) {
@@ -351,7 +354,7 @@ function parseGrowthTags(){
 					break;
 				}
 				case 'add-presence': {
-                    const matches = regExp.exec(classPieces[j]);
+                    const matches = regExpOuterParentheses.exec(classPieces[j]);
 
                     let presenceOptions = matches[1].split(",");
                     let presenceRange = presenceOptions[0];
@@ -696,7 +699,7 @@ function parseGrowthTags(){
 					break;
 				}
                 case 'custom': {
-					const matches = regExp.exec(classPieces[j]);
+					const matches = regExpOuterParentheses.exec(classPieces[j]);
 					let customOptions = matches[1].split(",");
 					customIcon = customOptions[1];
 					customText = customOptions[0];
@@ -1344,7 +1347,6 @@ function IconName(str, iconNum = 1){
 		str = "increase-energy";
 	}
 	let plural = iconNum > 1 ? 's' : '';
-	console.log(str)
 	switch(str){
 
 		case 'gain-power-card':
