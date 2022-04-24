@@ -71,10 +71,42 @@ function resize()
 	}
 	
 	//Rules
-	rulesBlocks = document.querySelectorAll("rules");
-	for(let i = 0; i < rulesBlocks.length; i++){
-		dynamicSizing(rulesBlocks[i])
+	rulesContainers = document.querySelectorAll("rules-container");
+	
+	for(let i = 0; i < rulesContainers.length; i++){
+		/* dynamicSizing(rulesBlocks[i]) */
+		rulesBlock = rulesContainers[i].querySelectorAll("rules")[0];
+		thresholdBlock = rulesContainers[i].querySelectorAll("threshold")[0];
+		limitingBlock = thresholdBlock == undefined ? rulesBlock : thresholdBlock;
+		console.log('blocks')
+		console.log(rulesBlock)
+		console.log(thresholdBlock)
+		console.log(limitingBlock)
+		let j = 0
+		while (checkOverflow(limitingBlock)){
+			var style = window.getComputedStyle(limitingBlock, null).getPropertyValue('font-size');
+			var line = window.getComputedStyle(limitingBlock, null).getPropertyValue('line-height');
+			var fontSize = parseFloat(style);
+			var lineHeight = parseFloat(line);
+			rulesBlock.style.fontSize = (fontSize - 1) + 'px';
+			rulesBlock.style.lineHeight = (lineHeight - 1) + 'px';
+			limitingBlock.style.fontSize = (fontSize - 1) + 'px';
+			limitingBlock.style.lineHeight = (lineHeight - 1) + 'px';
+			// safety valve
+			j += 1
+			if (j>10){ 
+				console.log('safety')
+				break;
+			}
+		}
+	
 	}
+	
+		//Threshold
+/* 	thresholdBlocks = document.querySelectorAll("threshold");
+	for(let i = 0; i < thresholdBlocks.length; i++){
+		dynamicSizing(thresholdBlocks[i])
+	} */
 }
 
 function setThreshold(card)
@@ -166,13 +198,13 @@ function getRulesNew(quickCard)
   rulesHTML += "</rules>"
 
   var threshold = quickCard.querySelectorAll('threshold')[0]
-  console.log("threshold? ="+threshold)
+/*   console.log("threshold? ="+threshold)
   console.log(threshold)
-  console.log(quickCard.querySelectorAll('threshold'))
+  console.log(quickCard.querySelectorAll('threshold')) */
   thresholdInner = ""
   if(threshold){
 	  thresholdLines = threshold.innerHTML.split("\n")
-	  console.log(thresholdLines)
+	  // console.log(thresholdLines)
 	  for (let i = 0; i < thresholdLines.length; i++) {
 		  if(thresholdLines[i]){
 			thresholdInner += "<div>"+thresholdLines[i]+"</div>"
@@ -239,9 +271,9 @@ function checkOverflow(el, maxSize=el.clientHeight) {
     }
     let isOverflowing = maxSize < el.scrollHeight
     el.style.overflow = curOverflow
-	console.log('el.clientHeight='+el.clientHeight)
+/* 	console.log('el.clientHeight='+el.clientHeight)
 	console.log('el.scrollHeight='+el.scrollHeight)
-	console.log('isOverflowing?='+isOverflowing)
+	console.log('isOverflowing?='+isOverflowing) */
 	
     return isOverflowing
 

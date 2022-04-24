@@ -9,8 +9,26 @@ window.onload = function startMain(){
 
 function resize() {
 	dynamicSizing(document.querySelectorAll('lore-description')[0]);
-	dynamicSizing(document.querySelectorAll('setup-description')[0]);
-	dynamicSizing(document.querySelectorAll('play-style-description')[0]);
+	
+	secondContainer = document.querySelectorAll('second-section-container')[0]
+	setup = document.querySelectorAll('setup-description')[0]
+	playstyle = document.querySelectorAll('play-style-description')[0]
+	console.log('resizing text for setup and playstyle')
+	let j = 0
+	while (checkOverflow(secondContainer)){
+		var style = window.getComputedStyle(setup, null).getPropertyValue('font-size');
+		var fontSize = parseFloat(style); 
+		setup.style.fontSize = (fontSize - 1) + 'px';
+		playstyle.style.fontSize = (fontSize - 1) + 'px';
+		// safety valve
+		j += 1
+		if (j>8){ 
+			console.log('safety')
+			break;
+		}
+	}
+	// dynamicSizing(document.querySelectorAll('setup-description')[0]);
+	// dynamicSizing(document.querySelectorAll('play-style-description')[0]);
 }
 
 function adjustComplexityValue() {

@@ -162,6 +162,7 @@ function parseGrowthTags(){
 		
 		// Create some tools for 'or' growth options
 		let isOr = false;
+		let isPresenceNode = false;
 		let orTextHold = ""
 		let orIconsHold = ""
 		let orGrowthOpenHold = ""
@@ -191,6 +192,17 @@ function parseGrowthTags(){
 				console.log(j)
 				growthItem = classPieces[j].split("(")[0].split("^")[0];
 			}
+			
+			// Check for Presence Node in Growth
+			if(growthItem=='presence-node'){
+				let matches = regExpOuterParentheses.exec(classPieces[j])[1]
+				console.log(matches)
+				isPresenceNode = true;
+				classPieces[j]=matches
+				growthItem = classPieces[j].split("(")[0].split("^")[0];
+			}
+			
+			console.log('growth item= '+growthItem)
 			
 			//Find if a growth effect is repeated (Fractured Days)
 			repeatOpen = ""
@@ -294,13 +306,11 @@ function parseGrowthTags(){
 					let x_is_num = !isNaN(energyOptions[0]);
 					let x_is_zero = (energyOptions[0]==0);
 					let x_is_text = energyOptions[0]=='text';
-					let x_is_icon = !(x_is_num  || x_is_text);
 					let x_is_flat = x_is_num && !x_is_zero;
 					let y_is_text = energyOptions[1]!==undefined ? energyOptions[1]=='text' : false;
 					let has_custom_text = (x_is_text || y_is_text);
 					let custom_text = ""
 					if(has_custom_text){custom_text += y_is_text ? energyOptions[2]:energyOptions[1]}
-
 					
 					shift = 0;
 					shift += (x_is_num) ? 1 : 0;
@@ -369,8 +379,16 @@ function parseGrowthTags(){
 						
                         if(presenceOptions[1]=='text'){
                             // User wants a custom text presence addition
-                            presenceIcon += "<span style='font-family: DK Snemand; font-size: 24pt; font-style: normal;'>!!!</span>";
-							presenceText += " "+presenceOptions[2];
+                            presenceText += " "+presenceOptions[2];
+							if(presenceOptions[3]){
+								presenceIcon += "<display-custom>"
+								for(i = 3; i < presenceOptions.length; i++){
+									presenceIcon += "<icon class='"+presenceOptions[i]+"'></icon>"
+								}
+								presenceIcon += "</display-custom>"
+							}else{
+								presenceIcon += "<span style='font-family: DK Snemand; font-size: 24pt; font-style: normal;'>!!!</span>";
+							}
                         } else if (presenceOptions[1]=='token'){
                             // User wants to add a token in growth
                             switch (presenceOptions[3]){
@@ -654,9 +672,12 @@ function parseGrowthTags(){
 							var elementIcons = ""
 							for (var i = 0; i < numLocs; i++) {
 								pos_angle = i * 2*Math.PI / numLocs - (Math.PI)*(1-(1/6));
-								x_loc = rad_size * Math.cos(pos_angle) - 30;
+								x_loc = 1.3*rad_size * Math.cos(pos_angle) - 30;
 								y_loc = rad_size * Math.sin(pos_angle) - 20;
-								let element_loc = "style='transform: translateY("+y_loc+"px) translateX("+x_loc+"px)'";
+								theta = -Math.PI/12
+								x_loc_prime = Math.cos(theta)*x_loc + Math.sin(theta)*y_loc
+								y_loc_prime = -Math.sin(theta)*x_loc + Math.cos(theta)*y_loc
+								let element_loc = "style='transform: translateY("+y_loc_prime+"px) translateX("+x_loc_prime+"px)'";
 								let cur_element = elementOptions.at(-1) === 'and'
 									? elementOptions[i]
 									: elementOptions[0]
@@ -679,8 +700,12 @@ function parseGrowthTags(){
 					let customOptions = matches[1].split(",");
 					customIcon = customOptions[1];
 					customText = customOptions[0];
+					listIcons = ""
 					if (customIcon){
-						customIcon = "<icon class='"+customIcon+" custom-growth-icon'></icon>";
+						for(i = 1; i < customOptions.length; i++){
+							listIcons +="<icon class='"+customOptions[i]+" custom-growth-icon'></icon>";
+						}
+						customIcon = listIcons;
 					}else{
 						customIcon = "<div class='custom-scaling'>!!!</div>";
 					}
@@ -689,6 +714,65 @@ function parseGrowthTags(){
 					break;
 				}
 				case 'fear': {
+					const matches = regExp.exec(classPieces[j]);
+					const gainFearBy = matches[1];
+					let fearOptions = matches[1].split(",");
+                    let fearManyIconOpen = "" 
+					let fearManyIconClose = ""
+					if (isNaN(fearOptions[0]) || fearOptions.length!=1) {
+							fearManyIconOpen = "<growth-cell-double>"
+							fearManyIconClose = "</growth-cell-double>"
+					}
+					let fearGrowthIcons = ""
+					let fearGrowthText = ""
+					let x_is_num = !isNaN(fearOptions[0]);
+					let x_is_zero = (fearOptions[0]==0);
+					let x_is_text = fearOptions[0]=='text';
+					let x_is_flat = x_is_num && !x_is_zero;
+					let y_is_text = fearOptions[1]!==undefined ? fearOptions[1]=='text' : false;
+					let has_custom_text = (x_is_text || y_is_text);
+					let custom_text = ""
+					if(has_custom_text){custom_text += y_is_text ? fearOptions[2]:fearOptions[1]}
+					
+					shift = 0;
+					shift += (x_is_num) ? 1 : 0;
+					shift += (has_custom_text) ? 2 : 0;
+					let flatFear = fearOptions[0];
+					let scaling_entity = fearOptions[shift];
+					let scaling_value = fearOptions[shift+1]!==undefined ? fearOptions[shift+1] : 1;
+					if (!isNaN(scaling_entity)){
+						scaling_value=scaling_entity;
+						scaling_entity = undefined;
+					}
+					var customScalingIcon = (scaling_entity !== undefined) ? ("<icon class='" + scaling_entity + "'></icon>") : "<div class='custom-scaling'>!!!</div>"
+					
+					// Flat Fear
+					if(x_is_flat){
+						fearGrowthIcons = "<growth-fear><value>" + flatFear + "</value></growth-fear>"
+						if(scaling_entity){
+							fearGrowthText = "Generate "+flatFear+" Fear"
+						}else{
+							fearGrowthText = "Generate Fear"
+						}
+					}
+					
+					// Scaling Fear
+					if(scaling_entity || has_custom_text){
+						fearGrowthIcons += "<fear-per><value>"+scaling_value+"</value></fear-per>"
+						fearGrowthIcons += "<gain-per-fear><ring-icon>"+customScalingIcon+"</ring-icon></gain-per-fear>";
+						if(x_is_flat){
+							fearGrowthText += " and +"+scaling_value+" more per "
+						}else{
+							fearGrowthText += "Generate "+scaling_value+" Fear per "
+						}
+						fearGrowthText += has_custom_text ? custom_text : Capitalise(scaling_entity);
+						fearGrowthText += elementNames.has(scaling_entity) ? ' Showing' : '';
+					}
+					growthIcons = fearManyIconOpen + fearGrowthIcons + fearManyIconClose
+					growthText = fearGrowthText
+					break;
+				}
+/* 				case 'fear': {
 					const matches = regExp.exec(classPieces[j]);
 
 					let fearOptions = matches[1].split(",");
@@ -740,7 +824,7 @@ function parseGrowthTags(){
 					growthIcons = fearManyIconOpen + fearGrowthIcons + fearManyIconClose
 					growthText = fearGrowthText
 					break;
-				}
+				} */
 				case 'gain-range': {
 					const matches = regExp.exec(classPieces[j]);
 					let rangeOptions = matches[1].split(",");
@@ -873,6 +957,11 @@ function parseGrowthTags(){
 			if (repeatText){
 				growthIcons = '<repeat-wrapper>' + repeatOpen + growthIcons+'</repeat-wrapper>';
 			}
+			if(isPresenceNode){
+				growthIcons = '<presence-node class="growth"><ring-icon>' + growthIcons+'</ring-icon></presence-node>';
+				isPresenceNode = false;
+			}
+			
 			//Handle Ors
 			if(isOr){
 				// break out the ICON and TEXT
@@ -1124,6 +1213,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     subText = "Add 1 "+Capitalise(tokenAdd) + " to 1 of your Lands";
                     break;
 				case 'custom':
+					console.log(splitOptions[0])
                     var matches = regExp.exec(splitOptions[0]);
                     var custom_node = matches[1].split(";");
 					var custom_text = custom_node[0];
@@ -1703,6 +1793,7 @@ function parseInnatePower(innatePowerHTML){
 
     //Innate Power Levels and Thresholds
     var currentLevels = innatePowerHTML.getElementsByTagName("level");
+	var regExp = /\(([^)]+)\)/;
     for (j = 0; j < currentLevels.length; j++){
         var currentThreshold = currentLevels[j].getAttribute("threshold");
 		
@@ -1736,8 +1827,14 @@ function parseInnatePower(innatePowerHTML){
 			
 			if(currentElement.toUpperCase()=='OR'){
 				currentThresholdPieces[k]='<threshold-or>or</threshold-or>'
-			}else if(currentElement.toUpperCase()=='COST'){
-				currentThresholdPieces[k]="<cost-threshold>Cost<cost-energy><value>-" + currentNumeral + "</value></cost-energy></cost-threshold>";
+			}else if(currentElement.toUpperCase().startsWith('COST')){
+				if(currentElement.split('(')[1]){
+					customCost = regExp.exec(currentElement)[1];
+					console.log(customCost)
+					currentThresholdPieces[k]="<cost-threshold>Cost<icon class='"+customCost+" cost-custom'><value>-" + currentNumeral + "</value></icon></cost-threshold>";
+				}else{
+					currentThresholdPieces[k]="<cost-threshold>Cost<cost-energy><value>-" + currentNumeral + "</value></cost-energy></cost-threshold>";
+				}
 			}else{
 				currentThresholdPieces[k]=currentNumeral+"{"+currentElement+"}";
 			}

@@ -68,6 +68,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 ||Add Presence with Multiple Conditions|add-presence(x,y,z,...,*and/or*)|Add a Presence with multiple conditions y, z, etc at x Range, the last parameter must be 'or' or 'and'.|Sharp Fangs: <br>add-presence(3,jungle,beast,or)<br>Vengeance: <br>add-presence(2,town,city,blight,or)|
 ||Add Presence and/or Tokens|add-presence(x,token,y,and/or)|Add a Presence and/or a token y (beasts, disease, etc) at x Range.|Many Minds: <br>add-presence(3,token,beast,and)<br>Vengeance: <br>add-presence(1,token,disease,or)|
 ||Add Presence with Custom Text|add-presence(x,text,*your_text_here*)|Add a Presence at x Range. The presence text will read "Add a Presence *your_text_here*". The icon will be **!!!**||
+||Add Presence with Custom Text and Icon(s)|add-presence(x,text,*your_text_here*,y,...)|Add a Presence at x Range. The presence text will read "Add a Presence *your_text_here*". The icon will be y and any number of additional icons||
 |Gaining Elements|Gain One Element|gain-element(x)|Gain Element x, which can by all the elements or 'any' or 'star'|'star' is the Starlight element icon|
 ||Gain Multiple Elements|gain-element(x,y)|If y is a number, gain y of x Element||
 ||Gain Multiple Elements|gain-element(x,y,z,...)|If y is an element, gain x or y or z Elements|Lure: <br>gain-element(moon,air,plant)|
@@ -88,10 +89,11 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 ||Gain Energy per Thing|gain-energy(x)|Gain 1 Energy per Thing x (such as Elements, Sacred Sites, etc)|gain-energy(water)|
 ||Gain Energy per Thing plus Flat Energy|gain-energy(x,y)|Gain x Energy plus 1 Energy per Thing y|Wildfire: gain-energy(2,fire)|
 ||Gain Multiple Energy per Thing plus Flat Energy|gain-energy(x,y,z)|Gain x Energy plus z Energy per Thing y||
-||Gain Energy per Custom Item|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
-||Gain Energy per Custom Item w/ Icon|gain-energy(text,*your_text_here*,x)|Gain 1 Energy per condition of your choosing. Icon will be x.||
 ||Gain Energy per Custom Item Plus Flat Energy|gain-energy(x,text,*your_text_here*)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be a !!!.||
 ||Gain Energy per Custom w/ Icon Item Plus Flat Energy|gain-energy(x,text,*your_text_here*,y)|Gain x Energy plus 1 Energy per condition of your choosing. Icon will be y.||
+||Gain Energy per Custom Item|gain-energy(text,*your_text_here*)|Gain 1 Energy per condition of your choosing. Icon will be a !!!.||
+||Gain Energy per Custom Item w/ Icon|gain-energy(text,*your_text_here*,y)|If y is Entity, gain 1 Energy per Entity w/ your custom text. If y is number, gain y Energy per !!! w/ your custom text.||
+||Gain Multiple Energy per Custom Item w/ Icon|gain-energy(text,*your_text_here*,y,z)|Gain z Energy per Entity y of your choosing.||
 ||Gain Energy per Card Play|energy-per-play|Gain 1 Energy per Card Play.|As seen on Trickster|
 |Add Tokens|Add One Token|add-token(x,y)|At range x add token type y|add-token(2,beast)|
 ||Add Multiple Token of One Type|add-token(x,y, z)|Add z tokens of y type at range x|add-token(3,wilds,2)|
@@ -117,9 +119,9 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Deal Damage|Damage at Range|damage(x,y)|At range x, deal y Damage|Starlight: damage(0,2)|
 |Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
-||Custom Text with Any Icon|custom(*your_text_here*,x)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc)||
+||Custom Text with Any Icon|custom(*your_text_here*,x,...)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc). Can use more than 1 icon and they will appear in a row.||
 |Or Growth Options|Allows pair of two growth options|or(x,y)|x and y are growth options (like the ones above)|Fractured Days's growth: or(gain-1-time^2,gain-card-play(2))|
-
+|Presence Track Node|Puts the growth option in a presence track ring|presence-node(x)|x is a growth option (like the ones above)|presence-node(reclaim-one)|
 </details>
 
 ### Presence Tracks
@@ -190,7 +192,9 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
           - Elements: 1-plant,2-fire
 		  - Icons: 2-wilds
 		  - Costs: cost-2
-		    - Example: Volcano: *\<level threshold="3-fire,cost-2"\>* or Many Minds *\<level threshold="1-air,2-animal,2-beasts"\>*
+		    - Example: Volcano: *\<level threshold="3-fire,cost-2"\>* or Many Minds: *\<level threshold="1-air,2-animal,2-beasts"\>*
+		  - Cost (custom icon): cost(custom1)<- that could be any icon.
+			- Example: Spreading Rot: *\<level threshold="2-moon,3-water,2-animal,2-cost(custom1)"\>Add 1 {disease}.\<\/level\>*
 		  - Or: or
 		    - Example: Trickster: *\<level threshold="3-sun,OR,3-fire"\>*
 		- long: if you add 'long' to the level tag, it will allow the description to spill over into the next column (like Volcano)

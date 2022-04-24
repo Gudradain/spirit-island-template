@@ -406,12 +406,14 @@ info-target spirit {
 }
 
 innate-info icon {
-  width: 50px;
-  height: 40px;
+  height: 30px;
+  width: 30px;
   margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
   margin-top: 0px;
+}
+
+innate-info icon.wilds {
+  width: 36px;
 }
 
 innate-info icon.sacred-site {
@@ -475,7 +477,26 @@ cost-energy {
 	margin-bottom: -15px;
 }
 
-cost-energy value{
+.cost-custom {
+    width: 45px;
+    height: 45px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: inline-block;
+    z-index: 1;
+    position: relative;
+    top: -34px;
+    left: -33px;
+	margin-bottom: -15px;
+	margin-left: 1px;
+}
+
+.cost-custom>value{
+	text-shadow: -0.5px 0.5px 0 #fff, 0.5px 0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px -0.5px 0 #fff;
+}
+
+cost-energy value, cost-threshold value{
   font-family: 'Gobold Extra2', 'Noto Sans';
   font-weight: normal;
     font-style: normal;

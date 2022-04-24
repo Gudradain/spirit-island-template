@@ -62,8 +62,8 @@ icon.beast{background-image: url('../images/board/beast.png'); }
 icon.beasts{background-image: url('../images/board/beast.png'); }
 icon.disease{background-image: url('../images/25px-Diseaseicon.png'); }
 icon.strife{background-image: url('../images/25px-Strifeicon.png'); }
-icon.wild{background-image: url('../images/25px-Wildicon.png'); }
-icon.wilds{background-image: url('../images/25px-Wildicon.png'); }
+icon.wild{background-image: url('../images/board/wilds.png'); }
+icon.wilds{background-image: url('../images/board/wilds.png'); }
 
 icon.fast{background-image: url('../images/50px-Fasticon.png');}
 icon.slow{background-image: url('../images/50px-Slowicon.png');}

@@ -117,6 +117,10 @@ growth-cell icon {
   height: 90px;
 }
 
+presence-node.growth {
+  margin-top: -39px;
+}
+
 plus-presence {
 	display: block;
 }
@@ -260,7 +264,8 @@ presence-req icon.town, presence-req icon.city, presence-req icon.blight,
 presence-req icon.dahan, presence-req icon.invaders,
 presence-req icon.presence, presence-req icon.wilds, presence-req icon.beasts,
 presence-req icon.disease, presence-req icon.strife, presence-req icon.explorer, 
-presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus-1{
+presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus-1,
+presence-req icon.custom1, presence-req icon.custom2, presence-req icon.custom3 {
 	display: inline-block;
 	height: 37px;
 	width: 37px;
@@ -311,14 +316,17 @@ presence-req icon.sand-mountain, presence-req icon.wetland-mountain, presence-re
 	transform: translateY(0px) translateX(6px);
 }
 
-
-
 presence-req {
   font-family: 'Lato SemiBold';
   font-size: 14pt;
   font-style: italic;
   display: block;
   height:45px;
+}
+
+display-custom {
+	display: inline-flex;
+    flex-direction: row;
 }
 
 growth-cell icon.make-fast {
@@ -420,12 +428,15 @@ growth-text {
 growth-text icon.explorer,
 growth-text icon.town,
 growth-text icon.city,
-growth-text icon.explorer{
-	width:30px;
-	height:20px;
+growth-text icon.wilds,
+growth-text icon.disease,
+growth-text icon.strife,
+growth-text icon.beasts {
+    width: 24px;
+    height: 24px;
     margin-bottom: -3px;
-    margin-left: -9px;
-    margin-right: -5px;
+    margin-left: -4px;
+    margin-right: -4px;
 }
 
 .plus-text {
@@ -930,7 +941,7 @@ custom-growth-icon {
     width: auto;
     height: 90px;
     display: inline-flex;
-    flex-direction: column-reverse;
+    flex-direction: row;
     justify-content: space-around;
 }
 
