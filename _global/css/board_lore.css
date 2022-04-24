@@ -84,6 +84,7 @@ second-section-container{
     position: absolute;
     left: 900px;
     top: 465px;
+	height: 363px;
 }
 
 third-section-container{
@@ -127,12 +128,13 @@ setup-description{
 setup-description icon, setup-description icon.fire, setup-description icon.earth, setup-description icon.animal, 
 setup-description icon.water, setup-description icon.air, setup-description icon.sun, 
 setup-description icon.plant, setup-description icon.moon, setup-description icon.any{
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
     margin-bottom: -9px;
     margin-left: -5px;
     margin-right: 0px;
 	margin-top: -10px;
+	display: inline-block;
 }
 
 play-style{
