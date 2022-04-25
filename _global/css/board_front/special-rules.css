@@ -202,6 +202,11 @@ presence-node special-ring-icon {
   justify-content: center;
 }
 
+ul {
+	margin-block-end: 0px;
+	margin-block-start: 0px;
+}
+
 special-rules-track icon.sun { background-image: url('../../images/board/Sun.png'); }
 special-rules-track icon.moon { background-image: url('../../images/board/Moon.png'); }
 special-rules-track icon.fire { background-image: url('../../images/board/Fire.png'); }
@@ -212,3 +217,5 @@ special-rules-track icon.earth { background-image: url('../../images/board/Earth
 special-rules-track icon.animal { background-image: url('../../images/board/Animal.png'); }
 special-rules-track icon.star{ background-image: url('../../images/board/NewIcons/Element Star.png'); }
 special-rules-track icon.any { background-image: url('../../images/board/Any.png'); }
+
+
