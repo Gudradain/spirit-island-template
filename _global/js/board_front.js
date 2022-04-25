@@ -1615,7 +1615,6 @@ function dynamicCellWidth() {
         }
     }
 
-
     const subGrowthTitle = document.getElementsByTagName('sub-section-title')
     let position = 0
     for (let i = 0; i < subGrowthTitle.length; i++) {
@@ -1623,7 +1622,8 @@ function dynamicCellWidth() {
         subGrowthTitle[i].style.width = `${headerWith[i]}px`
         position += headerWith[i] + headerAdditionalWidth[i]
     }
-	
+
+
 	// Innate Power Sizing
 	// Innate Power Notes (scale font size)
 	noteBlocks = document.getElementsByTagName("note");
@@ -1652,7 +1652,6 @@ function dynamicCellWidth() {
         icon = thresholds[i].getElementsByTagName("icon");
         iconCount = icon.length;
         dynamicThresholdWidth = (iconCount * ICONWIDTH) + (iconCount * 12);
-        thresholds[i].style.width = dynamicThresholdWidth + "px";
 		
 		// Check if the threshold width is overflowing. If so, just let it size itself...
 		var thresholdHeight = thresholds[i].offsetHeight
@@ -1660,7 +1659,8 @@ function dynamicCellWidth() {
 			thresholds[i].style.width = "auto";
 		}
 		
-		outerThresholdWidth[i] = dynamicThresholdWidth + parseFloat(window.getComputedStyle(thresholds[i]).getPropertyValue('margin-right').replace(/px/, ""))
+		outerThresholdWidth[i] = thresholds[i].clientWidth + parseFloat(window.getComputedStyle(thresholds[i]).getPropertyValue('margin-right').replace(/px/, ""));
+		console.log('client width = '+outerThresholdWidth[i]);
     }
 	
 	// Innate Power Descriptions
