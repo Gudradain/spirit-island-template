@@ -110,11 +110,12 @@ function createPowerProperties(){
 		  document.getElementsByTagName("summary-of-powers")[0].appendChild(powerTable)
 	}
 	
-	var offenseTag = document.getElementsByClassName("offense")[0];
-	var controlTag = document.getElementsByClassName("control")[0];
-	var fearTag = document.getElementsByClassName("fear")[0];
-	var defenseTag = document.getElementsByClassName("defense")[0];
-	var utilityTag = document.getElementsByClassName("utility")[0];
+	var summaryOfPowers = document.getElementsByTagName("summary-of-powers")[0]
+	var offenseTag = summaryOfPowers.getElementsByClassName("offense")[0];
+	var controlTag = summaryOfPowers.getElementsByClassName("control")[0];
+	var fearTag = summaryOfPowers.getElementsByClassName("fear")[0];
+	var defenseTag = summaryOfPowers.getElementsByClassName("defense")[0];
+	var utilityTag = summaryOfPowers.getElementsByClassName("utility")[0];
 
 	var offenseValue = offenseTag.getAttribute("value");
 	var controlValue = controlTag.getAttribute("value");

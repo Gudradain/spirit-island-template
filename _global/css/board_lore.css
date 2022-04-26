@@ -134,7 +134,7 @@ setup-description icon.plant, setup-description icon.moon, setup-description ico
     width: 32px;
     height: 32px;
     margin-bottom: -9px;
-    margin-left: -5px;
+    margin-left: -3px;
     margin-right: 0px;
 	margin-top: -10px;
 	display: inline-block;
@@ -228,8 +228,8 @@ tr.power-bar td div{
     height: 115px;
 }
 
-.offense, .control, .fear, 
-.defense, .utility{
+summary-of-powers .offense, summary-of-powers .control, summary-of-powers .fear, 
+summary-of-powers .defense, summary-of-powers .utility{
     width: 60px;
     margin-left: 27px;
 	background-repeat: no-repeat;
@@ -369,13 +369,8 @@ icon.disease { background-image: url('../images/board/75px_disease.png');}
 icon.wilds { background-image: url('../images/board/wilds.png');}
 icon.badlands { background-image: url('../images/board/48px_badlands.png'); }
 icon.resilience { background-image: url('../images/board/NewIcons/Resilience.png');}
-icon.fear {
-    background-image: url('../images/board/fear.png');
-	margin:auto;
-	margin-top: 25px;
-    margin-bottom: 30px;
-	background-size: contain;
-	}
+
+icon.fear { background-image: url('../images/board/fear.png');	}
 icon.blight { background-image: url('../images/board/75px_blight.png');}
 
 second-section-container icon.sun {background-image: url(../images/board/element_simple_sun.png);}
