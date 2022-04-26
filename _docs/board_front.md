@@ -17,8 +17,8 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 - Range icons (range-0, range-1, range-2, range-3, range-4, jungle-presence, sand-presence, mountain-presence, wetland-presence)
 - Targeting icons (player-spirit)  
 - Power effect icon (isolate, range-plus-1, range-plus-2, range-plus-3)
-- Growth icons (see [Growth](#growth) section for examples)
-- Presence track icons (see Presence Track section for examples)
+- Growth icons (see [Growth](#growth) section and [Supported Growth Group Values](#supported-growth-group-values) for examples)
+- Presence track icons (see [Presence Track](#presence-track) section for examples)
 - Custom icons can be added in the \<head\>\<style\> section at the top of the spirit board HTML
 	 - Save the custom icon image file in the same folder as the HTML
 	 - Update the custom icon reference with the .png or .jpg of the custom icon
