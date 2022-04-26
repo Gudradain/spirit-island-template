@@ -1847,6 +1847,14 @@ function parseInnatePower(innatePowerHTML){
 			
 			if(currentElement.toUpperCase()=='OR'){
 				currentThresholdPieces[k]='<threshold-or>or</threshold-or>'
+			}else if(currentElement.toUpperCase().startsWith('TEXT')){
+				if(currentElement.split('(')[1]){
+					customText = regExp.exec(currentElement)[1];
+					console.log(customText)
+					currentThresholdPieces[k]=currentNumeral+" "+customText;
+				}else{
+					currentThresholdPieces[k]=currentNumeral+" "+"X";
+				}
 			}else if(currentElement.toUpperCase().startsWith('COST')){
 				if(currentElement.split('(')[1]){
 					customCost = regExp.exec(currentElement)[1];
