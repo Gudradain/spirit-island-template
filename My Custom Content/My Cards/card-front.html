@@ -15,6 +15,7 @@
     elements="sun,air,earth"
     range="0"
     target="{no-sand}"
+	target-title="TARGET LAND"
     artist-name="ARTIST NAME">
     <rules>
       Gather 1 {explorer}/{town}.
@@ -32,6 +33,7 @@
     range="none"
     target="YOURSELF"
     target-title="TARGET"
+	target-title="TARGET LAND"
     artist-name="ARTIST NAME">
     <rules>
         {terror-2}: Defend 3 in every {sand}<br /> with your {presence}.
@@ -46,6 +48,7 @@
     elements="sun,water,earth"
     range="1"
     target="ANY"
+	target-title="TARGET LAND"
     artist-name="ARTIST NAME">
     <rules>
         1 Damage.
@@ -61,6 +64,7 @@
     elements="sun,fire,animal"
     range="sand-presence,1"
     target="{no-dahan}"
+	target-title="TARGET LAND"
     artist-name="ARTIST-NAME">
     <rules>
         Gather 2 <icon class="dahan"></icon>.
@@ -71,6 +75,20 @@
       Push 2 {dahan}. Deal 1 Damage to each {dahan} pushed this way. Deal 1 Damage in each land pushed into.
     </threshold>
   </quick-card>
-
+<quick-card
+    speed="slow"
+    cost="1"
+    name="Scattered on the Winds"
+    image="in-woods.jpg"
+    elements="sun,air,plant,animal"
+    range="1"
+    target="{no-blight}"
+    target-title="TARGET LAND"
+    artist-name="ARTIST NAME">
+    <rules>Add a {wilds}.</rules>
+    <threshold condition="3-air">
+    You may push a {beast}. Add a {wilds} in the land pushed to.
+    </threshold>
+  </quick-card>
 </body>
 </html>

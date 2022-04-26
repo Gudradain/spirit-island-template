@@ -56,11 +56,11 @@ icon.no::before {
 icon.range{background-image: url('../images/50px-Rangeicon.png');}
 icon.spirit{background-image: url('../images/50px-Spiriticon.png'); }
 
-icon.badland{background-image: url('../images/25px-Badlandsicon.png'); }
-icon.badlands{background-image: url('../images/25px-Badlandsicon.png'); }
+icon.badland{background-image: url('../images/board/48px_badlands.png'); }
+icon.badlands{background-image: url('../images/board/48px_badlands.png'); }
 icon.beast{background-image: url('../images/board/beast.png'); }
 icon.beasts{background-image: url('../images/board/beast.png'); }
-icon.disease{background-image: url('../images/25px-Diseaseicon.png'); }
+icon.disease{background-image: url('../images/board/75px_disease.png'); }
 icon.strife{background-image: url('../images/25px-Strifeicon.png'); }
 icon.wild{background-image: url('../images/board/wilds.png'); }
 icon.wilds{background-image: url('../images/board/wilds.png'); }
@@ -77,7 +77,7 @@ icon.town{background-image: url('../images/25px-Townicon.png');}
 icon.city{background-image: url('../images/25px-Citiyicon.png');}
 
 icon.presence-white {background-image: url('../images/25px-Presenceicon-inverse.png'); margin-left:3px; margin-right:3px;}
-icon.presence {background-image: url('../images/25px-Presenceicon.png');}
+icon.presence {background-image: url('../images/board/50px_presence.png');}
 icon.destroyed-presence {background-image: url('../images/board/NewIcons/Misc Presence Destroy.png');}
 icon.sacred-site {background-image: url('../images/50px-Sacredsiteicon.png') }
 

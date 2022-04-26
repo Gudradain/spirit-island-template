@@ -77,21 +77,22 @@ function resize()
 		/* dynamicSizing(rulesBlocks[i]) */
 		rulesBlock = rulesContainers[i].querySelectorAll("rules")[0];
 		thresholdBlock = rulesContainers[i].querySelectorAll("threshold")[0];
-		limitingBlock = thresholdBlock == undefined ? rulesBlock : thresholdBlock;
-		console.log('blocks')
-		console.log(rulesBlock)
-		console.log(thresholdBlock)
+		limitingBlock = thresholdBlock == undefined ? rulesContainers[i] : thresholdBlock;
+		console.log('limiting block is...')
 		console.log(limitingBlock)
 		let j = 0
 		while (checkOverflow(limitingBlock)){
-			var style = window.getComputedStyle(limitingBlock, null).getPropertyValue('font-size');
-			var line = window.getComputedStyle(limitingBlock, null).getPropertyValue('line-height');
+			console.log("Resizing... "+i)
+			var style = window.getComputedStyle(rulesBlock, null).getPropertyValue('font-size');
+			var line = window.getComputedStyle(rulesBlock, null).getPropertyValue('line-height');
 			var fontSize = parseFloat(style);
 			var lineHeight = parseFloat(line);
 			rulesBlock.style.fontSize = (fontSize - 1) + 'px';
 			rulesBlock.style.lineHeight = (lineHeight - 1) + 'px';
-			limitingBlock.style.fontSize = (fontSize - 1) + 'px';
-			limitingBlock.style.lineHeight = (lineHeight - 1) + 'px';
+			if(thresholdBlock){
+				thresholdBlock.style.fontSize = (fontSize - 1) + 'px';
+				thresholdBlock.style.lineHeight = (lineHeight - 1) + 'px';
+			}
 			// safety valve
 			j += 1
 			if (j>10){ 

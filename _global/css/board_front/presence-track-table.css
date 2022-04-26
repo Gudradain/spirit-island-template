@@ -280,6 +280,21 @@ icon-multi {
 	margin-top: 0px;
 }
 
+custom-presence-track-icon {
+    width: 90px;
+    height: 65px;
+	margin-top: 0px;
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+	justify-content: center;
+	font-family: 'Gobold Extra2', 'Noto Sans';
+    font-size: 24pt;
+    color: #431E0AFF;
+}
+
+
+
 icon.card-deep-layers.sun {background-image: url(../../images/board/element_simple_sun.png);}
 icon.card-deep-layers.earth {background-image: url(../../images/board/element_simple_earth.png);}
 icon.card-deep-layers.plant {background-image: url(../../images/board/element_simple_plant.png);}

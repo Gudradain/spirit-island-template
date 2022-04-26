@@ -775,59 +775,6 @@ function parseGrowthTags(){
 					growthText = fearGrowthText
 					break;
 				}
-/* 				case 'fear': {
-					const matches = regExp.exec(classPieces[j]);
-
-					let fearOptions = matches[1].split(",");
-                    let fearManyIconOpen = "" 
-					let fearManyIconClose = ""
-					if (isNaN(fearOptions[0]) || fearOptions.length!=1) {
-							fearManyIconOpen = "<growth-cell-double>"
-							fearManyIconClose = "</growth-cell-double>"
-					}
-					let fearGrowthIcons = ""
-					let fearGrowthText = ""
-					if (!isNaN(fearOptions[0])) {
-                        //Generate Fear has a number first
-						let flatFear = fearOptions[0];
-						fearGrowthIcons = "<growth-fear><value>" + flatFear + "</value></growth-fear>"
-						if (fearOptions.length>1){
-							// Flat fear + scaling
-							scaling = fearOptions[1];
-							fearGrowthIcons += "<fear-per><value>1</value></fear-per>"
-							fearGrowthText = "Generate "+flatFear+" Fear and +1 Fear per "
-							if (scaling==='text'){
-								//determine some arbitrary scaling rule
-								scaling_text = fearOptions[2] !== undefined ? fearOptions[2] : 'ENTER SCALING TEXT AS THIRD PARAMETER';
-								let customScalingIcon = fearOptions[3] !== undefined ? ("<icon class='" + fearOptions[3] + "'></icon>") : "<div class='custom-scaling'>!!!</div>"
-								fearGrowthIcons += "<gain-per-fear><ring-icon>"+customScalingIcon+"</ring-icon></gain-per-fear>";
-								fearGrowthText += scaling_text								
-							}else{
-								fearGrowthIcons += "<gain-per-fear><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-fear>"
-								fearGrowthText += Capitalise(scaling)
-							}
-						}else{
-							// Flat fear
-							fearGrowthText = "Generate Fear"								
-						}
-                    } else {
-                        // Scaling
-						scaling = fearOptions[0];						
-						if (scaling==='text'){
-							//determine some arbitrary scaling rule
-							scaling_text = fearOptions[1] !== undefined ? fearOptions[1] : 'ENTER SCALING TEXT AS SECOND PARAMETER';
-							let customScalingIcon = fearOptions[2] !== undefined ? ("<icon class='" + fearOptions[2] + "'></icon>") : "<div class='custom-scaling'>!!!</div>"
-							fearGrowthIcons += "<fear-per><value>1</value></fear-per><gain-per-fear><ring-icon>"+customScalingIcon+"</ring-icon></gain-per-fear>";
-							fearGrowthText = "Generate 1 Fear per " + scaling_text
-						}else{
-							fearGrowthIcons = "<fear-per><value>1</value></fear-per><gain-per-fear><ring-icon><icon class='" + scaling + "'></icon></ring-icon></gain-per-fear>"
-							fearGrowthText = "Generate 1 Fear per " + Capitalise(scaling)
-						}
-                    }
-					growthIcons = fearManyIconOpen + fearGrowthIcons + fearManyIconClose
-					growthText = fearGrowthText
-					break;
-				} */
 				case 'gain-range': {
 					const matches = regExp.exec(classPieces[j]);
 					let rangeOptions = matches[1].split(",");
@@ -1221,7 +1168,13 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     var custom_node = matches[1].split(";");
 					var custom_text = custom_node[0];
 					if(custom_node[1]){
-						inner = "<icon class='"+custom_node[1]+" custom-presence-track-icon'></icon>";
+						if(custom_node[1].split('{')[1]){
+							// User is using icon shorthand
+							inner = "<custom-presence-track-icon>"+custom_node[1]+"</custom-presence-track-icon>"
+						}else{
+							// User is not using icon shorthand (only 1 icon allowed)
+							inner = "<icon class='"+custom_node[1]+" custom-presence-track-icon'></icon>";
+						}
 					}else{
 						inner = "<" + nodeClass + "-icon><value>!!!</value></" + nodeClass + "-icon>";
 						addEnergyRing = false;
