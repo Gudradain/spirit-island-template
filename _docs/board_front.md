@@ -1,6 +1,6 @@
 # Spirit Board
 
-The fastest way to get started is to start from the example template in the folder boards/example. Return here for detailed explanations of options for different parts of the board.
+The fastest way to get started is to start from an example in the "My Custom Content/My Spirits" folder. Return here for detailed explanations of options for different parts of the board.
 
 ### General Icons
 Icons for invaders, elements, dahan, etc can be used by enclosing its name with "{}". For example, {dahan} or {fire}. Here is a list of what is available:
@@ -9,16 +9,20 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 	- star: the Element icon (from Starlight)
 	- markerplus, markerminus: the Prepare Element Marker and Discard Element Marker (from Shifting Memory)
 - Invaders (explorer, town, city)  
-- Presence (presence, sacred-site, no-presence, no-own-presence, move-presence)  
+- Presence (presence, sacred-site, no-presence, no-own-presence, destroyed-presence, move-presence-1, move-presence-2, move-presence-3, move-presence-4)  
 - Island icons (blight, dahan, beasts, wilds, disease, strife, badlands)  
 - Fear icons (fear, terror1, terror2, terror3)
 - Land icons (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)  
-- Targeting icons (range-plus-one, range-0, range-1, range-2, range-3, range-4, player-spirit)  
-- Power Card icons (fast, slow, player-spirit, or)
+- Power icons (fast, slow, minor, major, player-spirit, or)
+- Range icons (range-0, range-1, range-2, range-3, range-4, jungle-presence, sand-presence, mountain-presence, wetland-presence)
+- Targeting icons (player-spirit)  
+- Power effect icon (isolate, range-plus-1, range-plus-2, range-plus-3)
+- Growth icons (see Growth section for examples)
+- Presence track icons (see Presence Track section for examples)
 - Custom icons can be added in the \<head\>\<style\> section at the top of the spirit board HTML
-	 - Save the custom symbol image file in the same folder as the HTML
-	 - Update the custom icon reference with the .png or .jpg of the custom symbol
-	 - Use the icon name 'custom1' (or custom2 or custom3) to use your icons
+	 - Save the custom icon image file in the same folder as the HTML
+	 - Update the custom icon reference with the .png or .jpg of the custom icon
+	 - Use the icon name 'custom1' (or custom2 or custom3) to use your icons in your design
 	 - Example: icon.custom1{background-image: url('demo_custom_icon.png'); }
 
 
@@ -174,26 +178,26 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 
 ### Innate Powers
   - **innate-powers**: The container for the Innate Powers
-    - quick-innate-power: The container for a single Innate Power. Don't confuse 'quick' with 'fast'. Speed is set below.
+    - quick-innate-power: The container for a single Innate Power. Don't change this heading. Power speed is set below.
       - name: The name of the Innate Power
       - speed: Either "fast" or "slow"
-      - range: The range of the innate.
-        - For no range, type "none".
+      - range: The range of the innate. Uses special syntax:
+        - For no range (such as Spirit targeting powers), type "none".
         - For range, use an icon (if needed) + an integer separated by a comma. Examples:
           - 0
           - 1
           - sacred-site,2
           - wetland-presence,1
-      - target: The target of the innate. It accepts html code. Refer to the [card template](_docs/card.md) for the syntax. The icon that you type in here can use the shorthand syntax.
+      - target: The target of the innate. Unlike range, this uses the same HTML code as the rest of the template, so you can use any icons and the shorthand syntax (ie. {dahan}).
       - target-title: Either "TARGET" or "TARGET LAND"
-      - note: allows adding notes to the top of the innate (See Volcano Looming High or Lure of the Deep Wilderness as an example)
+      - note: allows adding notes to the top of the innate (See Volcano Looming High or Lure of the Deep Wilderness as an example). This may not appear in your version, so simply add it (see example spirits).
       - level: Contains the information for one level of an Innate Power
         - threshold: Contains the threshold informatioin. Can include:
           - Elements: 1-plant,2-fire
 		  - Icons: 2-wilds
-		  - Costs: cost-2
+		  - Energy Costs: cost-2
 		    - Example: Volcano: *\<level threshold="3-fire,cost-2"\>* or Many Minds: *\<level threshold="1-air,2-animal,2-beasts"\>*
-		  - Cost (custom icon): cost(custom1)<- that could be any icon.
+		  - Other Cost w/ custom icon: cost(custom1)-1 or cost(dahan)-2. Icon will appear with '-x' where x is the number you use.
 			- Example: Spreading Rot: *\<level threshold="2-moon,3-water,2-animal,2-cost(custom1)"\>Add 1 {disease}.\<\/level\>*
 		  - Or: or
 		    - Example: Trickster: *\<level threshold="3-sun,OR,3-fire"\>*
