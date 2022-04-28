@@ -1,12 +1,16 @@
 
 window.onload = function startMain(){
-    parseGrowthTags();
-    if(document.getElementById("presence-table")) {
+    
+	parseGrowthTags();
+    
+	if(document.getElementById("presence-table")) {
         enhancePresenceTracksTable();
     } else {        
         setNewEnergyCardPlayTracks(parseEnergyTrackTags(), parseCardPlayTrackTags());
     }
+
     parseInnatePowers();
+	
 	parseSpecialRules();
 
     const board = document.querySelectorAll('board')[0];
@@ -79,7 +83,8 @@ function addImages(board) {
 }
 
 function parseGrowthTags(){
-    var fullHTML = "";
+    console.log("BUILDING GROWTH PANEL")
+	var fullHTML = "";
     var growthHTML = document.getElementsByTagName("growth");
     
     var growthTitle = "<section-title>"+growthHTML[0].title+"</section-title>";
@@ -160,6 +165,9 @@ function parseGrowthTags(){
 		const terrains = new Set(['wetland', 'mountain', 'sand', 'jungle'])
 		const elementNames = new Set(['sun', 'moon', 'fire', 'air', 'plant','water','earth','animal'])
 		
+		console.log("--Growth Group:--")
+		console.log(classPieces)
+		
 		// Create some tools for 'or' growth options
 		let isOr = false;
 		let isPresenceNode = false;
@@ -167,17 +175,13 @@ function parseGrowthTags(){
 		let orIconsHold = ""
 		let orGrowthOpenHold = ""
 		let orGrowthTextOpenHold = ""
-		
+
         for (j = 0; j < classPieces.length; j++) {
 			
 			
 			//Find a parenthesis and split out the string before it
 			let growthItem = classPieces[j].split("(")[0].split("^")[0];
-			console.log("------")
-			console.log("Growth: "+growthItem+", "+j)
-			console.log("Growth Group:")
-			console.log(classPieces)
-			console.log("Option: "+classPieces[j])
+			console.log("Growth Option: "+classPieces[j]+", "+j)
 			// Check for OR
 			var regExpOuterParentheses = /\(\s*(.+)\s*\)/;
 			var regExpCommaNoParentheses = /,(?![^(]*\))/;
@@ -293,8 +297,6 @@ function parseGrowthTags(){
 				}
 				case 'gain-energy': {
 					const matches = regExpOuterParentheses.exec(classPieces[j]);
-					console.log("Details on Gain Energy...")
-					console.log(matches)
 					const gainEnergyBy = matches[1];
 					let energyOptions = matches[1].split(",");
 					console.log(energyOptions)
@@ -1018,6 +1020,7 @@ function parseCardPlayTrackTags(){
 }
 
 function enhancePresenceTracksTable() {
+	console.log("BUILDING PRESENCE TRACK PANEL")
     var elmt = document.getElementsByTagName("presence-tracks")[0];
     var title = document.createElement("section-title");
     title.innerHTML = "Presence";    
@@ -1422,21 +1425,19 @@ function Capitalise(str){
 }
 
 function setNewEnergyCardPlayTracks(energyHTML, cardPlayHTML){
+	console.log("BUILDING PRESENCE TRACK PANEL")
     document.getElementsByTagName("presence-tracks")[0].innerHTML = "<section-title>Presence</section-title>" +
         "<table id='presence-table'>"+energyHTML + cardPlayHTML+"</table>";
 }
 
 function dynamicCellWidth() {
+	console.log("RESIZING: Growth")
 
 	// Growth Sizing
     growthCells =  document.getElementsByTagName("growth-cell");
     growthCellCount = growthCells.length;
-
     growthBorders = Array.from(document.getElementsByTagName("growth-border"));
     growthBorderCount = growthBorders.length;
-
-    /* Borders = 7px */
-    /* Table width: 1050px */
 
     let borderPixels = 0;
     for (const borderWidth of growthBorders.map(x => x.getAttribute('double') === undefined ? 7 : 11)) {
@@ -1448,15 +1449,12 @@ function dynamicCellWidth() {
 		totalWidth += growthCells[i].offsetWidth;
     }
 
+	// Add additional Growth Row if necessary
 	let growthTexts = document.getElementsByTagName("growth-text");
 	let tallGrowthText = false
-	console.log(growthTexts)
 	for(i = 0; i < growthTexts.length; i++){
 		tallGrowthText = growthTexts[i].offsetHeight > 95 ? true : tallGrowthText;
-		console.log(growthTexts[i].offsetHeight)
     }
-	console.log(tallGrowthText)
-
 	if(totalWidth > 1200 || tallGrowthText){
 		growthTableText = growthTable.innerHTML;
 		growthGroups = growthTableText.split("<growth-border></growth-border>")
@@ -1475,9 +1473,9 @@ function dynamicCellWidth() {
 		document.getElementsByTagName("growth")[0].append(newGrowthTable)
 	}
 	
-	//Iterate through growth table(s)
-	const largeCellScale = 1.4;
-	const extraLargeCellScale = 2.3;
+	//Iterate through growth table(s) to resize
+	const largeCellScale = 1.5;
+	const extraLargeCellScale = 1.8;
 	const growthTables = document.getElementsByTagName("growth-table");
 	
 	let tightFlag = false; // flag for tightening presence tracks later
@@ -1486,6 +1484,7 @@ function dynamicCellWidth() {
 		if(growthTables.length>1){
 			growthTable.style.marginTop = '10px';
 			tightFlag = true;
+			console.log('will tighten presence tracks')
 		}
 		const growthCells = document.getElementsByTagName("growth-table")[i].getElementsByTagName("growth-cell");
 		const growthTableStyle = window.getComputedStyle(growthTable);
@@ -1575,9 +1574,41 @@ function dynamicCellWidth() {
         subGrowthTitle[i].style.width = `${headerWith[i]}px`
         position += headerWith[i] + headerAdditionalWidth[i]
     }
+	
+	// Final resize (catches really big things that were missed)
+	let growthItems = document.getElementsByTagName("growth-cell");
+	for(i = 0; i < growthItems.length; i++){
+		if(checkOverflowWidth(growthItems[i])){
+			var children = growthItems[i].children;
+			console.log('scroll width is larger for')
+			console.log(growthItems[i])
+			console.log(children)
+			var childrenWidth = 0;
+			for (var j = 0; j < children.length; j++) {
+				childrenWidth = Math.max(children[j].offsetWidth,childrenWidth)
+			}
+			growthItems[i].style.width =childrenWidth+"px"
+		}
+    }
 
-
+	// Balance Growth Text
+	maxGrowthTextHeight = newGrowthTable!=undefined ? 50 : 100;
+	for(i = 0; i < growthTexts.length; i++){
+		if(growthTexts[i].offsetHeight<50){
+			console.log('balancing lines: ')
+			console.log(growthTexts[i])
+			
+			balanceText(growthTexts[i]);
+		}else if(growthTexts[i].offsetHeight>maxGrowthTextHeight){
+			console.log('reducing lines: ')
+			console.log(growthTexts[i])
+			
+			reduceLines(growthTexts[i]);
+		}
+    }
+	
 	// Innate Power Sizing
+	console.log("RESIZING: Innate Powers")
 	// Innate Power Notes (scale font size)
 	noteBlocks = document.getElementsByTagName("note");
 	for(let i = 0; i < noteBlocks.length; i++){
@@ -1605,15 +1636,12 @@ function dynamicCellWidth() {
         icon = thresholds[i].getElementsByTagName("icon");
         iconCount = icon.length;
         dynamicThresholdWidth = (iconCount * ICONWIDTH) + (iconCount * 12);
-		
 		// Check if the threshold width is overflowing. If so, just let it size itself...
 		var thresholdHeight = thresholds[i].offsetHeight
 		if (thresholdHeight > 60){
 			thresholds[i].style.width = "auto";
 		}
-		
 		outerThresholdWidth[i] = thresholds[i].clientWidth + parseFloat(window.getComputedStyle(thresholds[i]).getPropertyValue('margin-right').replace(/px/, ""));
-		console.log('client width = '+outerThresholdWidth[i]);
     }
 	
 	// Innate Power Descriptions
@@ -1632,7 +1660,7 @@ function dynamicCellWidth() {
         }
     }
 
-    
+	console.log("RESIZING: Presence Tracks")
     // Presence node subtext (for longer descriptions, allows flowing over into neighbors.
     var presenceTrack = document.getElementsByTagName("presence-tracks")[0];
 	var subtext = presenceTrack.getElementsByTagName("subtext");
@@ -1660,9 +1688,7 @@ function dynamicCellWidth() {
 			textHeight = subtext[i].offsetHeight;
 			adjustment_flag = 1
         }
-		
 		row_max_height = textHeight > row_max_height ? textHeight : row_max_height;
-
     }
 	height_adjust += row_max_height;
 	subtext[0].style.height = first_row_max+2+"px"
@@ -1678,6 +1704,67 @@ function dynamicCellWidth() {
 		let presenceNode = middleNodes[i].getElementsByTagName("presence-node")
 		presenceNode[0].style.top = (firstRowHeight/2)+"px";
 	}
+	
+	
+	// Size Innate Power box
+	growth = document.getElementsByTagName("growth")[0];
+	presenceTracks = document.getElementsByTagName("presence-tracks")[0];
+	right = document.getElementsByTagName("right")[0];
+	innatePowers = document.getElementsByTagName("innate-powers")[0];
+	innatePowers.style.height = (right.clientHeight - presenceTracks.clientHeight - growth.clientHeight) + "px";
+}
+
+function balanceText(el){
+	var initialHeight = el.offsetHeight
+	var currentHeight = initialHeight
+	let j = 0
+	let k = 100
+	while(currentHeight <= initialHeight){
+		k = k - 3
+		el.style.width = k+"%";
+		currentHeight = el.offsetHeight
+		j += 1
+		if (j>10){ 
+			console.log('Max text reduction reached for')
+			console.log(el)
+			break;
+		}
+	}
+	k = k + 3
+	el.style.width = k+"%";
+}
+
+function reduceLines(el){
+	var initialHeight = el.offsetHeight
+	var currentHeight = initialHeight
+	let j = 0
+	let k = 100
+	while(currentHeight >= initialHeight){
+		k = k + 1
+		el.style.width = k+"%";
+		currentHeight = el.offsetHeight
+		j += 1
+		if (j>10){ 
+			console.log('Max text reduction reached for')
+			console.log(el)
+			break;
+		}
+	}
+	el.style.width = k+"%";
+}
+
+function checkOverflowWidth(el){
+    let curOverflow = el.style.overflow
+    if (!curOverflow || curOverflow === "visible") {
+        el.style.overflow = "auto"
+    }
+    let isOverflowing = (el.clientWidth+30) < el.scrollWidth ? el.scrollWidth : false;
+    el.style.overflow = curOverflow
+/* 	console.log('el.clientHeight='+el.clientHeight)
+	console.log('el.scrollHeight='+el.scrollHeight)
+	console.log('isOverflowing?='+isOverflowing) */
+	
+    return isOverflowing
 }
 
 function parseInnatePowers(){
@@ -1757,7 +1844,7 @@ function parseInnatePower(innatePowerHTML){
     var noteValue = innatePowerHTML.getAttribute("note");
 
     //If the note field is blank, don't include it
-    if(noteValue == null){
+    if(noteValue == null || noteValue == ""){
         noteValue = "";
     }else{
         currentPowerHTML += "<note>" + noteValue + "</note>";
