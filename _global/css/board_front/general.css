@@ -168,6 +168,8 @@ section-title {
 
 right{
   position: absolute;
+  display: flex;
+  flex-direction: column;
   left: 660px;
   bottom: 15px;
   top: 18px;

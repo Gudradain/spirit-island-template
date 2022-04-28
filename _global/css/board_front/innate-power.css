@@ -6,14 +6,15 @@ innate-powers {
   background-position: top;
   z-index:1;
   margin-top: -1px;
+  flex-grow: 1;
 }
-innate-powers::after {
-  content: '';
+/* innate-powers::after { */
+  /* content: ''; */
   /* background-image: url('../../images/board/Innate_Without_Text.png'); */
-  background-position: top;
-  display: block;
-  height: 9000px;
-}
+  /* background-position: top; */
+  /* display: block; */
+  /* height: 9000px; */
+/* } */
 
 innate-powers section-title {
   margin-left: 25px;
