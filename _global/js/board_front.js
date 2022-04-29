@@ -707,10 +707,14 @@ function parseGrowthTags(){
 					customText = customOptions[0];
 					listIcons = ""
 					if (customIcon){
-						for(i = 1; i < customOptions.length; i++){
-							listIcons +="<icon class='"+customOptions[i]+" custom-growth-icon'></icon>";
+						if(customIcon == 'text'){
+							customIcon = "<span class='non-icon'>"+customOptions[2]+"</span>"
+						}else{
+							for(i = 1; i < customOptions.length; i++){
+								listIcons +="<icon class='"+customOptions[i]+" custom-growth-icon'></icon>";
+							}
+							customIcon = listIcons;
 						}
-						customIcon = listIcons;
 					}else{
 						customIcon = "<div class='custom-scaling'>!!!</div>";
 					}
@@ -1170,6 +1174,8 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
                     var matches = regExp.exec(splitOptions[0]);
                     var custom_node = matches[1].split(";");
 					var custom_text = custom_node[0];
+					addEnergyRing = false;
+					addIconShadow = true;
 					if(custom_node[1]){
 						if(custom_node[1].split('{')[1]){
 							// User is using icon shorthand

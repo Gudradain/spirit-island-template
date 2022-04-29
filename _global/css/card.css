@@ -1,6 +1,7 @@
 @font-face{
-  font-family: JosefinSans-Regular;
-  src: url(../fonts/josefin-sans/JosefinSans-Regular.ttf);
+    font-family: JosefinSans-Regular;
+    src: url(../fonts/josefin-sans/JosefinSans-Regular.ttf) format("truetype");
+    font-weight: normal;
 }
 
 html, body{
@@ -176,7 +177,10 @@ element.animal{
   left:108px;
   top:97px;
   width:352px;
+  height: 262px;
   border-top-left-radius: 10px;
+  object-fit: cover;
+  object-position: 10% 10%;
 }
 
 info-title{

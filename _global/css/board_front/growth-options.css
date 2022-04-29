@@ -462,6 +462,7 @@ plus-text::after {
     font-family: 'DK Snemand', 'Mouse Memoirs';
     font-size: 20pt;
 	font-style: normal;
+    margin: auto;
 }
 
 .non-icon.small {
@@ -936,10 +937,10 @@ gain-per-element ring-icon{
 custom-growth-icon {
     font-size: 20pt;
     font-weight: bold;
-    margin-top: 0px;
+    margin-top: -10px;
     margin-bottom: 0px;
     width: auto;
-    height: 90px;
+    height: 100px;
     display: inline-flex;
     flex-direction: row;
     justify-content: space-around;
@@ -954,7 +955,7 @@ custom-growth-icon icon.explorer {
 
 icon.custom-growth-icon {
     width: 80px;
-    height: 80px;
+    height: 90px;
 	margin-top: 0px;
     margin-bottom: 7px;
 	background-position: bottom;

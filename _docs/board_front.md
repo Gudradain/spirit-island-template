@@ -124,6 +124,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
 ||Custom Text with Any Icon|custom(*your_text_here*,x,...)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc). Can use more than 1 icon and they will appear in a row.||
+||Custom Text with Text In Place of Icons|custom(*your_text_here*,text,x)|A custom growth option with the your custom text x in place of an icon.||
 |Or Growth Options|Allows pair of two growth options|or(x,y)|x and y are growth options (like the ones above)|Fractured Days's growth: or(gain-1-time^2,gain-card-play(2))|
 |Presence Track Node|Puts the growth option in a presence track ring|presence-node(x)|x is a growth option (like the ones above)|presence-node(reclaim-one)|
 </details>

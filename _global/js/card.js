@@ -70,7 +70,7 @@ function resize()
 		dynamicSizing(nameBlocks[i])
 	}
 	
-	//Rules
+	//Rules & Threshold
 	rulesContainers = document.querySelectorAll("rules-container");
 	
 	for(let i = 0; i < rulesContainers.length; i++){
@@ -100,14 +100,13 @@ function resize()
 				break;
 			}
 		}
-	
 	}
 	
-		//Threshold
-/* 	thresholdBlocks = document.querySelectorAll("threshold");
-	for(let i = 0; i < thresholdBlocks.length; i++){
-		dynamicSizing(thresholdBlocks[i])
-	} */
+	//Images
+	imageContainers = document.querySelectorAll("img");
+	for(let i = 0; i < imageContainers.length; i++){
+	
+	}
 }
 
 function setThreshold(card)

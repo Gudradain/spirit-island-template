@@ -55,6 +55,8 @@ icon.no::before {
 
 icon.range{background-image: url('../images/50px-Rangeicon.png');}
 icon.spirit{background-image: url('../images/50px-Spiriticon.png'); }
+icon.player{background-image: url('../images/50px-Spiriticon.png'); }
+icon.player-spirit{background-image: url('../images/50px-Spiriticon.png'); }
 
 icon.badland{background-image: url('../images/board/48px_badlands.png'); }
 icon.badlands{background-image: url('../images/board/48px_badlands.png'); }

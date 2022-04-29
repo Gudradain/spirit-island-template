@@ -208,9 +208,16 @@ presence-node icon {
   height: 65px;
 }
 
-presence-node icon.isolate {
+presence-node icon.isolate,
+presence-node icon.custom1, presence-node icon.custom2, presence-node icon.custom3 {
     height: 90px;
     width: 90px;
+    margin-top: -3px;
+}
+
+icon-multi-element icon.custom1, icon-multi-element icon.custom2, icon-multi-element icon.custom3 {
+    height: 65px;
+    width: 65px;
     margin-top: -3px;
 }
 
