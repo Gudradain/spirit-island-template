@@ -268,6 +268,11 @@ function parseGrowthTags(){
 					growthText = reclaimText
 					break;
 				}
+				case 'gain-card-pay-2': {
+						growthIcons = "<custom-icon>{" + growthItem + "}</custom-icon>"
+						growthText = "You may Pay 2 Energy to Gain a Power Card"
+                        break;
+				}
 				case 'isolate': {
                         const matches = regExp.exec(classPieces[j])
 						let isolateIcons = "{isolate}"
@@ -1718,6 +1723,40 @@ function dynamicCellWidth() {
 	right = document.getElementsByTagName("right")[0];
 	innatePowers = document.getElementsByTagName("innate-powers")[0];
 	innatePowers.style.height = (right.clientHeight - presenceTracks.clientHeight - growth.clientHeight) + "px";
+	
+	// Shrink Innate Power notes if needed for space
+	var innatePowerBox = document.getElementsByTagName("innate-powers")[0];
+	console.log(innatePowerBox);
+	let k = 0;
+	if(checkOverflowHeight(innatePowerBox)){
+		console.log('IP overflowing, shrinking notes (if applicable)...')
+		descriptionContainers = innatePowerBox.getElementsByTagName("description-container");
+		tallest = 0;
+		tallest_index = 0;
+		for(i = 0; i < descriptionContainers.length; i++){
+			if(descriptionContainers[i].clientheight > tallest){
+				tallest = descriptionContainers[i].clientheight;
+				tallest_index = i
+			}
+		}
+		while(checkOverflowHeight(innatePowerBox)){
+			noteBox = descriptionContainers[tallest_index].getElementsByTagName("note")[0]
+			if(noteBox){
+				var style = window.getComputedStyle(noteBox, null).getPropertyValue('font-size');
+				var fontSize = parseFloat(style);
+				noteBox.style.fontSize = (fontSize - 1) + 'px';
+				var line = window.getComputedStyle(noteBox, null).getPropertyValue('line-height');
+				var lineHeight = parseFloat(line);
+				noteBox.style.lineHeight = (lineHeight - 1) + 'px';
+				// safety valve
+				j += 1
+				if (j>10){ 
+					console.log('Notes shrunk as far as reasonable')
+					break;
+				}
+			}
+		}
+	}
 }
 
 function balanceText(el){
@@ -1770,6 +1809,17 @@ function checkOverflowWidth(el){
 	console.log('el.scrollHeight='+el.scrollHeight)
 	console.log('isOverflowing?='+isOverflowing) */
 	
+    return isOverflowing
+}
+
+function checkOverflowHeight(el){
+	let curOverflow = el.style.overflow
+    if (!curOverflow || curOverflow === "visible") {
+        el.style.overflow = "auto"
+    }
+    let isOverflowing = el.clientHeight < el.scrollHeight
+    el.style.overflow = curOverflow
+
     return isOverflowing
 }
 
