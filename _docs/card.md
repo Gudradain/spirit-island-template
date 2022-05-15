@@ -34,5 +34,8 @@ The quick-card template use a lot of custom attributes, here is a quick summary:
     - "3-animal"
     - "2-sun,2-water"
     - "3-air,4-water,3-earth"
+  - text: Changes the threshold text from the default "IF YOU HAVE" to whatever you want.
+	- text = "IF YOU PLAYED NO OTHER CARDS THIS TURN"
+	- example: \<threshold text='custom card text' condition="3-animal,2-moon"\>
 
 
