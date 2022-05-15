@@ -112,8 +112,17 @@ function resize()
 function setThreshold(card)
 {
   var threshold = card.querySelector('threshold');
-
+  
   if(threshold){
+	// deal with custom text
+	  var customThresholdText = threshold.getAttribute('text');
+  
+	  if(customThresholdText){
+		  threshold.className = 'threshold-custom';	
+			threshold.setAttribute('data-before', customThresholdText);
+	  }
+	  
+	//set elemental thresholds
     threshold.innerHTML = `
     <threshold-condition>
       ${getThresholdElements(threshold)}:
