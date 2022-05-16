@@ -1716,7 +1716,7 @@ function dynamicCellWidth() {
 		presenceNode[0].style.top = (firstRowHeight/2)+"px";
 	}
 	
-	
+	console.log('CHECKING INNATE NOTES FOR SPACE IF NEEDED')
 	// Size Innate Power box
 	growth = document.getElementsByTagName("growth")[0];
 	presenceTracks = document.getElementsByTagName("presence-tracks")[0];
@@ -1912,61 +1912,70 @@ function parseInnatePower(innatePowerHTML){
 	var regExp = /\(([^)]+)\)/;
     for (j = 0; j < currentLevels.length; j++){
         var currentThreshold = currentLevels[j].getAttribute("threshold");
-		
-		let isLong = currentLevels[j].getAttribute("long");
-		if(isLong!=null){
-			isLong = " long"
+		var isText = currentLevels[j].getAttribute("text");
+		console.log(isText)
+		if(isText!=null){
+			// User wants a special text-only line
+			currentPowerHTML += "<level><level-note>";
+			currentPowerHTML += currentLevels[j].innerHTML+"</level-note></level>";
 		}else{
-			isLong = ""
-		}
-		
-		// Break the cost into a numeral and element piece (then do error handling to allow switching the order)
-		var currentThresholdPieces = currentThreshold.split(",");
-		var elementPieces = []
-		var numeralPieces = []
-		for (k = 0; k < currentThresholdPieces.length; k++){
-			elementPieces[k]=currentThresholdPieces[k].substring(currentThresholdPieces[k].indexOf('-')+1)
-			numeralPieces[k]=currentThresholdPieces[k].split('-')[0]
-		}
-		
-        currentPowerHTML += "<level><threshold>";
-        for (k = 0; k < currentThresholdPieces.length; k++){
-			var currentNumeral = 0;
-			var currentElement = '';
-			if(isNaN(numeralPieces[k])){
-				currentNumeral = elementPieces[k];
-				currentElement = numeralPieces[k];
+			// User wants a normal thershold-level effect
+			
+			let isLong = currentLevels[j].getAttribute("long");
+			if(isLong!=null){
+				isLong = " long"
 			}else{
-				currentElement = elementPieces[k];
-				currentNumeral = numeralPieces[k];
+				isLong = ""
 			}
 			
-			if(currentElement.toUpperCase()=='OR'){
-				currentThresholdPieces[k]='<threshold-or>or</threshold-or>'
-			}else if(currentElement.toUpperCase().startsWith('TEXT')){
-				if(currentElement.split('(')[1]){
-					customText = regExp.exec(currentElement)[1];
-					console.log(customText)
-					currentThresholdPieces[k]=currentNumeral+" "+customText;
-				}else{
-					currentThresholdPieces[k]=currentNumeral+" "+"X";
-				}
-			}else if(currentElement.toUpperCase().startsWith('COST')){
-				if(currentElement.split('(')[1]){
-					customCost = regExp.exec(currentElement)[1];
-					console.log(customCost)
-					currentThresholdPieces[k]="<cost-threshold>Cost<icon class='"+customCost+" cost-custom'><value>-" + currentNumeral + "</value></icon></cost-threshold>";
-				}else{
-					currentThresholdPieces[k]="<cost-threshold>Cost<cost-energy><value>-" + currentNumeral + "</value></cost-energy></cost-threshold>";
-				}
-			}else{
-				currentThresholdPieces[k]=currentNumeral+"{"+currentElement+"}";
+			// Break the cost into a numeral and element piece (then do error handling to allow switching the order)
+			var currentThresholdPieces = currentThreshold.split(",");
+			var elementPieces = []
+			var numeralPieces = []
+			for (k = 0; k < currentThresholdPieces.length; k++){
+				elementPieces[k]=currentThresholdPieces[k].substring(currentThresholdPieces[k].indexOf('-')+1)
+				numeralPieces[k]=currentThresholdPieces[k].split('-')[0]
 			}
-            currentPowerHTML += currentThresholdPieces[k];
-        }
-        currentPowerHTML += "</threshold><div class='description"+isLong+"'>";
-        var currentDescription = currentLevels[j].innerHTML;
-        currentPowerHTML += currentDescription+"</div></level>";
+			
+			currentPowerHTML += "<level><threshold>";
+			for (k = 0; k < currentThresholdPieces.length; k++){
+				var currentNumeral = 0;
+				var currentElement = '';
+				if(isNaN(numeralPieces[k])){
+					currentNumeral = elementPieces[k];
+					currentElement = numeralPieces[k];
+				}else{
+					currentElement = elementPieces[k];
+					currentNumeral = numeralPieces[k];
+				}
+				
+				if(currentElement.toUpperCase()=='OR'){
+					currentThresholdPieces[k]='<threshold-or>or</threshold-or>'
+				}else if(currentElement.toUpperCase().startsWith('TEXT')){
+					if(currentElement.split('(')[1]){
+						customText = regExp.exec(currentElement)[1];
+						console.log(customText)
+						currentThresholdPieces[k]=currentNumeral+" "+customText;
+					}else{
+						currentThresholdPieces[k]=currentNumeral+" "+"X";
+					}
+				}else if(currentElement.toUpperCase().startsWith('COST')){
+					if(currentElement.split('(')[1]){
+						customCost = regExp.exec(currentElement)[1];
+						console.log(customCost)
+						currentThresholdPieces[k]="<cost-threshold>Cost<icon class='"+customCost+" cost-custom'><value>-" + currentNumeral + "</value></icon></cost-threshold>";
+					}else{
+						currentThresholdPieces[k]="<cost-threshold>Cost<cost-energy><value>-" + currentNumeral + "</value></cost-energy></cost-threshold>";
+					}
+				}else{
+					currentThresholdPieces[k]=currentNumeral+"{"+currentElement+"}";
+				}
+				currentPowerHTML += currentThresholdPieces[k];
+			}
+			currentPowerHTML += "</threshold><div class='description"+isLong+"'>";
+			var currentDescription = currentLevels[j].innerHTML;
+			currentPowerHTML += currentDescription+"</div></level>";
+		}
     }
     
     currentPowerHTML+="</description-container></innate-power>";
