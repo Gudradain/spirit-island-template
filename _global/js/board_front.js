@@ -966,6 +966,13 @@ function parseEnergyTrackTags(){
 
     var energyBanner = document.getElementsByTagName("energy-track")[0].getAttribute("banner");
     var energyBannerScale = document.getElementsByTagName("energy-track")[0].getAttribute("banner-v-scale");
+	if(!energyBannerScale){
+        energyBannerScale = "100"
+    }
+	if(!energyBannerScale.at(-1)=='%'){
+		console.log('banner reported in px')
+		energyBannerScale=energyBannerScale+'px';
+	}
     var energyHTML = "";
     
     //Determine the length of the energy track
@@ -1004,8 +1011,13 @@ function parseCardPlayTrackTags(){
     var cardPlayBanner = document.getElementsByTagName("card-play-track")[0].getAttribute("banner");
     var cardPlayBannerScale = document.getElementsByTagName("card-play-track")[0].getAttribute("banner-v-scale");
     if(!cardPlayBannerScale){
-        cardPlayBannerScale = "100%"
+        cardPlayBannerScale = "100"
     }
+	if(!cardPlayBannerScale.at(-1)=='%'){
+		console.log('banner reported in px')
+		cardPlayBannerScale=cardPlayBannerScale+'px';
+	}
+    var energyHTML = "";
     var cardPlayHTML = "";
     
     //Determine the length of the energy track

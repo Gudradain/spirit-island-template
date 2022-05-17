@@ -13,10 +13,10 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 - Island icons (blight, dahan, beasts, wilds, disease, strife, badlands)  
 - Fear icons (fear, terror1, terror2, terror3)
 - Land icons (sand, mountain, jungle, wetland, ocean, jungle-wetland, jungle-sand, sand-wetland, mountain-jungle, mountain-wetland, mountain-sand)  
-- Power icons (fast, slow, minor, major, player-spirit, or)
-- Range icons (range-0, range-1, range-2, range-3, range-4, jungle-presence, sand-presence, mountain-presence, wetland-presence)
-- Targeting icons (player-spirit)  
-- Power effect icon (isolate, range-plus-1, range-plus-2, range-plus-3)
+- Power icons (fast, slow, minor, major, spirit, or)
+- Range icons (range, range-0, range-1, range-2, range-3, range-4, jungle-presence, sand-presence, mountain-presence, wetland-presence)
+- Targeting icons (spirit)  
+- Power effect icon (isolate, gain-range-1, gain-range-2, gain-range-3, gain-range-x)
 - Growth icons (see [Growth](#growth) section and [Supported Growth Group Values](#supported-growth-group-values) for examples)
 - Presence track icons (see [Presence Track](#presence-tracks) section for examples)
 - Custom icons can be added in the \<head\>\<style\> section at the top of the spirit board HTML
@@ -48,16 +48,16 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 
 ### Growth
 - growth: The container for the Growth Options
-- growth title: "Growth (PICK ONE)" or "Growth (PICK TWO)" or just "Growth" if you are using subgroups
-- growth sub-group: Groupings of growth options (as seen on Lure)
+- growth title: Typicaly "Growth (PICK ONE)" or "Growth (PICK TWO)" or just "Growth" if you are using subgroups
+- growth sub-group: Optional. Groupings of growth options (as seen on Lure)
 	- title: instructions for how to pick among the subgroup (ie. "Pick one of:")
 	- bordered: adds the double border that separates subgroups (ie. leave it off for the last subgroup)
 	- Example: *\<sub-growth title="pick one of:" bordered\>*
 - growth-group: Each individual section in the Growth section (within the subgroup, if you are using subgroups)
-  - growth-group cost: The cost associated with this group (as seen on Keeper).
-  - growth-group tint: A color shift on growth options (as seen on Spread of Rampant Green).
   - growth-group values: The Spirit Actions within a growth group, separated by semicolons (;).
 	- Example: *\<growth-group tint="green" cost="3" values="reclaim-all;gain-power-card"\>\<\/growth-group\>*
+  - growth-group cost: Optional. The cost associated with this group (as seen on Keeper).
+  - growth-group tint: Optional. A color shift on growth options (as seen on Spread of Rampant Green).
 		
 #### Supported growth-group values
 <details>
@@ -155,21 +155,21 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 |Presence Track Effect|Usage|Details|Examples|
 |------|------|------|----|
 |Energy/Turn or Card Plays|Integer 1,2,3,4,5,6,7 etc.|Number will become Energy/Turn in energy track and Card Plays in the card play track|River cardplay track: values="1,2,2,3,reclaim-one,4,5"|
-||For Energy, +1,-2,+3 etc.|Will modify energy gain instead of flat energy gain (think Finder)|Finder 'top row' values="0,sun,2+water,+2,+1+any"|
+||For Energy, +1,-2,+3 etc.|Will modify energy gain instead of flat energy gain (think Finder)|Finder 'top row' values="0,sun,2+water,**+2**,+1+any"|
 |Elements|sun,moon,fire,air,water,earth,plant,animal|Can be used in combinations|Thunderspeaker energy track: values="1,air,2,fire,sun,3"|
 ||any, star|'any' is any element, 'star' is the Element icon from Starlight||
 |Element Markers|markerplus, markerminus|Gain or pay element markers|Shifting Memory energy track: values="0,1,2,3+markerplus,4,reclaim-one,5,6+markerplus"<br>Shifting Memory energy track: values="1,2,2,markerminus+markerminus+gain-card-play,3"|
 |Reclaim One|reclaim-one|Reclaim one card, can be used in combinations||
 |Combinations|separate with a '+'|Can include energy, cardplays, markers, move-presence, gain-range, reclaim one, and custom. Can be more than 2 things.|Stone's cardplay track: values="1,earth,earth,earth+reclaim-one,earth+any,2+earth"|
 |Push/Gather|push(x), gather(x)|Push or Gather x from/into one of your Lands. x can be most token/entities (explorer, wilds, presence, etc).|Trickster's cardplay track: values="2,push(dahan),3,3,4,air,5"|
-||push(x;y)|Push x or y from one of your Lands. Could do z but its not recommended|Finder's bottom track push(town;city)|
+||push(x;y)|Push x or y from one of your Lands. Could do z but its not recommended. Gather not implemented.|Finder's bottom track push(town;city)|
 |Isolate|isolate|Isolate one of your Lands.|Custom cardplay track: values="1,2,isolate,3,3,4,5"|
 |Move a Presence|move-presence(x)|Move a presence x range, can be used in combinations.|Downpour cardplay track: values="1,move-presence(1),water,2,move-presence(1),3"|
 |Pay 2 to Gain Power Card|gain-card-pay-2|Pay 2 Energy to Gain Power Card|Many Minds cardplay track: values="1,2,gain-card-pay-2,3,3,4,5"|
 |Gain Card Play|gain-card-play|Gain an additional card play not in the normal way (think Stone or Finder)|Stone energy track: values="2,3,gain-card-play^minor,4,gain-card-play^minor,6,gain-card-play^minor"|
 |Gain Range|gain-range(x)|Gain +x range||
 ||gain-range(x;y)|Gain +x range on "y"|range(1,everything)|
-|Add Token|token(x)|Adds 1 token x to 1 of your lands||
+|Add Token|token(x)|Adds a token x to 1 of your lands||
 |Notate with Icon (like Stone)|^x|Puts icon x in top left corner of presence node|Stone top row: values="2,3,gain-card-play^minor,4,gain-card-play^minor,6,gain-card-play^minor"|
 |Forget Power|forget-power-card|Forget a power card. Unlikely to be useful because presence track actions are optional|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
 |Custom|custom(*your_text*)|Add custom text to the presence node. Image will be !!!.|Custom energy track: values="1,2,custom(Draw 1 Minor Power),3,water,4"|
@@ -192,7 +192,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
       - target: The target of the innate. Unlike range, this uses the same HTML code as the rest of the template, so you can use any icons and the shorthand syntax (ie. {dahan}).
       - target-title: Either "TARGET" or "TARGET LAND"
       - note: allows adding notes to the top of the innate (See Volcano Looming High or Lure of the Deep Wilderness as an example). This may not appear in your version, so simply add it (see example spirits).
-      - level: Contains the information for one level of an Innate Power
+      - level: Contains the information for one level of an Innate Power. The effect of the power sites between the level tags. Includes a few options:
         - threshold: Contains the threshold informatioin. Can include:
           - Elements: 1-plant,2-fire
 		  - Icons: 2-wilds
@@ -203,9 +203,7 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 		  - Or: or
 		    - Example: Trickster: *\<level threshold="3-sun,OR,3-fire"\>*
 		- long: if you add 'long' to the level tag, it will allow the description to spill over into the next column (like Volcano)
-		  - Example: *\<level threshold="5-fire,3-air,5-earth,10-destroyed-presence" ***long***\>*
+		  - Example: Volcano: *\<level threshold="5-fire,3-air,5-earth,10-destroyed-presence" ***long***\>*
         - text: if you add 'text' to the level tag, it will ignore the thresholds and create a line of just text using the text between the <level> tags
-		- The actual text for the level sits between the level tag
-		  - Example: River's first level innate: *\<level threshold="1-sun,2-water"\>Push 1 {explorer} \/ {town}.\<\/level\>*
-        - To achieve 'for each element' effects, use the notation {element, #}.
+       - To achieve 'for each element' effects, use the notation {element, #}.
 		  - Example: Serpent's Second Innate, Second Level: *\<level threshold="2-moon,2-earth"\>For each ***{moon,2} {earth,2}***, 2 {fear} and push 1 {town}.\<\/level\>*

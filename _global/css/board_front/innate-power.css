@@ -277,7 +277,8 @@ div.description {
 }
 
 .description icon.range-0, .description icon.range-1, .description icon.range-2, 
-.description icon.range-3, .description icon.range-4 {
+.description icon.range-3, .description icon.range-4,
+.description icon.range-X, .description icon.range-x  {
     width: 50px;
     height: 30px;
     margin-left: 0px;
@@ -285,7 +286,8 @@ div.description {
     margin-bottom: -7px;
 }
 
-.description icon.gain-range-1, .description icon.gain-range-2, .description icon.gain-range-3 {
+.description icon.gain-range-1, .description icon.gain-range-2, .description icon.gain-range-3,
+.description icon.gain-range-x, .description icon.gain-range-X {
     width: 45px;
     height: 40px;
     margin-left: 0px;

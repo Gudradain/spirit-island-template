@@ -51,7 +51,8 @@ special-rule icon.presence, special-rule icon.wilds, special-rule icon.beasts,
 special-rule icon.disease, special-rule icon.strife, special-rule icon.explorer, 
 special-rule icon.badlands, special-rule icon.fear, special-rule icon.range-plus-1,
 special-rule icon.range-plus-2, special-rule icon.range-plus-3, special-rule icon.fast, 
-special-rule icon.slow, special-rule icon.minor, special-rule icon.major {
+special-rule icon.slow, special-rule icon.minor, special-rule icon.major,
+special-rule icon.range {
     width:30px;
     height:30px;
 }
@@ -82,7 +83,8 @@ special-rule icon.range-0, special-rule icon.range-1, special-rule icon.range-2,
     margin-right: -2px;
 }
 
-special-rule icon.gain-range-1, special-rule icon.gain-range-2, special-rule icon.gain-range-3{
+special-rule icon.range, special-rule icon.gain-range-1, special-rule icon.gain-range-2, special-rule icon.gain-range-3,
+special-rule icon.gain-range-x, special-rule icon.gain-range-X{
     width: 43px;
     height: 40px;
     margin-bottom: -13px;
