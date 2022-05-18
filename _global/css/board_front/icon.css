@@ -51,6 +51,9 @@ icon.mountain-presence { background-image: url('../../images/board/mountain-pres
 icon.wetland-presence { background-image: url('../../images/board/wetland-presence.png'); }
 icon.jungle-presence { background-image: url('../../images/board/jungle-presence.png'); }
 
+icon.damage-1 { background-image: url('../../images/board/NewIcons/Damage 1.png'); }
+icon.damage-2 { background-image: url('../../images/board/NewIcons/Damage 2.png'); }
+
 icon.dahan { background-image: url('../../images/board/dahan.png'); }
 
 icon.discard-cards, icon.discard-2-cards {
