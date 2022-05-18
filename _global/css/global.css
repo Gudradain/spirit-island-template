@@ -9,8 +9,18 @@
 }
 
 @font-face{
+  font-family: 'SI-Crushed';
+  src: url(../fonts/SI-Crushed/CrushedAlt04.ttf);
+}
+
+@font-face{
   font-family: 'Noto Sans';
   src: url(../fonts/Noto_Sans/NotoSans-Bold.ttf);
+}
+
+@font-face{
+  font-family: 'Name Headings';
+  src: local('DK Snemand'), url(../fonts/Mouse_Memoirs/MouseMemoirs-Regular.ttf);
 }
 
 @font-face{

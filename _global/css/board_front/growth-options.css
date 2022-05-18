@@ -24,7 +24,7 @@ growth sub-section-title {
   position: absolute;
 
   display: flex;
-  font-family: 'DK Snemand', 'Mouse Memoirs';
+  font-family: 'Name Headings';
   text-transform: uppercase;
   font-size: 18pt;
   font-weight: bold;
@@ -459,7 +459,7 @@ plus-text::after {
 }
 
 .non-icon {
-    font-family: 'DK Snemand', 'Mouse Memoirs';
+    font-family: 'Name Headings';
     font-size: 20pt;
 	font-style: normal;
     margin: auto;
@@ -832,7 +832,7 @@ growth-cell icon.presence{
 }
 
 growth-cell div.custom-scaling{
-    font-family: 'DK Snemand', 'Mouse Memoirs';
+    font-family: 'Name Headings';
     font-size: 28pt;
     font-style: normal;
 }
