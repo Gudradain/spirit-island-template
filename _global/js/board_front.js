@@ -969,7 +969,7 @@ function parseEnergyTrackTags(){
 	if(!energyBannerScale){
         energyBannerScale = "100"
     }
-	if(!energyBannerScale.at(-1)=='%'){
+	if(energyBannerScale.at(-1)!='%'){
 		console.log('banner reported in px')
 		energyBannerScale=energyBannerScale+'px';
 	}
@@ -1013,7 +1013,7 @@ function parseCardPlayTrackTags(){
     if(!cardPlayBannerScale){
         cardPlayBannerScale = "100"
     }
-	if(!cardPlayBannerScale.at(-1)=='%'){
+	if(cardPlayBannerScale.at(-1)!='%'){
 		console.log('banner reported in px')
 		cardPlayBannerScale=cardPlayBannerScale+'px';
 	}
@@ -1707,10 +1707,18 @@ function dynamicCellWidth() {
         var textHeight = subtext[i].offsetHeight;
         //This solution is really jank, but it works for now
         if (textHeight > 55){
-			subtext[i].className = "adjust-subtext";
-			textHeight = subtext[i].offsetHeight;
-			adjustment_flag = 1
-        }
+			if(!adjustment_flag){
+				subtext[i].className = "adjust-subtext";
+				textHeight = subtext[i].offsetHeight;
+				adjustment_flag = 1
+				console.log('adjusting node: '+subtext[i].innerHTML)
+			}else{
+				console.log('rejected text adjstment for: '+subtext[i].innerHTML+' :Reason: neighbor already adjusted: ')
+				adjustment_flag = 0
+			}
+        }else{
+			adjustment_flag = 0
+		}
 		row_max_height = textHeight > row_max_height ? textHeight : row_max_height;
     }
 	height_adjust += row_max_height;
