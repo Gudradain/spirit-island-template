@@ -121,12 +121,13 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 ||Gain Fear per Custom Item|fear(text,*your_text_here*)|Gain 1 Fear per condition of your choosing. Icon will be a !!!.|fear(text,for each of your blighted lands)|
 ||Gain Fear per Custom Item Plus Flat Fear|fear(x,text,*your_text_here*)|Gain x Fear plus 1 Fear per condition of your choosing. Icon will be a !!!.||
 |Deal Damage|Damage at Range|damage(x,y)|At range x, deal y Damage|Starlight: damage(0,2)|
+||Deal 1 or 2 Damage in your Lands|damage-1, damage-2|Deals 1 or 2 Damage in one of your Lands||
 |Make a Power Fast|Make a Power Fast|make-fast|One of your Powers may be Fast||
 |Custom|Custom Text with !!! Icon|custom(*your_text_here*)|A custom growth option with the image !!!||
-||Custom Text with Any Icon|custom(*your_text_here*,x,...)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc). Can use more than 1 icon and they will appear in a row.||
+||Custom Text with Any Icon|custom(*your_text_here*,x,...)|A custom growth option with the x icon of your choice (ie. town, dahan, element, etc). Can use more than 1 icon and they will appear in a row.|custom(Deal 1 Damage in each of your Sacred Sites,sacred-site,damage-1)|
 ||Custom Text with Text In Place of Icons|custom(*your_text_here*,text,x)|A custom growth option with the your custom text x in place of an icon.||
-|Or Growth Options|Allows pair of two growth options|or(x,y)|x and y are growth options (like the ones above)|Fractured Days's growth: or(gain-1-time^2,gain-card-play(2))|
-|Presence Track Node|Puts the growth option in a presence track ring|presence-node(x)|x is a growth option (like the ones above)|presence-node(reclaim-one)|
+|**OR** Growth Options|Allows pair of two growth options|or(x,y)|x and y are growth options (like the ones above)|Fractured Days's growth: or(gain-1-time^2,gain-card-play(2))|
+|Presence Track Node|Puts the growth option inside a presence track ring|presence-node(x)|x is a growth option (like the ones above)|presence-node(reclaim-one)|
 </details>
 
 ### Presence Tracks
@@ -171,9 +172,10 @@ Icons for invaders, elements, dahan, etc can be used by enclosing its name with 
 ||gain-range(x;y)|Gain +x range on "y"|range(1,everything)|
 |Add Token|token(x)|Adds a token x to 1 of your lands||
 |Notate with Icon (like Stone)|^x|Puts icon x in top left corner of presence node|Stone top row: values="2,3,gain-card-play^minor,4,gain-card-play^minor,6,gain-card-play^minor"|
+|Notate with Energy (like Starlight)|^energy(x)|Puts an energy icon in the top left with value x (can be negative, use + to show +)||
 |Forget Power|forget-power-card|Forget a power card. Unlikely to be useful because presence track actions are optional|Custom energy track: values="1,3+forget-power-card,5+forget-power-card,7+forget-power-card"|
 |Custom|custom(*your_text*)|Add custom text to the presence node. Image will be !!!.|Custom energy track: values="1,2,custom(Draw 1 Minor Power),3,water,4"|
-||custom(*your_text*;{x})|Add custom text to the presence node. x is the icon (for example, city). Note the semicolon.|Custom energy track: values="1,2,custom(Destroy 1 Town or City;{town}/{city}),3,water,4"|
+||custom(*your_text*;{x})|Add custom text to the presence node. x is an icon(s) and/or text. Note the semicolon.|Custom energy track: values="1,2,custom(Destroy 1 Town or City;{town}/{city}),3,water,4"|
 
 </details>
 

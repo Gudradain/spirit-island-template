@@ -189,6 +189,12 @@ presence-node icon.gain-range-3 {
     z-index: 2;
 }
 
+icon.energy-blank{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 presence-node value {
   font-family: 'Gobold Extra2', 'Noto Sans';
   font-size: 36pt;
@@ -256,6 +262,11 @@ presence-node>icon.card-deep-layers {
     width: 60px;
     float: left;
     background-position: center;
+}
+
+presence-node>icon.energy-blank{
+	height: 50px;
+    margin-top: -10px;
 }
 
 presence-node>icon.energy-deep-layers {

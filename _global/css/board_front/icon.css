@@ -417,6 +417,16 @@ icon.days-never-were {
   width:90px;
 }
 
+icon.energy-blank{
+	background-image: url('../../images/board/EnergyBlank.png');
+}
+
+.energy-blank value{
+  font-family: 'Gobold Extra2', 'Noto Sans';
+  font-size: 18pt;
+  display: inline-block;
+}
+
 icon.your-land {
   background-image: url('../../images/board/NewIcons/Land.png');
   background-repeat: no-repeat;

@@ -1083,7 +1083,7 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
     // Will be populated with the raw HTML that will go inside the ring-icon element.
     var inner = "";
 
-	//Allows adding on icon next to the node using ^ (as with Stone)
+	//Allows adding an icon top-left of the node using ^ (as with Stone)
 	let addDeepLayers = false;
 	if(nodeText.split("^")[1]){
 		iconDeepLayers = nodeText.split("^")[1]
@@ -1306,7 +1306,16 @@ function getPresenceNodeHtml(nodeText, first, trackType, addEnergyRing) {
 	if(addIconShadow){ inner = "<icon-shadow>"+inner+"</icon-shadow>"; }
     ring.innerHTML = inner;
     presenceNode.innerHTML += "<subtext>" + subText + "</subtext>";
-    if(addDeepLayers){ presenceNode.innerHTML = "<icon class='"+iconDeepLayers+" "+nodeClass+"-deep-layers'></icon>" + presenceNode.innerHTML; }
+    if(addDeepLayers){ 
+		valueText = ""
+		if(iconDeepLayers.startsWith("energy")){
+			var matches = regExp.exec(iconDeepLayers);
+			var valueNum = matches[1];
+			valueText = "<value>" + valueNum + "</value>"
+			iconDeepLayers = 'energy-blank';
+		}
+		presenceNode.innerHTML = "<icon class='"+iconDeepLayers+" "+nodeClass+"-deep-layers'>"+valueText+"</icon>" + presenceNode.innerHTML; 
+	}
     return presenceNode.outerHTML;
 }
 
@@ -1408,6 +1417,12 @@ function IconName(str, iconNum = 1){
 			break;
 		case 'star':
 			subText = "Element";
+			break;
+		case 'damage-1':
+			subText = "Deal 1 Damage in one of your Lands";
+			break;
+		case 'damage-2':
+			subText = "Deal 2 Damage in one of your Lands";
 			break;
 		case 'custom':
 			subText = num;
