@@ -181,13 +181,14 @@ custom-presence-req {
     font-size: 20pt;
     font-weight: bold;
     margin-top: -34px;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     width: auto;
-    height: 110px;
-    display: block;
+    height: 125px;
+    display: inline-flex;
+    flex-direction: column;
 }
 
-custom-presence, custom-presence-or {
+custom-presence {
   font-size: 20pt;
   font-weight: bold;
   display: block;
@@ -196,6 +197,18 @@ custom-presence, custom-presence-or {
   height: 110px;
   margin-bottom: -30px;
   margin-top: 11px;
+}
+
+
+custom-presence-or {
+	font-size: 20pt;
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+    width: auto;
+    height: 40px;
+    margin-bottom: 0px;
+    margin-top: 36px;
 }
 
 custom-presence-or icon.backslash {
@@ -234,6 +247,14 @@ custom-presence icon.range-2,
 custom-presence icon.range-3,
 custom-presence icon.range-4 {
   margin-bottom: 10px;
+}
+
+custom-presence-req icon.range-0,
+custom-presence-req icon.range-1,
+custom-presence-req icon.range-2,
+custom-presence-req icon.range-3,
+custom-presence-req icon.range-4 {
+  margin-bottom: -5px;
 }
 
 custom-presence-req icon.dahan {
@@ -383,11 +404,13 @@ growth-cell icon.ignore-range {
 custom-icon {
     font-size: 20pt;
     font-weight: bold;
-    display: block;
+    display: flex;
     margin-top: -31px;
     width: auto;
     height: 122px;
     margin-bottom: 0px;
+    flex-direction: column;
+    align-items: center;
 }
 
 custom-icon .token {

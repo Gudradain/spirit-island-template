@@ -410,9 +410,9 @@ function parseGrowthTags(){
                                         break;
                                     case 'or':
                                         //add presence or token
-										presenceReqOpen = "<custom-presence-or>";
-										presenceReqClose = "</custom-presence-or>";
-                                        presenceIcon = "{backslash}{"+presenceOptions[2]+"}";
+										presenceReqOpen = "<custom-presence-req><custom-presence-or>";
+										presenceReqClose = "</custom-presence-req>";
+                                        presenceIcon = "{backslash}{"+presenceOptions[2]+"}</custom-presence-or>";
                                         presenceText += " or a " + Capitalise(presenceOptions[2]);
                                     case 'instead':
                                         //no option to add presence, just token
@@ -904,7 +904,7 @@ function parseGrowthTags(){
 							tokenText = "MUST use AND or OR"
 						}
 					}
-					growthIcons = tokenReqOpen + tokenIcons + tokenRange + tokenReqClose;
+					growthIcons = tokenReqOpen +'<wrap>'+ tokenIcons+'</wrap>' + tokenRange + tokenReqClose;
 					growthText = tokenText
 					break;
 				}
@@ -1761,7 +1761,6 @@ function dynamicCellWidth() {
 	
 	// Shrink Innate Power notes if needed for space
 	var innatePowerBox = document.getElementsByTagName("innate-powers")[0];
-	console.log(innatePowerBox);
 	let k = 0;
 	if(checkOverflowHeight(innatePowerBox)){
 		console.log('IP overflowing, shrinking notes (if applicable)...')
@@ -1769,11 +1768,13 @@ function dynamicCellWidth() {
 		tallest = 0;
 		tallest_index = 0;
 		for(i = 0; i < descriptionContainers.length; i++){
-			if(descriptionContainers[i].clientheight > tallest){
-				tallest = descriptionContainers[i].clientheight;
+			console.log('client height = '+descriptionContainers[i].clientHeight)
+			if(descriptionContainers[i].clientHeight > tallest){
+				tallest = descriptionContainers[i].clientHeight;
 				tallest_index = i
 			}
 		}
+		console.log('tallest is: ' + tallest_index)
 		while(checkOverflowHeight(innatePowerBox)){
 			noteBox = descriptionContainers[tallest_index].getElementsByTagName("note")[0]
 			if(noteBox){
