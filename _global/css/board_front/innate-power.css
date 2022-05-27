@@ -6,14 +6,15 @@ innate-powers {
   background-position: top;
   z-index:1;
   margin-top: -1px;
+  flex-grow: 1;
 }
-innate-powers::after {
-  content: '';
+/* innate-powers::after { */
+  /* content: ''; */
   /* background-image: url('../../images/board/Innate_Without_Text.png'); */
-  background-position: top;
-  display: block;
-  height: 9000px;
-}
+  /* background-position: top; */
+  /* display: block; */
+  /* height: 9000px; */
+/* } */
 
 innate-powers section-title {
   margin-left: 25px;
@@ -65,7 +66,7 @@ info-title {
   display: flex;
   align-items: center;
   color: white;
-  font-family: 'DK Snemand', 'Mouse Memoirs';
+  font-family: 'Name Headings';
   text-transform: uppercase;
   font-size: 14pt;
   letter-spacing: 1.25pt;
@@ -81,7 +82,7 @@ info-title {
 innate-info {
   width: 463px;
   display: flex;
-  font-family: 'DK Snemand', 'Mouse Memoirs';
+  font-family: 'Name Headings';
   text-transform: uppercase;
     box-sizing: border-box;
     border-bottom: 3px solid black;
@@ -276,7 +277,8 @@ div.description {
 }
 
 .description icon.range-0, .description icon.range-1, .description icon.range-2, 
-.description icon.range-3, .description icon.range-4 {
+.description icon.range-3, .description icon.range-4,
+.description icon.range-X, .description icon.range-x  {
     width: 50px;
     height: 30px;
     margin-left: 0px;
@@ -284,7 +286,8 @@ div.description {
     margin-bottom: -7px;
 }
 
-.description icon.gain-range-1, .description icon.gain-range-2, .description icon.gain-range-3 {
+.description icon.gain-range-1, .description icon.gain-range-2, .description icon.gain-range-3,
+.description icon.gain-range-x, .description icon.gain-range-X {
     width: 45px;
     height: 40px;
     margin-left: 0px;
@@ -545,7 +548,7 @@ threshold icon.star {
 }
 
 threshold-or {
-	font-family: 'DK Snemand', 'Mouse Memoirs';
+	font-family: 'Name Headings';
 	text-transform: uppercase;
 	font-size: 18pt;
 	display: inline-block;

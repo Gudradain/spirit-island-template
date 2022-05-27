@@ -1,6 +1,7 @@
 @font-face{
-  font-family: JosefinSans-Regular;
-  src: url(../fonts/josefin-sans/JosefinSans-Regular.ttf);
+    font-family: JosefinSans-Regular;
+    src: url(../fonts/josefin-sans/JosefinSans-Regular.ttf) format("truetype");
+    font-weight: normal;
 }
 
 html, body{
@@ -176,7 +177,10 @@ element.animal{
   left:108px;
   top:97px;
   width:352px;
+  height: 262px;
   border-top-left-radius: 10px;
+  object-fit: cover;
+  object-position: 10% 10%;
 }
 
 info-title{
@@ -300,6 +304,22 @@ threshold{
   overflow: hidden;
   border-bottom-right-radius:5px;
   border-bottom-left-radius:2px;
+}
+
+.threshold-custom{
+	background-image: url('../images/threshold-back-custom.png');
+}
+
+threshold.threshold-custom::before{
+	content: attr(data-before);
+	  font-family: 'DK Snemand', 'Mouse Memoirs';
+  text-transform: uppercase;
+  letter-spacing: 1px;
+      color: #431E0AFF;
+  position: relative;
+  right: 0%;
+	top: -22px;
+   margin-bottom: -18px;
 }
 
 threshold-condition{

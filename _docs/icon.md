@@ -1,10 +1,6 @@
 # Icons
 
-You can use icons in your text to represent the game elements. Here is the syntax:
-```
-<icon class="class-name"></icon>
-```
-Then, you just need to replace 'class-name' by the icon name. The available choices are below.
+Icons should be referenced using the shorthand by wrapping them in brackets. For example, {dahan} or {sacred-site}.
 
 ### Invader Icons
 
@@ -47,7 +43,8 @@ Then, you just need to replace 'class-name' by the icon name. The available choi
 - earth
 - plant
 - animal
-- any-element
+- any
+- star (think starlight's icon. Its text is 'Element')
 
 ### Single Terrain Icons
 

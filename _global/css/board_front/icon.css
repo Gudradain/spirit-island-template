@@ -46,9 +46,13 @@ icon.gain-range-2 { background-image: url('../../images/board/NewIcons/Range Gai
 icon.gain-range-3 { background-image: url('../../images/board/NewIcons/Range Gain 3.png'); }
 
 icon.sands-presence { background-image: url('../../images/board/sands-presence.png'); }
+icon.sand-presence { background-image: url('../../images/board/sands-presence.png'); }
 icon.mountain-presence { background-image: url('../../images/board/mountain-presence.png'); }
 icon.wetland-presence { background-image: url('../../images/board/wetland-presence.png'); }
 icon.jungle-presence { background-image: url('../../images/board/jungle-presence.png'); }
+
+icon.damage-1 { background-image: url('../../images/board/NewIcons/Damage 1.png'); }
+icon.damage-2 { background-image: url('../../images/board/NewIcons/Damage 2.png'); }
 
 icon.dahan { background-image: url('../../images/board/dahan.png'); }
 
@@ -145,6 +149,7 @@ icon.range-any {
   width:0px;
 }
 
+icon.gain-range-x, icon.gain-range-X,
 icon.gain-range-1,
 icon.gain-range-2,
 icon.gain-range-3 {
@@ -410,6 +415,16 @@ icon.days-never-were {
 	display: inline-block;
 	height: 90px;
   width:90px;
+}
+
+icon.energy-blank{
+	background-image: url('../../images/board/EnergyBlank.png');
+}
+
+.energy-blank value{
+  font-family: 'Gobold Extra2', 'Noto Sans';
+  font-size: 18pt;
+  display: inline-block;
 }
 
 icon.your-land {

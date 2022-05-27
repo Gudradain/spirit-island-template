@@ -189,6 +189,12 @@ presence-node icon.gain-range-3 {
     z-index: 2;
 }
 
+icon.energy-blank{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 presence-node value {
   font-family: 'Gobold Extra2', 'Noto Sans';
   font-size: 36pt;
@@ -208,9 +214,16 @@ presence-node icon {
   height: 65px;
 }
 
-presence-node icon.isolate {
+presence-node icon.isolate,
+presence-node icon.custom1, presence-node icon.custom2, presence-node icon.custom3 {
     height: 90px;
     width: 90px;
+    margin-top: -3px;
+}
+
+icon-multi-element icon.custom1, icon-multi-element icon.custom2, icon-multi-element icon.custom3 {
+    height: 65px;
+    width: 65px;
     margin-top: -3px;
 }
 
@@ -251,6 +264,11 @@ presence-node>icon.card-deep-layers {
     background-position: center;
 }
 
+presence-node>icon.energy-blank{
+	height: 50px;
+    margin-top: -10px;
+}
+
 presence-node>icon.energy-deep-layers {
     left: -44px;
     top: -4px;
@@ -279,6 +297,21 @@ icon-multi {
     height: 65px;
 	margin-top: 0px;
 }
+
+custom-presence-track-icon {
+    width: 90px;
+    height: 65px;
+	margin-top: 0px;
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+	justify-content: center;
+	font-family: 'Gobold Extra2', 'Noto Sans';
+    font-size: 24pt;
+    color: #431E0AFF;
+}
+
+
 
 icon.card-deep-layers.sun {background-image: url(../../images/board/element_simple_sun.png);}
 icon.card-deep-layers.earth {background-image: url(../../images/board/element_simple_earth.png);}

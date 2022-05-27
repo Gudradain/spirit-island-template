@@ -3,7 +3,6 @@ growth {
   background-repeat: no-repeat;
   background-position: left bottom;
   background-size: cover;
-  margin-top: -8px;
   background-color: transparent;
   background-clip: border-box;
   display: block;
@@ -25,7 +24,7 @@ growth sub-section-title {
   position: absolute;
 
   display: flex;
-  font-family: 'DK Snemand', 'Mouse Memoirs';
+  font-family: 'Name Headings';
   text-transform: uppercase;
   font-size: 18pt;
   font-weight: bold;
@@ -182,13 +181,14 @@ custom-presence-req {
     font-size: 20pt;
     font-weight: bold;
     margin-top: -34px;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     width: auto;
-    height: 110px;
-    display: block;
+    height: 125px;
+    display: inline-flex;
+    flex-direction: column;
 }
 
-custom-presence, custom-presence-or {
+custom-presence {
   font-size: 20pt;
   font-weight: bold;
   display: block;
@@ -197,6 +197,18 @@ custom-presence, custom-presence-or {
   height: 110px;
   margin-bottom: -30px;
   margin-top: 11px;
+}
+
+
+custom-presence-or {
+	font-size: 20pt;
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+    width: auto;
+    height: 40px;
+    margin-bottom: 0px;
+    margin-top: 36px;
 }
 
 custom-presence-or icon.backslash {
@@ -237,6 +249,14 @@ custom-presence icon.range-4 {
   margin-bottom: 10px;
 }
 
+custom-presence-req icon.range-0,
+custom-presence-req icon.range-1,
+custom-presence-req icon.range-2,
+custom-presence-req icon.range-3,
+custom-presence-req icon.range-4 {
+  margin-bottom: -5px;
+}
+
 custom-presence-req icon.dahan {
     display: block;
     height: 45px;
@@ -265,6 +285,7 @@ presence-req icon.dahan, presence-req icon.invaders,
 presence-req icon.presence, presence-req icon.wilds, presence-req icon.beasts,
 presence-req icon.disease, presence-req icon.strife, presence-req icon.explorer, 
 presence-req icon.badlands, presence-req icon.fear, presence-req icon.range-plus-1,
+presence-req icon.escalation,
 presence-req icon.custom1, presence-req icon.custom2, presence-req icon.custom3 {
 	display: inline-block;
 	height: 37px;
@@ -383,11 +404,13 @@ growth-cell icon.ignore-range {
 custom-icon {
     font-size: 20pt;
     font-weight: bold;
-    display: block;
+    display: flex;
     margin-top: -31px;
     width: auto;
     height: 122px;
     margin-bottom: 0px;
+    flex-direction: column;
+    align-items: center;
 }
 
 custom-icon .token {
@@ -459,9 +482,10 @@ plus-text::after {
 }
 
 .non-icon {
-    font-family: 'DK Snemand', 'Mouse Memoirs';
+    font-family: 'Name Headings';
     font-size: 20pt;
 	font-style: normal;
+    margin: auto;
 }
 
 .non-icon.small {
@@ -831,7 +855,7 @@ growth-cell icon.presence{
 }
 
 growth-cell div.custom-scaling{
-    font-family: 'DK Snemand', 'Mouse Memoirs';
+    font-family: 'Name Headings';
     font-size: 28pt;
     font-style: normal;
 }
@@ -936,10 +960,10 @@ gain-per-element ring-icon{
 custom-growth-icon {
     font-size: 20pt;
     font-weight: bold;
-    margin-top: 0px;
+    margin-top: -10px;
     margin-bottom: 0px;
     width: auto;
-    height: 90px;
+    height: 100px;
     display: inline-flex;
     flex-direction: row;
     justify-content: space-around;
@@ -954,7 +978,7 @@ custom-growth-icon icon.explorer {
 
 icon.custom-growth-icon {
     width: 80px;
-    height: 80px;
+    height: 90px;
 	margin-top: 0px;
     margin-bottom: 7px;
 	background-position: bottom;
