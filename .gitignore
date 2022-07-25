@@ -2,3 +2,4 @@
 /Adversary_*
 /Aspect_*
 *.bak
+**/*.DS_Store

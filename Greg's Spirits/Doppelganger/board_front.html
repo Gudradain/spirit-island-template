@@ -45,6 +45,8 @@
         Whenever you gain a power card, instead of keeping it, you must give it to another spirit. You have no cards of your own. If you choose to gain a major power, the spirit you give it to must forget a power card to receive it.
         <br><br>
         Your Copycat power may not be repeated in any way.
+        <br><br>
+        When you take presence off your presence track, you may take it off of anywhere.
       </special-rule>
     </special-rules-container>
 
@@ -61,12 +63,12 @@
       <growth title="Growth (Pick One)">
         <growth-group values="reclaim;gain-power-card"></growth-group>
         <growth-group values="add-presence(any);gain-power-card"></growth-group>
-        <growth-group values="gain-card-play(1);gain-power-card"></growth-group>
+        <growth-group values="gain-card-play(2);gain-energy(2)"></growth-group>
       </growth>
 
       <presence-tracks>
-        <energy-track banner="example2.png" banner-v-scale="50%" values="1,2,3,4,4+any,5,7"></energy-track>
-        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1+any,2,3,4,any"></card-play-track>
+        <energy-track banner="example2.png" banner-v-scale="50%" values="1,+1,+1,+1,+1,+1,any"></energy-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,gain-card-play,gain-card-play,gain-card-play,gain-card-play,any"></card-play-track>
       </presence-tracks>
 
       <!-- INNATE POWERS  

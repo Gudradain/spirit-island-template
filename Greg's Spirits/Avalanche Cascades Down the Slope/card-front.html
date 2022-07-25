@@ -10,23 +10,23 @@
 <body>
 
   <quick-card speed="slow" cost="1" name="Dangerous Cornices" image="avalanche-image.jpg"
-    elements="earth,water" range="0" target="mountain" target-title="TARGET LAND"
+    elements="earth,water" range="0" target="{mountain}" target-title="TARGET LAND"
     artist-name="GREG COLE">
     <rules>
-      Gather any number of presence into target land.
+      Gather any number of {presence} into target land.
     </rules>
   </quick-card>
 
   <quick-card speed="fast" cost="1" name="Blazing Sun Melts Snow" image="avalanche-image.jpg"
-    elements="water,earth,sun" range="none" target="YOURSELF" target-title="TARGET SPIRIT" artist-name="GREG COLE">
+    elements="water,earth,sun" range="0" target="ANY" target-title="TARGET LAND" artist-name="GREG COLE">
     <rules>
-      Push 1 {presence}.
+      Push 1 of your {presence}.
     </rules>
   </quick-card>
 
-  <quick-card speed="slow" cost="1" name="Night Freezes to Ice" image="avalanche-image.jpg" elements="water,earth,moon"
+  <quick-card speed="slow" cost="1" name="Night Freezes Snow to Ice" image="avalanche-image.jpg" elements="water,earth,moon"
     range="1" target="ANY" target-title="TARGET LAND" artist-name="GREG COLE">
-    <rules>Gather 1 {presence}.
+    <rules>Gather 1 of your {presence}.
     </rules>
   </quick-card>
 
