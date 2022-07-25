@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="../../_global/css/global.css" rel="stylesheet" />
+    <link href="../../_global/css/board_lore.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../_global/js/general.js"></script>
+    <script type="text/javascript" src="../../_global/js/board_lore.js"></script>
+</head>
+
+<body>
+
+    <board>
+        <img class="spirit-image" src="drought-image.jpg" />
+        <spirit-name>
+            Parched by Deep Drought
+        </spirit-name>
+        <lore-description>
+            When the invaders start to lose their source of water, they lose hope and abandon their causes.
+        </lore-description>
+        <second-section-container>
+            <setup>
+                <setup-title>SETUP:</setup-title>
+                <setup-description>
+                    Put 2 {presence} on your starting board in two different sands.
+                </setup-description>
+            </setup>
+            <play-style>
+                <play-style-title>Play Style:</play-style-title>
+                <play-style-description>
+                    Good at isolating certain lands and preventing exploration, and then stopping the invaders that do make it in from doing anything.
+                </play-style-description>
+            </play-style>
+        </second-section-container>
+		<third-section-container>
+			<!-- COMPLEXITY 														-->
+			<!-- "value" is used to size the red box 								-->
+			<!-- "descriptor" is the text inside the red box 						-->
+			<!-- Official complexity descriptors: Low, Moderate, High, Very High 	-->
+            <complexity value="4" descriptor="High"></complexity>
+
+			<!-- SUMMARY OF POWERS 													-->
+			<!-- "values" will be used to size the colored boxes (roughly 1-10)		-->
+			<!-- "uses" will note tokens used by the spirit							-->
+			<!-- The order of values: offense, control, fear, defense, utility		-->
+            <summary-of-powers values="1,8,6,5,2" uses="blight"></summary-of-powers>
+
+        </third-section-container>
+    </board>
+
+</body>
+
+</html>

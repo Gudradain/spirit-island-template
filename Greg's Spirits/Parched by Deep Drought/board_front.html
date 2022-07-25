@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="../../_global/css/global.css" rel="stylesheet" />
+  <link href="../../_global/css/board_front.css" rel="stylesheet" />
+  <script type="text/javascript" src="../../_global/js/general.js"></script>
+  <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+
+  <!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+  <style>
+    icon.custom1 {
+      background-image: url('demo_custom_icon.png');
+    }
+
+    icon.custom2 {
+      background-image: url('filename.png');
+    }
+
+    icon.custom3 {
+      background-image: url('filename.png');
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <board spirit-image="drought-image.jpg" spirit-image-scale="100%" spirit-border="example2.png">
+
+    <spirit-name>
+      Parched by Deep Drought
+    </spirit-name>
+    <artist-name>
+      Greg Cole
+    </artist-name>
+
+    <special-rules-container>
+      <section-title>SPECIAL RULES</section-title>
+      <special-rules-subtitle>No Water to Subside On</special-rules-subtitle>
+      <special-rule>
+        After setup, if invaders would explore into {sand} with your {presence}, instead they do not, and you destroy 1 {presence} and 1 {fear} if there are no invaders in the land.
+      </special-rule>
+      <special-rules-subtitle>Blight Begets Drought</special-rules-subtitle>
+      <special-rule>
+        On any board you have {presence}, any land with {blight} in it is considered {sand} instead of its original type.
+      </special-rule>
+      <special-rules-subtitle>Arid Land Has Little Rain</special-rules-subtitle>
+      <special-rule>
+        If you play any cards with {water} during the spirit phase, sacrifice 1 {presence}.
+      </special-rule>
+    </special-rules-container>
+
+    <right>
+      <!-- GROWTH  
+			Examples include: reclaim-all; reclaim-one; move-presence(1); gain-energy(2);
+			Gaining Elements: gain-element(water,fire); gain-element(water,2);
+			Adding Presence: add-presence(1); add-presence(1,jungle); add-presence(2,town,city,blight,or); add-presence(2,strife,city,and);
+			
+			Sub-Groups of Growth are possible (think Lure)
+			Example: <sub-growth title="pick one of:" bordered>   here 'bordered' creates the double line border
+					 </sub-growth>
+		-->
+      <growth title="Growth (Pick One)">
+        <growth-group values="reclaim;add-presence(1);gain-power-card"></growth-group>
+        <growth-group values="add-presence(1);add-presence(1);gain-element(fire)"></growth-group>
+        <growth-group values="add-presence(2,sand);gain-power-card;gain-energy(2)"></growth-group>
+      </growth>
+
+      <presence-tracks>
+        <energy-track banner="example2.png" banner-v-scale="50%" values="0,1,fire,fire+earth,2,fire,fire,fire+earth"></energy-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1+sun,2,3+sun,4"></card-play-track>
+      </presence-tracks>
+
+      <!-- INNATE POWERS  
+			To create powers which scale with elements ("For Each"), use the shortcut {fire,2} to include the numeral
+			Tokens can be included in level thresholds (as seen on Many Minds). Try '1-dahan','2-beast','3-wilds',etc.
+			speed: "fast" or "slow"
+		-->
+      <innate-powers>
+        <quick-innate-power name="Sweltering Heat" speed="fast" range="1" target="{sand}" target-title="TARGET LAND">
+          <level threshold="2-fire,1-sun">
+            1 {fear} per invader in target land (max equal to {fire}). You may add 1 destroyed {presence}.
+          </level>
+          <level threshold="2-earth">
+            Defend 1 per invader in target land.
+          </level>
+          <level threshold="3-earth,2-sun">
+            Defend 1 per invader in target land.
+          </level>
+        </quick-innate-power>
+        <quick-innate-power name="Long Awaited Rain Quenches Thirst" speed="slow" range="1" target="{blight}" target-title="TARGET LAND">
+          <level threshold="1-water">
+            Remove 1 {blight}.
+          </level>
+          <level threshold="2-fire">
+            Add 1 {strife}.
+          </level>
+        </quick-innate-power>
+      </innate-powers>
+    </right>
+  </board>
+</body>
+
+</html>

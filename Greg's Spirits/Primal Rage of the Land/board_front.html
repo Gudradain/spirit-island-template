@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="../../_global/css/global.css" rel="stylesheet" />
+  <link href="../../_global/css/board_front.css" rel="stylesheet" />
+  <script type="text/javascript" src="../../_global/js/general.js"></script>
+  <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+
+  <!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+  <style>
+    icon.custom1 {
+      background-image: url('demo_custom_icon.png');
+    }
+
+    icon.custom2 {
+      background-image: url('filename.png');
+    }
+
+    icon.custom3 {
+      background-image: url('filename.png');
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <board spirit-image="primal-image.jpg" spirit-image-scale="100%" spirit-border="example2.png">
+
+    <spirit-name>
+      Primal Rage of the Land
+    </spirit-name>
+    <artist-name>
+      Greg Cole
+    </artist-name>
+
+    <special-rules-container>
+      <section-title>SPECIAL RULES</section-title>
+      <special-rules-subtitle>Frenzied Attack</special-rules-subtitle>
+      <special-rule>
+        {dahan} do damage at the same time as Invaders in lands with your {presence}. Powers you have that grant defense only defend the land and not {dahan}.
+      </special-rule>
+      <special-rules-subtitle>The Rage Subsides</special-rules-subtitle>
+      <special-rule>
+        Whenever a {beast} is destroyed or removed, if your {presence} was in that land, destroy 1 of your {presence} in that land.
+      </special-rule>
+      <special-rules-subtitle>Go Out With a Fight</special-rules-subtitle>
+      <special-rule>
+        Whenever two or more {dahan} are destroyed from a land with your {presence}, push all but 1 {dahan} from that land instead of destroying them. 1 {fear} per {dahan} pushed.
+      </special-rule>
+    </special-rules-container>
+
+    <right>
+      <!-- GROWTH  
+			Examples include: reclaim-all; reclaim-one; move-presence(1); gain-energy(2);
+			Gaining Elements: gain-element(water,fire); gain-element(water,2);
+			Adding Presence: add-presence(1); add-presence(1,jungle); add-presence(2,town,city,blight,or); add-presence(2,strife,city,and);
+			
+			Sub-Groups of Growth are possible (think Lure)
+			Example: <sub-growth title="pick one of:" bordered>   here 'bordered' creates the double line border
+					 </sub-growth>
+		-->
+      <growth title="Growth (Pick <u>Two</u>)">
+        <growth-group values="reclaim"></growth-group>
+        <growth-group values="add-presence(1,dahan)"></growth-group>
+        <growth-group values="add-presence(3,beasts)"></growth-group>
+        <growth-group values="gain-energy(3)"></growth-group>
+        <growth-group cost="1" values="gain-power-card"></growth-group>
+      </growth>
+
+      <presence-tracks>
+        <energy-track banner="example2.png" banner-v-scale="50%" values="1,1+animal,2,animal,3,animal,4"></energy-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1+plant,2,3,fire,4,5"></card-play-track>
+      </presence-tracks>
+
+      <!-- INNATE POWERS  
+			To create powers which scale with elements ("For Each"), use the shortcut {fire,2} to include the numeral
+			Tokens can be included in level thresholds (as seen on Many Minds). Try '1-dahan','2-beast','3-wilds',etc.
+			speed: "fast" or "slow"
+		-->
+      <innate-powers>
+        <quick-innate-power name="Frenzied Attack" speed="fast" range="1" target="{dahan},{beast}" target-title="TARGET LAND">
+          <level threshold="2-animal,1-fire">
+            {dahan} in target land do +1 damage during ravage for each {beast} in target land.
+          </level>
+          <level threshold="4-animal,3-fire">
+            Instead, {dahan} in target land do +2 damage per ravage for each {beast} in target land.
+          </level>
+        </quick-innate-power>
+        <quick-innate-power name="The Rage Spreads" speed="slow" range="beast,1" target="any" target-title="TARGET LAND">
+          <level threshold="2-plant">
+            Add 1 {beast} to target land.
+          </level>
+          <level threshold="1-animal,1-air">
+            Gather up to 2 {dahan} into target land.
+          </level>
+        </quick-innate-power>
+      </innate-powers>
+    </right>
+  </board>
+</body>
+
+</html>

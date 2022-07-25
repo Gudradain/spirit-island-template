@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="../../_global/css/global.css" rel="stylesheet" />
+  <link href="../../_global/css/card.css" rel="stylesheet" />
+  <script type="text/javascript" src="../../_global/js/general.js"></script>
+  <script src="../../_global/js/card.js" defer></script>
+</head>
+
+<body>
+
+  <quick-card speed="fast" cost="2" name="The Land Gives No More Bounty" image="drought-image.jpg"
+    elements="fire,sun,earth" range="1" target="{blight}" target-title="TARGET LAND"
+    artist-name="GREG COLE">
+    <rules>
+      Invaders do not ravage in target land this turn. When this would skip a second ravage in this land this turn, you may add 1 destroyed {presence} to target land.
+    </rules>
+  </quick-card>
+
+  <quick-card speed="slow" cost="1" name="Nowhere to Find Respite" image="drought-image.jpg"
+    elements="fire,sun,earth" range="none" target="{no-sand}" target-title="TARGET SPIRIT" artist-name="GREG COLE">
+    <rules>
+      For each adjacent {sand} within {range-2}, you may push 1 invader. For each invader that is pushed into {sand} this way, 1 {fear}.
+      <br>
+      You may add 1 destroyed {presence} to target land.
+
+    </rules>
+  </quick-card>
+
+  <quick-card speed="fast" cost="1" name="Sweltering Heat" image="drought-image.jpg" elements="fire,sun,air"
+    range="1" target="ANY" target-title="TARGET LAND" artist-name="GREG COLE">
+    <rules>
+      Add 1 {blight}. This blight does not remove presence when it is added. 2 {fear}.
+    </rules>
+  </quick-card>
+
+  <quick-card speed="slow" cost="1" name="Sickness Festers" image="drought-image.jpg" elements="fire,animal,plant"
+    range="1" target="{sand}" target-title="TARGET LAND" artist-name="GREG COLE">
+    <rules>
+      Add 1 {disease} to target land, and 1 {disease} to an adjacent land.
+      <br>
+      You may pay 1 energy to add 1 destroyed {presence} to target land.
+    </rules>
+  </quick-card>
+</body>
+
+</html>

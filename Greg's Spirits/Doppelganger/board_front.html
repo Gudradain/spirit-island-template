@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="../../_global/css/global.css" rel="stylesheet" />
+  <link href="../../_global/css/board_front.css" rel="stylesheet" />
+  <script type="text/javascript" src="../../_global/js/general.js"></script>
+  <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+
+  <!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+  <style>
+    icon.custom1 {
+      background-image: url('demo_custom_icon.png');
+    }
+
+    icon.custom2 {
+      background-image: url('filename.png');
+    }
+
+    icon.custom3 {
+      background-image: url('filename.png');
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <board spirit-image="doppelganger-image.jpg" spirit-image-scale="100%" spirit-border="example2.png">
+
+    <spirit-name>
+      Doppelganger
+    </spirit-name>
+    <artist-name>
+      Greg Cole
+    </artist-name>
+
+    <special-rules-container>
+      <section-title>SPECIAL RULES</section-title>
+      <special-rules-subtitle>No Powers of Your Own</special-rules-subtitle>
+      <special-rule>
+        Whenever you gain a power card, instead of keeping it, you must give it to another spirit. You have no cards of your own. If you choose to gain a major power, the spirit you give it to must forget a power card to receive it.
+        <br><br>
+        Your Copycat power may not be repeated in any way.
+      </special-rule>
+    </special-rules-container>
+
+    <right>
+      <!-- GROWTH  
+			Examples include: reclaim-all; reclaim-one; move-presence(1); gain-energy(2);
+			Gaining Elements: gain-element(water,fire); gain-element(water,2);
+			Adding Presence: add-presence(1); add-presence(1,jungle); add-presence(2,town,city,blight,or); add-presence(2,strife,city,and);
+			
+			Sub-Groups of Growth are possible (think Lure)
+			Example: <sub-growth title="pick one of:" bordered>   here 'bordered' creates the double line border
+					 </sub-growth>
+		-->
+      <growth title="Growth (Pick One)">
+        <growth-group values="reclaim;gain-power-card"></growth-group>
+        <growth-group values="add-presence(any);gain-power-card"></growth-group>
+        <growth-group values="gain-card-play(1);gain-power-card"></growth-group>
+      </growth>
+
+      <presence-tracks>
+        <energy-track banner="example2.png" banner-v-scale="50%" values="1,2,3,4,4+any,5,7"></energy-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1+any,2,3,4,any"></card-play-track>
+      </presence-tracks>
+
+      <!-- INNATE POWERS  
+			To create powers which scale with elements ("For Each"), use the shortcut {fire,2} to include the numeral
+			Tokens can be included in level thresholds (as seen on Many Minds). Try '1-dahan','2-beast','3-wilds',etc.
+			speed: "fast" or "slow"
+		-->
+      <innate-powers>
+        <quick-innate-power name="Copycat" speed="fast" range="none" target="none" target-title="TARGET">
+          <level threshold="0-any">
+            For each card play you have this turn, you may copy a power from a spirit with {presence} on the same board as you. You may copy an innate power or a power card. When you copy a power card, you must pay energy cost of the card, and you receive any elements listed on that card. Each time you copy a power, you must copy from a spirit you have not yet copied a power from yet if possible.
+          </level>
+          <level threshold="3-any">
+            Once per turn while using this power, if you have at least 3 of any one element type, you may pay 3 energy to allow one of the spirits whose power your copied to add a {presence} in one of your lands.
+          </level>
+        </quick-innate-power>
+        <quick-innate-power name="Improving on Traditions" speed="fast" range="none" target="power" target-title="TARGET POWER">
+          <level threshold="1-earth,1-water">
+            If the targeted power grants defense, it grants an additional +1 defense per {earth} {water}
+          </level>
+          <level threshold="1-animal,1-air">
+            If the targeted power moves tokens, it moves an additional token of that type per {air} {animal}
+          </level>
+          <level threshold="1-fire,1-sun">
+            If the targeted power deals damage, it deals 1 more damage per {fire} {sun}
+          </level>
+          <level threshold="1-plant,1-moon">
+            If the targeted power adds {beast}/{disease}/{strife}/{wilds}/{badlands}, it adds 1 more token of that type per {plant} {moon}
+          </level>
+        </quick-innate-power>
+      </innate-powers>
+    </right>
+  </board>
+</body>
+
+</html>

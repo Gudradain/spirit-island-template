@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="../../_global/css/global.css" rel="stylesheet" />
+  <link href="../../_global/css/board_front.css" rel="stylesheet" />
+  <script type="text/javascript" src="../../_global/js/general.js"></script>
+  <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+
+  <!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+  <style>
+    icon.custom1 {
+      background-image: url('demo_custom_icon.png');
+    }
+
+    icon.custom2 {
+      background-image: url('filename.png');
+    }
+
+    icon.custom3 {
+      background-image: url('filename.png');
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <board spirit-image="storm-image.jpg" spirit-image-scale="100%" spirit-border="example2.png">
+
+    <spirit-name>
+      Calm in the Eye of the Storm
+    </spirit-name>
+    <artist-name>
+      Greg Cole
+    </artist-name>
+
+    <special-rules-container>
+      <section-title>SPECIAL RULES</section-title>
+      <special-rules-subtitle>Lulled by the Calm</special-rules-subtitle>
+      <special-rule>
+        Invaders do not ravage in any land where you have more {presence} than invaders.
+      </special-rule>
+      <special-rules-subtitle>Spreading Storm</special-rules-subtitle>
+      <special-rule>
+        If your {presence} if ever in a non coastal land not adjacent to any other land with your presence, that
+        presence is destroyed.
+      </special-rule>
+      <special-rules-subtitle>Eye of the Storm</special-rules-subtitle>
+      <special-rule>
+        You cannot target lands with your {sacred-site}. You have {gain-range-1} for targeting powers that originate
+        from {sacred-site}. This rules applies to all powers except your innate powers.
+      </special-rule>
+    </special-rules-container>
+
+    <right>
+      <!-- GROWTH  
+			Examples include: reclaim-all; reclaim-one; move-presence(1); gain-energy(2);
+			Gaining Elements: gain-element(water,fire); gain-element(water,2);
+			Adding Presence: add-presence(1); add-presence(1,jungle); add-presence(2,town,city,blight,or); add-presence(2,strife,city,and);
+			
+			Sub-Groups of Growth are possible (think Lure)
+			Example: <sub-growth title="pick one of:" bordered>   here 'bordered' creates the double line border
+					 </sub-growth>
+		-->
+      <growth title="Growth (Pick One)">
+        <growth-group values="reclaim;gain-power-card;gain-energy(2)"></growth-group>
+        <growth-group values="add-presence(any,coastal);gain-power-card"></growth-group>
+        <growth-group values="add-presence(1);gain-element(air)"></growth-group>
+      </growth>
+
+      <presence-tracks>
+        <energy-track banner="example2.png" banner-v-scale="50%" values="1,2,air,air,4,5,any"></energy-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,2,2,3,move-presence(1),4">
+        </card-play-track>
+      </presence-tracks>
+
+      <!-- INNATE POWERS  
+			To create powers which scale with elements ("For Each"), use the shortcut {fire,2} to include the numeral
+			Tokens can be included in level thresholds (as seen on Many Minds). Try '1-dahan','2-beast','3-wilds',etc.
+			speed: "fast" or "slow"
+		-->
+      <innate-powers>
+        <quick-innate-power name="The Storm Continues to Blow" speed="fast" range="2" target="any"
+          target-title="TARGET LAND">
+          <level threshold="1-air,1-water">
+            Move 1 {presence} from the originating land to target land. You can only do this if both lands contain at
+            least one presence after the move.
+          </level>
+          <level threshold="3-air,1-water">
+            Instead, move 2 {presence} while still respecting the same rule.
+          </level>
+          <level threshold="2-air,2-sun">
+            3 {fear} if there are Invaders in the target land.
+          </level>
+          <level threshold="2-air,2-water">
+            2 {fear} if there are Invaders in the originating land.
+          </level>
+        </quick-innate-power>
+        <quick-innate-power name="Ravage Around the Center of the Storm" speed="slow" range="sacred-site,0"
+          target="{mountain}" target-title="TARGET LAND">
+          <level threshold="2-air">
+            2 damage in every adjacent land with exactly 1 {presence}.
+          </level>
+          <level threshold="4-air">
+            Instead, 4 damage in every adjacent land with exactly 1 {presence}.
+          </level>
+        </quick-innate-power>
+      </innate-powers>
+    </right>
+  </board>
+</body>
+
+</html>
