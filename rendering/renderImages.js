@@ -14,10 +14,10 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const SpiritDataRoot = path.join(__dirname, '../Greg\'s Spirits');
 const SpiritImageOutput = path.join(__dirname, '../Greg\'s Spirit Images');
 
-const CardFront = ["card-front.html", {width: 2500, height: 1800}];
-const CardBack = ["card-back.html", {width: 2200, height: 1400}];
-const BoardFront = ["board-front.html", {width: 2200, height: 1400}];
-const BoardLore = ["board-lore.html", {width: 2200, height: 1400}];
+const CardFront = ["card-front.html", { width: 2035, height: 750 }];
+const CardBack = ["card-back.html", { width: 2035, height: 750 }];
+const BoardFront = ["board-front.html", { width: 1827, height: 1237 }];
+const BoardLore = ["board-lore.html", { width: 1827, height: 1237 }];
 const SourceFiles = [CardFront, CardBack, BoardFront, BoardLore];
 
 (async () => {
