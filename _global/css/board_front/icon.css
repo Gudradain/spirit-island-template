@@ -20,6 +20,8 @@ icon.animal { background-image: url('../../images/board/Animal.png'); }
 icon.star{ background-image: url('../../images/board/NewIcons/Element Star.png'); }
 icon.any { background-image: url('../../images/board/Any.png'); }
 
+icon.skeleton { background-image: url('../../images/80px-Skeleton.png'); }
+
 icon.markerplus { background-image: url('../../images/board/NewIcons/Element Marker Gain 1.png'); }
 icon.markerminus { background-image: url('../../images/board/NewIcons/Element Marker Pay 1.png'); }
 icon.markerquestion { background-image: url('../../images/customIcons/marker-question.png'); }

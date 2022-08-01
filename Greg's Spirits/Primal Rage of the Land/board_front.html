@@ -29,7 +29,7 @@
 
 <body>
 
-  <board spirit-image="primal-image.jpg" spirit-image-scale="100%" spirit-border="example2.png">
+  <board spirit-image="primal-image-cropped.jpg" spirit-image-scale="100%" spirit-border="example2.png">
 
     <spirit-name>
       Primal Rage of the Land
@@ -85,18 +85,21 @@
       <innate-powers>
         <quick-innate-power name="Frenzied Attack" speed="fast" range="1" target="{dahan},{beast}" target-title="TARGET LAND">
           <level threshold="2-animal,1-fire">
-            {dahan} in target land do +1 damage during ravage for each {beast} in target land.
+            {dahan} and invaders in target land do +1 damage during ravage for each {beast} in target land <i>(total in land)</i>.
           </level>
           <level threshold="4-animal,3-fire">
-            Instead, {dahan} in target land do +2 damage per ravage for each {beast} in target land.
+            {dahan} and invaders in target land do +1 damage during ravage for each {beast} in target land <i>(total in land)</i>.
           </level>
         </quick-innate-power>
         <quick-innate-power name="The Rage Spreads" speed="slow" range="beast,1" target="any" target-title="TARGET LAND">
           <level threshold="2-plant">
-            Add 1 {beast} to target land.
+            Add 1 {dahan} to target land.
           </level>
           <level threshold="1-animal,1-air">
             Gather up to 2 {dahan} into target land.
+          </level>
+          <level threshold="3-animal">
+            Gather up to 1 {beast} into target land.
           </level>
         </quick-innate-power>
       </innate-powers>

@@ -372,6 +372,7 @@ icon.resilience { background-image: url('../images/board/NewIcons/Resilience.png
 
 icon.fear { background-image: url('../images/board/fear.png');	}
 icon.blight { background-image: url('../images/board/75px_blight.png');}
+icon.skeleton { background-image: url('../images/80px-Skeleton.png'); }
 
 second-section-container icon.sun {background-image: url(../images/board/element_simple_sun.png);}
 second-section-container icon.earth {background-image: url(../images/board/element_simple_earth.png);}

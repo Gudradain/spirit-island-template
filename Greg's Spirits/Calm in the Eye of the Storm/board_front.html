@@ -29,7 +29,7 @@
 
 <body>
 
-  <board spirit-image="storm-image.jpg" spirit-image-scale="100%" spirit-border="example2.png">
+  <board spirit-image="storm-image-cropped.jpg" spirit-image-scale="100%" spirit-border="example2.png">
 
     <spirit-name>
       Calm in the Eye of the Storm
@@ -46,8 +46,8 @@
       </special-rule>
       <special-rules-subtitle>Spreading Storm</special-rules-subtitle>
       <special-rule>
-        If your {presence} if ever in a non coastal land not adjacent to any other land with your presence, that
-        presence is destroyed.
+        If your {presence} if ever in a non-coastal land not adjacent to any other land with your {presence}, that
+        {presence} is destroyed.
       </special-rule>
       <special-rules-subtitle>Eye of the Storm</special-rules-subtitle>
       <special-rule>
@@ -68,12 +68,12 @@
 		-->
       <growth title="Growth (Pick One)">
         <growth-group values="reclaim;gain-power-card;gain-energy(2)"></growth-group>
-        <growth-group values="add-presence(any,coastal);gain-power-card"></growth-group>
+        <growth-group values="gain-power-card;add-presence(3,coastal)"></growth-group>
         <growth-group values="add-presence(1);gain-element(air)"></growth-group>
       </growth>
 
       <presence-tracks>
-        <energy-track banner="example2.png" banner-v-scale="50%" values="1,2,air,air,4,5,any"></energy-track>
+        <energy-track banner="example2.png" banner-v-scale="50%" values="1,2,air,air,4,5+air"></energy-track>
         <card-play-track banner="example2.png" banner-v-scale="50%" values="1,2,2,3,move-presence(1),4">
         </card-play-track>
       </presence-tracks>
@@ -86,27 +86,33 @@
       <innate-powers>
         <quick-innate-power name="The Storm Continues to Blow" speed="fast" range="1" target="any"
           target-title="TARGET LAND">
-          <level threshold="1-air,1-water">
+          <level threshold="1-air">
             Move 1 {presence} from the originating land to target land. You can only do this if both lands contain at
-            least one presence after the move.
+            least one presence after the move. Move up to 1 {dahan} along with your presence.
           </level>
-          <level threshold="3-air,1-water">
+          <level threshold="3-air,2-water">
             Instead, move up to 3 {presence} while still respecting the same rule.
           </level>
           <level threshold="2-air,2-sun">
             3 {fear} if there are Invaders in the target land.
           </level>
-          <level threshold="2-air,2-water">
+          <level threshold="4-air,1-fire">
             2 {fear} if there are Invaders in the originating land.
           </level>
         </quick-innate-power>
         <quick-innate-power name="Ravage Around the Center of the Storm" speed="slow" range="none"
           target="YOURSELF" target-title="TARGET SPIRIT" note="You must have at least one {sacred-site} to trigger this power.">
-          <level threshold="2-air">
-            2 damage in every one of your lands with exactly 1 {presence}.
+          <level threshold="1-air,1-water">
+            1 damage in a land with exactly 1 of your {presence}.
           </level>
-          <level threshold="4-air">
-            Instead, 4 damage in every one of your lands with exactly 1 {presence}.
+          <level threshold="3-air,1-water,1-moon">
+            2 damage in 2 lands with exactly 1 of your {presence}.
+          </level>
+          <level threshold="5-air,1-sun">
+            1 damage 2 lands with exactly 1 of your {presence}.
+          </level>
+          <level threshold="6-air,1-fire">
+            For each {presence} in a land with your {sacred-site} beyond the first 2, do that much damage to every land with exactly 1 of your {presence}.
           </level>
         </quick-innate-power>
       </innate-powers>

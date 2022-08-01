@@ -9,31 +9,34 @@
 
 <body>
 
-  <quick-card speed="slow" cost="1" name="Dangerous Cornices" image="avalanche-image.jpg"
-    elements="earth,water" range="0" target="{mountain}" target-title="TARGET LAND"
+  <quick-card speed="slow" cost="2" name="Dangerous Cornices" image="cornices-image.jpg"
+    elements="air,water" range="0" target="{mountain}" target-title="TARGET LAND"
     artist-name="GREG COLE">
     <rules>
       Gather any number of {presence} into target land.
     </rules>
   </quick-card>
 
-  <quick-card speed="fast" cost="1" name="Blazing Sun Melts Snow" image="avalanche-image.jpg"
+  <quick-card speed="fast" cost="1" name="Blazing Sun Melts Snow" image="blazing-image.jpg"
     elements="water,earth,sun" range="0" target="ANY" target-title="TARGET LAND" artist-name="GREG COLE">
     <rules>
       Push 1 of your {presence}.
     </rules>
   </quick-card>
 
-  <quick-card speed="slow" cost="1" name="Night Freezes Snow to Ice" image="avalanche-image.jpg" elements="water,earth,moon"
+  <quick-card speed="slow" cost="0" name="Night Freezes Snow to Ice" image="night-image.jpg" elements="water,moon"
     range="1" target="ANY" target-title="TARGET LAND" artist-name="GREG COLE">
-    <rules>Gather 1 of your {presence}.
+    <rules>
+      Gather 1 of your {presence}.
+      <br>
+      Push up to 2 {dahan}.
     </rules>
   </quick-card>
 
-  <quick-card speed="fast" cost="2" name="Deep Snow Wards the Land" image="avalanche-image.jpg" elements="earth,sun,moon"
+  <quick-card speed="fast" cost="2" name="Deep Snow Wards the Land" image="deep-image.jpg" elements="earth,sun,moon"
     range="1" target="ANY" target-title="TARGET LAND" artist-name="GREG COLE">
     <rules>
-      Defend 3 in target land.
+      Defend 4 in target land.
     </rules>
   </quick-card>
 </body>

@@ -29,7 +29,7 @@
 
 <body>
 
-  <board spirit-image="doppelganger-image.jpg" spirit-image-scale="100%" spirit-border="example2.png">
+  <board spirit-image="doppelganger-image-cropped.jpg" spirit-image-scale="100%" spirit-border="example2.png">
 
     <spirit-name>
       Doppelganger
@@ -48,6 +48,10 @@
         <br><br>
         When you take presence off your presence track, you may take it off of anywhere.
       </special-rule>
+      <special-rules-subtitle>Reshape One's Image</special-rules-subtitle>
+      <special-rule>
+        At the beginning of each spirit phase, you may copy target {spirit}'s Special Rules and use them in addition to your own. You cannot choose the same spirit 2 turns in a row unless there is no other choice.
+      </special-rule>
     </special-rules-container>
 
     <right>
@@ -61,14 +65,14 @@
 					 </sub-growth>
 		-->
       <growth title="Growth (Pick One)">
-        <growth-group values="reclaim;gain-power-card"></growth-group>
+        <growth-group values="spirit-reclaim-1;spirit-gain-2-energy;add-presence(any)"></growth-group>
         <growth-group values="add-presence(any);gain-power-card"></growth-group>
         <growth-group values="gain-card-play(2);gain-energy(2)"></growth-group>
       </growth>
 
       <presence-tracks>
-        <energy-track banner="example2.png" banner-v-scale="50%" values="1,+1,+1,+1,+1,+1,any"></energy-track>
-        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,gain-card-play,gain-card-play,gain-card-play,gain-card-play,any"></card-play-track>
+        <energy-track banner="example2.png" banner-v-scale="50%" values="2,+1,+1,+1,+1,any,any,any"></energy-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="2,gain-card-play,gain-card-play,gain-card-play,gain-card-play"></card-play-track>
       </presence-tracks>
 
       <!-- INNATE POWERS  
@@ -77,12 +81,12 @@
 			speed: "fast" or "slow"
 		-->
       <innate-powers>
-        <quick-innate-power name="Copycat" speed="fast" range="none" target="none" target-title="TARGET">
+        <quick-innate-power name="Copycat" speed="fast" range="none" target="none" target-title="TARGET" note="">
           <level threshold="0-any">
             For each card play you have this turn, you may copy a power from a spirit with {presence} on the same board as you. You may copy an innate power or a power card. When you copy a power card, you must pay energy cost of the card, and you receive any elements listed on that card. Each time you copy a power, you must copy from a spirit you have not yet copied a power from yet if possible.
           </level>
-          <level threshold="3-any">
-            Once per turn while using this power, if you have at least 3 of any one element type, you may pay 3 energy to allow one of the spirits whose power your copied to add a {presence} in one of your lands.
+          <level threshold="4-any">
+            Once per turn while using this power, if you have at least 4 of any one element type, you may sacrifice one of your {presence} to to allow a spirit you copied a power of add 1 {presence} in the land you sacrificed your presence.
           </level>
         </quick-innate-power>
         <quick-innate-power name="Improving on Traditions" speed="fast" range="none" target="power" target-title="TARGET POWER">
@@ -90,7 +94,7 @@
             If the targeted power grants defense, it grants an additional +1 defense per {earth} {water}
           </level>
           <level threshold="1-animal,1-air">
-            If the targeted power moves tokens, it moves an additional token of that type per {air} {animal}
+            If the targeted power moves tokens, it moves an additional token of that type per {animal} {air}
           </level>
           <level threshold="1-fire,1-sun">
             If the targeted power deals damage, it deals 1 more damage per {fire} {sun}
