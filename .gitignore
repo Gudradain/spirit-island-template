@@ -3,3 +3,4 @@
 /Aspect_*
 *.bak
 **/*.DS_Store
+rendering/node_modules

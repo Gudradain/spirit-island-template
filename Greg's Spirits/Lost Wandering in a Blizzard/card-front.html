@@ -9,17 +9,17 @@
 
 <body>
 
-  <quick-card speed="fast" cost="0" name="Harvest to Prepare for Winter" image="blizzard-image.jpg"
-    elements="water,moon,sun,plant" range="1" target="{wetland}/{jungle}" target-title="TARGET LAND"
+  <quick-card speed="fast" cost="0" name="Harvest to Prepare for Winter" image="harvest-image.jpg"
+    elements="water,sun,plant" range="1" target="{wetland}/{jungle}" target-title="TARGET LAND"
     artist-name="GREG COLE">
     <rules>
       {town}/{city} and {dahan} have +3 health until the end of turn.
-      {or}
+      <br>
       Blight cannot be placed on target land because of ravage.
     </rules>
   </quick-card>
 
-  <quick-card speed="fast" cost="1" name="Perilous Journey into the Storm" image="blizzard-image.jpg"
+  <quick-card speed="fast" cost="0" name="Perilous Journey into the Storm" image="perilous-image.jpg"
     elements="water,air" range="none" target="YOURSELF" target-title="TARGET SPIRIT" artist-name="GREG COLE">
     <rules>
       Any {explorer} moved into or placed into your lands are destroyed. This can happen once for every 2 {water} you
@@ -27,7 +27,7 @@
     </rules>
   </quick-card>
 
-  <quick-card speed="slow" cost="2" name="Deep Freeze" image="blizzard-image.jpg" elements="water,air,moon"
+  <quick-card speed="slow" cost="2" name="Deep Freeze" image="deep-image.jpg" elements="water,moon"
     range="1" target="ANY" target-title="TARGET LAND" artist-name="GREG COLE">
     <rules>
       This costs 1 less energy if targeting {mountain} and 1 more energy if targeting {sand}.
@@ -37,7 +37,7 @@
     </rules>
   </quick-card>
 
-  <quick-card speed="slow" cost="1" name="Avoid the Blizzard" image="blizzard-image.jpg" elements="water,air,sun"
+  <quick-card speed="slow" cost="1" name="Avoid the Blizzard" image="avoid-image.jpg" elements="air,sun"
     range="1" target="ANY" target-title="TARGET LAND" artist-name="GREG COLE">
     <rules>
       Push up to 2 {explorer}/{town} from target land.

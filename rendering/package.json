@@ -1,0 +1,11 @@
+{
+  "name": "rendering",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "del": "^7.0.0",
+    "puppeteer": "^15.5.0"
+  },
+  "type": "module"
+}
