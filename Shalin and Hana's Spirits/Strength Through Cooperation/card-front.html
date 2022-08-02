@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="../../_global/css/global.css" rel="stylesheet" />
+  <link href="../../_global/css/card.css" rel="stylesheet" />
+  <script type="text/javascript" src="../../_global/js/general.js"></script>
+  <script src="../../_global/js/card.js" defer></script>
+</head>
+
+<body>
+
+  <quick-card speed="fast" cost="20" name="Hearty Land, Hearty People" image="rage-image.jpg"
+    elements="plant,air" range="1" target="dahan" target-title="TARGET LAND"
+    artist-name="GREG COLE">
+    <rules>
+      Dahan have +2 Health
+      <br>
+      It takes 3 additional damage to add {blight}
+    </rules>
+    <threshold condition="3-earth">
+      Defend 3
+    </threshold>
+  </quick-card>
+
+  <quick-card speed="slow" cost="10" name="Nature Breaks Containment" image="scarred-image.jpg"
+    elements="fire,air" range="1" target="Any" target-title="TARGET LAND" artist-name="GREG COLE">
+    <rules>
+      2 Damage to {town} / {city}
+    </rules>
+    <threshold condition="3-animal">
+      1 Damage per {beast}
+    </threshold>
+  </quick-card>
+
+  <quick-card speed="fast" cost="10" name="Clever Cooperation" image="carnal-image.jpg" elements="animal,fire"
+    range="None" target="Self" target-title="TARGET SPIRIT" artist-name="GREG COLE">
+    <rules>
+      Gain a Power Card, then give a non-Unique Power card from your hand to Target Spirit.
+    </rules>
+    <threshold condition="3-sun">
+      Target Spirit also gains +2 Energy.
+  </quick-card>
+
+  <quick-card speed="fast" cost="20" name="Conduit of Power" image="tame-image.jpg" elements="animal,air"
+    range="None" target="Another" target-title="TARGET SPIRIT" artist-name="GREG COLE">
+    <rules>
+      Target Spirit gains {range-1} with all their powers.
+    </rules>
+    <threshold condition="3-air">
+      Target Spirit may ignore targeting restrictions for 1 land-targeting power.
+    </threshold>
+  </quick-card>
+
+  <quick-card speed="slow" cost="10" name="Knit Back the Earth" image="scarred-image.jpg"
+    elements="fire,air" range="1" target="{no-sand}" target-title="TARGET LAND" artist-name="GREG COLE">
+    <rules>
+      Remove 1 {blight}
+    </rules>
+    <threshold condition="3-plant">
+      A Spirit with {presence} on target board may add 1 of their Destroyed {presence}
+    </threshold>
+  </quick-card>
+
+  <quick-card speed="slow" cost="20" name="Flee the Rising Waters" image="tame-image.jpg" elements="animal,air"
+    range="2" target="Any" target-title="TARGET LAND" artist-name="GREG COLE">
+    <rules>
+      Push up to 2 {explorer} / {town}
+    </rules>
+    <threshold condition="3-water">
+      Push up to 1 {town} / {city}
+      2 {fear}
+    </threshold>
+  </quick-card>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="../../_global/css/global.css" rel="stylesheet" />
+  <link href="../../_global/css/board_front.css" rel="stylesheet" />
+  <script type="text/javascript" src="../../_global/js/general.js"></script>
+  <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+
+  <!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+  <style>
+    icon.custom1 {
+      background-image: url('demo_custom_icon.png');
+    }
+
+    icon.custom2 {
+      background-image: url('filename.png');
+    }
+
+    icon.custom3 {
+      background-image: url('filename.png');
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <board spirit-image="primal-image-cropped.jpg" spirit-image-scale="100%" spirit-border="example2.png">
+
+    <spirit-name>
+      Strength Through Cooperation
+    </spirit-name>
+    <artist-name>
+      Greg Cole
+    </artist-name>
+
+    <special-rules-container>
+      <section-title>SPECIAL RULES</section-title>
+      <special-rules-subtitle>FRENS</special-rules-subtitle>
+      <special-rule>
+        Each of your land-targeting power cards may be granted to target spirit that shares a land with you. Target spirit uses their {presence} for targeting and makes all decisions when resolving the power. Gain 1 Energy and {any} per power card granted. You still gain elements on granted powers and your gained elements apply towards thresholds on granted power cards.
+      </special-rule>
+      <special-rules-subtitle>The Needs of the Many</special-rules-subtitle>
+      <special-rule>
+        Once per action, when another spirit's {presence} would be destroyed on a board with your {presence}, you may instead destroy 1 {presence} and forget a power card.
+      </special-rule>
+    </special-rules-container>
+
+    <right>
+      <!-- GROWTH  
+			Examples include: reclaim-all; reclaim-one; move-presence(1); gain-energy(2);
+			Gaining Elements: gain-element(water,fire); gain-element(water,2);
+			Adding Presence: add-presence(1); add-presence(1,jungle); add-presence(2,town,city,blight,or); add-presence(2,strife,city,and);
+			
+			Sub-Groups of Growth are possible (think Lure)
+			Example: <sub-growth title="pick one of:" bordered>   here 'bordered' creates the double line border
+					 </sub-growth>
+		-->
+      <growth title="Growth (Pick <u>One</u>)">
+        <growth-group values="reclaim;gain-power-card;add-presence(0)"></growth-group>
+        <growth-group values="add-presence(3, with another Spirit's Presence);gain-energy(3)"></growth-group>
+        <growth-group values="gain-power-card;add-presence(1)"></growth-group>
+      </growth>
+
+      <presence-tracks>
+        <energy-track banner="example2.png" banner-v-scale="50%" values="2,2+any,4,5,6,any,7"></energy-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1,2,gain-card-pay-2,3,4,reclaim-one"></card-play-track>
+      </presence-tracks>
+
+      <!-- INNATE POWERS  
+			To create powers which scale with elements ("For Each"), use the shortcut {fire,2} to include the numeral
+			Tokens can be included in level thresholds (as seen on Many Minds). Try '1-dahan','2-beast','3-wilds',etc.
+			speed: "fast" or "slow"
+		-->
+      <innate-powers>
+        <quick-innate-power name="Communal Contributions" speed="slow" range="1" target="Any" target-title="TARGET LAND">
+          <level threshold="2-moon">
+            Add 1 {strife}
+          </level>
+          <level threshold="2-animal">
+            Add 1 {beast}
+          </level>
+          <level threshold="2-fire">
+            Add 1 {badlands}
+          </level>
+          <level threshold="3-water">
+            Add 1 {disease}
+          </level>
+          <level threshold="3-plant">
+            Add 1 {wilds}
+          </level>
+        </quick-innate-power>
+        <quick-innate-power name="Whispers Carried by the Wind" speed="fast" range="sacred-site,0" target="Any" target-title="TARGET LAND">
+          <level threshold="2-air,1-sun">
+            Skip 1 Invader Action 
+          </level>
+          <level threshold="4-air,3-sun,2-moon">
+            Repeat this Power.
+          </level>
+        </quick-innate-power>
+      </innate-powers>
+    </right>
+  </board>
+</body>
+
+</html>
