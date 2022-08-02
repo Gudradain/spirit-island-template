@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="../../_global/css/global.css" rel="stylesheet" />
+  <link href="../../_global/css/board_front.css" rel="stylesheet" />
+  <script type="text/javascript" src="../../_global/js/general.js"></script>
+  <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+
+  <!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+  <style>
+    icon.custom1 {
+      background-image: url('demo_custom_icon.png');
+    }
+
+    icon.custom2 {
+      background-image: url('filename.png');
+    }
+
+    icon.custom3 {
+      background-image: url('filename.png');
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <board spirit-image="sacred-image-cropped.jpg" spirit-image-scale="100%" spirit-border="example2.png">
+    <artist-name>
+      Greg Cole
+    </artist-name>
+
+    <special-rules-container style="background-repeat: repeat; width: auto; height: calc(100% - 10px)">
+      <section-title>SPECIAL RULES</section-title>
+      <special-rules-subtitle>Divine Math</special-rules-subtitle>
+      <special-rule>
+        Whenever you push any number of {presence} from a land, you must push them all to the same land. If that land
+        had element tokens on it, those tokens moves with the {presence}.
+        </special-rules-subtitle>
+        <br><br>
+        Whenever an action changes the number of {presence} in one of your lands, for each neighbouring land with a number
+        of presence that is now no longer coprime to the original land, you must push all {presence} from that land to
+        another land. If
+        you would be forced to push presence from another land as a result of one of these pushes, you must instead
+        return presence to your track until you no longer would have to push.
+        <br><br>
+        When you add {presence}, you may not move an existing presence on the board. You must add it from your track.
+      </special-rule>
+      <special-rules-subtitle>Perfection is Power</special-rules-subtitle>
+      <special-rule>
+        When you uncover a {star} in your presence track, you choose an element token to place there. You cannot choose
+        an element token that you have already placed on your presence track. If you return presence to that track spot,
+        remove the element token placed.
+        <br><br>
+        When you return a {presence} to you presence track, you main return it to anywhere on the track, but when you
+        add {presence} from the track, you must always add from the left-most {presence} on the track.
+        <br><br>
+        Whenever you add your {presence} to a land from your track, you may add an element marker to that land. If the
+        land has no presence, you cannot have presence tokens on it. If the land has 1 to 4 {presence}, it can hav up to
+        1 element token. If the land has 5 or more {presence}, it can have 2 element tokens on it. If you ever have too
+        many tokens in a single land, you must remove tokens until you are at the limit.
+        <br><br>
+        During the growth phase, for each {star} you have on your element tracks, you gain 1 of that type of element for
+        each land you have with a number of {presence} greater of equal to the energy counter on that growth track slot,
+        and the same element token on the land as on the {star}. You gain 2 of each element type instead for each match
+        if the energy counter on the growth track option is 5 or greater.
+      </special-rule>
+      <special-rules-subtitle>The Ever Shifting Landscape</special-rules-subtitle>
+      <special-rule>
+        You may not gain major power cards. At the beginning of the game, take the top two major powers and set them
+        aside beside your spirit card. If they do not target a land, keep drawing and replacing until you find two that
+        do.
+        <br><br>
+        When you grow along your card play track, instead of card plays, you unlock Major Power Slots. For each slot
+        unlocked, you get -1 energy gain <i>(min 0)</i>.
+        <br><br>
+        Both of your innate powers have conditions to use a major power slot. When you use a power slot, you may play
+        one of your major powers set aside by payings its cost, target the same land as the innate power ignoring
+        targeting restrictions. At the end of the turn, you must forget that card. Then look at the top 4 cards of the
+        major power deck, replacing any non-land targets powers, pick 1 and set it aside for future use.
+        <br><br>
+        For each use of this, you must have the approriate number of slots unlocked on your growth track.
+      </special-rule>
+
+    </special-rules-container>
+  </board>
+</body>
+
+</html>

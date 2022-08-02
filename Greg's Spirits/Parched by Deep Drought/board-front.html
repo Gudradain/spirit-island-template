@@ -72,7 +72,7 @@
 
       <presence-tracks>
         <energy-track banner="example2.png" banner-v-scale="50%" values="0,1,fire,fire+earth,2,fire,fire,fire+earth"></energy-track>
-        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1+sun,2,3+sun,4"></card-play-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1,2,3+sun,4"></card-play-track>
       </presence-tracks>
 
       <!-- INNATE POWERS  
@@ -84,6 +84,9 @@
         <quick-innate-power name="Sweltering Heat" speed="fast" range="1" target="{sand}" target-title="TARGET LAND">
           <level threshold="2-fire,1-sun">
             1 {fear} per invader in target land (max equal to {fire}). You may add 1 destroyed {presence}.
+          </level>
+          <level threshold="6-fire,1-sun">
+            1 {fear} per invader in target land (max equal to {fire}).
           </level>
           <level threshold="2-earth">
             Defend 1 per invader in target land.

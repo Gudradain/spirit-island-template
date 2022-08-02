@@ -78,7 +78,9 @@ function addImages(board) {
 
 	//Add Meeple
 	const spiritName = document.getElementsByTagName('spirit-name');
-	spiritName[0].outerHTML += "<custom-meeple></custom-meeple>";
+	if (spiritName[0]) {
+		spiritName[0].outerHTML += "<custom-meeple></custom-meeple>";
+	}
 
 }
 
@@ -87,7 +89,11 @@ function parseGrowthTags() {
 	var fullHTML = "";
 	var growthHTML = document.getElementsByTagName("growth");
 
-	var growthTitle = "<section-title>" + growthHTML[0].title + "</section-title>";
+	if (!growthHTML[0]) {
+		return;
+	}
+
+	var growthTitle = "<section-title>" + growthHTML[0]?.title + "</section-title>";
 
 	const subList = Array.from(growthHTML[0].getElementsByTagName('sub-growth'))
 	let subTitle = subList
@@ -141,8 +147,10 @@ function parseGrowthTags() {
 	}
 	fullHTML += growthTitle + subTitle + newGrowthTableTagOpen + newGrowthCellHTML + newGrowthTableTagClose
 
-	document.getElementsByTagName("growth")[0].removeAttribute("title");
-	document.getElementsByTagName("growth")[0].innerHTML = fullHTML;
+	if (document.getElementsByTagName("growth")[0]) {
+		document.getElementsByTagName("growth")[0].removeAttribute("title");
+		document.getElementsByTagName("growth")[0].innerHTML = fullHTML;
+	}
 
 	function writeGrowthNode(childElement, nextElement, headerIndex) {
 		const cost = childElement.getAttribute("cost");
@@ -960,6 +968,10 @@ function parseGrowthTags() {
 
 function parseEnergyTrackTags() {
 
+	if (!document.getElementsByTagName("energy-track")[0]) {
+		return;
+	}
+
 	var energyValues = document.getElementsByTagName("energy-track")[0].getAttribute("values");
 	var energyOptions = energyValues.split(",");
 
@@ -1004,6 +1016,10 @@ function parseEnergyTrackTags() {
 }
 
 function parseCardPlayTrackTags() {
+
+	if (!document.getElementsByTagName("card-play-track")[0]) {
+		return;
+	}
 
 	var cardPlayValues = document.getElementsByTagName("card-play-track")[0].getAttribute("values");
 	var cardPlayOptions = cardPlayValues.split(",");
@@ -1462,7 +1478,10 @@ function Capitalise(str) {
 }
 
 function setNewEnergyCardPlayTracks(energyHTML, cardPlayHTML) {
-	console.log("BUILDING PRESENCE TRACK PANEL")
+	if (!document.getElementsByTagName("presence-tracks")[0]) {
+		return;
+	}
+	console.log("BUILDING PRESENCE TRACK PANEL");
 	document.getElementsByTagName("presence-tracks")[0].innerHTML = "<section-title>Presence</section-title>" +
 		"<table id='presence-table'>" + energyHTML + cardPlayHTML + "</table>";
 }
@@ -1575,6 +1594,9 @@ function dynamicCellWidth() {
 	}
 
 	growthTable = document.getElementsByTagName("growth-table")[0];
+	if (!growthTable) {
+		return;
+	}
 	const headerWith = {}
 	const headerAdditionalWidth = {}
 	let maxIndex = undefined
@@ -1859,6 +1881,9 @@ function checkOverflowHeight(el) {
 }
 
 function parseInnatePowers() {
+	if (!document.getElementsByTagName("innate-powers")[0]) {
+		return;
+	}
 	var fullHTML = "";
 
 	var innateHTML = document.getElementsByTagName("quick-innate-power");
