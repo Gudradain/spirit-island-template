@@ -54,12 +54,10 @@
 		-->
       <growth title="Growth (Pick Three)">
         <growth-group values="reclaim"></growth-group>
-        <growth-group values="add-presence(0)"></growth-group>
-        <growth-group values="add-presence(0)"></growth-group>
-        <growth-group values="custom(Return to Track,presence)"></growth-group>
-        <growth-group values="custom(Return to Track,presence)"></growth-group>
-        <growth-group values="custom(Replace Element on Track,any)"></growth-group>
-        <growth-group values="custom(Add Element Token to Land,any,range-0)"></growth-group>
+        <growth-group values="add-presence(2,no-presence)"></growth-group>
+        <growth-group values="add-presence(0,presence)"></growth-group>
+        <growth-group values="custom(Return Presence to Track,presence)"></growth-group>
+        <growth-group values="move-presence(1)"></growth-group>
         <growth-group values="gain-card-play(1)"></growth-group>
         <growth-group values="gain-power-card"></growth-group>
       </growth>
@@ -84,10 +82,10 @@
           <level threshold="0-any">
             For each land with a different number of {presence} adajcent to target land, you may push or gather 1
             {town}/{city} or {dahan} into target land. 1 {fear} per token moved. If one of your adjacent lands has 5 or
-            more presence, you may also move {city} with this power. They generate 2 {fear} for moving.
+            more presence, you may also move {city} with this power. {city} generate 2 {fear} for moving.
           </level>
           <level threshold="0-any">
-            If you have at least three adjacent lands with a different number of and at least 2 {presence}, gain 2
+            If you have at least three adjacent lands each with a different number of and at least 2 {presence}, gain 2
             energy. If one of your adjacent lands has 5 or more presence, you may use a Major Power Slot.
           </level>
           <level threshold="0-any">
@@ -97,11 +95,8 @@
         <quick-innate-power name="The Pillars Align" speed="slow" range="sacred-site,1" target="{no-presence}"
           target-title="TARGET LAND" note="This power cannot target the same land as Awe and Wonder">
           <level threshold="0-any">
-            If you have at least three adjacent lands with a different number of and at least 2 {presence}, gain a power
+            If you have at least three adjacent lands each with a different number of {presence}, gain a power
             card. If one of your adjacent lands has 4 or more presence, you may use a Major Power Slot.
-          </level>
-          <level threshold="0-any">
-            For each invader and {dahan} this power destroyed, you may gather 1 {presence} into target land.
           </level>
         </quick-innate-power>
       </innate-powers>

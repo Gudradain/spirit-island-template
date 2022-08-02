@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="../../_global/css/global.css" rel="stylesheet" />
+  <link href="../../_global/css/board_front.css" rel="stylesheet" />
+  <script type="text/javascript" src="../../_global/js/general.js"></script>
+  <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+
+  <!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+  <style>
+    icon.custom1 {
+      background-image: url('demo_custom_icon.png');
+    }
+
+    icon.custom2 {
+      background-image: url('filename.png');
+    }
+
+    icon.custom3 {
+      background-image: url('filename.png');
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <board spirit-image="sloth-image.jpg" spirit-image-scale="100%" spirit-border="example2.png">
+
+    <spirit-name>
+      Draining Sloth Brings a Slow Death
+    </spirit-name>
+    <artist-name>
+      Greg Cole
+    </artist-name>
+
+    <special-rules-container>
+      <section-title>SPECIAL RULES</section-title>
+      <special-rules-subtitle>Too Lazy to Bother</special-rules-subtitle>
+      <special-rule>
+        In each of your lands, you may pay 1 energy to have invaders skip a build or ravage action.
+      </special-rule>
+    </special-rules-container>
+
+    <right>
+      <!-- GROWTH  
+			Examples include: reclaim-all; reclaim-one; move-presence(1); gain-energy(2);
+			Gaining Elements: gain-element(water,fire); gain-element(water,2);
+			Adding Presence: add-presence(1); add-presence(1,jungle); add-presence(2,town,city,blight,or); add-presence(2,strife,city,and);
+			
+			Sub-Groups of Growth are possible (think Lure)
+			Example: <sub-growth title="pick one of:" bordered>   here 'bordered' creates the double line border
+					 </sub-growth>
+		-->
+      <growth title="Growth (Pick One)">
+        <growth-group values="reclaim;gain-energy(1);move-presence(1)"></growth-group>
+        <growth-group values="add-presence(1);add-presence(1)"></growth-group>
+        <growth-group values="move-presence(2);gain-power-card;gain-power-card"></growth-group>
+      </growth>
+
+      <presence-tracks>
+        <energy-track banner="example2.png" banner-v-scale="50%"
+          values="1+moon,2+moon,3,moon,5,6+moon+moon,8+moon+moon"></energy-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,2+moon,3,4+moon,5+moon,6+moon+moon">
+        </card-play-track>
+      </presence-tracks>
+
+      <!-- INNATE POWERS  
+			To create powers which scale with elements ("For Each"), use the shortcut {fire,2} to include the numeral
+			Tokens can be included in level thresholds (as seen on Many Minds). Try '1-dahan','2-beast','3-wilds',etc.
+			speed: "fast" or "slow"
+		-->
+      <innate-powers>
+        <quick-innate-power name="The Dead Wander" speed="fast" range="0" target="any" target-title="TARGET LAND">
+          <level threshold="1-skeleton">
+            Destroy 1 {explorer}. Push 1 {skeleton}.
+          </level>
+          <level threshold="2-skeleton">
+            Instead, destroy 2 {explorer}/{town}. Push 1 {skeleton}.
+          </level>
+          <level threshold="1-air,1-water">
+            Push up to 1 {presence}.
+          </level>
+        </quick-innate-power>
+        <quick-innate-power name="Night of the Living Dead" speed="slow" range="0" target="{town}/{city}"
+          target-title="TARGET LAND">
+          <level threshold="2-skeleton">
+            Remove up to 1 {town}. Destroy 1 skeleton. 2 {fear}.
+          </level>
+          <level threshold="4-skeleton,1-air">
+            Destroy up to 1 {city}. Destroy 1 skeleton. 3 {fear}.
+          </level>
+          <level threshold="4-skeleton,4-air">
+            Destroy up to 1 {town}/{city}. Destroy 1 skeleton. 3 {fear}.
+          </level>
+          <level threshold="8-skeleton,2-air,2-water">
+            Repeat this power in every land with your {presence}, {skeleton} and {town}/{city}.
+          </level>
+        </quick-innate-power>
+      </innate-powers>
+    </right>
+  </board>
+</body>
+
+</html>
