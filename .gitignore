@@ -4,3 +4,5 @@
 *.bak
 **/*.DS_Store
 rendering/node_modules
+_global/fonts/dk_snemand/*
+_global/fonts/gobold/*
