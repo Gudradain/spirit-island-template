@@ -42,7 +42,9 @@
       <section-title>SPECIAL RULES</section-title>
       <special-rules-subtitle>Too Lazy to Bother</special-rules-subtitle>
       <special-rule>
-        In each of your lands, you may pay 1 energy to have invaders skip a build or ravage action.
+        For each of your lands, if that land has no {explorer}, you may pay 1 energy per invader in that land to have invaders skip a ravage action.
+        <br><br>
+        Invaders in your lands have +2 health.
       </special-rule>
     </special-rules-container>
 
@@ -57,15 +59,15 @@
 					 </sub-growth>
 		-->
       <growth title="Growth (Pick One)">
-        <growth-group values="reclaim;gain-energy(1);move-presence(1)"></growth-group>
-        <growth-group values="add-presence(1);add-presence(1)"></growth-group>
-        <growth-group values="move-presence(2);gain-power-card;gain-power-card"></growth-group>
+        <growth-group values="reclaim;add-presence(1)"></growth-group>
+        <growth-group values="gain-power-card;add-presence(2)"></growth-group>
+        <growth-group values="add-presence(1,disease,and)"></growth-group>
+        <growth-group values="gain-energy(3)"></growth-group>
       </growth>
 
       <presence-tracks>
-        <energy-track banner="example2.png" banner-v-scale="50%"
-          values="1+moon,2+moon,3,moon,5,6+moon+moon,8+moon+moon"></energy-track>
-        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,2+moon,3,4+moon,5+moon,6+moon+moon">
+        <energy-track banner="example2.png" banner-v-scale="50%" values="2,3,plant,4,6,animal,8"></energy-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1,2,2,3,earth,4">
         </card-play-track>
       </presence-tracks>
 
@@ -75,30 +77,21 @@
 			speed: "fast" or "slow"
 		-->
       <innate-powers>
-        <quick-innate-power name="The Dead Wander" speed="fast" range="0" target="any" target-title="TARGET LAND">
-          <level threshold="1-skeleton">
-            Destroy 1 {explorer}. Push 1 {skeleton}.
+        <quick-innate-power name="Explorers Settle Down" speed="fast" range="0" target="any" target-title="TARGET LAND">
+          <level threshold="2-plant,1-earth">
+            Replace 3 {explorer} with 1 {town}.
           </level>
-          <level threshold="2-skeleton">
-            Instead, destroy 2 {explorer}/{town}. Push 1 {skeleton}.
-          </level>
-          <level threshold="1-air,1-water">
-            Push up to 1 {presence}.
+          <level threshold="3-plant,2-earth,1-animal">
+            Instead replace 4 {explorer} with 1 {city}.
           </level>
         </quick-innate-power>
-        <quick-innate-power name="Night of the Living Dead" speed="slow" range="0" target="{town}/{city}"
+        <quick-innate-power name="Overcrowding" speed="slow" range="0" target="any"
           target-title="TARGET LAND">
-          <level threshold="2-skeleton">
-            Remove up to 1 {town}. Destroy 1 skeleton. 2 {fear}.
+          <level threshold="2-animal,1-earth">
+            If target land has at least two {town}, destroy 1 {town}.
           </level>
-          <level threshold="4-skeleton,1-air">
-            Destroy up to 1 {city}. Destroy 1 skeleton. 3 {fear}.
-          </level>
-          <level threshold="4-skeleton,4-air">
-            Destroy up to 1 {town}/{city}. Destroy 1 skeleton. 3 {fear}.
-          </level>
-          <level threshold="8-skeleton,2-air,2-water">
-            Repeat this power in every land with your {presence}, {skeleton} and {town}/{city}.
+          <level threshold="3-animal,2-earth">
+            If target land has at least two {city}, destroy 1 {city}. If the land has {disease}, destroy 1 {town}.
           </level>
         </quick-innate-power>
       </innate-powers>
