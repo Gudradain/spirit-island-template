@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="../../_global/css/global.css" rel="stylesheet" />
+  <link href="../../_global/css/board_front.css" rel="stylesheet" />
+  <script type="text/javascript" src="../../_global/js/general.js"></script>
+  <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+
+  <!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+  <style>
+    icon.custom1 {
+      background-image: url('demo_custom_icon.png');
+    }
+
+    icon.custom2 {
+      background-image: url('filename.png');
+    }
+
+    icon.custom3 {
+      background-image: url('filename.png');
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <board spirit-image="spores-of-the-corpse-eater-square.jpeg" spirit-image-scale="100%" spirit-border="example2.png">
+
+    <spirit-name>
+      Spores of the Corpse Eater
+    </spirit-name>
+    <artist-name>
+      wombo.art
+    </artist-name>
+
+    <special-rules-container>
+      <section-title>SPECIAL RULES</section-title>
+      <special-rules-subtitle>A Living Network of Fungi</special-rules-subtitle>
+      <special-rule>
+        When {disease} is used to block a Build in one of your lands, you may pay 1 Energy to move the {disease} to another of your lands without consuming it.
+      </special-rule>
+      <special-rules-subtitle>Spores Take Root in Lungs</special-rules-subtitle>
+      <special-rule>
+        <strong>During Time Passes</strong>: Invaders and {dahan} do not heal from damage in lands with your {presence} and {disease}.
+      </special-rule>
+    </special-rules-container>
+
+    <right>
+      <!-- GROWTH  
+			Examples include: reclaim-all; reclaim-one; move-presence(1); gain-energy(2);
+			Gaining Elements: gain-element(water,fire); gain-element(water,2);
+			Adding Presence: add-presence(1); add-presence(1,jungle); add-presence(2,town,city,blight,or); add-presence(2,strife,city,and);
+			
+			Sub-Groups of Growth are possible (think Lure)
+			Example: <sub-growth title="pick one of:" bordered>   here 'bordered' creates the double line border
+					 </sub-growth>
+		-->
+      <growth title="Growth (Pick <u>One</u>)">
+        <growth-group values="reclaim;gain-power-card;move-presence(1)"></growth-group>
+        <growth-group values="add-presence(2);gain-energy(2)"></growth-group>
+        <growth-group values="gain-power-card;add-presence(0)"></growth-group>
+      </growth>
+
+      <presence-tracks>
+        <energy-track banner="example2.png" banner-v-scale="50%" values="2,plant,3,4,air,6"></energy-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1,2,air,3,reclaim-one,4"></card-play-track>
+      </presence-tracks>
+
+      <!-- INNATE POWERS  
+			To create powers which scale with elements ("For Each"), use the shortcut {fire,2} to include the numeral
+			Tokens can be included in level thresholds (as seen on Many Minds). Try '1-dahan','2-beast','3-wilds',etc.
+			speed: "fast" or "slow"
+		-->
+      <innate-powers>
+        <quick-innate-power name="A Slowly Spreading Fungal Bloom" speed="slow" range="sacred-site,1" target="Any" target-title="TARGET LAND">
+          <level threshold="2-plant,1-air">
+            1 damage to 1 Invader.
+          </level>
+          <level threshold="3-plant,2-air">
+            1 {fear} for each damaged Invader.
+          </level>
+          <level threshold="4-plant,3-air,1-moon">
+            Destroy a damaged Invader. Add 1 {disease}.
+          </level>
+        </quick-innate-power>
+        <quick-innate-power name="Death Nourishes New Life" speed="fast" range="none" target="Self" target-title="TARGET SPIRIT">
+          <level threshold="1-plant,1-air">
+            In each of your lands, if an Invader is destroyed, gain 1 Energy. You may do this a number of times per turn equal to {air}. 
+          </level>
+          <level threshold="3-plant,3-air">
+            In each of your lands, if a {presence} is destroyed (including your own), you may add 1 {presence} at range 1. You may only do this once per turn.
+          </level>
+        </quick-innate-power>
+      </innate-powers>
+    </right>
+  </board>
+</body>
+
+</html>
