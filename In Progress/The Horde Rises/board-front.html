@@ -47,10 +47,7 @@
         in one of your lands.
         <br><br>
         You may only have as many {skeleton} as you have revealed {moon} on your presence tracks. If you would place a
-        skeleton on the board that would push you above your limit, you must first sacrifice a skeleton.
-        <br><br>
-        Whenever your presence is moved between lands, you may also move up to 1 {skeleton} for every 3 {moon} revealed
-        on your presence track <i>(round up)</i>.
+        skeleton on the board that would push you above your limit, you must then sacrifice a skeleton.
       </special-rule>
       <special-rules-subtitle>Mindless Rage</special-rules-subtitle>
       <special-rule>
@@ -89,28 +86,34 @@
       <innate-powers>
         <quick-innate-power name="The Dead Wander" speed="fast" range="0" target="any" target-title="TARGET LAND">
           <level threshold="1-skeleton">
-            Destroy 1 {explorer}. Push 1 {skeleton}.
+            1 {fear}. Push 1 {skeleton}.
           </level>
-          <level threshold="2-skeleton">
-            Instead, destroy 2 {explorer}/{town}. Push 1 {skeleton}.
+          <level threshold="3-skeleton,1-earth">
+            3 {fear}. Push 3 {skeleton}.
           </level>
-          <level threshold="1-air,1-water">
-            Push up to 1 {presence}.
+          <level threshold="2-earth">
+            Defend 2 in an adjacent land with {skeleton}.
+          </level>
+          <level threshold="3-earth">
+            Defend 2 in an adjacent land with {skeleton}.
+          </level>
+          <level threshold="4-earth,2-fire">
+            Defend 2 in an adjacent land with {skeleton}.
           </level>
         </quick-innate-power>
         <quick-innate-power name="Night of the Living Dead" speed="slow" range="0" target="{town}/{city}"
           target-title="TARGET LAND">
           <level threshold="2-skeleton">
-            Remove up to 1 {town}. Destroy 1 skeleton. 2 {fear}.
+            Destroy up to 1 {town}. Destroy 1 {skeleton}.
           </level>
-          <level threshold="4-skeleton,1-air">
-            Destroy up to 1 {city}. Destroy 1 skeleton. 3 {fear}.
+          <level threshold="4-skeleton,3-fire">
+            Destroy up to 1 {city}. Destroy 2 {skeleton}.
           </level>
-          <level threshold="4-skeleton,4-air">
-            Destroy up to 1 {town}/{city}. Destroy 1 skeleton. 3 {fear}.
+          <level threshold="4-skeleton,6-moon">
+            Destroy up to 1 {town}/{city}. Destroy 1 {skeleton}.
           </level>
-          <level threshold="8-skeleton,2-air,2-water">
-            Repeat this power in every land with your {presence}, {skeleton} and {town}/{city}.
+          <level threshold="8-skeleton,10-moon">
+            Push all {skeleton} to as many different lands as you can. Each skeleton pushed this way does 2 damage in its destination land. 1 {fear} for each {town}/{city} destroyed this way.
           </level>
         </quick-innate-power>
       </innate-powers>

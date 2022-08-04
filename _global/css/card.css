@@ -516,3 +516,5 @@ threshold icon.any{
     left:30px;
   }
 }
+
+rules icon.skeleton {background-image: url(../images/50px-Skeleton.png);}
