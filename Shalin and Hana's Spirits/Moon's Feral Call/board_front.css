@@ -1,0 +1,13 @@
+@import '../../_global/css/board_front/general.css';
+@import '../../_global/css/board_front/icon.css';
+@import '../../_global/css/board_front/special-rules.css';
+@import '../../_global/css/board_front/growth-options.css';
+@import '../../_global/css/board_front/presence-track-table.css';
+@import 'innate-power.css';
+@import '../../_global/css/board_front/exception.css';
+
+@font-face {
+    font-family: JosefinSans-Regular;
+    src: url(../../_global/fonts/josefin-sans/JosefinSans-Regular.ttf) format("truetype");
+    font-weight: normal;
+}

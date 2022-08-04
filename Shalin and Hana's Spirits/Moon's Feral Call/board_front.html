@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="../../_global/css/global.css" rel="stylesheet" />
+  <link href="board_front.css" rel="stylesheet" />
+  <script type="text/javascript" src="../../_global/js/general.js"></script>
+  <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+
+  <!-- 	Custom Icons. Instructions 
+				1) place image in same folder as HTLM (this file) 
+				2) replace demo file name with your file name below 
+				3) use custom1, custom2, or custom3 in your HTLM to reference 
+-->
+  <style>
+    icon.custom1 {
+      background-image: url('demo_custom_icon.png');
+    }
+
+    icon.custom2 {
+      background-image: url('filename.png');
+    }
+
+    icon.custom3 {
+      background-image: url('filename.png');
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <board spirit-image="moons-feral-call-cropped-square.jpeg" spirit-image-scale="100%" spirit-border="example2.png">
+
+    <spirit-name>
+      Moon's Feral Call
+    </spirit-name>
+    <artist-name>
+      TBD
+    </artist-name>
+
+    <special-rules-container>
+      <section-title>SPECIAL RULES</section-title>
+      <special-rules-subtitle>Rule of Day, Rule of Night</special-rules-subtitle>
+      <special-rule>
+        You may not trigger <i>Full Moon Shines Bright</i> and <i>Ferocity Fades by Daylight</i> in the same turn.
+      </special-rule>
+      <special-rules-subtitle>Bound by Their Blood</special-rules-subtitle>
+      <special-rule>
+        If {presence} is ever in a land with no {dahan}/{beast}/Invaders, Gather it into an adjacent land with {dahan}/{beast}/Invaders. If no such adjacent land exists, destroy that {presence}.
+      </special-rule>
+      <special-rules-subtitle>The Beast Lurks Among Them</special-rules-subtitle>
+      <special-rule>
+        <strong>During Time Passes</strong>: generate 1 {fear} for each of your lands with {beast} and Invaders. 
+      </special-rule>
+    </special-rules-container>
+
+    <right>
+      <!-- GROWTH  
+			Examples include: reclaim-all; reclaim-one; move-presence(1); gain-energy(2);
+			Gaining Elements: gain-element(water,fire); gain-element(water,2);
+			Adding Presence: add-presence(1); add-presence(1,jungle); add-presence(2,town,city,blight,or); add-presence(2,strife,city,and);
+			
+			Sub-Groups of Growth are possible (think Lure)
+			Example: <sub-growth title="pick one of:" bordered>   here 'bordered' creates the double line border
+					 </sub-growth>
+		-->
+      <growth title="Growth">
+        <sub-growth title="pick one of:" bordered>
+          <growth-group values="reclaim"></growth-group>
+          <growth-group values="add-presence(1)"></growth-group>
+          <growth-group values="gain-power-card"></growth-group>
+        </sub-growth>
+        <sub-growth title="and one of:">
+          <growth-group values="gain-element(moon,2);add-presence(2,dahan)"></growth-group>
+          <growth-group values="gain-element(sun,2);gain-energy(2)"></growth-group>
+        </sub-growth>
+      </growth>
+
+      <presence-tracks>
+        <energy-track banner="example2.png" banner-v-scale="50%" values="1,gain-power-card^minor,2,gain-power-card^minor,3,sun+moon,5"></energy-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1,2,3,gather(dahan),4,reclaim-one"></card-play-track>
+      </presence-tracks>
+
+      <!-- INNATE POWERS  
+			To create powers which scale with elements ("For Each"), use the shortcut {fire,2} to include the numeral
+			Tokens can be included in level thresholds (as seen on Many Minds). Try '1-dahan','2-beast','3-wilds',etc.
+			speed: "fast" or "slow"
+		-->
+      <innate-powers>
+        <quick-innate-power name="Full Moon Shines Bright" speed="fast" range="0" target="Any" target-title="TARGET LAND">
+          <level threshold="2-moon">
+            Replace 1 {dahan} with 1 {beast}
+          </level>
+          <level threshold="3-moon,1-animal">
+            Replace 1 {explorer} with 1 {beast}
+          </level>
+          <level threshold="5-moon,2-animal">
+            Replace 1 {town} with 1 {beast}
+          </level>
+          <level threshold="2-animal">
+            Repeat this power
+          </level>
+        </quick-innate-power>
+        <quick-innate-power name="Ferocity Fades by Daylight" speed="fast" range="0" target="Any" target-title="TARGET LAND">
+          <level threshold="2-sun">
+            Replace 1 {beast} with 1 {dahan} / {explorer} for every 2 {sun}. {dahan} / {explorer} must be replaced as evenly as possible.
+          </level>
+          <level threshold="2-animal">
+            Repeat this power
+          </level>
+        </quick-innate-power>
+        <quick-innate-power name="Distrust of One's Own Kin" speed="slow" range="beast,1" target="any" target-title="TARGET LAND">
+          <level threshold="2-sun,2-animal">
+            Add 1 {strife} for every 2 {sun} 2 {animal}
+          </level>
+          <level threshold="2-moon,2-animal">
+            Add 1 {disease} for every 2 {moon} 2 {animal}
+          </level>
+          <level threshold="2-animal">
+            Destroy 1 {beast} for every token added by this power
+          </level>
+        </quick-innate-power>
+      </innate-powers>
+    </right>
+  </board>
+</body>
+
+</html>
