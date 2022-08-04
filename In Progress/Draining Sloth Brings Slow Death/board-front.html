@@ -29,7 +29,7 @@
 
 <body>
 
-  <board spirit-image="sloth-image.jpg" spirit-image-scale="100%" spirit-border="example2.png">
+  <board spirit-image="sloth-image-cropped.jpg" spirit-image-scale="100%" spirit-border="example2.png">
 
     <spirit-name>
       Draining Sloth Brings a Slow Death
@@ -78,11 +78,14 @@
 		-->
       <innate-powers>
         <quick-innate-power name="Explorers Settle Down" speed="fast" range="0" target="any" target-title="TARGET LAND">
+          <level threshold="1-plant">
+            If target land has {town} and exactly 1 {explorer}, replace 1 {explorer} with 1 {town}.
+          </level>
           <level threshold="2-plant,1-earth">
-            Replace 3 {explorer} with 1 {town}.
+            Replace 2 {explorer} with 1 {town}.
           </level>
           <level threshold="3-plant,2-earth,1-animal">
-            Instead replace 4 {explorer} with 1 {city}.
+            Instead replace 3 {explorer} with 1 {city}.
           </level>
         </quick-innate-power>
         <quick-innate-power name="Overcrowding" speed="slow" range="0" target="any"
