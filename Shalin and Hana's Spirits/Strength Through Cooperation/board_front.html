@@ -62,13 +62,13 @@
 		-->
       <growth title="Growth (Pick <u>One</u>)">
         <growth-group values="reclaim;gain-power-card;add-presence(0)"></growth-group>
-        <growth-group values="add-presence(3,text,with another Spirit's Presence,presence);gain-energy(3)"></growth-group>
+        <growth-group values="add-presence(3,text,to a land with another Spirit's Presence,presence);gain-energy(3)"></growth-group>
         <growth-group values="gain-power-card;add-presence(1)"></growth-group>
       </growth>
 
       <presence-tracks>
         <energy-track banner="example2.png" banner-v-scale="50%" values="2,2+any,4,5,6,any,7"></energy-track>
-        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1,2,gain-card-pay-2,3,4,reclaim-one"></card-play-track>
+        <card-play-track banner="example2.png" banner-v-scale="50%" values="1,2,any,gain-card-pay-2,3,4,reclaim-one"></card-play-track>
       </presence-tracks>
 
       <!-- INNATE POWERS  
@@ -99,6 +99,7 @@
             Skip 1 Invader Action 
           </level>
           <level threshold="4-air,3-sun,2-moon">
+            Forget a Power card.
             Repeat this Power.
           </level>
         </quick-innate-power>
