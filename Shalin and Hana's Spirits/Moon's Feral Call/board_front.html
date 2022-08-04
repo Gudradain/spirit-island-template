@@ -46,7 +46,7 @@
       </special-rule>
       <special-rules-subtitle>Bound by Their Blood</special-rules-subtitle>
       <special-rule>
-        If {presence} is ever in a land with no {dahan}/{beast}/Invaders, Gather it into an adjacent land with {dahan}/{beast}/Invaders. If no such adjacent land exists, destroy that {presence}.
+        If your {presence} is ever in a land with no {dahan}/{beast}/Invaders, Gather it into an adjacent land with {dahan}/{beast}/Invaders. If no such adjacent land exists, destroy that {presence}.
       </special-rule>
       <special-rules-subtitle>The Beast Lurks Among Them</special-rules-subtitle>
       <special-rule>
@@ -67,17 +67,17 @@
       <growth title="Growth">
         <sub-growth title="pick one of:" bordered>
           <growth-group values="reclaim"></growth-group>
-          <growth-group values="add-presence(1)"></growth-group>
-          <growth-group values="gain-power-card"></growth-group>
+          <growth-group values="add-presence(2)"></growth-group>
+          <growth-group values="gain-energy(2)"></growth-group>
         </sub-growth>
         <sub-growth title="and one of:">
-          <growth-group values="gain-element(moon,2);add-presence(2,dahan)"></growth-group>
-          <growth-group values="gain-element(sun,2);gain-energy(2)"></growth-group>
+          <growth-group values="gain-element(sun,2);add-presence(1,beasts)"></growth-group>
+          <growth-group values="gain-element(moon,2);gain-power-card"></growth-group>
         </sub-growth>
       </growth>
 
       <presence-tracks>
-        <energy-track banner="example2.png" banner-v-scale="50%" values="1,gain-power-card^minor,2,gain-power-card^minor,3,sun+moon,5"></energy-track>
+        <energy-track banner="example2.png" banner-v-scale="50%" values="1,push(beast),2,gather(beast),3,sun+moon,5"></energy-track>
         <card-play-track banner="example2.png" banner-v-scale="50%" values="1,1,2,3,gather(dahan),4,reclaim-one"></card-play-track>
       </presence-tracks>
 
@@ -92,24 +92,24 @@
             Replace 1 {dahan} with 1 {beast}
           </level>
           <level threshold="3-moon,1-animal">
-            Replace 1 {explorer} with 1 {beast}
+            Replace 1 {explorer} with 1 {beast}. Destroy 1 of your {presence}
           </level>
           <level threshold="5-moon,2-animal">
             Replace 1 {town} with 1 {beast}
           </level>
-          <level threshold="2-animal">
+          <level threshold="3-animal">
             Repeat this power
           </level>
         </quick-innate-power>
         <quick-innate-power name="Ferocity Fades by Daylight" speed="fast" range="0" target="Any" target-title="TARGET LAND">
           <level threshold="2-sun">
-            Replace 1 {beast} with 1 {dahan} / {explorer} for every 2 {sun}. {dahan} / {explorer} must be replaced as evenly as possible.
+            Replace 1 {beast} with 1 {dahan} for every {sun}
           </level>
           <level threshold="2-animal">
             Repeat this power
           </level>
         </quick-innate-power>
-        <quick-innate-power name="Distrust of One's Own Kin" speed="slow" range="beast,1" target="any" target-title="TARGET LAND">
+        <quick-innate-power name="Distrust of One's Own Kin" speed="slow" range="1" target="beast" target-title="TARGET LAND">
           <level threshold="2-sun,2-animal">
             Add 1 {strife} for every 2 {sun} 2 {animal}
           </level>
