@@ -11,8 +11,8 @@ import * as url from 'url';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-const SpiritDataRoot = path.join(__dirname, '../Greg\'s Spirits');
-const SpiritImageOutput = path.join(__dirname, '../Greg\'s Spirit Images');
+const SpiritDataRoot = path.join(__dirname, '../greg-spirits');
+const SpiritImageOutput = path.join(__dirname, '../greg-spirit-images');
 
 const CardFront = ["card-front.html", { width: 2035, height: 750 }];
 const CardBack = ["card-back.html", { width: 2035, height: 750 }];
@@ -41,7 +41,7 @@ const SourceFiles = [CardFront, CardBack, BoardFront, BoardLore];
   const screenshot = async (sourceHtml, destinationFile, screensize) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto(sourceHtml);
+    await page.goto("file://" + sourceHtml);
     await page.setViewport(screensize)
     await new Promise((resolve, reject) => setTimeout(() => resolve(), 1000))
     await page.screenshot({ path: destinationFile });
@@ -81,6 +81,5 @@ const SourceFiles = [CardFront, CardBack, BoardFront, BoardLore];
       const destImage = path.join(destDir, destPng);
       await screenshot(source, destImage, windowSize);
     }
-
   }
 })();
