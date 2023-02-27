@@ -122,8 +122,8 @@ icon.mountain-wetland{background-image: url('../images/50px-mountain-wetland.png
 icon.sand-wetland{background-image: url('../images/50px-sand-wetland.png'); }
 
 icon.terror-1{background-image: url('../images/board/NewIcons/TerrorLevel1.png'); width:50px; padding: 5px; margin-bottom: -8px; }
-icon.terror-2{background-image: url('../images/board/NewIcons/TerrorLevel1.png'); width:50px; padding: 5px; margin-bottom: -8px; }
-icon.terror-3{background-image: url('../images/board/NewIcons/TerrorLevel1.png'); width:50px; padding: 5px; margin-bottom: -8px; }
+icon.terror-2{background-image: url('../images/board/NewIcons/TerrorLevel2.png'); width:50px; padding: 5px; margin-bottom: -8px; }
+icon.terror-3{background-image: url('../images/board/NewIcons/TerrorLevel3.png'); width:50px; padding: 5px; margin-bottom: -8px; }
 
 icon.markerplus { background-image: url('../images/board/NewIcons/Element Marker Gain 1.png'); }
 icon.markerminus { background-image: url('../images/board/NewIcons/Element Marker Pay 1.png'); }
